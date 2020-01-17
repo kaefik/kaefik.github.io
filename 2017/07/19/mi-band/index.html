@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Mi band - подключение, использование, протоколы</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li class="active"><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/07/19/mi-band/" rel="bookmark"
+           title="Permalink to Mi band - подключение, использование, протоколы">Mi band - подключение, использование, протоколы</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 19 июля 2017</span>
+<span>| tags: <a href="/tag/api.html">api</a><a href="/tag/hack.html">hack</a><a href="/tag/mi-band.html">mi band</a><a href="/tag/security.html">security</a><a href="/tag/bluetooth.html">bluetooth</a></span>
+</footer><!-- /.post-info -->      <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="http://allmydroids.blogspot.nl/2014/12/xiaomi-mi-band-ble-protocol-reverse.html">Xiaomi Mi Band BLE Protocol reverse-engineering and API</a></li>
+<li><a href="https://habrahabr.ru/post/276343/">Контроль над браслетом в ритме BlueZ</a></li>
+<li><a href="https://0110.be/posts/Access_Mi_Band_from_Android_-_Notes_on_the_Bluetooth_LE_Protocol">Access Mi Band from Android - Notes on the Bluetooth LE Protocol</a></li>
+<li><a href="https://www.bluetooth.com/specifications/gatt/services">Bluetooth GATT Services</a></li>
+</ul>
+<h2>Подготовка рабочего места</h2>
+<ul>
+<li>
+<p><strong>lsusb</strong> - посмотреть определился ли dongle bluetooth</p>
+</li>
+<li>
+<p><strong>установить BlueZ</strong> (Official Linux Bluetooth protocol stack)</p>
+</li>
+</ul>
+<p><code>bash
+  sudo dnf install bluez</code></p>
+<ul>
+<li>
+<p>Корректность установки можно проверить, выполнив команду gatttool –help. Gatttool — это инструмент BlueZ для работы с GATT, общим профилем атрибутов BLE устройств.</p>
+</li>
+<li>
+<p>Через pip установил <a href="https://pexpect.readthedocs.org/en/stable/">Pexpect</a> для работы с BlueZ из Python.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo pip install pexpect
+</pre></div>
+
+
+<ul>
+<li>Статус адаптера проверил командой <strong>hciconfig</strong> :</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">hci0</span><span class="o">:</span> <span class="n">Type</span><span class="o">:</span> <span class="n">Primary</span>  <span class="n">Bus</span><span class="o">:</span> <span class="n">USB</span>
+ <span class="n">BD</span> <span class="n">Address</span><span class="o">:</span> <span class="mi">00</span><span class="o">:</span><span class="mi">1</span><span class="n">A</span><span class="o">:</span><span class="mi">7</span><span class="n">D</span><span class="o">:</span><span class="n">DA</span><span class="o">:</span><span class="mi">71</span><span class="o">:</span><span class="mi">13</span>  <span class="n">ACL</span> <span class="n">MTU</span><span class="o">:</span> <span class="mi">310</span><span class="o">:</span><span class="mi">10</span>  <span class="n">SCO</span> <span class="n">MTU</span><span class="o">:</span> <span class="mi">64</span><span class="o">:</span><span class="mi">8</span>
+ <span class="n">UP</span> <span class="n">RUNNING</span> 
+ <span class="n">RX</span> <span class="n">bytes</span><span class="o">:</span><span class="mi">676</span> <span class="n">acl</span><span class="o">:</span><span class="mi">0</span> <span class="n">sco</span><span class="o">:</span><span class="mi">0</span> <span class="n">events</span><span class="o">:</span><span class="mi">47</span> <span class="n">errors</span><span class="o">:</span><span class="mi">0</span>
+ <span class="n">TX</span> <span class="n">bytes</span><span class="o">:</span><span class="mi">2919</span> <span class="n">acl</span><span class="o">:</span><span class="mi">0</span> <span class="n">sco</span><span class="o">:</span><span class="mi">0</span> <span class="n">commands</span><span class="o">:</span><span class="mi">47</span> <span class="n">errors</span><span class="o">:</span><span class="mi">0</span>
+</pre></div>
+
+
+<p>Если флаг DOWN  - адаптер выключен, включите его командой:</p>
+<div class="highlight"><pre><span></span>sudo hciconfig hci0 up
+</pre></div>
+
+
+<ul>
+<li>hciconfig -a hci0 </li>
+</ul>
+<p>hci0:    Type: Primary  Bus: USB
+BD Address: 00:1A:7D:DA:71:13  ACL MTU: 310:10  SCO MTU: 64:8
+UP RUNNING PSCAN
+RX bytes:6562 acl:0 sco:0 events:181 errors:0
+TX bytes:5104 acl:0 sco:0 commands:100 errors:0
+Features: 0xff 0xff 0x8f 0xfe 0xdb 0xff 0x5b 0x87
+Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3
+Link policy: RSWITCH HOLD SNIFF PARK
+Link mode: SLAVE ACCEPT
+Name: 'kazn-adm'
+Class: 0x1c0104
+Service Classes: Rendering, Capturing, Object Transfer
+Device Class: Computer, Desktop workstation
+HCI Version: 4.0 (0x6)  Revision: 0x22bb
+LMP Version: 4.0 (0x6)  Subversion: 0x22bb
+Manufacturer: Cambridge Silicon Radio (10)</p>
+<ul>
+<li><strong>dmesg | grep Bluetooth</strong> </li>
+</ul>
+<p>[   13.462389] Bluetooth: Core ver 2.22
+[   13.462413] Bluetooth: HCI device and connection manager initialized
+[   13.462416] Bluetooth: HCI socket layer initialized
+[   13.462418] Bluetooth: L2CAP socket layer initialized
+[   13.462424] Bluetooth: SCO socket layer initialized
+[   25.643420] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[   25.643421] Bluetooth: BNEP filters: protocol multicast
+[   25.643425] Bluetooth: BNEP socket layer initialized
+[   81.814628] Bluetooth: RFCOMM TTY layer initialized
+[   81.814640] Bluetooth: RFCOMM socket layer initialized
+[   81.814705] Bluetooth: RFCOMM ver 1.11</p>
+<ul>
+<li><strong>bluetoothctl</strong> </li>
+</ul>
+<h3>Работа с Bluetooth устройством</h3>
+<ul>
+<li><strong>sudo hcitool -i hci0 lescan</strong> - сканирование Bluetooth устройств в окружающем пространстве</li>
+<li><strong>sudo gatttool -i hci0 -b 88:0F:10:DC:3E:FB  -I</strong> </li>
+</ul>
+<p>[88:0F:10:DC:3E:FB][LE]&gt; <strong>connect</strong> 
+Attempting to connect to 88:0F:10:DC:3E:FB</p>
+<p>Соединение в интерактивном режиме без спаривания обычно длится секунд 20. Это так называемый низкий уровень секретности, он используется по умолчанию. Список доступных сервисов выводится командой primary:</p>
+<div class="highlight"><pre><span></span>[88:0F:10:DC:3E:FB][LE]&gt; primary
+attr handle: 0x0001, end grp handle: 0x0009 uuid: 00001800-0000-1000-8000-00805f9b34fb
+attr handle: 0x000c, end grp handle: 0x000f uuid: 00001801-0000-1000-8000-00805f9b34fb
+attr handle: 0x0010, end grp handle: 0x0039 uuid: 0000fee0-0000-1000-8000-00805f9b34fb
+attr handle: 0x003a, end grp handle: 0x0048 uuid: 0000fee1-0000-1000-8000-00805f9b34fb
+attr handle: 0x0049, end grp handle: 0x0050 uuid: 0000fee7-0000-1000-8000-00805f9b34fb
+attr handle: 0x0051, end grp handle: 0x0053 uuid: 00001802-0000-1000-8000-00805f9b34fb
+</pre></div>
+
+
+<p>Определить, что за сервис можно по четырем цифрам после uuid.
+Получилось два общих сервиса (generic),
+два сервиса, заданных производителем (<strong>0000fee0</strong> и<strong>0000fee1</strong> ),
+HRM сервис (180d) и алертинг (<strong>00001802</strong> ).
+Перечень характеристик браслета выводится командой  char-desc в порядке возрастания указателей (handles). Нашел в списке характеристику с идентификатором ff0c:</p>
+<p>handle: 0x002c, uuid: 0000ff0c-0000-1000-8000-00805f9b34fb,</p>
+<p>Указатель 0x002c для уровня заряда аккумулятора был уже определен для предыдущей версии браслета. Попробовал считать данные командой char-read-hnd (прочитать данные по указателю).</p>
+<p>Отправил команду на указатель 0x0053 со значением 01:</p>
+<div class="highlight"><pre><span></span>[88:0F:10:DC:3E:FB][LE]&gt; char-write-cmd 0x0053 01
+</pre></div>
+
+
+<p>Браслет отозвался двумя слабыми жужжаниями, значение 02 это два раза по 01, т.е. четыре сигнала, а 03 — два, но более сильных</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

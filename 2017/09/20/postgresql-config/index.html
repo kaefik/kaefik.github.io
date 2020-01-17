@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>PostgreSQL - настройка</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li class="active"><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/09/20/postgresql-config/" rel="bookmark"
+           title="Permalink to PostgreSQL - настройка">PostgreSQL - настройка</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 20 сентября 2017</span>
+<span>| tags: <a href="/tag/nastroika.html">настройка</a><a href="/tag/db.html">db</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/bazy-dannykh.html">базы данных</a></span>
+</footer><!-- /.post-info -->      <h2>Установка PostgreSQL:</h2>
+<p>источник:  https://www.postgresql.org/download/linux/</p>
+<p>For Ubuntu 17.04</p>
+<p>Create the file <em>/etc/apt/sources.list.d/pgdg.list</em>, and add a line for the repository</p>
+<div class="highlight"><pre><span></span>deb http://apt.postgresql.org/pub/repos/apt/ zesty-pgdg main
+</pre></div>
+
+
+<p>Import the repository signing key, and update the package lists</p>
+<div class="highlight"><pre><span></span>wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc <span class="p">|</span> <span class="se">\</span>
+sudo apt-key add -
+sudo apt-get update
+</pre></div>
+
+
+<p>For more information about the apt repository, including answers to frequent questions, please see the apt page on the wiki.</p>
+<p>Included in distribution</p>
+<p>Ubuntu includes PostgreSQL by default. To install PostgreSQL on Ubuntu, use the apt-get (or other apt-driving) command:</p>
+<div class="highlight"><pre><span></span>apt-get install postgresql-9.6
+</pre></div>
+
+
+<h2>Добавим пользователя под которым будет работать СУБД</h2>
+<div class="highlight"><pre><span></span>sudo adduser postgres
+sudo passwd postgres  <span class="c1"># задать пароль</span>
+</pre></div>
+
+
+<h2>Каталог данных</h2>
+<div class="highlight"><pre><span></span>sudo  mkdir /usr/local/pgsql
+sudo mkdir /usr/local/pgsql/data
+sudo chown postgres /usr/local/pgsql
+sudo chown postgres /usr/local/pgsql/data
+</pre></div>
+
+
+<h2>Создание кластера</h2>
+<p>(тема 3 -  17 минута)  https://youtu.be/qjCNbv_xIDU?t=17m00s
+https://postgrespro.ru/docs/postgresql/9.6/creating-cluster.html</p>
+<div class="highlight"><pre><span></span>su postgres
+</pre></div>
+
+
+<p>Переменные окружения:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/lib/postgresql/9.6/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span>/usr/lib/postgresql/9.6/share/man:<span class="nv">$MANPATH</span>
+<span class="nb">export</span> <span class="nv">PGDATA</span><span class="o">=</span>/usr/local/pgsql/data
+</pre></div>
+
+
+<p>Создание: </p>
+<div class="highlight"><pre><span></span>pg_ctl initdb -o <span class="s2">&quot;-k&quot;</span> -D  /usr/local/pgsql/data
+</pre></div>
+
+
+<p>Команда initdb не будет работать, если указанный каталог данных уже существует и содержит файлы; это мера предохранения от случайной перезаписи существующей инсталляции.
+Так как каталог данных содержит все данные базы, очень важно защитить его от неавторизованного доступа. Для этого initdb лишает прав доступа к нему всех пользователей, кроме пользователя PostgreSQL.
+Команда initdb также устанавливает для кластера баз данных локаль по умолчанию. Обычно она просто берёт параметры локали из текущего окружения и применяет их к инициализируемой базе данных. Однако можно выбрать и другую локаль для базы данных.
+Для локалей, отличных от C и POSIX, порядок сортировки символов зависит от системной библиотеки локализации, а он, в свою очередь, влияет на порядок ключей в индексах. Поэтому кластер нельзя перевести на несовместимую версию библиотеки ни путём восстановления снимка, ни через двоичную репликацию, ни перейдя на другую операционную систему или обновив её версию.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Docker Compose</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li class="active"><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2019/08/14/docker-compose/" rel="bookmark"
+           title="Permalink to Docker Compose">Docker Compose</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 14 августа 2019</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/docker.html">docker</a></span>
+</footer><!-- /.post-info -->      <h2><strong>Полезные ссылки</strong></h2>
+<ul>
+<li><a href="https://habr.com/ru/company/ruvds/blog/450312/">https://habr.com/ru/company/ruvds/blog/450312/</a></li>
+</ul>
+<p><strong>Docker Compose</strong> используется для одновременного управления несколькими контейнерами, входящими в состав приложения. Этот инструмент предлагает те же возможности, что и Docker, но позволяет работать с более сложными приложениями.</p>
+<h2><strong>Создание проекта</strong></h2>
+<p>Для того чтобы построить ваше первое клиент-серверное приложение, предлагаю начать с создания папки проекта. </p>
+<p>Она должна содержать следующие файлы и папки:</p>
+<ul>
+<li>Файл docker-compose.yml. Это файл Docker Compose, который будет содержать инструкции, необходимые для запуска и настройки сервисов.</li>
+<li>Папка server. Она будет содержать файлы, необходимые для обеспечения работы сервера.</li>
+<li>Папка client. Здесь будут находиться файлы клиентского приложения.</li>
+</ul>
+<p>Перейдите в папку server и создайте в ней следующие файлы:</p>
+<ul>
+<li>Файл server.py. В нём будет находиться код сервера.</li>
+<li>Файл index.html. В этом файле будет находиться фрагмент текста, который должно вывести клиентское приложение.</li>
+<li>Файл Dockerfile. Это — файл Docker, который будет содержать инструкции, необходимые для создания окружения сервера.</li>
+</ul>
+<p><strong>Вот содержимое Dockerfile для сервера:</strong> </p>
+<div class="highlight"><pre><span></span><span class="c1"># На всякий случай напоминаю, что Dockerfile всегда должен начинаться с импорта базового образа.</span>
+<span class="c1"># Для этого используется ключевое слово &#39;FROM&#39;.</span>
+<span class="c1"># Здесь нам нужно импортировать образ python (с DockerHub).</span>
+<span class="c1"># В результате мы, в качестве имени образа, указываем &#39;python&#39;, а в качестве версии - &#39;latest&#39;.</span>
+FROM python:latest
+<span class="c1"># Для того чтобы запустить в контейнере код, написанный на Python, нам нужно импортировать файлы &#39;server.py&#39; и &#39;index.html&#39;.</span>
+<span class="c1"># Для того чтобы это сделать, мы используем ключевое слово &#39;ADD&#39;.</span>
+<span class="c1"># Первый параметр, &#39;server.py&#39;, представляет собой имя файла, хранящегося на компьютере.</span>
+<span class="c1"># Второй параметр, &#39;/server/&#39;, это путь, по которому нужно разместить указанный файл в образе.</span>
+<span class="c1"># Здесь мы помещаем файл в папку образа &#39;/server/&#39;.</span>
+ADD server.py /server/
+ADD index.html /server/
+<span class="c1"># Здесь мы воспользуемся командой &#39;WORKDIR&#39;, возможно, новой для вас.</span>
+<span class="c1"># Она позволяет изменить рабочую директорию образа.</span>
+<span class="c1"># В качестве такой директории, в которой будут выполняться все команды, мы устанавливаем &#39;/server/&#39;.</span>
+WORKDIR /server/
+</pre></div>
+
+
+<p><strong>Вот содержимое Dockerfile для клиента:</strong> </p>
+<div class="highlight"><pre><span></span><span class="c1"># То же самое, что и в серверном Dockerfile.</span>
+FROM python:latest
+<span class="c1"># Импортируем &#39;client.py&#39; в папку &#39;/client/&#39;.</span>
+ADD client.py /client/
+<span class="c1"># Устанавливаем в качестве рабочей директории &#39;/client/&#39;.</span>
+WORKDIR /client/
+</pre></div>
+
+
+<p><strong>Файл docker-compose.yml:</strong> </p>
+<div class="highlight"><pre><span></span><span class="c1"># Файл docker-compose должен начинаться с тега версии.</span>
+<span class="c1"># Мы используем &quot;3&quot; так как это - самая свежая версия на момент написания этого кода.</span>
+version: <span class="s2">&quot;3&quot;</span>
+<span class="c1"># Следует учитывать, что docker-composes работает с сервисами.</span>
+<span class="c1"># 1 сервис = 1 контейнер.</span>
+<span class="c1"># Сервисом может быть клиент, сервер, сервер баз данных...</span>
+<span class="c1"># Раздел, в котором будут описаны сервисы, начинается с &#39;services&#39;.</span>
+services:
+<span class="c1"># Как уже было сказано, мы собираемся создать клиентское и серверное приложения.</span>
+<span class="c1"># Это означает, что нам нужно два сервиса.</span>
+<span class="c1"># Первый сервис (контейнер): сервер.</span>
+<span class="c1"># Назвать его можно так, как нужно разработчику.</span>
+<span class="c1"># Понятное название сервиса помогает определить его роль.</span>
+<span class="c1"># Здесь мы, для именования соответствующего сервиса, используем ключевое слово &#39;server&#39;.</span>
+server:
+<span class="c1"># Ключевое слово &quot;build&quot; позволяет задать</span>
+<span class="c1"># путь к файлу Dockerfile, который нужно использовать для создания образа,</span>
+<span class="c1"># который позволит запустить сервис.</span>
+<span class="c1"># Здесь &#39;server/&#39; соответствует пути к папке сервера,</span>
+<span class="c1"># которая содержит соответствующий Dockerfile.</span>
+build: server/
+<span class="c1"># Команда, которую нужно запустить после создания образа.</span>
+<span class="c1"># Следующая команда означает запуск &quot;python ./server.py&quot;.</span>
+command: python ./server.py
+<span class="c1"># Вспомните о том, что в качестве порта в &#39;server/server.py&#39; указан порт 1234.</span>
+<span class="c1"># Если мы хотим обратиться к серверу с нашего компьютера (находясь за пределами контейнера),</span>
+<span class="c1"># мы должны организовать перенаправление этого порта на порт компьютера.</span>
+<span class="c1"># Сделать это нам поможет ключевое слово &#39;ports&#39;.</span>
+<span class="c1"># При его использовании применяется следующая конструкция: [порт компьютера]:[порт контейнера]</span>
+<span class="c1"># В нашем случае нужно использовать порт компьютера 1234 и организовать его связь с портом</span>
+<span class="c1"># 1234 контейнера (так как именно на этот порт сервер</span>
+<span class="c1"># ожидает поступления запросов).</span>
+ports:
+- <span class="m">1234</span>:1234
+<span class="c1"># Второй сервис (контейнер): клиент.</span>
+<span class="c1"># Этот сервис назван &#39;client&#39;.</span>
+client:
+<span class="c1"># Здесь &#39;client/ соответствует пути к папке, которая содержит</span>
+<span class="c1"># файл Dockerfile для клиентской части системы.</span>
+build: client/
+<span class="c1"># Команда, которую нужно запустить после создания образа.</span>
+<span class="c1"># Следующая команда означает запуск &quot;python ./client.py&quot;.</span>
+command: python ./client.py
+<span class="c1"># Ключевое слово &#39;network_mode&#39; используется для описания типа сети.</span>
+<span class="c1"># Тут мы указываем то, что контейнер может обращаться к &#39;localhost&#39; компьютера.</span>
+network_mode: host
+<span class="c1"># Ключевое слово &#39;depends_on&#39; позволяет указывать, должен ли сервис,</span>
+<span class="c1"># прежде чем запуститься, ждать, когда будут готовы к работе другие сервисы.</span>
+<span class="c1"># Нам нужно, чтобы сервис &#39;client&#39; дождался бы готовности к работе сервиса &#39;server&#39;.</span>
+depends_on:
+- server
+</pre></div>
+
+
+<p>Сборка проекта</p>
+<div class="highlight"><pre><span></span>docker-compose build
+</pre></div>
+
+
+<p>Запуск проекта</p>
+<div class="highlight"><pre><span></span>docker-compose up
+</pre></div>
+
+
+<p>Команда позволяет останавливать и удалять контейнеры и другие ресурсы:</p>
+<div class="highlight"><pre><span></span>docker-compose down
+</pre></div>
+
+
+<p>Команда выводит журналы сервисов:</p>
+<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">service</span> <span class="n">name</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Вывести список контейнеров:</p>
+<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">service</span> <span class="n">name</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Команда позволяет выполнить команду в выполняющемся контейнере:</p>
+<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">service</span> <span class="n">name</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Команда позволяет вывести список образов:</p>
+<div class="highlight"><pre><span></span>docker-compose images
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

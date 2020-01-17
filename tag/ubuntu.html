@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Общественная записная книжка - ubuntu</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/2019/12/20/config-mouse-keys/">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+<footer class="post-info">
+        <span>Пт 20 декабря 2019</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/mysh.html">мышь</a><a href="/tag/linux.html">linux</a><a href="/tag/mouse.html">mouse</a><a href="/tag/ubuntu.html">ubuntu</a></span>
+</footer><!-- /.post-info --><p><strong>Полезные ссылки:</strong></p>
+<ul>
+<li><a href="https://zepete.livejournal.com/151204.html">Переназначение кнопок мыши в linux. - Мысли злого плебея — ЖЖ</a></li>
+<li><a href="https://tuksik.ru/xbindkeys/">https://tuksik.ru/xbindkeys/</a></li>
+</ul>
+<p><strong>Алгоритм который у меня сработал - Переназначение при помощи xbindkeys</strong> </p>
+<ul>
+<li>Установка библиотек:</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo apt install xbindkeys
+sudo apt install xautomation- 
+</pre></div>
+
+
+<ul>
+<li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
+</ul>
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE <span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
+</pre></div>
+
+
+<p>с помощью данной команды у моей мыши определились дополнительны кнопки: Вперёд  - button9, Назад - button8</p>
+<ul>
+<li>
+<p>создать текстовый файл <strong>~/.xbindkeysrc</strong></p>
+</li>
+<li>
+<p>Будем эмулировать нажатия кнопок с помощью xte.
+Можно использовать любую в качестве первой строки. Во второй строке описываетсмя нажатая комбинация кнопок. Для мыши она выглядит так: "b:&lt;номер кнопки мыши&gt;".</p>
+</li>
+<li>Содержимое файла .xbindkeysrc</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">#Launch Quake Terminal</span>
+<span class="s2">&quot;xte &#39;keydown F1&#39; &#39;keyup F1&#39;&quot;</span>
+b:8
+<span class="c1">#Launch Dolphin file manager</span>
+<span class="s2">&quot;dolphin&quot;</span>
+b:9
+</pre></div>
+
+
+<ul>
+<li>запускаем программу  xbindkeys</li>
+</ul>
+<p>Настроим чтобы после перезагрузки запускался, необходимо создать ярлык (текстовый файл с расширением .desktop) в автозагрузке (папке "~/.config/autostart/").</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Exec</span><span class="o">=</span>xbindkeys
+X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
+<span class="nv">NoDisplay</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">Hidden</span><span class="o">=</span><span class="nb">false</span>
+<span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;mouse button exchange&quot;</span>
+<span class="nv">Comment</span><span class="o">=</span><span class="s2">&quot;переназначение доп клавиш мыши&quot;</span>
+X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>    
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/12/04/fishka-linux/" rel="bookmark"
+                           title="Permalink to Fish...ka командного шелла linux">Fish...ka командного шелла linux</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 04 декабря 2019</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/linux.html">linux</a><a href="/tag/ubuntu.html">ubuntu</a></span>
+</footer><!-- /.post-info -->                <p><strong>Полезные ссылки</strong> </p>
+<ul>
+<li><a href="https://fishshell.com/">Официальный сайт FishShell</a></li>
+<li><a href="https://github.com/jorgebucaran/awesome-fish">Awesome Fish</a></li>
+<li><a href="https://github.com/matchai/spacefish">SpaceFish</a>- Fish Shell prompt for Astronauts.</li>
+</ul>
+                <a class="readmore" href="/2019/12/04/fishka-linux/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2018/10/19/dsd-gqrx/" rel="bookmark"
+                           title="Permalink to Декодирование цифрового сигнала с помощью dsd и gqrx">Декодирование цифрового сигнала с помощью dsd и gqrx</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Пт 19 октября 2018</span>
+<span>| tags: <a href="/tag/radio.html">радио</a><a href="/tag/radioliubitel.html">радиолюбитель</a><a href="/tag/sviaz.html">связь</a><a href="/tag/digital.html">digital</a><a href="/tag/dsd.html">dsd</a><a href="/tag/sdr.html">sdr</a><a href="/tag/ubuntu.html">ubuntu</a></span>
+</footer><!-- /.post-info -->                <p>для информации: <a href="https://www.george-smart.co.uk/scrapbook/digital_speech_decoder/">https://www.george-smart.co.uk/scrapbook/digital_speech_decoder/</a>
+- socat stdout udp-listen:7355| padsp dsd -i - -o /dev/dsp</p>
+<ul>
+<li>запускаем gqrx настраиваемся на частоту и нажимаем кнопку UDP, чтобы вещание пошло через 7355 порт</li>
+</ul>
+<h2>Настройки GQRX:</h2>
+<ul>
+<li>
+<p>Mode: Narrow FM</p>
+</li>
+<li>
+<p>настройки Mode (жмем три точки) пункт tau ставим в off</p>
+</li>
+</ul>
+<h2>Сборка …</h2>
+                <a class="readmore" href="/2018/10/19/dsd-gqrx/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/03/15/sdr-dvb-t-realtek-rtl2832u-ubuntu-lsusb/" rel="bookmark"
+                           title="Permalink to Настройка программного приёмника (SDR) из DVB-T адаптера Realtek RTL2832U в Ubuntu (возможно устарело)">Настройка программного приёмника (SDR) из DVB-T адаптера Realtek RTL2832U в Ubuntu (возможно устарело)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 15 марта 2017</span>
+<span>| tags: <a href="/tag/radio.html">радио</a><a href="/tag/sdr.html">sdr</a><a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/radio.html">radio</a></span>
+</footer><!-- /.post-info -->                <p><strong>источник</strong> : http://gimmor.blogspot.ru/2014/01/sdr-dvb-t-realtek-rtl2832u-ubuntu.html</p>
+<ol>
+<li><code>bash
+   lsusb</code></li>
+</ol>
+<p>Bus 001 Device 003: ID 0bda:2832 Realtek Semiconductor Corp. RTL2832U DVB-T</p>
+<ol>
+<li>Настройка прав для портов USB (в моем случае это нужно было сделать) </li>
+</ol>
+<div class="highlight"><pre><span></span>sudo groupadd usbusers
+groups имя_пользователя <span class="c1"># вывод списка групп в которых состоит пользователь.</span>
+groups isaifutdinov
+sudo …</pre></div>
+                <a class="readmore" href="/2017/03/15/sdr-dvb-t-realtek-rtl2832u-ubuntu-lsusb/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

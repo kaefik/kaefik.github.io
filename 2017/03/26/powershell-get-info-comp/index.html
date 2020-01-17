@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>PowerShell: получение данных о компьютерах</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li class="active"><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/03/26/powershell-get-info-comp/" rel="bookmark"
+           title="Permalink to PowerShell: получение данных о компьютерах">PowerShell: получение данных о компьютерах</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Вс 26 марта 2017</span>
+<span>| tags: <a href="/tag/powershell.html">powershell</a><a href="/tag/scripts.html">scripts</a></span>
+</footer><!-- /.post-info -->      <h2>Получение данных о компьютерах</h2>
+<div class="highlight"><pre><span></span><span class="k">function</span> <span class="nb">Get-SystemInfo</span> <span class="p">{</span>
+<span class="cm">&lt;#</span>
+<span class="sd">.SYNOPSIS</span><span class="cm"></span>
+<span class="sd">.DESCRIPTION</span><span class="cm"></span>
+<span class="sd">.EXAMPLE</span><span class="cm"></span>
+<span class="cm">&quot;comp1&quot;,&quot;comp2&quot;,&quot;comp3&quot; | ? { Test-Connection $_ -Count 1 -ea SilentlyContinue } | Get-SystemInfo</span>
+<span class="cm">#&gt;</span>
+<span class="p">[</span><span class="k">CmdletBinding</span><span class="p">(</span> <span class="n">SupportsShouldProcess</span> <span class="p">=</span> <span class="nv">$true</span> <span class="p">)]</span>
+<span class="k">param</span> <span class="p">(</span>
+<span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromPipelineByPropertyName</span><span class="p">=</span><span class="nv">$True</span><span class="p">,</span>
+<span class="k">ValueFromPipeline</span><span class="p">=</span><span class="nv">$True</span><span class="p">)]</span>
+<span class="no">[string[]]</span><span class="nv">$ComputerName</span> <span class="p">=</span> <span class="nv">$env:COMPUTERNAME</span>
+<span class="p">)</span>
+<span class="k">begin</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$PSBoundParameters</span><span class="p">.</span><span class="n">Verbose</span><span class="p">)</span> <span class="p">{</span><span class="nv">$VerbosePreference</span> <span class="p">=</span> <span class="s2">&quot;Continue&quot;</span><span class="p">}</span>
+
+<span class="k">function</span> <span class="n">PIDDecoderFromRegistry</span><span class="p">(</span><span class="nv">$digitalProductId</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">base24</span> <span class="n">-Value</span> <span class="s1">&#39;BCDFGHJKMPQRTVWXY2346789&#39;</span>    <span class="n">-Option</span> <span class="n">Constant</span> <span class="c">## &lt;24&gt; символа использующиеся в ключах продукта Windows и Office</span>
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">decodeStringLength</span> <span class="n">-Value</span> <span class="n">24</span>       <span class="n">-Option</span> <span class="n">Constant</span> <span class="c">## ‘Чистая’ длина зашифрованного ключа продукта</span>
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">decodeLength</span> <span class="n">-Value</span> <span class="n">14</span>             <span class="n">-Option</span> <span class="n">Constant</span> <span class="c">## Длина зашифрованного ключа продукта в байтах (символы хранятся в полубайтах)</span>
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">decodedKey</span> <span class="n">-Value</span> <span class="p">(</span><span class="no">[System.String]</span><span class="p">::</span><span class="n">Empty</span><span class="p">)</span>     <span class="c">## Строка содержащая расшифрованный ключ продукта</span>
+
+<span class="c">## Проверка, содержит ли ключ продукта ‘N’ (такое возможно для Windows 8 и Office 15)</span>
+
+<span class="nv">$containsN</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$digitalProductId</span><span class="p">[</span><span class="nv">$decodeLength</span><span class="p">]</span> <span class="p">/</span> <span class="n">8</span><span class="p">)</span> <span class="o">-bAnd</span> <span class="n">1</span>        <span class="c">## ($digitalProductId[$decodeLength] -shr 3) -bAnd 1 ## PS 4.0</span>
+<span class="nv">$digitalProductId</span><span class="p">[</span><span class="nv">$decodeLength</span><span class="p">]</span> <span class="p">=</span> <span class="no">[System.Byte]</span><span class="p">(</span><span class="nv">$digitalProductId</span><span class="p">[</span><span class="nv">$decodeLength</span><span class="p">]</span> <span class="o">-bAnd</span> <span class="no">[System.Convert]</span><span class="p">::</span><span class="n">ToByte</span><span class="p">(</span><span class="s1">&#39;F7&#39;</span><span class="p">,</span> <span class="n">16</span><span class="p">))</span> <span class="c">## 247</span>
+
+<span class="c">## Собственно процесс расшифровки</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="nv">$decodeStringLength</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-ge</span> <span class="n">0</span><span class="p">;</span> <span class="nv">$i</span><span class="p">--)</span> <span class="p">{</span>
+<span class="nv">$digitMapIndex</span> <span class="p">=</span> <span class="n">0</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$j</span> <span class="p">=</span> <span class="nv">$decodeLength</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">-ge</span> <span class="n">0</span><span class="p">;</span> <span class="nv">$j</span><span class="p">--)</span> <span class="p">{</span>
+<span class="nv">$digitMapIndex</span> <span class="p">=</span> <span class="nv">$digitMapIndex</span> <span class="p">*</span> <span class="n">256</span> <span class="o">-bXor</span> <span class="nv">$digitalProductId</span><span class="p">[</span><span class="nv">$j</span><span class="p">]</span> <span class="c">## $digitMapIndex -shl 8 -bXor $digitalProductId[$j] ## PS 4.0</span>
+<span class="nv">$digitalProductId</span><span class="p">[</span><span class="nv">$j</span><span class="p">]</span> <span class="p">=</span> <span class="no">[System.Math]</span><span class="p">::</span><span class="n">Truncate</span><span class="p">(</span><span class="nv">$digitMapIndex</span> <span class="p">/</span> <span class="nv">$base24</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+<span class="nv">$digitMapIndex</span> <span class="p">=</span> <span class="nv">$digitMapIndex</span> <span class="p">%</span> <span class="nv">$base24</span><span class="p">.</span><span class="n">Length</span>
+<span class="p">}</span>
+<span class="nv">$decodedKey</span> <span class="p">=</span> <span class="nv">$decodedKey</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="nv">$base24</span><span class="p">[</span><span class="nv">$digitMapIndex</span><span class="p">])</span>
+<span class="p">}</span>
+<span class="p">```</span>
+
+<span class="c">## Удаление первого символа в ключе и помещение ‘N’ в нужную позицию</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="no">[System.Boolean]</span><span class="nv">$containsN</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="nv">$firstLetterIndex</span> <span class="p">=</span> <span class="n">0</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$index</span> <span class="p">=</span> <span class="n">0</span><span class="p">;</span> <span class="nv">$index</span> <span class="o">-lt</span> <span class="nv">$decodeStringLength</span><span class="p">;</span> <span class="nv">$index</span><span class="p">++)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$decodedKey</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-ne</span> <span class="nv">$base24</span><span class="p">[</span><span class="nv">$index</span><span class="p">])</span> <span class="p">{</span><span class="k">continue</span><span class="p">}</span>
+<span class="nv">$firstLetterIndex</span> <span class="p">=</span> <span class="nv">$index</span>
+<span class="k">break</span>
+<span class="p">}</span>
+<span class="nv">$keyWithN</span> <span class="p">=</span> <span class="nv">$decodedKey</span>
+<span class="nv">$keyWithN</span> <span class="p">=</span> <span class="nv">$keyWithN</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span>
+<span class="nv">$keyWithN</span> <span class="p">=</span> <span class="nv">$keyWithN</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="nv">$firstLetterIndex</span><span class="p">)</span> <span class="p">+</span> <span class="s1">&#39;N&#39;</span> <span class="p">+</span> <span class="nv">$keyWithN</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="nv">$firstLetterIndex</span><span class="p">)</span>
+<span class="nv">$decodedKey</span> <span class="p">=</span> <span class="nv">$keyWithN</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nv">$returnValue</span> <span class="p">=</span> <span class="nv">$decodedKey</span>
+
+<span class="c">## Вставка тире через каждые пять символов</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$t</span> <span class="p">=</span> <span class="n">20</span><span class="p">;</span> <span class="nv">$t</span> <span class="o">-ge</span> <span class="n">5</span><span class="p">;</span> <span class="nv">$t</span> <span class="p">-=</span> <span class="n">5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="nv">$returnValue</span> <span class="p">=</span> <span class="nv">$returnValue</span><span class="p">.</span><span class="n">Insert</span><span class="p">(</span><span class="nv">$t</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="nv">$returnValue</span>
+<span class="p">}</span>
+<span class="c">#########################################################################</span>
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">hklm</span> <span class="n">-Value</span> <span class="n">2147483650</span>  <span class="n">-Option</span> <span class="n">Constant</span>
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">regPath</span> <span class="n">-Value</span> <span class="s1">&#39;Software\Microsoft\Windows NT\CurrentVersion&#39;</span> <span class="n">-Option</span> <span class="n">Constant</span>
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">regValue</span> <span class="n">-Value</span> <span class="s1">&#39;DigitalProductId&#39;</span> <span class="n">-Option</span> <span class="n">Constant</span>
+<span class="c">######################################</span>
+<span class="nv">$parameters_switch</span> <span class="p">=</span> <span class="p">@{}</span>
+<span class="nv">$current_function</span> <span class="p">=</span> <span class="nb">get-item</span> <span class="p">(</span><span class="nb">Join-Path</span> <span class="k">function</span><span class="err">:</span> <span class="nv">$MyInvocation</span><span class="p">.</span><span class="n">MyCommand</span><span class="p">);</span>
+<span class="nv">$current_function</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="n">values</span> <span class="p">|</span>
+<span class="c">#where { @($_.attributes | % {$_.position}) -eq [int]::MinValue} |       # only custom parameters; только втроенные параметры функций.</span>
+<span class="nb">where </span><span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">SwitchParameter</span> <span class="p">}</span> <span class="p">|</span>                                          <span class="c"># only switchers; только переключатели</span>
+<span class="nb">where </span><span class="p">{</span> <span class="nv">$PSBoundParameters</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span> <span class="nv">$_</span><span class="p">.</span><span class="n">name</span><span class="p">)}|</span>
+<span class="k">foreach</span> <span class="p">{</span> <span class="nv">$parameters_switch</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="nv">$PSBoundParameters</span><span class="p">[</span><span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">]</span> <span class="p">)</span> <span class="p">}</span>
+
+<span class="p">}</span> <span class="k">process</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$ComputerName</span><span class="p">.</span><span class="n">count</span> <span class="o">-gt</span> <span class="n">1</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$ComputerName</span> <span class="p">|?{</span><span class="nv">$_</span><span class="p">}|%{</span><span class="nv">$_</span><span class="p">}</span> <span class="p">|</span> <span class="p">&amp;</span><span class="nv">$current_function</span><span class="p">.</span><span class="n">Name</span> <span class="nv">@parameters_switch</span> <span class="p">;</span> <span class="k">return</span> <span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_</span> <span class="o">-ne</span> <span class="nv">$null</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">fullname</span> <span class="o">-eq</span> <span class="s2">&quot;Microsoft.ActiveDirectory.Management.ADComputer&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$ComputerName</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">fullname</span> <span class="o">-eq</span> <span class="s2">&quot;Quest.ActiveRoles.ArsPowerShellSnapIn.Data.ArsComputerObject&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$ComputerName</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$PSCmdlet</span><span class="p">.</span><span class="n">ShouldProcess</span><span class="p">(</span><span class="nv">$ComputerName</span><span class="p">,</span> <span class="s2">&quot;Get-SystemInfo&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+<span class="k">try</span> <span class="p">{</span>
+
+<span class="nv">$CS</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">-comp</span> <span class="nv">$ComputerName</span> <span class="n">-ea</span> <span class="n">stop</span> <span class="n">win32_computersystem</span>
+<span class="nv">$Procc</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">-comp</span> <span class="nv">$ComputerName</span> <span class="n">-ea</span> <span class="n">stop</span> <span class="n">Win32_Processor</span>
+<span class="nv">$os</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">-comp</span> <span class="nv">$ComputerName</span> <span class="n">-ea</span> <span class="n">stop</span> <span class="n">win32_operatingsystem</span>
+<span class="nv">$mb</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">win32_baseboard</span> <span class="n">-comp</span> <span class="nv">$ComputerName</span>
+<span class="nv">$logical_disks</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">Win32_LogicalDisk</span> <span class="n">-Filter</span> <span class="s2">&quot;DriveType=3&quot;</span> <span class="n">-ComputerName</span> <span class="nv">$ComputerName</span>
+<span class="nv">$ph_memory</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">win32_physicalmemory</span> <span class="n">-comp</span> <span class="nv">$ComputerName</span>
+
+<span class="nv">$wmi</span> <span class="p">=</span> <span class="no">[WMIClass]</span><span class="s2">&quot;\\$ComputerName\root\default:stdRegProv&quot;</span>
+<span class="nv">$binArray</span> <span class="p">=</span> <span class="nv">$wmi</span><span class="p">.</span><span class="n">GetBinaryValue</span><span class="p">(</span><span class="nv">$hklm</span><span class="p">,</span><span class="nv">$regPath</span><span class="p">,</span><span class="nv">$regValue</span><span class="p">).</span><span class="n">uValue</span><span class="p">[</span><span class="n">52</span><span class="p">..</span><span class="n">66</span><span class="p">]</span>
+
+<span class="nv">$ComputerName</span> <span class="p">|</span> <span class="nb">select </span><span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;ComputerName&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$_</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;User&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$CS</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">username</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">]}</span> <span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;Memory&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span> <span class="nv">$CS</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">TotalPhysicalMemory</span> <span class="p">/</span><span class="n">1mb</span> <span class="o">-as</span> <span class="no">[int]</span><span class="p">}}</span> <span class="p">},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;MemoryDetail&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span>
+<span class="p">@(</span>
+<span class="nv">$ph_memory</span><span class="p">|</span>
+<span class="nb">group </span><span class="n">-Property</span> <span class="n">capacity</span> <span class="p">|</span>
+<span class="k">foreach</span> <span class="p">{</span>
+<span class="nv">$_</span><span class="p">.</span><span class="n">count</span><span class="p">.</span><span class="n">ToString</span><span class="p">()</span> <span class="p">+</span> <span class="s2">&quot;*&quot;</span> <span class="p">+</span> <span class="no">[math]</span><span class="p">::</span><span class="n">Round</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">name</span><span class="p">/</span><span class="n">1mb</span><span class="p">,</span><span class="n">0</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">)</span> <span class="n">-join</span> <span class="s2">&quot; + &quot;</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;ProccName&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="k">if</span> <span class="p">(</span><span class="nv">$Procc</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span><span class="nv">$Procc</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">trim</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s2">&quot;\s{2}&quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span><span class="s2">&quot;&quot;</span><span class="p">}}</span> <span class="p">},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;Clock&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$Procc</span><span class="p">.</span><span class="n">MaxClockSpeed</span> <span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;Core&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$procc</span><span class="p">.</span><span class="n">NumberofCores</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;Socket&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span>
+<span class="k">switch</span> <span class="o">-regex</span> <span class="p">(</span><span class="nv">$Procc</span><span class="p">.</span><span class="n">SocketDesignation</span><span class="p">)</span> <span class="p">{</span>
+<span class="s2">&quot;775|j3e1&quot;</span> <span class="p">{</span><span class="s2">&quot;Socket 775&quot;</span><span class="p">}</span>
+<span class="s2">&quot;478|j2e1&quot;</span> <span class="p">{</span><span class="s2">&quot;Socket 478&quot;</span><span class="p">}</span>
+<span class="k">default</span> <span class="p">{</span><span class="nv">$_</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;OSname&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$os</span><span class="p">.</span><span class="n">caption</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;SystemType&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$CS</span><span class="p">.</span><span class="n">SystemType</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;OS_SP&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$os</span><span class="p">.</span><span class="n">csdversion</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;OSLanguage&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$os</span><span class="p">.</span><span class="n">oslanguage</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;OSInstall&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="no">[Management.ManagementDateTimeConverter]</span><span class="p">::</span><span class="n">ToDateTime</span><span class="p">(</span><span class="nv">$os</span><span class="p">.</span><span class="n">InstallDate</span><span class="p">);}},</span>  <span class="c">#2 способ. ([wmi] &#39;&#39;).ConvertToDateTime($os.InstallDate)</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s1">&#39;ProductKey&#39;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span>  <span class="k">if</span> <span class="p">(</span><span class="nv">$binArray</span><span class="p">)</span> <span class="p">{</span> <span class="n">PIDDecoderFromRegistry</span><span class="p">(</span><span class="nv">$binArray</span><span class="p">)</span> <span class="p">}</span> <span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;MatherBoard&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$mb</span><span class="p">.</span><span class="n">Manufacturer</span> <span class="p">+</span> <span class="s2">&quot; &quot;</span> <span class="p">+</span> <span class="nv">$mb</span><span class="p">.</span><span class="n">Product</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;Volumes&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span>
+
+<span class="nv">$logical_disks</span> <span class="p">|</span>
+
+<span class="nb">Select-Object</span> <span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s1">&#39;Letter&#39;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">deviceid</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s1">&#39;VolumeName&#39;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">VolumeName</span><span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s1">&#39;Size&#39;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span> <span class="p">(</span><span class="no">[math]</span><span class="p">::</span><span class="n">round</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Size</span><span class="p">/</span><span class="n">1gb</span><span class="p">,</span><span class="n">1</span><span class="p">))</span> <span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s1">&#39;Free&#39;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span> <span class="p">(</span><span class="no">[math]</span><span class="p">::</span><span class="n">round</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">freespace</span><span class="p">/</span><span class="n">1gb</span><span class="p">,</span><span class="n">1</span><span class="p">))}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s1">&#39;Used&#39;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span> <span class="p">(</span><span class="no">[math]</span><span class="p">::</span><span class="n">round</span><span class="p">((</span><span class="nv">$_</span><span class="p">.</span><span class="n">Size</span><span class="p">-</span><span class="nv">$_</span><span class="p">.</span><span class="n">freespace</span><span class="p">)/</span><span class="n">1gb</span><span class="p">,</span><span class="n">1</span><span class="p">))</span> <span class="p">}},</span>
+<span class="p">@{</span><span class="n">n</span><span class="p">=</span><span class="s2">&quot;HardDisk&quot;</span><span class="p">;</span><span class="n">e</span><span class="p">={</span>
+<span class="nb">gwmi </span><span class="n">-ComputerName</span> <span class="nv">$ComputerName</span> <span class="n">-Query</span> <span class="p">(</span><span class="s2">&quot;Associators of {&quot;</span> <span class="p">+</span> <span class="nv">$_</span><span class="p">.</span><span class="n">__path</span> <span class="p">+</span> <span class="s2">&quot;} Where ResultClass=Win32_DiskPartition&quot;</span><span class="p">)</span> <span class="p">|</span>
+<span class="nb">where </span><span class="p">{</span><span class="nv">$part</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">;</span> <span class="nv">$_</span> <span class="p">}</span> <span class="p">|</span>
+<span class="k">foreach</span> <span class="p">{</span>
+<span class="nv">$hd</span> <span class="p">=</span> <span class="nb">gwmi </span><span class="n">-ComputerName</span> <span class="nv">$ComputerName</span> <span class="n">-Query</span> <span class="p">(</span><span class="s2">&quot;Associators of {&quot;</span> <span class="p">+</span> <span class="nv">$part</span><span class="p">.</span><span class="n">__path</span> <span class="p">+</span> <span class="s2">&quot;} Where ResultClass=Win32_DiskDrive&quot;</span><span class="p">)</span>
+<span class="nv">$hd</span><span class="p">.</span><span class="n">caption</span> <span class="p">+</span> <span class="s2">&quot; (&quot;</span> <span class="p">+</span> <span class="no">[math]</span><span class="p">::</span><span class="n">Round</span><span class="p">(</span><span class="nv">$hd</span><span class="p">.</span><span class="n">size</span><span class="p">/</span><span class="n">1gb</span><span class="p">,</span><span class="n">0</span><span class="p">)</span> <span class="p">+</span> <span class="s2">&quot; Gb)&quot;</span>
+<span class="p">}</span>
+<span class="p">}};</span>
+<span class="p">}};</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span> <span class="nb">Write-Error</span> <span class="nv">$_</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="k">end</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2></h2>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

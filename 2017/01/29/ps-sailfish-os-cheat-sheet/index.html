@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>PS. Sailfish OS Cheat Sheet</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/29/ps-sailfish-os-cheat-sheet/" rel="bookmark"
+           title="Permalink to PS. Sailfish OS Cheat Sheet">PS. Sailfish OS Cheat Sheet</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Вс 29 января 2017</span>
+<span>| tags: <a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a></span>
+</footer><!-- /.post-info -->      <p>источник: <a href="https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet">https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet</a></p>
+<h2>Sailfish Cheat Sheet</h2>
+<h3>Development Commands</h3>
+<ul>
+<li>Connect to the device over usb (add "192.168.2.14    device" to /etc/hosts)</li>
+</ul>
+<div class="highlight"><pre><span></span> sudo ifconfig usb0 up device
+</pre></div>
+
+
+<ul>
+<li>Log into the device. Define password in "Settings -&gt; System settings -&gt; Developer mode -&gt; Set password".</li>
+</ul>
+<div class="highlight"><pre><span></span> ssh nemo@device
+</pre></div>
+
+
+<ul>
+<li>Change user to root</li>
+</ul>
+<div class="highlight"><pre><span></span> su       <span class="c1"># if on SDK, or</span>
+ devel-su <span class="c1"># if on device</span>
+</pre></div>
+
+
+<ul>
+<li>Remove changed IP from known_hosts</li>
+</ul>
+<div class="highlight"><pre><span></span> ssh-keygen -R device
+</pre></div>
+
+
+<ul>
+<li>Chroot to development environment</li>
+</ul>
+<div class="highlight"><pre><span></span> /srv/mer/sdks/sdk/mer-sdk-chroot
+</pre></div>
+
+
+<ul>
+<li>Update development environment</li>
+</ul>
+<div class="highlight"><pre><span></span> sb2 -t &lt;target&gt; -m sdk-install -R zypper ref
+ sb2 -t &lt;target&gt; -m sdk-install -R zypper update
+</pre></div>
+
+
+<ul>
+<li>Build project</li>
+</ul>
+<div class="highlight"><pre><span></span> mb2 -t &lt;target&gt; build <span class="c1"># finds the spec under rpm</span>
+ mb2 -t &lt;target&gt; -s rpm/&lt;package&gt;.spec build <span class="c1"># specify spec yourself    </span>
+</pre></div>
+
+
+<ul>
+<li>Copy packages to the device</li>
+</ul>
+<div class="highlight"><pre><span></span> scp /RPMS/&lt;package&gt;.rpm nemo@device:
+</pre></div>
+
+
+<ul>
+<li>Listen to system logs</li>
+</ul>
+<div class="highlight"><pre><span></span> journalctl -fa
+</pre></div>
+
+
+<ul>
+<li>Search log for keyword 'account' ignoring the case</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su journalctl | grep -i account
+</pre></div>
+
+
+<ul>
+<li>Open file (apk, media file, vcard, call number, etc.) with appropriate app.</li>
+</ul>
+<div class="highlight"><pre><span></span> xdg-open file <span class="c1"># e.g. xdg-open image.jpg</span>
+</pre></div>
+
+
+<ul>
+<li>List shared library dependencies</li>
+</ul>
+<div class="highlight"><pre><span></span> ldd /usr/lib/qt5/qml/modulepath/libmodule.so
+</pre></div>
+
+
+<ul>
+<li>List exported symbols</li>
+</ul>
+<div class="highlight"><pre><span></span> zypper in binutils <span class="o">&amp;&amp;</span> nm -D /usr/lib/library.so.0
+</pre></div>
+
+
+<ul>
+<li>Set DConf value</li>
+</ul>
+<div class="highlight"><pre><span></span> dconf write /desktop/meego/background/portrait/picture_filename <span class="se">\&#39;</span>/pathto/wallpaper.jpg<span class="se">\&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>Print DConf value</li>
+</ul>
+<div class="highlight"><pre><span></span> dconf <span class="nb">read</span> /desktop/meego/background/portrait/picture_filename
+</pre></div>
+
+
+<ul>
+<li>List incoming hardware input events</li>
+</ul>
+<div class="highlight"><pre><span></span> evdev_trace -t
+</pre></div>
+
+
+<ul>
+<li>Find folders that take more than 100MB of space</li>
+</ul>
+<div class="highlight"><pre><span></span> du --all --one-file-system / <span class="p">|</span> awk <span class="s1">&#39;{if($1 &gt; 102400) print int($1/1024) &quot;MB&quot; &quot; &quot; $2 }&#39;</span> <span class="c1"># root partition</span>
+ du --all --one-file-system /home <span class="p">|</span> awk <span class="s1">&#39;{if($1 &gt; 102400) print int($1/1024) &quot;MB&quot; &quot; &quot; $2 }&#39;</span> <span class="c1"># home partition</span>
+</pre></div>
+
+
+<ul>
+<li>List RPM packages that take the most space in the system</li>
+</ul>
+<div class="highlight"><pre><span></span> rpm -qa --queryformat <span class="s1">&#39;%{size} %{name}\n&#39;</span> <span class="p">|</span> sort -rn <span class="p">|</span> more
+</pre></div>
+
+
+<ul>
+<li>Execute QML document.</li>
+</ul>
+<div class="highlight"><pre><span></span> pkcon install qt5-qtdeclarative-qmlscene # install qmlscene
+ ln -s /usr/lib/qt5/bin/qmlscene /usr/bin/qmlscene # add symbolic link to path
+ qmlscene app.qml # run
+</pre></div>
+
+
+<h3>Diagnostics</h3>
+<ul>
+<li>Saving logs is always good</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su journalctl -a &gt; ~/saved.journal
+</pre></div>
+
+
+<ul>
+<li>Add -f to contiously listen to the log output:</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su journalctl -fa
+</pre></div>
+
+
+<ul>
+<li>The systemd journal is persistent over reboots in devel branch - otherwise edit /etc/systemd/journald.conf and set</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="nv">Storage</span><span class="o">=</span>persistent
+</pre></div>
+
+
+<ul>
+<li>Preventing journald from throttling logging from a verbose process - edit /etc/systemd/journald.conf and set</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="nv">RateLimitBurst</span><span class="o">=</span><span class="m">9999</span>
+ <span class="nv">RateLimitInterval</span><span class="o">=</span>5s
+</pre></div>
+
+
+<ul>
+<li>Various processes can be made more verbose by setting certain environment variables:</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="nv">QT_LOGGING_RULES</span><span class="o">=</span><span class="s2">&quot;*.debug=true&quot;</span>   <span class="c1"># any application or service using Qt Categorized Logging</span>
+ <span class="nv">MSYNCD_LOGGING_LEVEL</span><span class="o">=</span><span class="m">8</span>   <span class="c1"># any Buteo sync plugin</span>
+ <span class="nv">SSO_LOGGING_LEVEL</span><span class="o">=</span><span class="m">3</span> <span class="nv">SSOUI_LOGGING_LEVEL</span><span class="o">=</span><span class="m">3</span>  <span class="c1"># Accounts&amp;SSO services</span>
+ <span class="nv">CONTACTSD_DEBUG</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># contactsd instant messaging roster synchronisation daemon</span>
+ <span class="nv">QTCONTACTS_SQLITE_TWCSA_TRACE</span><span class="o">=</span><span class="m">1</span> <span class="nv">QTCONTACTS_SQLITE_TRACE</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># qtcontacts-sqlite backend debug output</span>
+ <span class="nv">KCALDEBUG</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># calendar application and plugins, mkcal and KCal debug output</span>
+ <span class="nv">LIPSTICK_COMPOSITOR_DEBUG</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># homescreen debug output</span>
+</pre></div>
+
+
+<ul>
+<li>Various processes can be made more verbose by editing certain configuration files and rebooting:</li>
+</ul>
+<div class="highlight"><pre><span></span> /home/nemo/.config/QtProject/Messageserver.conf  <span class="c1"># email, QtMessagingFramework configuration file</span>
+ /home/nemo/.config/eas-sailfish.conf  <span class="c1"># Exchange ActiveSync plugin configuration file</span>
+</pre></div>
+
+
+<ul>
+<li>For example, to make the Exchange ActiveSync plugin fully verbose, first ensure that journald won't throttle logging output (see the notes on editing /etc/systemd/journald.conf above) and then ensure that the /home/nemo/.config/eas-sailfish.conf file contains the following:</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="o">[</span>logging<span class="o">]</span>
+ Sailfish.eas.debug<span class="o">=</span>dwc
+ Sailfish.eas.warning<span class="o">=</span>dwc
+ Sailfish.eas.error<span class="o">=</span>dwc
+ Sailfish.easwbxml<span class="o">=</span>dwc
+ Sailfish.easnetwork<span class="o">=</span>dwc
+ Sailfish.easverbose<span class="o">=</span>dwc
+</pre></div>
+
+
+<ul>
+<li>Some processes can be made more verbose by installing specific "tracing" packages which configure the service to be more verbose when installed (via <code>devel-su pkcon install &lt;pkgname&gt;</code>).  Some examples include:</li>
+</ul>
+<div class="highlight"><pre><span></span> connman-tracing
+ bluez5-tracing
+ connectionagent-qt5-tracing
+</pre></div>
+
+
+<h3>Home Screen and Compositor diagnostics</h3>
+<p>Lipstick debugs can be enabled by adding LIPSTICK_COMPOSITOR_DEBUG=1 to /var/lib/environment/compositor/*.conf.</p>
+<p>Now restart lipstick and you have a small box at the bottom of the screen for debugging the top most window. "Dump" button outputs data of the top most window to thejournal. "Expose" button shows current windows.</p>
+<p>In case screen is locked or/and touch is not responding but you have an access tothe device. Top most window can be dumped like:</p>
+<div class="highlight"><pre><span></span>dbus-send --type<span class="o">=</span>method_call --print-reply --dest<span class="o">=</span>org.nemomobile.compositor.debug /debug org.nemomobile.compositor.debug.dump
+</pre></div>
+
+
+<h3>Power Diagnostics</h3>
+<p>Go to your device command line. Download <a href="https://git.merproject.org/mer-core/statefs-providers/blob/master/tools/power-diagnostics.sh">Power issues reporting script</a> on your device</p>
+<div class="highlight"><pre><span></span>curl -o power-diagnostics.sh https://git.merproject.org/mer-core/statefs-providers/blob/master/tools/power-diagnostics.sh <span class="o">&amp;&amp;</span> chmod a+x power-diagnostics.sh
+</pre></div>
+
+
+<p>and run it</p>
+<div class="highlight"><pre><span></span>devel-su ./power-diagnostics.sh &gt; /home/nemo/power-state-report.txt
+</pre></div>
+
+
+<p>Attach resulting /home/nemo/power-state-report.txt file and journal to your bug report.</p>
+<h3>Backup Diagnostics</h3>
+<ul>
+<li>On the target device go to the command line. Download there <a href="https://git.merproject.org/mer-core/the-vault/blob/master/tools/the-vault-storage-report.sh">Backup status reporting script</a> and make it executable.</li>
+</ul>
+<div class="highlight"><pre><span></span>curl -o the-vault-storage-report.sh https://git.merproject.org/mer-core/the-vault/blob/master/tools/the-vault-storage-report.sh <span class="o">&amp;&amp;</span> chmod a+x the-vault-storage-report.sh
+</pre></div>
+
+
+<ul>
+<li>Execute the command in privileged mode.</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su -p ./the-vault-storage-report.sh &gt; /home/nemo/backup-status-report.txt
+</pre></div>
+
+
+<ul>
+<li>Attach resulting /home/nemo/backup-status-report.txt file to your bug report.</li>
+</ul>
+<h3>Restart System Services</h3>
+<ul>
+<li>Restart user session</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl restart user@100000
+</pre></div>
+
+
+<ul>
+<li>Restart networking. Warning! Disconnects your SSH connection.</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl restart connman.service
+</pre></div>
+
+
+<ul>
+<li>Restart home screen</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl --user restart lipstick
+</pre></div>
+
+
+<ul>
+<li>Restart keyboard</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl --user restart maliit-server
+</pre></div>
+
+
+<ul>
+<li>Restart Phone application</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl --user restart voicecall-ui-prestart
+</pre></div>
+
+
+<ul>
+<li>Restart Phone middleware</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl restart ofono
+ systemctl-user restart voicecall-manager
+</pre></div>
+
+
+<h3>Package Handling</h3>
+<ul>
+<li>Root rights required</li>
+</ul>
+<div class="highlight"><pre><span></span>devel-su
+</pre></div>
+
+
+<ul>
+<li>Show SW version</li>
+</ul>
+<div class="highlight"><pre><span></span> version
+</pre></div>
+
+
+<ul>
+<li>Update software</li>
+</ul>
+<div class="highlight"><pre><span></span> version --dup
+</pre></div>
+
+
+<h2>Pkcon commands</h2>
+<div class="highlight"><pre><span></span> pkcon refresh   <span class="c1"># Update repositories</span>
+
+ pkcon search name <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon install <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon get-details <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon remove <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon update <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+
+ pkcon install-local <span class="o">[</span>FILE_NAME<span class="o">]</span>
+
+ pkcon repo-list
+ pkcon repo-enable <span class="o">[</span>REPO_ID<span class="o">]</span>
+ pkcon repo-disable <span class="o">[</span>REPO_ID<span class="o">]</span>
+
+ pkcon       <span class="c1"># Lists the full command syntax and options.</span>
+</pre></div>
+
+
+<h3>Zypper commands for SDK (pkcon is preferred on device)</h3>
+<div class="highlight"><pre><span></span> zypper lr <span class="c1"># list repositories</span>
+ zypper ref <span class="c1"># update repositories</span>
+ zypper update <span class="c1"># update packages</span>
+ zypper se packagename <span class="c1"># search packages</span>
+ zypper in packagename <span class="c1"># install packages</span>
+ zypper info packagename <span class="c1"># check package information</span>
+ zypper info -t pattern patternname <span class="c1"># check pattern information</span>
+ zypper verify <span class="c1"># check dependencies</span>
+</pre></div>
+
+
+<h3>RPM commands</h3>
+<div class="highlight"><pre><span></span> rpm -e &lt;package&gt; <span class="c1"># remove package</span>
+ rpm -ql &lt;package-name&gt; <span class="c1"># list files in package</span>
+ rpm -qlP &lt;file&gt; <span class="c1"># list files in package</span>
+ rpm -qf &lt;file&gt; <span class="c1"># find out what package file belongs to</span>
+ rpm -qpR &lt;rpm-file&gt; <span class="c1"># find out package dependencies</span>
+ rpm -qR &lt;package-name&gt; <span class="c1"># find out package dependencies</span>
+ rpm -q --whatrequires &lt;package&gt; <span class="c1"># find out reverse dependencies</span>
+ rpm -qa <span class="p">|</span> xargs rpm -qR <span class="p">|</span> grep -b5 &lt;package&gt; <span class="c1"># query all packages, check whether they depend on package</span>
+ rpm -U --oldpackage --replacepkgs  --replacefiles &lt;package&gt; <span class="c1"># reinstall rpm package</span>
+</pre></div>
+
+
+<p>Clear corrupted rpm database (as root):</p>
+<div class="highlight"><pre><span></span> rm -rf /var/lib/rpm/__db* <span class="p">;</span> rpm --rebuilddb
+</pre></div>
+
+
+<h2>Clearing, Importing and Exporting User Data</h2>
+<h3>Phone</h3>
+<ul>
+<li>Install commhistory-tool if not already installed.</li>
+</ul>
+<div class="highlight"><pre><span></span> pkcon install  libcommhistory-qt5-tools
+</pre></div>
+
+
+<ul>
+<li>Clear call logs, run as nemo</li>
+</ul>
+<div class="highlight"><pre><span></span> commhistory-tool deleteall -calls
+</pre></div>
+
+
+<ul>
+<li>Add call logs data, run as nemo</li>
+</ul>
+<div class="highlight"><pre><span></span> commhistory-tool import-json calllogs.json
+</pre></div>
+
+
+<ul>
+<li>Restart Phone application to see changes in effect.</li>
+</ul>
+<div class="highlight"><pre><span></span> pkill voicecall-ui
+</pre></div>
+
+
+<h3>Messages</h3>
+<ul>
+<li>Remove all message conversations, run as nemo</li>
+</ul>
+<div class="highlight"><pre><span></span> commhistory-tool deleteall -groups
+</pre></div>
+
+
+<ul>
+<li>Import message data, run as nemo</li>
+</ul>
+<div class="highlight"><pre><span></span> commhistory-tool import-json messages.json
+</pre></div>
+
+
+<ul>
+<li>Restart Messages application to see changes in effect.</li>
+</ul>
+<div class="highlight"><pre><span></span> pkill jolla-messages
+</pre></div>
+
+
+<h3>People</h3>
+<ul>
+<li>Install vcardconverter if not already installed.</li>
+</ul>
+<div class="highlight"><pre><span></span> pkcon install nemo-qml-plugin-contacts-qt5-tools
+</pre></div>
+
+
+<ul>
+<li>Import contacts from vCard</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su -p vcardconverter contacts.vcf
+</pre></div>
+
+
+<ul>
+<li>Export local contacts to vCard</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su -p vcardconverter --export contacts.vcf
+</pre></div>
+
+
+<h3>Calendar</h3>
+<ul>
+<li>Install icalconverter if not already installed</li>
+</ul>
+<div class="highlight"><pre><span></span> pkcon install nemo-qml-plugin-calendar-qt5-tools
+</pre></div>
+
+
+<ul>
+<li>Import events from iCal</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su -p icalconverter import calendar.ics
+</pre></div>
+
+
+<ul>
+<li>Import events using Calendar import page</li>
+</ul>
+<div class="highlight"><pre><span></span> dbus-send --print-reply --type<span class="o">=</span>method_call --dest<span class="o">=</span>com.jolla.calendar.ui /com/jolla/calendar/ui com.jolla.calendar.ui.importFile string:/home/nemo/calendar.ics
+</pre></div>
+
+
+<ul>
+<li>Export local calendar events to iCal</li>
+</ul>
+<div class="highlight"><pre><span></span> devel-su -p icalconverter <span class="nb">export</span> calendar.ics
+</pre></div>
+
+
+<h3>Browser</h3>
+<ul>
+<li>Set the home page.</li>
+</ul>
+<div class="highlight"><pre><span></span> dconf write /apps/sailfish-browser/settings/home_page <span class="s2">&quot;&#39;http://jolla.com&#39;&quot;</span>
+</pre></div>
+
+
+<h3>Media</h3>
+<p>Transfer content to the device</p>
+<div class="highlight"><pre><span></span> scp *.jpg nemo@device:Pictures
+ scp *.mp4 nemo@device:Videos
+ scp *.pdf nemo@device:Documents
+ scp *.ogg nemo@device:Music
+</pre></div>
+
+
+<h3>Homescreen</h3>
+<ul>
+<li>Reset order of apps in Homescreen launcher.</li>
+</ul>
+<div class="highlight"><pre><span></span> rm /home/nemo/.config/lipstick/applications.menu
+</pre></div>
+
+
+<h3>Weather</h3>
+<ul>
+<li>Remove weather locations</li>
+</ul>
+<div class="highlight"><pre><span></span> rm /home/nemo/.local/share/sailfish-weather/weather.json
+</pre></div>
+
+
+<h2>Blocking Device Suspend</h2>
+<ul>
+<li>Install mcetool</li>
+</ul>
+<div class="highlight"><pre><span></span> zypper in mce-tools
+</pre></div>
+
+
+<ul>
+<li>Disable late suspend</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -searly
+</pre></div>
+
+
+<ul>
+<li>Disable early suspend</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -sdisabled
+</pre></div>
+
+
+<ul>
+<li>Restore normal suspend policy</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -senabled
+</pre></div>
+
+
+<h2>Screen Brightness</h2>
+<ul>
+<li>Install mcetool</li>
+</ul>
+<div class="highlight"><pre><span></span> zypper in mce-tools
+</pre></div>
+
+
+<ul>
+<li>Set brightness setting to maximum value</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -b5
+</pre></div>
+
+
+<ul>
+<li>Disable screen dimming when home screen or applications are open</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -Don
+</pre></div>
+
+
+<ul>
+<li>Disable screen dimming when the lock screen is open</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -tdisabled
+</pre></div>
+
+
+<ul>
+<li>Go back to normal behavior</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -Doff -tenabled
+</pre></div>
+
+
+<ul>
+<li>For problem with unusually dark display, try disabling als-based display brightness filtering</li>
+</ul>
+<div class="highlight"><pre><span></span> mcetool -gdisabled
+</pre></div>
+
+
+<ul>
+<li>Reset all mce values to their defaults</li>
+</ul>
+<div class="highlight"><pre><span></span> systemctl stop mce.service
+ rm /var/lib/mce/builtin-gconf.values
+ systemctl start mce.service
+</pre></div>
+
+
+<h2>Show Dialogs</h2>
+<h3>Alarm Dialog</h3>
+<ul>
+<li>Show timer alarm in 3 seconds (ticker=3).</li>
+</ul>
+<div class="highlight"><pre><span></span> timedclient-qt5 -b<span class="s1">&#39;TITLE=button0&#39;</span> -e<span class="s1">&#39;APPLICATION=nemoalarms;TITLE=Timer;type=countdown;timeOfDay=1;triggerTime=1395217218;ticker=3&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>Show clock alarm in 3 seconds (ticker=3).</li>
+</ul>
+<div class="highlight"><pre><span></span> timedclient-qt5 -b<span class="s1">&#39;TITLE=button0&#39;</span> -e<span class="s1">&#39;APPLICATION=nemoalarms;TITLE=Clock;type=event;timeOfDay=772;ticker=3&#39;</span>
+</pre></div>
+
+
+<h3>Connection Dialog</h3>
+<div class="highlight"><pre><span></span> dbus-send --print-reply --type<span class="o">=</span>method_call --dest<span class="o">=</span>com.jolla.lipstick.ConnectionSelector /  com.jolla.lipstick.ConnectionSelectorIf.openConnection string:
+</pre></div>
+
+
+<h3>USB Dialog</h3>
+<p>Connect cable. Make sure "Settings -&gt; USB -&gt; Default USB mode" is set to "Always ask".</p>
+<h3>Unresponsive App Dialog</h3>
+<ul>
+<li>Make app unresponsive by stopping it's execution.</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="nb">kill</span> -SIGSTOP <span class="sb">`</span>pgrep appname<span class="sb">`</span> <span class="c1"># e.g. jolla-messages</span>
+</pre></div>
+
+
+<ul>
+<li>Continue execution by calling</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="nb">kill</span> -SIGCONT <span class="sb">`</span>pgrep appname<span class="sb">`</span> <span class="c1"># e.g. jolla-messages</span>
+</pre></div>
+
+
+<h3>Side Loading Dialog</h3>
+<div class="highlight"><pre><span></span>xdg-open package.rpm
+</pre></div>
+
+
+<h3>Call Request Dialog</h3>
+<div class="highlight"><pre><span></span> xdg-open <span class="s2">&quot;tel://0123456789&quot;</span>
+</pre></div>
+
+
+<h3>Supplementary Service Dialog</h3>
+<p>Type<a href="https://en.wikipedia.org/wiki/Unstructured_Supplementary_Service_Data#Code_table">USSD code</a>with Phone dialer, for example "*#31#" shows the status of caller line restriction.</p>
+<h3>Audio Warning Dialog</h3>
+<p>Change headset audio warning timeout by adding following lines to /etc/pulse/mainvolume-listening-time-notifier.conf.</p>
+<div class="highlight"><pre><span></span><span class="s2">&quot;timeout = 1</span>
+<span class="s2">sink-list = sink.primary</span>
+<span class="s2">mode-list = lineout&quot;</span>
+systemctl --user restart pulseaudio.service
+</pre></div>
+
+
+<p>Now play a song over 1 minute with normal headset in Media Player to see a warning dialog.
+Reset too-loud volume warning.</p>
+<div class="highlight"><pre><span></span> /usr/bin/dconf write /desktop/nemo/audiowarning <span class="nb">true</span>
+</pre></div>
+
+
+<p>Now play a song over headset and turn the volume to maximum to see a warning dialog.</p>
+<h3>The Other Half Installation Dialog</h3>
+<p>Sign in to Jolla store. Attach new TOH back cover.    </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

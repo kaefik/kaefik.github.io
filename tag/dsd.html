@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Общественная записная книжка - dsd</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/2018/10/19/dsd-gqrx/">Декодирование цифрового сигнала с помощью dsd и gqrx</a></h1>
+<footer class="post-info">
+        <span>Пт 19 октября 2018</span>
+<span>| tags: <a href="/tag/radio.html">радио</a><a href="/tag/radioliubitel.html">радиолюбитель</a><a href="/tag/sviaz.html">связь</a><a href="/tag/digital.html">digital</a><a href="/tag/dsd.html">dsd</a><a href="/tag/sdr.html">sdr</a><a href="/tag/ubuntu.html">ubuntu</a></span>
+</footer><!-- /.post-info --><p>для информации: <a href="https://www.george-smart.co.uk/scrapbook/digital_speech_decoder/">https://www.george-smart.co.uk/scrapbook/digital_speech_decoder/</a>
+- socat stdout udp-listen:7355| padsp dsd -i - -o /dev/dsp</p>
+<ul>
+<li>запускаем gqrx настраиваемся на частоту и нажимаем кнопку UDP, чтобы вещание пошло через 7355 порт</li>
+</ul>
+<h2>Настройки GQRX:</h2>
+<ul>
+<li>
+<p>Mode: Narrow FM</p>
+</li>
+<li>
+<p>настройки Mode (жмем три точки) пункт tau ставим в off</p>
+</li>
+</ul>
+<h2>Сборка DSD под Ubuntu</h2>
+<p>The build process on Xubuntu 14.04.1 LTS was very simple, thanks in part to Aaron VK3ABX. It goes a little something like this:</p>
+<ul>
+<li>
+<p>Update the APT package manager</p>
+</li>
+<li>
+<p>Download the basic building essentials</p>
+</li>
+<li>
+<p>Build IT++</p>
+</li>
+<li>
+<p>Build mbelib</p>
+</li>
+<li>
+<p>Build dsd</p>
+</li>
+</ul>
+<h2>Getting Started</h2>
+<p>The first things to do are to update the APT package manager and then get some of the basic compiling tools we will require.</p>
+<div class="highlight"><pre><span></span><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span>
+<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">build</span><span class="o">-</span><span class="nx">essential</span> <span class="nx">git</span> <span class="nx">make</span> <span class="nx">cmake</span>
+</pre></div>
+
+
+<p>I will make a folder in my home directory for the experimentation.</p>
+<div class="highlight"><pre><span></span>mkdir ~/digital_speech
+<span class="nb">cd</span> ~/digital_speech
+</pre></div>
+
+
+<p>From there, I will create separate folders for each part of the process.</p>
+<h3>Building itpp</h3>
+<p>IT++ is a C++ library of mathematical, signal processing and communication classes and functions. Its main use is in simulation of communication systems and for performing research in the area of communications. It does a lot of the heavy lifting for dsd.</p>
+<p>Download and extract it into a folder inside the folder you made above and then change into the newly extracted folder.</p>
+<div class="highlight"><pre><span></span>wget -O itpp-latest.tar.bz2 http://sourceforge.net/projects/itpp/files/latest/download?source<span class="o">=</span>files
+tar xjf itpp-latest.tar.bz2
+<span class="nb">cd</span> itpp-4.3.1/
+</pre></div>
+
+
+<p>You should hopefully get the latest version of the IT++ library (called itpp) extracted and be inside the extracted folder. ON my computer the path is ‘~/digital_speech/itpp-4.3.1’</p>
+<p>Now make a build directory and change into it</p>
+<div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+</pre></div>
+
+
+<p>Finally we run the cmake command to write our make-script and check our make environment. You should get no errors. The ‘..’ at the end is important, since this refers to the parent directory.</p>
+<div class="highlight"><pre><span></span>cmake ..
+</pre></div>
+
+
+<p>Once you have got the above command to finish without errors, you are ready to start the build process. The -j flag tells make to use all the cores it can. It took just over a minute on my work’s PC.</p>
+<div class="highlight"><pre><span></span>make -j
+</pre></div>
+
+
+<p>Finally, you need to install the libraries</p>
+<div class="highlight"><pre><span></span>sudo make install
+</pre></div>
+
+
+<p>PS.  Последняя версия itpp-4.3.1.tar.bz2 не компилируется на Ubuntu 18.04 LTS, как вы уже писали. Но он обычно компилируется на Ubuntu 16.04 LTS с GCC 5.4.</p>
+<p>источник: <a href="https://ubuntugeeks.com/questions/281515/make-issue-the-last-argument-must-be-8-bit-immediate">https://ubuntugeeks.com/questions/281515/make-issue-the-last-argument-must-be-8-bit-immediate</a>
+Я только что обнаружил, что у разработчиков есть специальные специальные фиксации для исправления ошибки . Поэтому мы можем установить исходную версию с помощью:</p>
+<div class="highlight"><pre><span></span>sudo apt-get install autoconf automake libtool build-essential cmake git <span class="se">\</span>
+libblas-dev liblapack-dev libfftw3-dev
+<span class="nb">cd</span> ~/Downloads
+git clone https://git.code.sf.net/p/itpp/git itpp-git
+<span class="nb">cd</span> itpp-git
+./autogen.sh
+./configure
+mkdir build
+<span class="nb">cd</span> build
+cmake ..
+make
+sudo make install
+</pre></div>
+
+
+<p>Once this is done, proceed to the next step.</p>
+<h3>Building mbelib</h3>
+<p>mbelib is a written description of how certain voice encoding/decoding algorithms could be implemented. It comes with the following patent notice:</p>
+<p>This source code is provided for educational purposes only. It is a written description of how certain voice encoding/decoding algorithms could be implemented. Executable objects compiled or derived from this package may be covered by one or more patents. Readers are strongly advised to check for any patent restrictions or licensing requirements before compiling or using this source code.</p>
+<p>We go back to the experimentation directory.</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/digital_speech/
+</pre></div>
+
+
+<p>We can this time use Git to download the source code for us.</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/szechyjs/mbelib.git
+<span class="nb">cd</span> mbelib/
+</pre></div>
+
+
+<p>Again, we create a build directory and change into it</p>
+<div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+</pre></div>
+
+
+<p>We again run the configure script on the parent directory (..).</p>
+<div class="highlight"><pre><span></span>cmake ..
+</pre></div>
+
+
+<p>And again, as with IT++, we run the make command.</p>
+<div class="highlight"><pre><span></span>make
+</pre></div>
+
+
+<p>On the work PC this took 19 seconds. We install these libraries into the system with the following</p>
+<div class="highlight"><pre><span></span>sudo make install
+</pre></div>
+
+
+<p>And then we progress on to the next step.</p>
+<h3>Building DSD</h3>
+<p>DSD is able to decode several digital voice formats from discriminator tap audio and synthesize the decoded speech. Speech synthesis requires mbelib, which is a separate package. DSD is the program we will interact with to decode our digital speech.</p>
+<p>Before we can compile the DSD binaries, we need to get a few other libraries in addition to the two we have just built and installed. If you get errors about portaudio19-dev needing libjack-dev, then a sly way around this is to install libjack-jackd2-dev too (just paste it on the end of the following line). It’s not needed, but for odd reasons, portaudio sometimes wants jackd development files.</p>
+<div class="highlight"><pre><span></span>sudo apt-get install libsndfile1-dev fftw3-dev liblapack-dev portaudio19-dev
+</pre></div>
+
+
+<p>Once downloaded and installed we go back to the experimentation directory</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/digital_speech/
+</pre></div>
+
+
+<p>We can again use Git to download the source code for us.</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/szechyjs/dsd.git
+<span class="nb">cd</span> dsd/
+</pre></div>
+
+
+<p>Again, we create a build directory and change into it</p>
+<div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+</pre></div>
+
+
+<p>We again run the configure script on the parent directory (..).</p>
+<div class="highlight"><pre><span></span>cmake ..
+</pre></div>
+
+
+<p>And again, as with IT++, we run the make command.</p>
+<div class="highlight"><pre><span></span>make
+</pre></div>
+
+
+<p>On the work PC this took 31 seconds. At this point the build is done. You can install them with</p>
+<div class="highlight"><pre><span></span>sudo make install
+</pre></div>
+
+
+<h3>Using dsd</h3>
+<p>The ‘official’ operation is described on the dsd wiki operation page.</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

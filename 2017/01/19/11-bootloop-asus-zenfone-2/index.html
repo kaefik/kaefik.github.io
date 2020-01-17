@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>11. Решение проблемы bootloop Asus Zenfone 2 ( В ПРОЦЕССЕ)</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/19/11-bootloop-asus-zenfone-2/" rel="bookmark"
+           title="Permalink to 11. Решение проблемы bootloop Asus Zenfone 2 ( В ПРОЦЕССЕ)">11. Решение проблемы bootloop Asus Zenfone 2 ( В ПРОЦЕССЕ)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Чт 19 января 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->      <p><strong>!!! на 13.02.2017 года проблема с bootloop не решена.</strong></p>
+<h2>ЧИТАЕМ ЛОГИ НЕЗАГРУЖАЮЩЕГОСЯ УСТРОЙСТВА</h2>
+<p>источник: <a href="http://neochapay.ru/blogs/zapiski-utkonosa-programmista/sailfish-os-hardware-adaptation-developm-74.html">http://neochapay.ru/blogs/zapiski-utkonosa-programmista/sailfish-os-hardware-adaptation-developm-74.html</a> </p>
+<p>Итак,есть устройство...и естественно оно не загружается...ну так бывает при портировании. Как добраться до логов?</p>
+<p>​           1.  Правим настройки журнала systemd</p>
+<p>​          Заходим в рековери, кастомное </p>
+<div class="highlight"><pre><span></span>adb shell
+vi /data/.stowaways/sailfishos/etc/systemd/journald.conf
+</pre></div>
+
+
+<p>The systemd journal is persistent over reboots in devel branch - otherwise edit /etc/systemd/journald.conf and set</p>
+<div class="highlight"><pre><span></span> Storage=persistent
+</pre></div>
+
+
+<p>Preventing journald from throttling logging from a verbose process - edit /etc/systemd/journald.conf and set</p>
+<div class="highlight"><pre><span></span> RateLimitBurst=9999
+ RateLimitInterval=5s
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>adb shell
+su
+mount -o <span class="nb">bind</span> /dev /data/.stowaways/sailfishos/dev<span class="p">;</span>mount -o <span class="nb">bind</span> /proc /data/.stowaways/sailfishos/proc<span class="p">;</span>mount -o <span class="nb">bind</span> /sys /data/.stowaways/sailfishos/sys<span class="p">;</span>chroot /data/.stowaways/sailfishos/ /bin/su -
+</pre></div>
+
+
+<ol>
+<li>
+<p>смотрим наш журнал:                </p>
+<p><code>journalctl -b</code></p>
+<p><strong>Решение</strong></p>
+<ul>
+<li>device/asus/msm8916-common/BoardConfigCommon.mk</li>
+</ul>
+</li>
+</ol>
+<p>добавить в строку</p>
+<div class="highlight"><pre><span></span>BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
+</pre></div>
+
+
+<p>в конце selinux=0</p>
+<ul>
+<li><strong>init.environ.rc</strong></li>
+</ul>
+<p><code>bash
+  export LD_LIBRARY_PATH /vendor/lib64:/system/lib64:/usr/libexec/droid-hybris/lib-dev-alog:/vendor/lib:/system/lib</code></p>
+<ul>
+<li><strong>Сделал архив с образом rootfs и hybris-boot.img</strong>  -&gt; <a href="https://yadi.sk/d/U9KDD0_f3AecSh">скачать альфу версию прошивки можно вот тут</a>. Эта прошивка отправляет устройство в bootloop.</li>
+</ul>
+<hr>
+<p>вот журнал загрузки устройства: <a href="https://gist.github.com/kaefik/2cc70a25a2aecb64b01fcc7aae66efb6">https://gist.github.com/kaefik/2cc70a25a2aecb64b01fcc7aae66efb6</a></p>
+<p>​                 1)  попробуем решить ошибку:           </p>
+<div class="highlight"><pre><span></span><span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">platform</span> <span class="s s-Atom">b018000</span><span class="p">.</span><span class="nn">regulator</span><span class="p">:</span> <span class="nv">Driver</span> <span class="s s-Atom">qcom</span><span class="p">,</span><span class="s s-Atom">cpr</span><span class="o">-</span><span class="s s-Atom">regulator</span> <span class="s s-Atom">requests</span> <span class="s s-Atom">probe</span> <span class="s s-Atom">deferral</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b6000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">probing</span> <span class="s s-Atom">driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b6000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="s s-Atom">on</span> <span class="nf">clk_get</span><span class="p">(</span><span class="s s-Atom">core_clk</span><span class="p">):-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b6000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="nf">probe</span><span class="p">()</span> <span class="s s-Atom">failed</span> <span class="s s-Atom">with</span> <span class="nn">err</span><span class="p">:</span><span class="o">-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">platform</span> <span class="mi">78</span><span class="s s-Atom">b6000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="nv">Driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="s s-Atom">requests</span> <span class="s s-Atom">probe</span> <span class="s s-Atom">deferral</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b9000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">probing</span> <span class="s s-Atom">driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b9000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="s s-Atom">on</span> <span class="nf">clk_get</span><span class="p">(</span><span class="s s-Atom">core_clk</span><span class="p">):-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b9000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="nf">probe</span><span class="p">()</span> <span class="s s-Atom">failed</span> <span class="s s-Atom">with</span> <span class="nn">err</span><span class="p">:</span><span class="o">-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">platform</span> <span class="mi">78</span><span class="s s-Atom">b9000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="nv">Driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="s s-Atom">requests</span> <span class="s s-Atom">probe</span> <span class="s s-Atom">deferral</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">ba000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">probing</span> <span class="s s-Atom">driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">ba000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="s s-Atom">on</span> <span class="nf">clk_get</span><span class="p">(</span><span class="s s-Atom">core_clk</span><span class="p">):-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">ba000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="nf">probe</span><span class="p">()</span> <span class="s s-Atom">failed</span> <span class="s s-Atom">with</span> <span class="nn">err</span><span class="p">:</span><span class="o">-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">platform</span> <span class="mi">78</span><span class="s s-Atom">ba000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="nv">Driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="s s-Atom">requests</span> <span class="s s-Atom">probe</span> <span class="s s-Atom">deferral</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b8000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">probing</span> <span class="s s-Atom">driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b8000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="s s-Atom">on</span> <span class="nf">clk_get</span><span class="p">(</span><span class="s s-Atom">core_clk</span><span class="p">):-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="mi">78</span><span class="s s-Atom">b8000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="s s-Atom">error</span> <span class="nf">probe</span><span class="p">()</span> <span class="s s-Atom">failed</span> <span class="s s-Atom">with</span> <span class="nn">err</span><span class="p">:</span><span class="o">-</span><span class="mi">517</span>
+<span class="nv">Jun</span> <span class="mi">02</span> <span class="mi">19</span><span class="s s-Atom">:</span><span class="mi">29</span><span class="s s-Atom">:</span><span class="mi">59</span> <span class="nv">Sailfish</span> <span class="nn">kernel</span><span class="p">:</span> <span class="s s-Atom">platform</span> <span class="mi">78</span><span class="s s-Atom">b8000</span><span class="p">.</span><span class="s s-Atom">i2c:</span> <span class="nv">Driver</span> <span class="s s-Atom">i2c</span><span class="o">-</span><span class="s s-Atom">msm</span><span class="o">-</span><span class="s s-Atom">v2</span> <span class="s s-Atom">requests</span> <span class="s s-Atom">probe</span> <span class="s s-Atom">deferral</span>
+</pre></div>
+
+
+<p>​                 Решение:
+​                </p>
+<p>источник: <a href="http://stackoverflow.com/questions/30166717/how-to-fix-error-on-clk-getcore-clk-during-probing-driver-i2c-msm-v2">http://stackoverflow.com/questions/30166717/how-to-fix-error-on-clk-getcore-clk-during-probing-driver-i2c-msm-v2</a></p>
+<p>This problem relates to the driver probe order. Because clk inits after probing i2c, so that i2c failed to get clk.This problem can be solved by changing Makefile (in /drivers). Just move clk upto a higher position than i2c.I checked it this way and now the error message disappears :)</p>
+<p>kernel/asus/msm8916/drivers/Makefile</p>
+<hr>
+<p><strong>PS2.</strong> из <a href="http://piratepad.net/hadk-faq-v2">http://piratepad.net/hadk-faq-v2</a> строка 73-87</p>
+<ul>
+<li><strong>изменение в файле hybris/droid-configs/droid-configs-device/sparse/lib/udev/rules.d/998-droid-system.rules</strong> </li>
+</ul>
+<div class="highlight"><pre><span></span>SIM card not detected:
+This often causes a bootloop
+Cellular Modem bringup is now in HADK v1.1.1 section 13.3
+Additional checks:
+Replicate /dev/block structure from Android as closely as possible (for rild to be able to access the modem partition)
+Run ls -lR /dev/block in CM
+Run ls -lR /dev/block in Sailfish OS
+diff the two outputs (this is WIP - android&#39;s toolbox ls might need more parameters to produce a comparable output)
+If you see differences you need to add custom udev rules to create the correct /dev/block structure
+For    devices with /dev/block/platform/msm_sdcc.1/by-name/ paths  (msm_sdcc.1   can be different) add to $ANDROID_ROOT/rpm/ these paths  and files with   contents, and it most probably will help (but still  paste your diff to   the IRC channel):
+https://github.com/mer-hybris-kis3/droid-config-kis3/blob/master/sparse/lib/udev/platform-device
+https://github.com/mer-hybris-kis3/droid-config-kis3/blob/master/sparse/lib/udev/rules.d/998-droid-system.rules
+Some    devices have /dev/block/bootdevice/by-name/ as /dev/block structure  in   CM in which case you need to add the following line to the end of  the   998-droid-system.rules file in the last link:
+ENV{ID_PART_ENTRY_SCHEME}==&quot;gpt&quot;,    ENV{ID_PART_ENTRY_NAME}==&quot;?*&quot;,  IMPORT{program}=&quot;/bin/sh    /lib/udev/platform-device $env{DEVPATH}&quot;,     SYMLINK+=&quot;block/bootdevice/by-name/$env{ID_PART_ENTRY_NAME}&quot;
+If    you have logcat and journal error messages suggesting that RIL/ofono    can&#39;t power the modem on and you have a qcom chipset, have a look in    your init.qcom.rc for lines that power it on when the boot animation    (bootanim) stops. If you have those, try this (paths may need    correcting): https://github.com/stephgosling/android_device_htc_m7-common/commit/9f4abdca65356090e6dd6f0356c5cf4a1870aa5f (note the typo there in the chown line!)
+</pre></div>
+
+
+<p>Далее переходим к пункту</p>
+<div class="highlight"><pre><span></span>            8. Packaging droid-hal-device
+</pre></div>
+
+
+<ul>
+<li>проиcходит постоянная попытка загрузки booster for Qt5 см <a href="https://gist.github.com/kaefik/2b29fdea0120530dcca9bd737dc2ba17">https://gist.github.com/kaefik/2b29fdea0120530dcca9bd737dc2ba17</a> </li>
+</ul>
+<p>нужен патч для ядра:
+<a href="https://github.com/zhxt/android_kernel_xiaomi_msm8996/commit/731e1017a8b3f2f15b4b5766adf1f3485c395e03">https://github.com/zhxt/android_kernel_xiaomi_msm8996/commit/731e1017a8b3f2f15b4b5766adf1f3485c395e03</a> в файле droid/kernel/asus/msm8916/fs/proc/<a href="https://github.com/zhxt/android_kernel_xiaomi_msm8996/commit/731e1017a8b3f2f15b4b5766adf1f3485c395e03#diff-c586b38bd084769f10a0e4d11db4abfd">base.c</a></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

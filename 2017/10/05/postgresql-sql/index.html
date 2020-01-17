@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>PostgreSQL - язык SQL</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li class="active"><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/10/05/postgresql-sql/" rel="bookmark"
+           title="Permalink to PostgreSQL - язык SQL">PostgreSQL - язык SQL</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Чт 05 октября 2017</span>
+<span>| tags: <a href="/tag/baza-dannykh.html">база данных</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/sql.html">SQL</a><a href="/tag/db.html">db</a></span>
+</footer><!-- /.post-info -->      <p>​    Команда \i считывает и выполняет команды из заданного файла. Переданный psql параметр -s переводит его в пошаговый режим, когда он делает паузу перед отправкой каждого оператора серверу.</p>
+<p>PostgreSQL — это реляционная система управления базами данных (РСУБД). Это означает, что это система управления данными, представленными в виде отношений (relation). Отношение — это математически точное обозначение таблицы. Хранение данных в таблицах так распространено сегодня, что это кажется самым очевидным вариантом, хотя есть множество других способов организации баз данных. Например, файлы и каталоги в Unix-подобных операционных системах образуют иерархическую базу данных, а сегодня активно развиваются объектно-ориентированные базы данных</p>
+<p>Любая таблица представляет собой именованный набор строк. Все строки таблицы имеют одинаковый набор именованных столбцов, при этом каждому столбцу назначается определённый тип данных. Хотя порядок столбцов во всех строках фиксирован, важно помнить, что SQL не гарантирует какой-либо порядок строк в таблице (хотя их можно явно отсортировать при выводе).</p>
+<p>Таблицы объединяются в базы данных, а набор баз данных, управляемый одним экземпляром сервера PostgreSQL, образует кластер баз данных.</p>
+<h2>Создание таблицы</h2>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">weather</span> <span class="p">(</span>
+  <span class="n">city</span>      <span class="nb">varchar</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span>
+  <span class="n">temp_lo</span>     <span class="nb">int</span><span class="p">,</span>      <span class="c1">-- минимальная температура дня</span>
+  <span class="n">temp_hi</span>     <span class="nb">int</span><span class="p">,</span>      <span class="c1">-- максимальная температура дня</span>
+  <span class="n">prcp</span>      <span class="nb">real</span><span class="p">,</span>     <span class="c1">-- уровень осадков</span>
+  <span class="nb">date</span>      <span class="nb">date</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<h2>Связать таблицы по одному из полей</h2>
+<p>Как в одной таблице указать, что данное поле — то же самое, что аналогичное поле в другой таблице?</p>
+<div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">table</span> <span class="n">tb1</span> <span class="p">(</span>
+  <span class="n">login</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">unique</span><span class="p">,</span>
+  <span class="p">...</span>
+<span class="p">);</span>
+
+<span class="k">create</span> <span class="k">table</span> <span class="n">tb2</span> <span class="p">(</span>
+  <span class="n">login</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">references</span> <span class="n">tb1</span><span class="p">,</span>
+  <span class="p">..</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<h2>Добавление строк в таблицу</h2>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">weather</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;San Francisco&#39;</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;1994-11-27&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Константы, за исключением простых числовых значений, обычно заключаются в апострофы ('), как в данном примере. Тип date на самом деле очень гибок и принимает разные форматы, но в данном введении мы будем придерживаться простого и однозначного.
+Показанный здесь синтаксис требует, чтобы вы запомнили порядок столбцов. Можно также применить альтернативную запись, перечислив столбцы явно:</p>
+<div class="highlight"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">weather</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">temp_lo</span><span class="p">,</span> <span class="n">temp_hi</span><span class="p">,</span> <span class="n">prcp</span><span class="p">,</span> <span class="nb">date</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">&#39;San Francisco&#39;</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;1994-11-29&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Вы также можете загрузить большой объём данных из обычных текстовых файлов, применив команду COPY. Обычно это будет быстрее, так как команда COPY оптимизирована для такого применения, хотя и менее гибка, чем INSERT. Например, её можно использовать так:</p>
+<div class="highlight"><pre><span></span><span class="k">COPY</span> <span class="n">weather</span> <span class="k">FROM</span> <span class="s1">&#39;/home/user/weather.txt&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>Выполнение запросов</h2>
+<p>Для этого предназначен SQL-оператор SELECT. Он состоит из нескольких частей: выборки (в которой перечисляются столбцы, которые должны быть получены), списка таблиц (в нём перечисляются таблицы, из которых будут получены данные) и необязательного условия (определяющего ограничения).</p>
+<p>В списке выборки вы можете писать не только ссылки на столбцы, но и выражения. Например, вы можете написать:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="p">(</span><span class="n">temp_hi</span><span class="o">+</span><span class="n">temp_lo</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="k">AS</span> <span class="n">temp_avg</span><span class="p">,</span> <span class="nb">date</span> <span class="k">FROM</span> <span class="n">weather</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Запрос можно дополнить "условием", добавив предложение WHERE, ограничивающее множество возвращаемых строк. В предложении WHERE указывается логическое выражение (проверка истинности), которое служит фильтром строк: в результате оказываются только те строки, для которых это выражение истинно. В этом выражении могут присутствовать обычные логические операторы (AND, OR и NOT).</p>
+<p>Следующий запрос покажет, какая погода была в Сан-Франциско в дождливые дни:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">weather</span> <span class="k">WHERE</span> <span class="n">city</span> <span class="o">=</span> <span class="s1">&#39;San Francisco&#39;</span> <span class="k">AND</span> <span class="n">prcp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>Соединения таблиц</h2>
+<p>Запрос, обращающийся к разным наборам строк одной или нескольких таблиц, называется соединением (JOIN). Например, мы захотели перечислить все погодные события вместе с координатами соответствующих городов. Для этого мы должны сравнить столбец city каждой строки таблицы weather со столбцом name всех строк таблицы cities и выбрать пары строк, для которых эти значения совпадают.</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">temp_lo</span><span class="p">,</span> <span class="n">temp_hi</span><span class="p">,</span> <span class="n">prcp</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="k">location</span>
+  <span class="k">FROM</span> <span class="n">weather</span><span class="p">,</span> <span class="n">cities</span>
+  <span class="k">WHERE</span> <span class="n">city</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+</pre></div>
+
+
+<p>В результате нет строки с городом Хейуорд (Hayward). Так получилось потому, что в таблице cities нет строки для данного города, а при соединении все строки таблицы weather, для которых не нашлось соответствие, опускаются. Вскоре мы увидим, как это можно исправить.
+Название города оказалось в двух столбцах. Это правильно и объясняется тем, что столбцы таблиц weather и cities были объединены. Хотя на практике это нежелательно, поэтому лучше перечислить нужные столбцы явно, а не использовать * </p>
+<p>Запросы соединения, которые вы видели до этого, можно также записать в другом виде:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>  <span class="k">FROM</span> <span class="n">weather</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">cities</span> <span class="k">ON</span> <span class="p">(</span><span class="n">weather</span><span class="p">.</span><span class="n">city</span> <span class="o">=</span> <span class="n">cities</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+</pre></div>
+
+
+<h2>Агрегатные функции</h2>
+<p>Агрегатная функция вычисляет единственное значение, обрабатывая множество строк. Например, есть агрегатные функции, вычисляющие: count (количество), sum (сумму), avg (среднее), max (максимум) и min (минимум) для набора строк.
+мы можем найти самую высокую из всех минимальных дневных температур:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">max</span><span class="p">(</span><span class="n">temp_lo</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weather</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Можно получить желаемый результат, применив подзапрос:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">city</span> <span class="k">FROM</span> <span class="n">weather</span> <span class="k">WHERE</span> <span class="n">temp_lo</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">max</span><span class="p">(</span><span class="n">temp_lo</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weather</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Теперь всё в порядке — подзапрос выполняется отдельно и результат агрегатной функции вычисляется вне зависимости от того, что происходит во внешнем запросе.</p>
+<p>Агрегатные функции также очень полезны в сочетании с предложением GROUP BY. Например, мы можем получить максимум минимальной дневной температуры в разрезе городов:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="k">max</span><span class="p">(</span><span class="n">temp_lo</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weather</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">city</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="k">max</span><span class="p">(</span><span class="n">temp_lo</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">weather</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">city</span>  <span class="k">HAVING</span> <span class="k">max</span><span class="p">(</span><span class="n">temp_lo</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Важно понимать, как соотносятся агрегатные функции и SQL-предложения WHERE и HAVING. Основное отличие WHERE от HAVING заключается в том, что WHERE сначала выбирает строки, а затем группирует их и вычисляет агрегатные функции (таким образом, она отбирает строки для вычисления агрегатов), тогда как HAVING отбирает строки групп после группировки и вычисления агрегатных функций. Как следствие, предложение WHERE не должно содержать агрегатных функций; не имеет смысла использовать агрегатные функции для определения строк для вычисления агрегатных функций. Предложение HAVING, напротив, всегда содержит агрегатные функции. (Строго говоря, вы можете написать предложение HAVING, не используя агрегаты, но это редко бывает полезно. То же самое условие может работать более эффективно на стадии WHERE.)</p>
+<p>В предыдущем примере мы смогли применить фильтр по названию города в предложении WHERE, так как названия не нужно агрегировать. Такой фильтр эффективнее, чем дополнительное ограничение HAVING, потому что с ним не приходится группировать и вычислять агрегаты для всех строк, не удовлетворяющих условию WHERE.</p>
+<h2>Изменение данных</h2>
+<p>используется команда UPDATE</p>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">weather</span>
+  <span class="k">SET</span> <span class="n">temp_hi</span> <span class="o">=</span> <span class="n">temp_hi</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">temp_lo</span> <span class="o">=</span> <span class="n">temp_lo</span> <span class="o">-</span> <span class="mi">2</span>
+  <span class="k">WHERE</span> <span class="nb">date</span> <span class="o">&gt;</span> <span class="s1">&#39;1994-11-28&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>Удаление данных</h2>
+<p>используется команда DELETE</p>
+<div class="highlight"><pre><span></span><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">weather</span> <span class="k">WHERE</span> <span class="n">city</span> <span class="o">=</span> <span class="s1">&#39;Hayward&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Без указания условия DELETE удалит все строки данной таблицы, полностью очистит её. При этом система не попросит вас подтвердить операцию!</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

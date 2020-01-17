@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Общественная записная книжка - windows</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/2019/07/20/powershell-scripts-send-mail/">PowerShell: различные скрипты</a></h1>
+<footer class="post-info">
+        <span>Сб 20 июля 2019</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/powershell.html">powershell</a><a href="/tag/windows.html">windows</a></span>
+</footer><!-- /.post-info --><h2>Powershell отправка почты с авторизацией через SMTP сервер Яндекса</h2>
+<p>источник: <a href="https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa">https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa</a></p>
+<div class="highlight"><pre><span></span><span class="c">#Адрес сервера SMTP для отправки</span>
+<span class="nv">$serverSmtp</span> <span class="p">=</span> <span class="s2">&quot;smtp.yandex.ru&quot;</span>
+
+<span class="c">#Порт сервера</span>
+<span class="nv">$port</span> <span class="p">=</span> <span class="n">587</span>
+
+<span class="c">#От кого</span>
+<span class="nv">$From</span> <span class="p">=</span> <span class="s2">&quot;login@yandex.ru&quot;</span>
+
+<span class="c">#Кому</span>
+<span class="nv">$To</span> <span class="p">=</span> <span class="s2">&quot;myMail@mail.ru&quot;</span>
+
+<span class="c">#Тема письма</span>
+<span class="nv">$subject</span> <span class="p">=</span> <span class="s2">&quot;Письмо с вложением&quot;</span>
+
+<span class="c">#Логин и пароль от ящики с которого отправляете login@yandex.ru</span>
+<span class="nv">$user</span> <span class="p">=</span> <span class="s2">&quot;login&quot;</span>
+<span class="nv">$pass</span> <span class="p">=</span> <span class="s2">&quot;12345678&quot;</span>
+
+<span class="c">#Путь до файла</span>
+<span class="nv">$file</span> <span class="p">=</span> <span class="s2">&quot;C:\arhive.zip&quot;</span>
+
+<span class="c">#Создаем два экземпляра класса</span>
+<span class="nv">$att</span> <span class="p">=</span> <span class="nb">New-object</span> <span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">Attachment</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span>
+<span class="nv">$mes</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">MailMessage</span>
+
+<span class="c">#Формируем данные для отправки</span>
+<span class="nv">$mes</span><span class="p">.</span><span class="n">From</span> <span class="p">=</span> <span class="nv">$from</span>
+<span class="nv">$mes</span><span class="p">.</span><span class="n">To</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$to</span><span class="p">)</span>
+<span class="nv">$mes</span><span class="p">.</span><span class="n">Subject</span> <span class="p">=</span> <span class="nv">$subject</span>
+<span class="nv">$mes</span><span class="p">.</span><span class="n">IsBodyHTML</span> <span class="p">=</span> <span class="nv">$true</span>
+<span class="nv">$mes</span><span class="p">.</span><span class="n">Body</span> <span class="p">=</span> <span class="s2">&quot;&lt;h1&gt;Тестовое письмо&lt;/h1&gt;&quot;</span>
+
+<span class="c">#Добавляем файл</span>
+<span class="nv">$mes</span><span class="p">.</span><span class="n">Attachments</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$att</span><span class="p">)</span>
+
+<span class="c">#Создаем экземпляр класса подключения к SMTP серверу</span>
+<span class="nv">$smtp</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">SmtpClient</span><span class="p">(</span><span class="nv">$serverSmtp</span><span class="p">,</span> <span class="nv">$port</span><span class="p">)</span>
+
+<span class="c">#Сервер использует SSL</span>
+<span class="nv">$smtp</span><span class="p">.</span><span class="n">EnableSSL</span> <span class="p">=</span> <span class="nv">$true</span>
+
+<span class="c">#Создаем экземпляр класса для авторизации на сервере яндекса</span>
+<span class="nv">$smtp</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">NetworkCredential</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">);</span>
+
+<span class="c">#Отправляем письмо, освобождаем память</span>
+<span class="nv">$smtp</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="nv">$mes</span><span class="p">)</span>
+<span class="nv">$att</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2018/01/03/windows-install-tricks/" rel="bookmark"
+                           title="Permalink to Проблема «Программе установки не удалось создать новый или найти существующий системный раздел»?">Проблема «Программе установки не удалось создать новый или найти существующий системный раздел»?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 03 января 2018</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/windows.html">windows</a><a href="/tag/tricks.html">tricks</a></span>
+</footer><!-- /.post-info -->                <p><strong>источник:</strong> <a href="http://computerinfo.ru/ne-udalos-sozdat-novyj-ili-najti-sushhestvuyushhij-razdel/">http://computerinfo.ru/ne-udalos-sozdat-novyj-ili-najti-sushhestvuyushhij-razdel/</a></p>
+<ol>
+<li>
+<p>Вставляете загрузочную флешку в компьютер и загружаетесь с нее;</p>
+</li>
+<li>
+<p>При появлении окна с выбором диска нажимаете клавиши  Shift+F10 для открытия командной строки</p>
+</li>
+<li>
+<p>В командной строке прописываем команду:</p>
+</li>
+</ol>
+<p><code>diskpart</code></p>
+<ol>
+<li>Командная строка теперь использует дисковую утилиту DISKPART, далее пишем команду: </li>
+</ol>
+<p><code>list disk</code></p>
+<p>Данная команда показывает все …</p>
+                <a class="readmore" href="/2018/01/03/windows-install-tricks/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/08/06/standart-port-services/" rel="bookmark"
+                           title="Permalink to Стандартные порты различных служб">Стандартные порты различных служб</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Вс 06 августа 2017</span>
+<span>| tags: <a href="/tag/ports.html">ports</a><a href="/tag/linux.html">linux</a><a href="/tag/windows.html">windows</a><a href="/tag/network.html">network</a></span>
+</footer><!-- /.post-info -->                <ul>
+<li><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers</a></li>
+</ul>
+<p>20/TCP FTP-DATA — для передачи данных FTP Официально</p>
+<p>21/TCP FTP — для передачи команд FTP Официально</p>
+<p>22/TCP,UDP SSH (Secure SHell) — криптографический сетевой протокол для безопасной передачи данных Официально</p>
+<p>23/TCP,UDP Telnet — применяется для передачи текстовых сообщений в незашифрованном виде Официально</p>
+<p>24 …</p>
+                <a class="readmore" href="/2017/08/06/standart-port-services/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/07/18/ipam-ip/" rel="bookmark"
+                           title="Permalink to Пошаговое руководство по настройке IPAM для управления пространством IP-адресов">Пошаговое руководство по настройке IPAM для управления пространством IP-адресов</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Вт 18 июля 2017</span>
+<span>| tags: <a href="/tag/ipam.html">ipam</a><a href="/tag/windows.html">windows</a><a href="/tag/admin.html">admin</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://technet.microsoft.com/ru-ru/library/hh831622(v=ws.11).aspx">https://technet.microsoft.com/ru-ru/library/hh831622(v=ws.11).aspx</a></li>
+</ul>
+                <a class="readmore" href="/2017/07/18/ipam-ip/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/06/26/powershell-basic/" rel="bookmark"
+                           title="Permalink to PowerShell основы">PowerShell основы</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Пн 26 июня 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/linux.html">linux</a><a href="/tag/powershell.html">powershell</a><a href="/tag/windows.html">windows</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li>
+<p><a href="https://www.microsoft.com/net/core/preview#linuxfedora">https://www.microsoft.com/net/core/preview#linuxfedora</a>  .NET Core 2.0 Preview 1</p>
+</li>
+<li>
+<p><a href="http://www.oszone.net/17352">http://www.oszone.net/17352  - посмотреть</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.management/get-childitem">https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.management/get-childitem</a></p>
+</li>
+<li>
+<p><a href="https://github.com/PowerShell/PowerShell-Docs">https://github.com/PowerShell/PowerShell-Docs</a></p>
+</li>
+<li>
+<p><a href="https://github.com/PowerShell/xActiveDirectory">xActiveDirectory</a></p>
+</li>
+<li>
+<p><a href="https://technet.microsoft.com/en-us/library/ff730936.aspx">Creating Formatted HTML Output</a></p>
+</li>
+<li><a href="http://windowsitpro.com/blog/linux-powershell-awesome-not-awkward-together">Linux + PowerShell = Awesome, Not Awkward …</a></li></ul>
+                <a class="readmore" href="/2017/06/26/powershell-basic/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

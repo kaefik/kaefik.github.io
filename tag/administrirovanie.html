@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
         <meta charset="utf-8" />
-        <title>Общественная записная книжка</title>
+        <title>Общественная записная книжка - администрирование</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -81,33 +81,11 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2030/12/31/navigation/">Обо мне.</a></h1>
-<footer class="post-info">
-        <span>Вт 31 декабря 2030</span>
-<span>| tags: <a href="/tag/glavnaia-stranitsa.html">главная страница</a></span>
-</footer><!-- /.post-info --><p>Я, Сайфутдинов Ильнур.
-Немного обо мне: админю, программирую, учу языки, немного картографирую.</p>
-<ul>
-<li><strong>GitHub</strong> :<a href="https://github.com/kaefik">https://github.com/kaefik</a></li>
-<li><strong>Twitter</strong> :<a href="https://twitter.com/oILnur">https://twitter.com/oILnur</a></li>
-<li><strong>E-mail</strong> :<a href="mailto:ilnursoft@gmail.com">ilnursoft@gmail.com</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/12/20/config-mouse-keys/" rel="bookmark"
-                           title="Permalink to Настройка дополнительных клавиш мыши в ubuntu (linux)">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="/2019/12/20/config-mouse-keys/">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
 <footer class="post-info">
         <span>Пт 20 декабря 2019</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/mysh.html">мышь</a><a href="/tag/linux.html">linux</a><a href="/tag/mouse.html">mouse</a><a href="/tag/ubuntu.html">ubuntu</a></span>
-</footer><!-- /.post-info -->                <p><strong>Полезные ссылки:</strong></p>
+</footer><!-- /.post-info --><p><strong>Полезные ссылки:</strong></p>
 <ul>
 <li><a href="https://zepete.livejournal.com/151204.html">Переназначение кнопок мыши в linux. - Мысли злого плебея — ЖЖ</a></li>
 <li><a href="https://tuksik.ru/xbindkeys/">https://tuksik.ru/xbindkeys/</a></li>
@@ -124,28 +102,48 @@ sudo apt install xautomation-
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
-                <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE <span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
+</pre></div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/12/16/machine-learning/" rel="bookmark"
-                           title="Permalink to Машинное обучение, возможно и не машинное">Машинное обучение, возможно и не машинное</a></h1>
-                </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Пн 16 декабря 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/data.html">data</a><a href="/tag/datascine.html">datascine</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->                <p><strong>Данные</strong></p>
+<p>с помощью данной команды у моей мыши определились дополнительны кнопки: Вперёд  - button9, Назад - button8</p>
 <ul>
-<li><a href="https://habr.com/ru/company/edison/blog/480408/">52 датасета для тренировочных проектов</a></li>
+<li>
+<p>создать текстовый файл <strong>~/.xbindkeysrc</strong></p>
+</li>
+<li>
+<p>Будем эмулировать нажатия кнопок с помощью xte.
+Можно использовать любую в качестве первой строки. Во второй строке описываетсмя нажатая комбинация кнопок. Для мыши она выглядит так: "b:&lt;номер кнопки мыши&gt;".</p>
+</li>
+<li>Содержимое файла .xbindkeysrc</li>
 </ul>
-                <a class="readmore" href="/2019/12/16/machine-learning/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<div class="highlight"><pre><span></span><span class="c1">#Launch Quake Terminal</span>
+<span class="s2">&quot;xte &#39;keydown F1&#39; &#39;keyup F1&#39;&quot;</span>
+b:8
+<span class="c1">#Launch Dolphin file manager</span>
+<span class="s2">&quot;dolphin&quot;</span>
+b:9
+</pre></div>
+
+
+<ul>
+<li>запускаем программу  xbindkeys</li>
+</ul>
+<p>Настроим чтобы после перезагрузки запускался, необходимо создать ярлык (текстовый файл с расширением .desktop) в автозагрузке (папке "~/.config/autostart/").</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>Application
+<span class="nv">Exec</span><span class="o">=</span>xbindkeys
+X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
+<span class="nv">NoDisplay</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">Hidden</span><span class="o">=</span><span class="nb">false</span>
+<span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;mouse button exchange&quot;</span>
+<span class="nv">Comment</span><span class="o">=</span><span class="s2">&quot;переназначение доп клавиш мыши&quot;</span>
+X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>    
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
 
             <li><article class="hentry">
                 <header>
@@ -164,27 +162,6 @@ sudo apt install xautomation-
 <li><a href="https://github.com/matchai/spacefish">SpaceFish</a>- Fish Shell prompt for Astronauts.</li>
 </ul>
                 <a class="readmore" href="/2019/12/04/fishka-linux/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/10/08/minecraft-python3/" rel="bookmark"
-                           title="Permalink to Minecraft + Python3">Minecraft + Python3</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Вт 08 октября 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/minecraft.html">minecraft</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->                <p><strong>Полезные ссылки</strong> </p>
-<ul>
-<li><a href="https://www.minecraft.net/ru-ru/">MineCraft</a></li>
-<li><a href="https://www.spigotmc.org/">Сервер Minecraft</a></li>
-<li><a href="https://www.wiley.com/en-ru/Adventures+in+Minecraft,+2nd+Edition-p-9781119439585">Вэйл Д., О'Хэнлон М. - Minecraft. Программируй свой мир (Вы и ваш ребенок) - 2018</a></li>
-<li><a href="https://adventuresinminecraft.github.io/">Starter Kits for Adventures in Minecraft</a></li>
-</ul>
-                <a class="readmore" href="/2019/10/08/minecraft-python3/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
@@ -300,50 +277,116 @@ sudo apt install xautomation-
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/2019/06/10/python-and-subprocess/" rel="bookmark"
-                           title="Permalink to Python and subprocess">Python and subprocess</a></h1>
+                    <h1><a href="/2018/04/14/socksproxy-3proxy/" rel="bookmark"
+                           title="Permalink to Поднимаем приватный socks/proxy-сервер на базе 3Proxy">Поднимаем приватный socks/proxy-сервер на базе 3Proxy</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Пн 10 июня 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/subprocess.html">subprocess</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://docs.python.org/3/library/subprocess.html?highlight=subprocess#replacing-bin-sh-shell-backquote">module subprocess</a></li>
-<li><a href="http://queirozf.com/entries/python-3-subprocess-examples">expamle using subprocess</a></li>
-<li>Использование python для взаимодействия с ffmpeg -<a href="http://rus-linux.net/MyLDP/mm/Hacking_FFmpeg_with_Python_part_1.html">Часть 1</a>,<a href="http://rus-linux.net/MyLDP/mm/Hacking_FFmpeg_with_Python_part_2.html">Часть 2</a></li>
-</ul>
-                <a class="readmore" href="/2019/06/10/python-and-subprocess/">read more</a>
+        <span>Сб 14 апреля 2018</span>
+<span>| tags: <a href="/tag/3proxy.html">3proxy</a><a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <p>оригинальная статья:</p>
+<p><a href="https://bogachev.biz/2018/04/07/%D0%9F%D0%BE%D0%B4%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D1%8B%D0%B9-socks-proxy-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B5-3Proxy/">https://bogachev.biz/2018/04/07/%D0%9F%D0%BE%D0%B4%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D1%8B%D0%B9-socks-proxy-%D1%81%D0%B5%D1%80 …</a></p>
+                <a class="readmore" href="/2018/04/14/socksproxy-3proxy/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/2019/06/07/python3-tricks/" rel="bookmark"
-                           title="Permalink to трюки с Python3">трюки с Python3</a></h1>
+                    <h1><a href="/2018/04/05/docker/" rel="bookmark"
+                           title="Permalink to Docker">Docker</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Пт 07 июня 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a><a href="/tag/tricks.html">tricks</a></span>
-</footer><!-- /.post-info -->                <h2><strong>Объединение строк</strong></h2>
-<p>В программном коде нередко приходится сталкиваться с конкатенацией строк при помощи знака сложения. Создание строки из списка нескольких подстрок удобнее осуществить при помощи строкового метода join:</p>
-<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;прекрасный&quot;</span><span class="p">,</span> <span class="s2">&quot;язык.&quot;</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-</pre></div>
+        <span>Чт 05 апреля 2018</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/docker.html">docker</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://tproger.ru/translations/how-to-start-using-docker/">Как использовать Docker</a></li>
+<li><a href="https://ivan.bessarabov.ru/blog/how-to-run-cron-in-docker">Как запустить cron в docker</a></li>
+<li><a href="https://habrahabr.ru/company/flant/blog/336654/">Шпаргалка по Docker</a></li>
+<li><a href="https://habrahabr.ru/post/279659/">Быстрый запуск и использование своего открытого docker-registry</a></li>
+<li><a href="https://docs.docker.com/registry/deploying/">Deploy a registry server</a></li>
+<li><a href="http://boot2docker.io/">boot2docker</a>   is a lightweight Linux distribution based on Tiny Core Linux made specifically to run Docker containers. It runs completely from RAM, weighs ~27MB and boots …</li></ul>
+                <a class="readmore" href="/2018/04/05/docker/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2018/01/17/bash-shell/" rel="bookmark"
+                           title="Permalink to Bash скрипты">Bash скрипты</a></h1>
+                </header>
 
-<p>Пример посложнее с методом join – конвертирование списка чисел в строку:</p>
-<div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4 …</span></pre></div>
-                <a class="readmore" href="/2019/06/07/python3-tricks/">read more</a>
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 17 января 2018</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/bash.html">bash</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://learnxinyminutes.com/docs/ru-ru/bash-ru/">Шпаргалка по Bash</a></li>
+</ul>
+                <a class="readmore" href="/2018/01/17/bash-shell/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2018/01/03/windows-install-tricks/" rel="bookmark"
+                           title="Permalink to Проблема «Программе установки не удалось создать новый или найти существующий системный раздел»?">Проблема «Программе установки не удалось создать новый или найти существующий системный раздел»?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Ср 03 января 2018</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/windows.html">windows</a><a href="/tag/tricks.html">tricks</a></span>
+</footer><!-- /.post-info -->                <p><strong>источник:</strong> <a href="http://computerinfo.ru/ne-udalos-sozdat-novyj-ili-najti-sushhestvuyushhij-razdel/">http://computerinfo.ru/ne-udalos-sozdat-novyj-ili-najti-sushhestvuyushhij-razdel/</a></p>
+<ol>
+<li>
+<p>Вставляете загрузочную флешку в компьютер и загружаетесь с нее;</p>
+</li>
+<li>
+<p>При появлении окна с выбором диска нажимаете клавиши  Shift+F10 для открытия командной строки</p>
+</li>
+<li>
+<p>В командной строке прописываем команду:</p>
+</li>
+</ol>
+<p><code>diskpart</code></p>
+<ol>
+<li>Командная строка теперь использует дисковую утилиту DISKPART, далее пишем команду: </li>
+</ol>
+<p><code>list disk</code></p>
+<p>Данная команда показывает все …</p>
+                <a class="readmore" href="/2018/01/03/windows-install-tricks/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/12/30/fedora-atomic/" rel="bookmark"
+                           title="Permalink to Fedora Atomic">Fedora Atomic</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Сб 30 декабря 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/atomic.html">atomic</a><a href="/tag/docker.html">docker</a><a href="/tag/fedora.html">fedora</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <h2>Atomic Host из проекта Project Atomic</h2>
+<p>это легкая, неизменяемая платформа, созданная с единственной целью запуска приложений в контейнерах.
+Версия Atomic Host для Fedora использует тот же репозиторий пакетов, что и Fedora Server, и предоставляет новейшие версии Atomic.</p>
+<h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://getfedora.org/ru/atomic/">https://getfedora.org/ru/atomic/</a></li>
+<li><a href="http://www.projectatomic.io/">Building the Next Generation Container OS …</a></li></ul>
+                <a class="readmore" href="/2017/12/30/fedora-atomic/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 12
-        <a href="/index2.html">&raquo;</a>
+    Page 1 / 2
+        <a href="/tag/administrirovanie2.html">&raquo;</a>
 </p>
             </section><!-- /#content -->
         <section id="extras" class="body">

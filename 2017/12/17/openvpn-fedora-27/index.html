@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Установка и настройка OpenVPN в Fedora 27</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li class="active"><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/12/17/openvpn-fedora-27/" rel="bookmark"
+           title="Permalink to Установка и настройка OpenVPN в Fedora 27">Установка и настройка OpenVPN в Fedora 27</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Вс 17 декабря 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/openvpn.html">openvpn</a><a href="/tag/vpn.html">vpn</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a></span>
+</footer><!-- /.post-info -->      <p><strong>источник:</strong> <a href="https://chichivica.github.io/2017/08/02/Install-OpenVPN-on-Fedora-26/">Install OpenVPN on Fedora 26</a>- оказалось некоторые неточности которые мешают воспроизвести инструкцию как она есть. Таким образом, ниже инструкция которая поможет избежать проблем при настройке сервера и клиента с которым я столкнулся.</p>
+<ul>
+<li><a href="https://tecadmin.net/install-openvpn-server-ubuntu/">How to Install and Configure OpenVPN Server on Ubuntu 16.04, 14.04</a></li>
+</ul>
+<h2>Настройка сервера OpenVPN</h2>
+<p>1) Установка:</p>
+<div class="highlight"><pre><span></span>sudo dnf install openvpn easy-rsa
+</pre></div>
+
+
+<p>2) Копируем rsa скрипты в домашнюю папку:</p>
+<div class="highlight"><pre><span></span>cp -ai /usr/share/easy-rsa/3/* ~/openvpn-ca
+<span class="nb">cd</span> ~/openvpn-ca
+</pre></div>
+
+
+<p>3) Создаем новый PKI и генерируем CA парыключей/сертификаты</p>
+<div class="highlight"><pre><span></span>./easyrsa init-pki
+./easyrsa build-ca nopass
+</pre></div>
+
+
+<p>4) Генерация ключей и сертификатов сервера</p>
+<div class="highlight"><pre><span></span>./easyrsa build-server-full server nopass
+</pre></div>
+
+
+<p>5) Генерация ключей и сертификата клиенту</p>
+<div class="highlight"><pre><span></span>./easyrsa build-client-full client1 nopass
+</pre></div>
+
+
+<p>6) Generate a strong Diffie-Hellman keys</p>
+<div class="highlight"><pre><span></span>./easyrsa gen-dh
+</pre></div>
+
+
+<p>7) Generate HMAC signature to strengthen the server’s TLS integrity verification </p>
+<div class="highlight"><pre><span></span>capabilities
+openvpn --genkey --secret pki/ta.key
+</pre></div>
+
+
+<p>8) Перед настрйокой OpenVpn сервера нужно скопировать все сгенерированные ключи и сертификаты сервера  ca.crt ca.key server.crt server.key ta.key dh.pem в папку  /etc/openvpn/server</p>
+<div class="highlight"><pre><span></span>sudo cp ~/openvpn-ca/pki/issued/server.crt /etc/openvpn/server
+sudo cp ~/openvpn-ca/pki/private/server.key /etc/openvpn/server
+sudo cp ~/openvpn-ca/pki/private/ca.key /etc/openvpn/server
+sudo cp ~/openvpn-ca/pki/ca.crt /etc/openvpn/server
+sudo cp ~/openvpn-ca/pki/dh.pem /etc/openvpn/server
+sudo cp ~/openvpn-ca/pki/ta.key /etc/openvpn/server
+</pre></div>
+
+
+<p>9) Конфигурация сервера, сначала скопируем типовую конфигурацию:</p>
+<div class="highlight"><pre><span></span>sudo cp /usr/share/doc/openvpn/sample/sample-config-files/server.conf /etc/openvpn/server
+</pre></div>
+
+
+<p>10) Поменяем некоторые строки в типовой конфигурации</p>
+<ul>
+<li>добавим строки в конец файла</li>
+</ul>
+<p>key-direction 0
+auth SHA256</p>
+<ul>
+<li>удалите символ  ; перед строками которые ниже:</li>
+</ul>
+<p>user nobody
+group nobody</p>
+<p>10’) для пропускания всего трафика через VPN, удалите символ ;перед строками
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 208.67.222.222"
+push "dhcp-option DNS 208.67.220.220"</p>
+<p>10’’)[optional] Adjust port and protocol if you don’t wish to use default
+port 443
+proto tcp</p>
+<p>and if you have server.crt and server.key with the different name point to them here
+cert myservername.crt
+key myservername.key
+11) Allow IP Forwarding. This is fairly essential to the functionality we want our VPN server to provide.
+sudo nano /etc/sysctl.conf
+and drop a line there
+net.ipv4.ip_forward=1
+activate that:
+sudo sysctl -p</p>
+<p>12) Настройка firewalld для работы с  OpenVPN</p>
+<div class="highlight"><pre><span></span>sudo firewall-cmd --permanent --add-service openvpn
+sudo firewall-cmd --permanent --add-masquerade
+</pre></div>
+
+
+<p>если firewalld  не установлен, то установите и настройте автозапуск</p>
+<p>если firewalld  не установлен, то установите и настройте автозапуск</p>
+<p>13) Настрйоим наш systemd сервис:</p>
+<div class="highlight"><pre><span></span>sudo ln -s /lib/systemd/system/openvpn-server<span class="se">\@</span>.service /etc/systemd/system/multi-user.target.wants/openvpn-server<span class="se">\@</span>server.service
+</pre></div>
+
+
+<p>NB! server corresponts with the configuration file name in /etc/openvpn/server such as server.conf. So if you have myserver.conf you have to replace server with myserver</p>
+<p>14) Укажем чтобы OpenVPN загружался  автоматически при заупске системы и запустим его.</p>
+<div class="highlight"><pre><span></span>sudo systemctl -f <span class="nb">enable</span> openvpn-server@server.service
+sudo systemctl start openvpn-server@server.service
+</pre></div>
+
+
+<p>Если все запустилось без ошибок, то таким образом сконфигурировали OpenVPN сервер.</p>
+<p><strong>Настройка конфигурации клиента OpenVPN</strong>Мы выше уже сгенирировали файлы client1.crt and client1.key.  Сейчас будем создавать конфигурационный файл *.ovpn который объдиняет ваши сертификаты и ключи.</p>
+<p>1) Сначала  скопируем в отдельную папку все сгенирированные сущности которые нужны для клиента</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/client-configs
+mkdir keys
+cp ~/openvpn-ca/pki/ca.crt ~/client-configs/keys
+cp ~/openvpn-ca/pki/ta.key ~/client-configs/keys
+cp ~/openvpn-ca/pki/private/client1.key ~/client-configs/keys
+cp ~/openvpn-ca/pki/issued/client1.crt ~/client-configs/keys
+</pre></div>
+
+
+<p>2) Скопируем шаблон типовой конфигурации клиента</p>
+<div class="highlight"><pre><span></span>cp /usr/share/doc/openvpn/sample/sample-config-files/client.conf ~/client-configs/base.conf
+</pre></div>
+
+
+<p>3) Откроем в вашем тектовом редакторе
+nano ~/client-configs/base.conf</p>
+<ul>
+<li>и внесем некоторые изменения</li>
+</ul>
+<p>remote server_IP_address 1194  #нужно заменить server_IP_address на ваш IP адрес сервера
+proto udp # update with specified protocol</p>
+<ul>
+<li>удалите символ ; перед следующими строками</li>
+</ul>
+<p>user nobody
+group nobody</p>
+<ul>
+<li>и закоментируйте следующие строки</li>
+</ul>
+<div class="highlight"><pre><span></span># ca ca.crt
+# cert client.crt
+# key client.key
+# tls-auth ta.key 1
+</pre></div>
+
+
+<ul>
+<li>и в конце файла конфигурации добавьте строки (обязательно в конце конфигурации должна быть пустая строка чтобы файл конфигурации был корректным):</li>
+</ul>
+<p>auth SHA256
+key-direction 1</p>
+<p>5)  Далее мы создадим простой скрипт который объединяет нашу конфигурацию клиента с сертификатами и ключами клиента, итоговый конфигурационный файл будет создан в папке ~/client-configs/ .</p>
+<ul>
+<li>созадим файл:</li>
+</ul>
+<div class="highlight"><pre><span></span>nano ~/client-configs/make_config.sh
+</pre></div>
+
+
+<ul>
+<li>
+<p>скоруйте в созданный файл make_config.sh следующее содержимое</p>
+</li>
+<li>
+<p>```
+     BASE_CONFIG=~/client-configs/base.conf
+     KEY_DIR=~/client-configs/keys
+     OUTPUT_DIR=~/client-configs
+     cat ${BASE_CONFIG} \
+     &lt;(echo -e '<ca>') \
+     ${KEY_DIR}/ca.crt \
+     &lt;(echo -e '</ca>\n<cert>') \
+     ${KEY_DIR}/${1}.crt \
+     &lt;(echo -e '</cert>\n<key>') \
+     ${KEY_DIR}/${1}.key \
+     &lt;(echo -e '</key>\n<tls-auth>') \
+     ${KEY_DIR}/ta.key \
+     &lt;(echo -e '</tls-auth>') \</p>
+<blockquote>
+<p>${OUTPUT_DIR}/${1}.ovpn
+ ```</p>
+</blockquote>
+</li>
+<li>
+<p>сделаем файл запускаемым</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>chmod 700 ~/client-configs/make_config.sh
+</pre></div>
+
+
+<p>6) Запусти файл с параметром client1 :</p>
+<div class="highlight"><pre><span></span>./make_config.sh client1
+</pre></div>
+
+
+<p>Если у вас все получилось, то сгенирируется файл client1.ovpn в папку ~/client-configs/</p>
+<h3>Использование файла конфигурации для различных платформ</h3>
+<p>скопируйте на ваше устройство файл конфигурации client1.ovpn , данный файл не нужно выкладывать в общий доступ, так как если он попадет к "плохим" людям, то они могут расшифровать весь ваш трафик.</p>
+<ul>
+<li><strong>клиент Fedora 27: </strong>Заходим в Настройки системы -&gt;  Сеть -&gt; в разделе VPN нажимаем "+" -&gt; выбираем Импортировать из файла -&gt; указываем файл client1.ovpnесли выбрали правильный файл конфигурации, то настрйоки автоматически настроятся и нажимаете сохранить.Чтобы воспользоваться VPN нужно его активировать.</li>
+<li><strong>клиент Android: </strong>устанавливаем программу<a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn">OpenVPN Connect</a> из Play Marketa.далее просто находим файл конфигурации в файловом менеджере и нажимаем на файл client1.ovpn, автоматически откроется программа OpenVPN Connect и можно подключиться к OpenVPN серверу.</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

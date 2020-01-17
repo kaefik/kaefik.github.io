@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>5. Проверка конфигурации ядра (РЕДАКТИРОВАНИЕ)</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/14/5-check-config-kernel/" rel="bookmark"
+           title="Permalink to 5. Проверка конфигурации ядра (РЕДАКТИРОВАНИЕ)">5. Проверка конфигурации ядра (РЕДАКТИРОВАНИЕ)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Сб 14 января 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->      <p>После сборки нужно проверить конфигурацию ядра, я исправлял по одной опции, и заново запускал <strong>make hybris-boot</strong> и <strong>make hybris</strong> - recovery, если все собиралось без ошибок,  после этого снова проверял конфиг.</p>
+<div class="highlight"><pre><span></span>HABUILD_SDK $ <span class="nb">cd</span> <span class="nv">$ANDROID_ROOT</span> 
+hybris/mer-kernel-check/mer_verify_kernel_config ./out/target/product/<span class="nv">$DEVICE</span>/obj/KERNEL_OBJ/.config
+</pre></div>
+
+
+<p>Файл конфигурации находится тут: 
+$ANDROID_ROOT/kernel/asus/msm8916/arch/arm64/configs/cyanogenmod_Z00L_defconfig </p>
+<p>Команда поиска файла конфигурации find . -type f -name "cyanogenmod_Z00L*"</p>
+<h3>Добавлены следующие параметры в конфиг ядра:</h3>
+<div class="highlight"><pre><span></span><span class="nv">CONFIG_SECURITY_SELINUX_BOOTPARAM</span><span class="o">=</span>y
+<span class="nv">CONFIG_IKCONFIG_PROC</span><span class="o">=</span>y
+<span class="nv">CONFIG_DUMMY</span><span class="o">=</span>n
+<span class="nv">CONFIG_ANDROID_LOW_MEMORY_KILLER</span><span class="o">=</span>n
+<span class="nv">CONFIG_DEVTMPFS</span><span class="o">=</span>y
+<span class="nv">CONFIG_FHANDLE</span><span class="o">=</span>y
+<span class="nv">CONFIG_VT</span><span class="o">=</span>y
+<span class="nv">CONFIG_SYSVIPC</span><span class="o">=</span>y
+<span class="nv">CONFIG_DEVTMPFS_MOUNT</span><span class="o">=</span>y
+</pre></div>
+
+
+<h3>Исправление ошибок с конфиге после проверки:</h3>
+<ul>
+<li>ERROR: <strong>CONFIG_FHANDLE</strong> is invalid (СДЕЛАНО) It is unset Allowed values : y Comment says: systemd: http://cgit.freedesktop.org/systemd/systemd/commit/README?id=001809282918f273d372f1ee09d10b783c18a474 </li>
+<li>ERROR: <strong>CONFIG_ANDROID_LOW_MEMORY_KILLER</strong> is invalid Value is: y Allowed values : n Comment says: not tested with Mer </li>
+<li>ERROR: <strong>CONFIG_VT</strong> is invalid     <br>
+  It is unset Allowed values : y Comment says: Required for virtual consoles </li>
+</ul>
+<p>При компиляции выходит ошибка: </p>
+<div class="highlight"><pre><span></span> LD      init/built-in.o drivers/built-in.o: In function `vgacon_init&#39;: sensors_ssc.c:(.text+0x24664): undefined reference to `screen_info&#39; sensors_ssc.c:(.text+0x24668): undefined reference to `screen_info&#39; drivers/built-in.o: In function `vgacon_startup&#39;: sensors_ssc.c:(.text+0x24694): undefined reference to `screen_info&#39; sensors_ssc.c:(.text+0x246a0): undefined reference to `screen_info&#39; sensors_ssc.c:(.text+0x24720): undefined reference to `screen_info&#39; drivers/built-in.o:sensors_ssc.c:(.text+0x24a7c): more undefined references to `screen_info&#39; follow make[2]: *** [vmlinux] Error 1 make[1]: *** [sub-make] Error 2 make[1]: Leaving directory `/path/to/mer/android/droid/kernel/asus/msm8916&#39; make: *** [TARGET_KERNEL_BINARIES] Error 2 
+</pre></div>
+
+
+<p><strong>Решение:</strong></p>
+<p>Файл находится ./kernel/asus/msm8916/drivers/sensors/sensors_ssc.c в который нужно добавить эти строчки:</p>
+<div class="highlight"><pre><span></span><span class="c1">#include &lt;linux/screen_info.h&gt; </span>
+
+<span class="c1">#ifdef CONFIG_VT</span>
+ struct screen_info screen_info<span class="p">;</span>
+<span class="c1">#endif   </span>
+</pre></div>
+
+
+<hr>
+<h2>Вот здесь расположен <a href="https://yadi.sk/d/30uDZ5Yy39eE2e">последний конфиг для Z00L</a>.</h2>
+<p>проверка конфигурации ядра выдает следующие предупреждения, ошибки исправлены.</p>
+<div class="highlight"><pre><span></span>HABUILD_SDK <span class="o">[</span>Z00L<span class="o">]</span> ilnur@ubuntu:~/to/mer/android/droid$ hybris/mer-kernel-check/mer_verify_kernel_config ./out/target/product/<span class="nv">$DEVICE</span>/obj/KERNEL_OBJ/.config  
+WARNING: CONFIG_WATCHDOG_NOWAYOUT is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: If device uses watchdogs with dsme <span class="o">(</span>https://github.com/nemomobile/dsme<span class="o">)</span>, this option should be enabled or watchdog does not protect the device in <span class="k">case</span> dsme crashes.
+
+WARNING: CONFIG_CGROUP_DEVICE is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_BT_HCIUART_H4 is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: Bluez <span class="o">(</span>optional<span class="o">)</span>: Needed <span class="k">if</span> bluez used as bluetooth stack
+
+WARNING: CONFIG_BLK_CGROUP is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_CGROUP_MEM_RES_CTLR_KMEM is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_NETPRIO_CGROUP is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_FANOTIFY is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: optional, required <span class="k">for</span> systemd readahead.
+
+WARNING: CONFIG_LBDAF is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: ext4 filesystem requires this in order to support filesysetms with huge_file feature, which is enabled by default by mke2fs.ext4
+
+WARNING: CONFIG_CGROUP_PERF is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_CGROUP_MEM_RES_CTLR_SWAP is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_CGROUP_MEM_RES_CTLR is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_AUDIT is invalid
+Value is: y
+Allowed values : n, !
+Comment says: systemd: Either disable here or in cmdline http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>77b6e19458f37cfde127ec6aa9494c0ac45ad890
+
+WARNING: CONFIG_BT_HCIUART is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: Bluez <span class="o">(</span>optional<span class="o">)</span>: Needed <span class="k">if</span> bluez used as bluetooth stack
+
+WARNING: CONFIG_FW_LOADER_USER_HELPER is invalid
+Value is: y
+Allowed values : n, !
+Comment says: it<span class="err">&#39;</span>s actually needed by some Lollipop based devices<span class="p">;</span> systemd<span class="o">(</span>optional<span class="o">)</span>: http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>713bc0cfa477ca1df8769041cb3dbc83c10eace2
+
+WARNING: CONFIG_AUTOFS4_FS is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, m, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>713bc0cfa477ca1df8769041cb3dbc83c10eace2
+
+WARNING: CONFIG_NETFILTER_NETLINK_ACCT is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, m, !
+Comment says: connman <span class="o">(</span>optional<span class="o">)</span>: <span class="k">for</span> routing and statistic support in sessions, http://git.kernel.org/cgit/network/connman/connman.git/commit/README?id<span class="o">=</span>41f37125887cb9208da2441e350e1e3324c17ee6
+
+WARNING: CONFIG_NET_CLS_CGROUP is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+
+WARNING: CONFIG_SCHED_DEBUG is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: systemd-bootchart <span class="o">(</span>optional<span class="o">)</span>: http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>f1c24fea94e19cf2108abbeed1d36ded7102ab98
+
+WARNING: CONFIG_RTC_DRV_CMOS is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+Comment says: optional, but highly recommended
+
+WARNING: CONFIG_NETFILTER_XT_MATCH_NFACCT is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, m, !
+Comment says: connman <span class="o">(</span>optional<span class="o">)</span>: <span class="k">for</span> routing and statistic support in sessions, http://git.kernel.org/cgit/network/connman/connman.git/commit/README?id<span class="o">=</span>41f37125887cb9208da2441e350e1e3324c17ee6
+
+WARNING: CONFIG_CHECKPOINT_RESTORE is invalid
+It is <span class="nb">unset</span>
+Allowed values : y, !
+</pre></div>
+
+
+<p>Comment says: rich-core-dumper (https://github.com/mer-tools/sp-rich-core/) needs this to collect all data for environment recreation.</p>
+<hr>
+<div class="highlight"><pre><span></span><span class="nv">CONFIG_FW_LOADER_USER_HELPER</span><span class="o">=</span>n
+</pre></div>
+
+
+<p><strong>Ошибка:</strong></p>
+<div class="highlight"><pre><span></span>../../../../../../kernel/asus/msm8916/drivers/base/firmware_class.c:1241:9: warning: passing argument <span class="m">2</span> of <span class="s1">&#39;fw_load_from_user_helper&#39;</span> from incompatible pointer <span class="nb">type</span>
+error, forbidden warning: firmware_class.c:1241
+make<span class="o">[</span><span class="m">4</span><span class="o">]</span>: *** <span class="o">[</span>drivers/base/firmware_class.o<span class="o">]</span> Error <span class="m">1</span>
+make<span class="o">[</span><span class="m">3</span><span class="o">]</span>: *** <span class="o">[</span>drivers/base<span class="o">]</span> Error <span class="m">2</span>
+make<span class="o">[</span><span class="m">2</span><span class="o">]</span>: *** <span class="o">[</span>drivers<span class="o">]</span> Error <span class="m">2</span>
+make<span class="o">[</span><span class="m">1</span><span class="o">]</span>: *** <span class="o">[</span>sub-make<span class="o">]</span> Error <span class="m">2</span>
+make<span class="o">[</span><span class="m">1</span><span class="o">]</span>: Leaving directory <span class="sb">`</span>/home/ilnur/to/mer/android/droid/kernel/asus/msm8916<span class="err">&#39;</span>
+
+make: *** <span class="o">[</span>TARGET_KERNEL_BINARIES<span class="o">]</span> Error <span class="m">2</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

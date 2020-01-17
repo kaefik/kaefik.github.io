@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>2. Подготовка Android окружения.</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/14/2-asus-android-env/" rel="bookmark"
+           title="Permalink to 2. Подготовка Android окружения.">2. Подготовка Android окружения.</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Сб 14 января 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->      <h3>Настройте git - система контроля версии</h3>
+<div class="highlight"><pre><span></span>MER_SDK $
+git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
+git config --global user.email <span class="s2">&quot;you@example.com&quot;</span>
+</pre></div>
+
+
+<h3>Нужно установить команду <strong>repo</strong> чтобы можно было получить (синхронизировать) исходники Android</h3>
+<div class="highlight"><pre><span></span>MER_SDK $
+mkdir ~/bin <span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span> 
+curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo 
+chmod a+x ~/bin/repo
+</pre></div>
+
+
+<h3>Инициализируем репозиторий на ветку cm-13.0</h3>
+<div class="highlight"><pre><span></span>HABUILD_SDK $
+hadk 
+sudo mkdir -p <span class="nv">$ANDROID_ROOT</span> 
+sudo chown -R <span class="nv">$USER</span> <span class="nv">$ANDROID_ROOT</span> 
+<span class="nb">cd</span> <span class="nv">$ANDROID_ROOT</span>
+<span class="c1"># делаю синхронизацию с CM-13.0</span>
+repo init -u git://github.com/mer-hybris/android.git -b hybris-13.0
+</pre></div>
+
+
+<h3>Создадим файл манифеста для сборки андроида, на основе которого будем собирать</h3>
+<div class="highlight"><pre><span></span>HABUILD_SDK $
+hadk
+mkdir <span class="nv">$ANDROID_ROOT</span>/.repo/local_manifests
+</pre></div>
+
+
+<p>Содержимое файла $ANDROID_ROOT/.repo/local_manifests/Z00L.xml :</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;manifest&gt;</span> 
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;device/asus/Z00L&quot;</span> <span class="na">name=</span><span class="s">&quot;CyanogenMod/android_device_asus_Z00L&quot;</span> <span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;device/asus/msm8916-common&quot;</span> <span class="na">name=</span><span class="s">&quot;CyanogenMod/android_device_asus_msm8916-common&quot;</span> <span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;kernel/asus/msm8916&quot;</span> <span class="na">name=</span><span class="s">&quot;CyanogenMod/android_kernel_asus_msm8916&quot;</span> <span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;/manifest&gt;</span> 
+</pre></div>
+
+
+<h3>Инициализируем дерево исходников андроида (занимает некоторое время)</h3>
+<div class="highlight"><pre><span></span>HABUILD_SDK $    
+hadk
+repo sync --fetch-submodules 
+</pre></div>
+
+
+<p>После синхронизации дерева репозитория cm-13, нам нужно вытащить из устройства проприетарные  драйвера. Это можно сделать подключив устройство через USB и запустить скрипит extarct-files.sh из папки device/asus/Z00L. Нужно скопировать структуру папок и полностью скопировать папки device и vendor</p>
+<p>Полученные данные проприетарных драверов для CM-13 с устройства Z00L (Asus Zenfone 2) лежать <a href="https://yadi.sk/d/lgaEescf39XJbk">тут</a>. </p>
+<h3>Полезные команды</h3>
+<ul>
+<li>Копирование структуры папок без файлов:</li>
+</ul>
+<div class="highlight"><pre><span></span>find . -type d <span class="p">|</span> cpio -pvdm ~/2
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

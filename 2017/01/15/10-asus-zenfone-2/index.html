@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>10. Загрузка полученой прошивки в ASUS Zenfone 2</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/15/10-asus-zenfone-2/" rel="bookmark"
+           title="Permalink to 10. Загрузка полученой прошивки в ASUS Zenfone 2">10. Загрузка полученой прошивки в ASUS Zenfone 2</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Вс 15 января 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->      <p><strong>Важно!!!</strong> перед всеми манипуляциями над вашим устройством нужно сделать бэкап всего, что вам нужно чтобы откатиться при необходимости. Все вы делаете на свой страх и риск.</p>
+<p>В итоге мы имеем:</p>
+<ul>
+<li>
+<p>$ANDROID_ROOT/out/target/product/Z00L/hybris-boot.img</p>
+</li>
+<li>
+<p>$ANDROID_ROOT/out/target/product/Z00L/hybris-recovery.img</p>
+</li>
+<li>
+<p>$ANDROID_ROOT/sfe-Z00L-2.0.5.6-my1/sfe-Z00L-2.0.5.6-my1.tar.bz2 - образ rootfs</p>
+</li>
+<li>
+<p>Распаковка rootfs через adbMER_SDK $</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>adb push sfe-Z00L-2.0.5.6-my1.tar.bz2 /sdcard/
+adb shell
+su
+mkdir -p /data/.stowaways/sailfishos
+tar --numeric-owner -xjvf /storage/9CB2-B41E/sfe-Z00L-2.0.5.6-my1.tar.bz2
+-C /data/.stowaways/sailfishos
+</pre></div>
+
+
+<ul>
+<li>Прошивка boot image через adb</li>
+</ul>
+<div class="highlight"><pre><span></span>MER_SDK <span class="nv">$adb</span> push hybris-boot.img /sdcard/adb shellsudd <span class="k">if</span><span class="o">=</span>/storage/9CB2-B41E/hybris-boot.img <span class="nv">of</span><span class="o">=</span>/dev/block/
+                   mmcblk0p37
+</pre></div>
+
+
+<p><strong>Сделал архив с образом rootfs и</strong> hybris-boot.img  -&gt;<a href="https://yadi.sk/d/U9KDD0_f3AecSh">скачать альфу версию прошивки можно вот тут</a>. Эта прошивка отправляет устройство в bootloop.</p>
+<p>Далее будем читать логи и смотреть что случилось и что нужно поправить.</p>
+<p>источник инфы по чтению логов <a href="http://neochapay.ru/blogs/zapiski-utkonosa-programmista/sailfish-os-hardware-adaptation-developm-74.html">тут</a>.</p>
+<p>Итак,есть устройство...и естественно оно не загружается...ну так бывает при портировании. Как добраться до логов?
+<strong>Шаг 1</strong> : Правим настройки журнала systemd
+Заходим в рековери, кастомное</p>
+<div class="highlight"><pre><span></span>adb shell
+vi /data/.stowaways/sailfishos/etc/systemd/journald.conf
+</pre></div>
+
+
+<p>И меняем параметр Storage на persistent
+<strong>Шаг 2:</strong> Перезагружаемся...ждём...
+<strong>Шаг 3:</strong> Перезагружаемся в рековери заново
+<strong>Шаг 4:</strong> Чрутуемся в sailfish</p>
+<div class="highlight"><pre><span></span>adb shell
+su
+mount -o <span class="nb">bind</span> /dev /data/.stowaways/sailfishos/dev
+mount -o <span class="nb">bind</span> /proc /data/.stowaways/sailfishos/proc
+mount -o <span class="nb">bind</span> /sys /data/.stowaways/sailfishos/sys
+chroot /data/.stowaways/sailfishos/ /bin/su -
+</pre></div>
+
+
+<p><strong>Шаг 5</strong> : смотрим наш журнал:</p>
+<div class="highlight"><pre><span></span>journalctl -b
+</pre></div>
+
+
+<p>у меня почему, то журнал оказался не найден(</p>
+<p>Буду копать дальше....</p>
+<p>Информация к размышлению:</p>
+<p><strong>PS.</strong> из официальной документации</p>
+<h3>9.2.1 Bootloops</h3>
+<p>If device bootloops, there might be several reasons:</p>
+<ul>
+<li>
+<p>If it immediately reboots (and especially if it later boots to recovery mode), SELinux
+  is enabled, and all ports based on Android 4.4 or newer need to disable it.
+  Add
+  <em>CONFIG_SECURITY_SELINUX_BOOTPARAM=y</em> to your kernel defconfig, and selinux=0
+  to your kernel command line (usually in BOARD_KERNEL_CMDLINE under $AN-
+  DROID_ROOT/device/$VENDOR/<em>/BoardConfig</em>.mk)</p>
+</li>
+<li>
+<p>If it reboots after a minute or so, be quick and telnet into device, then do:</p>
+</li>
+</ul>
+<p><code>bash
+  ln -s /dev/null /etc/systemd/system/ofono.service</code></p>
+<ul>
+<li>Check if your /system is mounted by systemd (system.mount unit)</li>
+</ul>
+<p><strong>Решение:</strong> </p>
+<ul>
+<li>
+<div class="highlight"><pre><span></span>          device/asus/msm8916-common/BoardConfigCommon.mk
+</pre></div>
+
+
+</li>
+</ul>
+<p>в строке которая ниже добавлен параметр:</p>
+<div class="highlight"><pre><span></span>selinux=0
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 selinux=0
+</pre></div>
+
+
+<p>​    </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

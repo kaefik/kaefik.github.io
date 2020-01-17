@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>6. Установка SCRATCHBOX2</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/14/6-scratchbox2/" rel="bookmark"
+           title="Permalink to 6. Установка SCRATCHBOX2">6. Установка SCRATCHBOX2</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Сб 14 января 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->      <h2><a href="https://en.wikipedia.org/wiki/Scratchbox2">Scratchbox2</a></h2>
+<p>is a cross-compilation toolkit designed to make embedded Linux application development easier. It also provides a full set of tools to integrate and cross-compile an entire Linux distribution.</p>
+<h3>вот что я рекомендую сделать</h3>
+<p>скрипт со следующим содержимым, здесь я указываю явно Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2</p>
+<p>если изменится версия, то рекомендую смотреть ссылки на sb2 в файле <a href="http:**//**releases.sailfishos.org**/**sdk**/**latest**/**targets**/**targets.json">http:<strong>//</strong>releases.sailfishos.org<strong>/</strong>sdk<strong>/</strong>latest<strong>/</strong>targets<strong>/</strong>targets.json</a></p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>
+<span class="nv">SFE_SB2_TARGET</span><span class="o">=</span><span class="nv">$MER_ROOT</span>/targets/<span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span>
+<span class="c1"># TARBALL_URL=http://releases.sailfishos.org/sdk/latest/targets/targets.json</span>
+<span class="c1"># TARBALL_URL=http://releases.sailfishos.org/sdk/targets-1611/Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2</span>
+<span class="c1"># TARBALL=$(curl $TARBALL_URL)</span>
+curl -O http://releases.sailfishos.org/sdk/targets-1611/Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2
+sudo mkdir -p <span class="nv">$SFE_SB2_TARGET</span>
+sudo tar --numeric-owner -pxjf <span class="k">$(</span>basename Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2<span class="k">)</span> -C <span class="nv">$SFE_SB2_TARGET</span>
+sudo chown -R <span class="nv">$USER</span> <span class="nv">$SFE_SB2_TARGET</span>
+<span class="nb">cd</span> <span class="nv">$SFE_SB2_TARGET</span>
+grep :<span class="k">$(</span>id -u<span class="k">)</span>: /etc/passwd &gt;&gt; etc/passwd
+grep :<span class="k">$(</span>id -g<span class="k">)</span>: /etc/group &gt;&gt; etc/group
+sb2-init -d -L <span class="s2">&quot;--sysroot=/&quot;</span> -C <span class="s2">&quot;--sysroot=/&quot;</span> -c /usr/bin/qemu-arm-dynamic -m sdk-build  -n -N -t / <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> /opt/cross/bin/<span class="nv">$PORT_ARCH</span>-meego-linux-gnueabi-gcc
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R rpm --rebuilddb
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ar -G http://repo.merproject.org/releases/mer-tools/rolling/builds/<span class="nv">$PORT_ARCH</span>/packages/ mer-tools-rolling
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ref --force
+<span class="c1"># install repo</span>
+<span class="c1"># hadk</span>
+<span class="c1"># sb2 -t $VENDOR-$DEVICE-$PORT_ARCH -m sdk-install -R zypper ar http://repo.merproject.org/obs/nemo:/devel:/hw:/common/sailfish_latest_armv7hl/ sfl</span>
+
+<span class="c1"># sb2 -t $VENDOR-$DEVICE-$PORT_ARCH -m sdk-install -R zypper up</span>
+</pre></div>
+
+
+<h3>из официальной документации()</h3>
+<div class="highlight"><pre><span></span>MERSDK $
+hadk
+<span class="nb">cd</span> <span class="nv">$HOME</span>
+<span class="nv">SFE_SB2_TARGET</span><span class="o">=</span><span class="nv">$MER_ROOT</span>/targets/<span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span>
+<span class="nv">TARBALL_URL</span><span class="o">=</span>http://releases.sailfishos.org/sdk/latest/targets/targets.json
+<span class="nv">TARBALL</span><span class="o">=</span><span class="k">$(</span>curl <span class="nv">$TARBALL_URL</span> <span class="p">|</span> grep <span class="s2">&quot;</span><span class="nv">$PORT_ARCH</span><span class="s2">.tar.bz2&quot;</span> <span class="p">|</span> cut -d<span class="se">\&quot;</span> -f4<span class="k">)</span>
+curl -O <span class="nv">$TARBALL</span>
+sudo mkdir -p <span class="nv">$SFE_SB2_TARGET</span>
+sudo tar --numeric-owner -pxjf <span class="k">$(</span>basename <span class="nv">$TARBALL</span><span class="k">)</span> -C <span class="nv">$SFE_SB2_TARGET</span>
+sudo chown -R <span class="nv">$USER</span> <span class="nv">$SFE_SB2_TARGET</span>
+<span class="nb">cd</span> <span class="nv">$SFE_SB2_TARGET</span>
+grep :<span class="k">$(</span>id -u<span class="k">)</span>: /etc/passwd &gt;&gt; etc/passwd
+grep :<span class="k">$(</span>id -g<span class="k">)</span>: /etc/group &gt;&gt; etc/group
+<span class="c1"># Сообщение: collect2: cannot find &#39;ld&#39; - можно пропустить это не важно</span>
+
+sb2-init -d -L <span class="s2">&quot;--sysroot=/&quot;</span> -C <span class="s2">&quot;--sysroot=/&quot;</span> -c /usr/bin/qemu-arm-dynamic -m sdk-build  -n -N -t / <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> /opt/cross/bin/<span class="nv">$PORT_ARCH</span>-meego-linux-gnueabi-gcc
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R rpm --rebuilddb
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ar -G http://repo.merproject.org/releases/mer-tools/rolling/builds/<span class="nv">$PORT_ARCH</span>/packages/ mer-tools-rolling
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ref --force
+</pre></div>
+
+
+<p>В последних релизах появилась новая зависимость и для неё необходимо добавить свой репозиторий</p>
+<div class="highlight"><pre><span></span>MERSDK $
+hadk
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ar http://repo.merproject.org/obs/nemo:/devel:/hw:/common/sailfish_latest_armv7hl/ sfl
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper up
+</pre></div>
+
+
+<p>​             Более подробно об этой ошибке  <a href="http://neochapay.ru/blogs/zapiski-utkonosa-programmista/hadk-oshibka-nothing-provides-kf5bluezqt.html">тут</a></p>
+<h3>Проверка установленного SCRATCHBOX2, простой программой Hello,World!</h3>
+<div class="highlight"><pre><span></span>MERSDK $
+<span class="nb">cd</span> <span class="nv">$HOME</span>
+
+сat &gt; main.c <span class="s">&lt;&lt; EOF</span>
+<span class="s">#include &lt;stdlib.h&gt;</span>
+<span class="s">#include &lt;stdio.h&gt;</span>
+<span class="s">int main(void) {</span>
+<span class="s">printf(&quot;Hello, world!\n&quot;);</span>
+<span class="s">return EXIT_SUCCESS;</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> gcc main.c -o <span class="nb">test</span>
+</pre></div>
+
+
+<h4>Запуск скомпилированной программы:</h4>
+<div class="highlight"><pre><span></span>sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> ./test
+</pre></div>
+
+
+<p>Если вывело  Hello, world!, то всё ОК.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

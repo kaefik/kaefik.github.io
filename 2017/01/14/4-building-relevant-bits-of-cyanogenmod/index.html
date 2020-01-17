@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>4. Building Relevant Bits of CyanogenMod</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li class="active"><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/01/14/4-building-relevant-bits-of-cyanogenmod/" rel="bookmark"
+           title="Permalink to 4. Building Relevant Bits of CyanogenMod">4. Building Relevant Bits of CyanogenMod</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Сб 14 января 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->      <h2>Решение проблем при сборке hybris-boot.img и hybris-recovery.img</h2>
+<ul>
+<li>для конфигурирования и сборки проделайте следующие команды: </li>
+</ul>
+<p>Чтобы зайти в Ubuntu Chroot:</p>
+<p><code>bash
+  MER_SDK $
+  ubu-chroot -r $MER_ROOT/sdks/ubuntu 
+  HABUILD_SDK $ 
+  hadk
+  source build/envsetup.sh
+  export USE_CCACHE=1
+  breakfast $DEVICE 
+  make -j4 hybris-hal</code></p>
+<p>The relevant output bits will be in out/target/product/$DEVICE/, in particular: </p>
+<ul>
+<li>hybris-boot.img: Kernel and initrd </li>
+<li>hybris-recovery.img: Recovery boot image </li>
+<li>system/ and root/: HAL system libraries and binaries </li>
+</ul>
+<p>Если при выполнении make -j4 hybris-hal выходят ошибки, то нужно заново проделать команды конфигурирования, а уже потом сборки.</p>
+<p>По мере компиляции у меня выходили ошибки по некоторым модулям, типа несоответствие путей/файлов указаных в файлах сборки. </p>
+<p>Я находил в https://github.com/CyanogenMod нужные модули, затем делал git clone и переходил на нужную мне ветку, в моем случае это cm-13.0, модули были следующие: </p>
+<p><strong>Ошибка:</strong> </p>
+<div class="highlight"><pre><span></span>device/asus/msm8916-common/BoardConfigCommon.mk:163: device/qcom/sepolicy/sepolicy.mk: No such file or directorymake: *** No rule to make target `device/qcom/sepolicy/sepolicy.mk&#39;.  Stop. ~/to/mer/android/droid/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+</pre></div>
+
+
+<p>Решение:</p>
+<p>берем ветку cm-13.0 и копируем в папку:</p>
+<ol>
+<li>$ANDROID_ROOT/device/qcom/sepolicy (  https://github.com/CyanogenMod/android_device_qcom_sepolicy )</li>
+<li>$ANDROID_ROOT/device/qcom/  ( https://github.com/CyanogenMod/android_device_qcom_common  )</li>
+</ol>
+<p>скопировать папку $ANDROID_ROOT/prebuilts/gcc/linux-x86/aarch64</p>
+<p>https://github.com/CyanogenMod/android_external_protobuf  git checkout staging/cm-14.0   заменяю в папке $ANDROID_ROOT/external/protobuf</p>
+<ol>
+<li>добавить две строчки в код: </li>
+</ol>
+<p>```
+   From 3581f6c70013f256b46e1a5f1ce3353cedb4ee65 Mon Sep 17 00:00:00 2001 From: Ricardo Salveti de Araujo <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#105;&#99;&#97;&#114;&#100;&#111;&#46;&#115;&#97;&#108;&#118;&#101;&#116;&#105;&#64;&#99;&#97;&#110;&#111;&#110;&#105;&#99;&#97;&#108;&#46;&#99;&#111;&#109;">&#114;&#105;&#99;&#97;&#114;&#100;&#111;&#46;&#115;&#97;&#108;&#118;&#101;&#116;&#105;&#64;&#99;&#97;&#110;&#111;&#110;&#105;&#99;&#97;&#108;&#46;&#99;&#111;&#109;</a> Date: Fri, 28 Jun 2013 03:52:43 -0300 Subject: [PATCH] _system_properties.h: adding PROP_MSG_GETPROP and PROP_MSG_LISTPROP Change-Id: I8d586ad20b4e23b5063a745960c7f5a0fdb31283 Signed-off-by: Sergio Schvezov <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#101;&#114;&#103;&#105;&#111;&#46;&#115;&#99;&#104;&#118;&#101;&#122;&#111;&#118;&#64;&#99;&#97;&#110;&#111;&#110;&#105;&#99;&#97;&#108;&#46;&#99;&#111;&#109;">&#115;&#101;&#114;&#103;&#105;&#111;&#46;&#115;&#99;&#104;&#118;&#101;&#122;&#111;&#118;&#64;&#99;&#97;&#110;&#111;&#110;&#105;&#99;&#97;&#108;&#46;&#99;&#111;&#109;</a> Signed-off-by: Ricardo Salveti de Araujo <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#105;&#99;&#97;&#114;&#100;&#111;&#46;&#115;&#97;&#108;&#118;&#101;&#116;&#105;&#64;&#99;&#97;&#110;&#111;&#110;&#105;&#99;&#97;&#108;&#46;&#99;&#111;&#109;">&#114;&#105;&#99;&#97;&#114;&#100;&#111;&#46;&#115;&#97;&#108;&#118;&#101;&#116;&#105;&#64;&#99;&#97;&#110;&#111;&#110;&#105;&#99;&#97;&#108;&#46;&#99;&#111;&#109;</a> --- libc/include/sys/_system_properties.h | 2 ++ 1 file changed, 2 insertions(+) diff --git a/libc/include/sys/_system_properties.h b/libc/include/sys/_system_properties.h index 0a842bd..ecfb3ac 100644 --- a/libc/include/sys/_system_properties.h +++ b/libc/include/sys/_system_properties.h @@ -58,6 +58,8 @@ struct prop_msg }; </p>
+<p>#define PROP_MSG_SETPROP 1 
+   +#define PROP_MSG_GETPROP 2 
+   +#define PROP_MSG_LISTPROP 3 <br>
+   ```</p>
+<p>После всего этого у меня все собралось без прерывания сборки.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

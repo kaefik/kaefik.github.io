@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Хранение географических координат в Базах Данных</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li class="active"><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/09/18/save-geo-data-to-db/" rel="bookmark"
+           title="Permalink to Хранение географических координат в Базах Данных">Хранение географических координат в Базах Данных</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Пн 18 сентября 2017</span>
+<span>| tags: <a href="/tag/bd.html">бд</a><a href="/tag/geografichekie-koordinaty.html">географичекие координаты</a><a href="/tag/dolgota.html">долгота</a><a href="/tag/shirota.html">широта</a><a href="/tag/postgis.html">postgis</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
+</footer><!-- /.post-info -->      <h2>Полезные ссылки:</h2>
+<ul>
+<li><a href="https://habrahabr.ru/post/228023/">Работа с геолокациями в режиме highload</a></li>
+<li><a href="https://live.osgeo.org/ru/quickstart/postgis_quickstart.html">Введение в PostGIS</a></li>
+<li><a href="http://postgis.net/install/">Установка PostGIS</a></li>
+<li><a href="http://postgis.net/docs/manual-2.4/">Документация по PostGIS</a></li>
+</ul>
+<h2>Установка PostGIS</h2>
+<p>The following will install postgresql 9.6, PostGIS 2.3, PGAdmin4, pgRouting 2.3 and additional supplied modules including the adminpack extension:</p>
+<div class="highlight"><pre><span></span>sudo apt-get install postgresql-9.6
+sudo apt-get install postgresql-9.6-postgis-2.3 postgresql-contrib-9.6 postgresql-9.6-postgis-scripts
+<span class="c1">#to get the commandline tools shp2pgsql, raster2pgsql you need to do this</span>
+sudo apt-get install postgis
+</pre></div>
+
+
+<p>Возникла задача хранить в БД географические координаты объекта:</p>
+<ul>
+<li><strong>1 вариант.</strong> Данные-координаты (8 переменных) с формы преобразуются функцией в запись типа 45-23-56N 34-12-44W и записываются в 1 поле coordinates varchar(20) основной таблицы.</li>
+<li><strong>2 вариант.</strong> Данные-координаты (8 переменных) с формы преобразуются функцией в 2 десятичных числа вида 14.5469645673 и –23.65798543556 и записываются в 2 поля в основной таблице: latitude dec(2,10) и longitude dec(3,10)</li>
+<li><strong>3 вариант.</strong> Создается дополнительная таблица coordinates и данные с формы (8 переменных) записываются каждая в свое поле.Чтобы указать положение точки на поверхности Земли можно воспользоваться:Широтой(latitude) — идет с севера на юг. 0 — экватор. Изменяется от -90 до 90 градусов.Долготой(longitude) — идет с запада на восток. 0 — нулевой меридиан(Гринвич). Изменяется от -180 до 180 градусов.</li>
+</ul>
+<p>Нужно обратить внимание что x — это долгота, y — широта(Google Maps, Яндекс.Карты и все остальные сервисы указывают долготу первой).</p>
+<p>Географические координаты можно перевести в пространственные — просто точка (x,y,z). Кому интересно более подробно можно посмотреть википедию.Количество знаков после запятой определяет точность.</p>
+<h2>PostGIS</h2>
+<p>PostGIS добавляет поддержку для географических объектов в PostgreSQL. По сути PostGIS позволяет использовать PostgreSQL в качестве бэкэнда пространственной базы данных для геоинформационных систем (ГИС), так же, как ESRI SDE или пространственного расширения Oracle. PostGIS соответствует OpenGIS «Простые особенности. Спецификация для SQL» и был сертифицирован.</p>
+<h3>Установка и использование</h3>
+<p>Для начала инициализируем расширение в базе данных:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
+</pre></div>
+
+
+<p>При создании пространственной базы данных автоматически создаются таблица метаданных spatial_ref_sys и представления geometry_columns, geography_columns, raster_columns и raster_overviews. Они создаются в соответствии со спецификацией «Open Geospatial Consortium Simple Features for SQL specification», выпущенной OGC и описывающей стандартные типы объектов ГИС, функции для манипуляции ими и набор таблиц метаданных. Таблица spatial_ref_sys содержит числовые идентификаторы и текстовые описания систем координат, используемых в пространственной базе данных. Одним из полей этой таблицы является поле SRID — уникальный идентификатор, однозначно определяющий систему координат. SRID представляет из себя числовой код, которому соответствует некоторая система координат. Например, распространенный код EPSG 4326 соответствует географической системе координат WGS84. Более подробную информацию по таблицами метаданных можно найти в руководстве по PostGIS.</p>
+<p>Теперь, имея пространственную базу данных, можно создать несколько пространственных таблиц. Для начала создадим обычную таблицу базы данных, чтобы хранить данные о городе. Эта таблица будет содержать три поля: числовой идентификатор, название города и колонка геометрии, содержащую данные о местоположении городов:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cities</span> <span class="p">(</span> <span class="n">id</span> <span class="n">int4</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">the_geom</span> <span class="n">geometry</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span><span class="mi">4326</span><span class="p">)</span> <span class="p">);</span>
+</pre></div>
+
+
+<p>the_geom поле указывает PostGIS, какой тип геометрии имеет каждый из объектов (точки, линии, полигоны и т.п.), какая размерность (т.к. возможны и 3-4 измерения — POINTZ, POINTM, POINTZM) и какая система координат. Для данных по городам мы будем использовать систему координат EPSG:4326. Чтобы добавить данные геометрии в соответствующую колонку, используется функция PostGIS ST_GeomFromText, чтобы сконвертировать координаты и идентификатор референсной системы из текстового формата:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cities</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(-0.1257 51.508)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;London, England&#39;</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cities</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(-81.233 42.983)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;London, Ontario&#39;</span><span class="p">);</span>
+
+<span class="o">#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cities</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(27.91162491 -33.01529)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;East London,SA&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Все самые обычные операторы SQL могут быть использованы для выбора данных из таблицы PostGIS:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">cities</span><span class="p">;</span>
+</pre></div>
+
+
+<p>id |      name       |                      the_geom
+----+-----------------+----------------------------------------------------
+1 | London, England | 0101000020E6100000BBB88D06F016C0BF1B2FDD2406C14940
+2 | London, Ontario | 0101000020E6100000F4FDD478E94E54C0E7FBA9F1D27D4540
+3 | East London,SA  | 0101000020E610000040AB064060E93B4059FAD005F58140C0
+(3 rows)</p>
+<p>Это возвращает нам бессмысленные значения координат в шестнадцатеричной системе. Если вы хотите увидеть вашу геометрию в текстовом формате WKT, используйте функцию ST_AsText(the_geom) или ST_AsEwkt(the_geom). Вы также можете использовать функции ST_X(the_geom), ST_Y(the_geom), чтобы получить числовые значения координат:</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">ST_AsEwkt</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">ST_X</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">cities</span><span class="p">;</span>
+</pre></div>
+
+
+<p>id |          st_astext           |               st_asewkt                |    st_x     |   st_y
+----+------------------------------+----------------------------------------+-------------+-----------
+1 | POINT(-0.1257 51.508)        | SRID=4326;POINT(-0.1257 51.508)        |     -0.1257 |    51.508
+2 | POINT(-81.233 42.983)        | SRID=4326;POINT(-81.233 42.983)        |     -81.233 |    42.983
+3 | POINT(27.91162491 -33.01529) | SRID=4326;POINT(27.91162491 -33.01529) | 27.91162491 | -33.01529
+(3 rows)</p>
+<p>Большинство таких функций начинаются с ST (пространственный тип) и описаны в документации PostGIS. Теперь ответим на практический вопрос: на каком расстоянии в метрах друг от другах находятся три города с названием Лондон, учитывая сферичность земли?</p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">ST_Distance_Sphere</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p1</span><span class="p">,</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p2</span> <span class="k">WHERE</span> <span class="n">p1</span><span class="p">.</span><span class="n">id</span> <span class="o">&gt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+
+
+<p>name       |      name       | st_distance_sphere
+-----------------+-----------------+--------------------
+London, Ontario | London, England |   5875787.03777356
+East London,SA  | London, England |   9789680.59961472
+East London,SA  | London, Ontario |   13892208.6782928
+(3 rows)</p>
+<p>Этот запрос возвращает расстояние в метрах между каждой парой городов. Обратите внимание как часть WHERE предотвращает нас от получения расстояния от города до самого себя (расстояние всегда будет равно нулю) и расстояния в обратном порядке (расстояние от Лондона, Англия до Лондона, Онтарио будет таким же как от Лондона, Онтарио до Лондона, Англия). Также можем рассчитать расстояния на сфере, используя различные функции и указывая называния сфероида, параметры главных полуосей и коэффициента обратного сжатия:</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">SELECT</span> <span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">ST_Distance_Spheroid</span><span class="p">(</span>
+
+<span class="o">#</span>         <span class="n">p1</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;GRS_1980&quot;,6378137,298.257222]&#39;</span>
+
+<span class="o">#</span>         <span class="p">)</span>
+
+<span class="o">#</span>        <span class="k">FROM</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p1</span><span class="p">,</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p2</span> <span class="k">WHERE</span> <span class="n">p1</span><span class="p">.</span><span class="n">id</span> <span class="o">&gt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+
+
+<p>name       |      name       | st_distance_spheroid
+-----------------+-----------------+----------------------
+London, Ontario | London, England |     5892413.63999153
+East London,SA  | London, England |     9756842.65715046
+East London,SA  | London, Ontario |     13884149.4143795
+(3 rows)</p>
+<h3>Заключение</h3>
+<p>В данной главе мы рассмотрели как начать работать с PostGIS. Более подробно о использовании расширения можно ознакомиться через официальную документацию.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

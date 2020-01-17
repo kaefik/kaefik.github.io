@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Live stream (онлайн стримы) - программное обеспечение</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li class="active"><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/04/15/live-stream/" rel="bookmark"
+           title="Permalink to Live stream (онлайн стримы) - программное обеспечение">Live stream (онлайн стримы) - программное обеспечение</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Сб 15 апреля 2017</span>
+<span>| tags: <a href="/tag/linux.html">linux</a><a href="/tag/livestream.html">livestream</a><a href="/tag/obs.html">obs</a><a href="/tag/video.html">video</a><a href="/tag/stream.html">stream</a></span>
+</footer><!-- /.post-info -->      <p><strong>Цель данной страницы сохранить для быстрого развертывания live стрима видео на различные онлайн сервисы на система linux.</strong></p>
+<p>Одним из популярных программ это <a href="https://obsproject.com/">OBS Studio</a></p>
+<p>На данный момент удалось запустить OBS Studio на Linux Mint 18.1.</p>
+<p>На  Fedora 25 при запуске выдает ошибку графических драйверов: пока нет поддержки Wayland см <a href="https://www.linux.org.ru/forum/general/13199751">https://www.linux.org.ru/forum/general/13199751</a></p>
+<h2>Linux Mint 18.1</h2>
+<div class="highlight"><pre><span></span>sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt-get update
+sudo apt install obs-studio
+sudo apt install ffmpeg 
+</pre></div>
+
+
+<p>Запуск OBS Studio прошел успешно.</p>
+<p>Если выдает ошибку графического драйвера системы. Проверьте версию Open CL, должно быть не ниже версии 3.0</p>
+<p>Команда проверки версии Open CL:</p>
+<div class="highlight"><pre><span></span>glxinfo <span class="p">|</span> grep OpenGL 
+</pre></div>
+
+
+<p>OpenGL vendor string: Intel Open Source Technology Center
+OpenGL renderer string: Mesa DRI Intel(R) Ivybridge Desktop
+OpenGL core profile version string: 3.3 (Core Profile) Mesa 12.0.6
+OpenGL core profile shading language version string: 3.30
+OpenGL core profile context flags: (none)
+OpenGL core profile profile mask: core profile
+OpenGL core profile extensions:
+OpenGL version string: 3.0 Mesa 12.0.6
+OpenGL shading language version string: 1.30
+OpenGL context flags: (none)
+OpenGL extensions:
+OpenGL ES profile version string: OpenGL ES 3.0 Mesa 12.0.6
+OpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.00
+OpenGL ES profile extensions:</p>
+<h2>Использование OBS Studio</h2>
+<p>Интересный плейлист для настройки и использования OBS Studio -<a href="https://www.youtube.com/playlist?list=PLN-k7Wz6qZxu1_7-7Ict9FBI7ZA4RHepf">https://www.youtube.com/playlist?list=PLN-k7Wz6qZxu1_7-7Ict9FBI7ZA4RHepf</a></p>
+<p>Вопросы которые хотелось бы разрешить</p>
+<ul>
+<li>найти способ подключения андроид смартфон ~~как веб камеру~~ и как микрофон</li>
+<li>~~ как наложить бегущую строку на live трансляциях~~ </li>
+<li>как сделать плашечку внизу с именем выступающего и его должность</li>
+</ul>
+<h3>Подключение камеры с андроид смартфона к OBS Studio</h3>
+<p>установка программы <a href="https://play.google.com/store/apps/details?id=com.dev47apps.droidcam">DroidCam Wireless Webcam</a></p>
+<ul>
+<li>
+<p>Способ костыль. в браузере вхожу в <em>http://ipадрессмартфона:4747</em> и в OBS добавляю источник "Захват окна XComposite" и выбираю нужную программу с которой будет съем изображения.</p>
+</li>
+<li>
+<p>Выбираем источник VLC видео, далее Добавить путь/url и прописываем <em>http://ipадрессмартфона0:4747/mjpegfeed?640x480</em> и вуяля все готово. Есть задержка изображения со звуком. думаю это будет критично если онлайн трансляция.</p>
+</li>
+</ul>
+<p>у этой аднроид программы есть линукс клиент <a href="http://www.dev47apps.com/droidcam/linuxx/">http://www.dev47apps.com/droidcam/linuxx/</a></p>
+<p>Усть еще одна программа на андроид это <a href="https://play.google.com/store/apps/details?id=com.pas.webcam">IP WebCam</a> - по ощущениям больше возможностей.</p>
+<h3>Как сделать бегущую строку в трансляции</h3>
+<p>есть полезное видео<a href="https://www.youtube.com/watch?v=xsItRye91jc">https://www.youtube.com/watch?v=xsItRye91jc</a></p>
+<p><em>Кратко</em>: добавляем в Источниках нужной сцены "Текст", далее в настройках пишем нужный текст или можно также подключить тестовый файл, и потом его можно пополнять и сохранять, также сразу будет меняться текст. удобно делать бегущую строку новостей.
+Чтобы текст прокручивался, то нужно в свойствах Текста выбрать пункт "Фильтры", и уже в фильтрах добавить "Прокрутка". В параметрах прокрутки можно менять скорость и направление прокрутки.             </p>
+<h3>Как сделать плашечку внизу с именем выступающего и его должность</h3>
+<ul>
+<li>в сцене добавил источник "текст" и далее делаю его видимым если нужно или отключаю.</li>
+<li>думаю также можно делать красывую плашечку в виде изображения</li>
+<li>может есть другие более красывые способы..</li>
+</ul>
+<h3>Плагины для OBS Studio</h3>
+<p>плагины в линуксах находятся $HOME/.config/obs-studio</p>
+<ul>
+<li><strong><a href="https://github.com/kc5nra/obs-browser">obs-browser</a></strong></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

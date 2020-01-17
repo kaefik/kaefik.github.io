@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>PowerShell основы</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li class="active"><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2017/06/26/powershell-basic/" rel="bookmark"
+           title="Permalink to PowerShell основы">PowerShell основы</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Пн 26 июня 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/linux.html">linux</a><a href="/tag/powershell.html">powershell</a><a href="/tag/windows.html">windows</a></span>
+</footer><!-- /.post-info -->      <h2>Полезные ссылки</h2>
+<ul>
+<li>
+<p><a href="https://www.microsoft.com/net/core/preview#linuxfedora">https://www.microsoft.com/net/core/preview#linuxfedora</a>  .NET Core 2.0 Preview 1</p>
+</li>
+<li>
+<p><a href="http://www.oszone.net/17352">http://www.oszone.net/17352  - посмотреть</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.management/get-childitem">https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.management/get-childitem</a></p>
+</li>
+<li>
+<p><a href="https://github.com/PowerShell/PowerShell-Docs">https://github.com/PowerShell/PowerShell-Docs</a></p>
+</li>
+<li>
+<p><a href="https://github.com/PowerShell/xActiveDirectory">xActiveDirectory</a></p>
+</li>
+<li>
+<p><a href="https://technet.microsoft.com/en-us/library/ff730936.aspx">Creating Formatted HTML Output</a></p>
+</li>
+<li><a href="http://windowsitpro.com/blog/linux-powershell-awesome-not-awkward-together">Linux + PowerShell = Awesome, Not Awkward, Together!</a></li>
+<li><a href="https://www.howtogeek.com/117192/how-to-run-powershell-commands-on-remote-computers/">How to Run PowerShell Commands on Remote Computers</a></li>
+<li><a href="http://winitpro.ru/index.php/2014/10/08/obrabotka-soderzhimogo-veb-stranic-i-html-sajtov-v-powershell/">Обработка содержимого веб-страниц и HTML сайтов в Powershell</a></li>
+<li><a href="http://powershell-guru.com/faq-powershell-in-russian/">FAQ PowerShell</a></li>
+<li><a href="http://itband.ru/2010/05/regular-expressions-windows-powershell/">Регулярные выражения</a></li>
+<li><a href="https://mva.microsoft.com/ru/training-courses/">https://mva.microsoft.com/ru/training-courses/</a></li>
+<li><a href="https://habrahabr.ru/post/118644/">PowerShell и аудит безопасности</a></li>
+<li><a href="http://www.powershelladmin.com/wiki/Getting_computer_names_from_AD_using_Powershell">Getting computer names from AD using Powershell</a></li>
+<li><a href="https://habrahabr.ru/post/319378/">Практика Powershell: мониторинг хранилища резервных копий Windows Backup</a></li>
+<li><a href="https://blog.netspi.com/15-ways-to-bypass-the-powershell-execution-policy/">15 Ways to Bypass the PowerShell Execution Policy</a></li>
+<li>
+<p><a href="https://habrahabr.ru/company/pc-administrator/blog/333838/">пришло время сниффера на PowerShell</a></p>
+</li>
+<li>
+<p><a href="http://powershell-guru.com/faq-powershell-in-russian/">FAQ по PowerShell</a></p>
+</li>
+<li><a href="http://techgenix.com/essential-powershell-scripts/?li_source=LI&amp;li_medium=tg-midpost">9 ESSENTIAL POWERSHELL SECURITY SCRIPTS EVERY ADMIN MUST KNOW</a></li>
+<li><a href="https://habrahabr.ru/company/netwrix/blog/164731/">Решаем 9 задач управления Windows Server 2008 с помощью PowerShell. Часть 1</a></li>
+</ul>
+<h2>Безопасность и взлом:</h2>
+<ul>
+<li><a href="https://habrahabr.ru/company/pentestit/blog/327490/">Powershell Empire и FuzzBunch: эксплуатация нашумевшей уязвимости ETERNALBLUE</a></li>
+</ul>
+<h2>Работа со строками</h2>
+<ul>
+<li><a href="http://coolcode.ru/stroki-v-powershell/">http://coolcode.ru/stroki-v-powershell/</a></li>
+</ul>
+<h2>Install .Net Core in Fedora 25</h2>
+<p>​                  источник: <a href="https://github.com/dotnet/core/pull/326#issuecomment-262479168">Install .Net Core in Fedora 25</a></p>
+<p><strong>НЕ РАБОТАЕТ:</strong> 
+ clang --version
+clang version 3.9.1 (tags/RELEASE_391/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin</p>
+<p>возможное решение  проблемы: <a href="https://github.com/JetBrains/coreclr/commit/fb08a1cb2e14db90eaee3af56384a54ac540e589">https://github.com/JetBrains/coreclr/commit/fb08a1cb2e14db90eaee3af56384a54ac540e589</a></p>
+<ul>
+<li>Install dependencies</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo dnf -y install python cmake clang llvm libicu-devel lldb-devel libunwind-devel lttng-ust-devel libuuid-devel zlib-devel libcurl-devel krb5-devel openssl-devel automake libtool
+</pre></div>
+
+
+<ul>
+<li>Get Rover</li>
+</ul>
+<div class="highlight"><pre><span></span>git clone https://github.com/dotnet/core
+<span class="nb">cd</span> core
+git checkout bootstrap
+git rev-parse HEAD
+<span class="nb">cd</span> tools/dotnet-bootstrap
+</pre></div>
+
+
+<ul>
+<li>Get payload SDK  - Using Fedora 24 .NET Core 1.1 SDK:</li>
+</ul>
+<div class="highlight"><pre><span></span>curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID<span class="o">=</span><span class="m">835025</span>
+</pre></div>
+
+
+<ul>
+<li>Select your branches</li>
+</ul>
+<div class="highlight"><pre><span></span>mkdir -p fedora.25-x64-dotnet/src                
+<span class="nb">cd</span> fedora.25-x64-dotnet/src
+git clone https://github.com/dotnet/corefx
+d corefx
+git checkout release/1.1.0
+git rev-parse HEAD
+<span class="nb">cd</span> ..
+git clone https://github.com/dotnet/coreclr
+<span class="nb">cd</span> coreclr
+git checkout release/1.1.0
+git rev-parse HEAD
+<span class="nb">cd</span> ../..
+</pre></div>
+
+
+<ul>
+<li>
+<p>I let rover pick branches for libuv and core-setup:
+  core-setup at v1.1.0 (928f77c4bc3f49d892459992fb6e1d5542cb5e86)
+  libuv at v1.9.0 (229b3a4cc150aebd6561e6bd43076eafa7a03756)</p>
+</li>
+<li>
+<p>Bootstrap</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>./dotnet.bootstrap.py -payload dotnet.tar.gz
+</pre></div>
+
+
+<p>​              ** ROVER spawned a 'dotnet' in ./fedora.25-x64-dotnet/bin/(enjoy!)</p>
+<h2>Введение в PowerShell</h2>
+<p>источник: <a href="http://get-powershell.ru/2015/vvedenie-v-powershell/">http://get-powershell.ru/2015/vvedenie-v-powershell/</a></p>
+<h3>Область действия переменных</h3>
+<p>Область действия переменной в PowerShell может быть либо локальной, либо глобальной. По умолчанию переменная имеет локальную область действия и ограничена областью действия, например, доступна только в функции или только в текущем сценарии. Глобальная переменная действует во всём текущем сеансе PowerShell. Для того, чтобы обозначить глобальную переменную, достаточно написать следующую конструкцию: <em>$Global: переменная = значение</em>
+Например, $Global:var = 12</p>
+<ul>
+<li>
+<p>команда <em>Get-ChildItem</em> без параметров выдает содержимое текущего каталога. У некоторых командлетов в PowerShell существуют алиасы, т.е. 
+  другой вариант написания того же командлета. Алиасы делают использование  PowerShell более простым и легким. Так у командлета Get-ChildItem есть алиасы dir и ls. Кроме того существуют такие алиасы как copy, cp, rm, mkdir и т.д. просмотерть весь список алиасов можно выполнив командлет Get-Alias.</p>
+</li>
+<li>
+<p>поиск нужных команд:               <br>
+<code>powershell
+           Get-Command -Name фильтрпоиска</code></p>
+</li>
+<li>
+<p>Нас интересуют команды относящиеся к модулю DnsServer:*
+         Get-Command -Module DnsServer</p>
+</li>
+<li>
+<p>получить справку о команде:
+                   Get-Help названиеКоманды</p>
+</li>
+<li>
+<p>получить справку о команде показать только примеры:*
+                   Get-Help Add-DnsServerPrimaryZone -Examples</p>
+</li>
+<li>
+<p>Отображение результатов: <a href="http://get-powershell.ru/2015/%d0%b8%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b2-powershell-where-object/">http://get-powershell.ru/2015/%d0%b8%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b2-powershell-where-object/</a></p>
+</li>
+<li>
+<p>Конструкция If</p>
+</li>
+</ul>
+<p>Это основная конструкция Windows PowerShell для принятия решений. Полная ее форма выглядит так:</p>
+<div class="highlight"><pre><span></span>               <span class="k">If</span> <span class="p">(</span><span class="nv">$this</span> <span class="o">-eq</span> <span class="nv">$that</span><span class="p">)</span> <span class="p">{</span>               
+               <span class="c"># commands               </span>
+               <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$those</span> <span class="o">-ne</span> <span class="nv">$them</span><span class="p">)</span> <span class="p">{</span>               
+               <span class="c"># commands               </span>
+               <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$we</span> <span class="o">-gt</span> <span class="nv">$they</span><span class="p">)</span> <span class="p">{</span>               
+               <span class="c"># commands               </span>
+               <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>               
+               <span class="c"># commands               </span>
+               <span class="p">}</span>              
+</pre></div>
+
+
+<p>Ключевое слово «If» является обязательной частью конструкции. Результат вычисления следующего за ним выражения должен быть True или False. Windows PowerShell всегда интерпретирует ноль как False, а любое ненулевое значение как True. Windows PowerShell также различает встроенные переменные $True и $False, которые представляют указанные булевы значения.</p>
+<ul>
+<li>
+<p>Конструкция Do While</p>
+<p><code>powershell
+ Do {              
+ # commands
+ } While ($this -eq $that)</code></p>
+</li>
+</ul>
+<p>В этом варианте конструкции команды в фигурных скобках выполнятся по крайней мере один раз. Условие While вычисляется не ранее, чем первый раз выполнится блок команд. Можно перенести While — тогда команды будут выполнены, только если с самого начала условие равно True:</p>
+<div class="highlight"><pre><span></span><span class="k">While</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$path</span><span class="p">)</span> <span class="p">{</span>             
+<span class="c"># commands             </span>
+<span class="p">}</span>            
+</pre></div>
+
+
+<p>Заметьте, что во втором примере не используется оператор сравнения, например -eq. Причина в том, что командлет Test-Path по определению возвращает True или False, поэтому для нормальной работы выражения эти значения не нужно ни с чем сравнивать.- Конструкция ForEach</p>
+<p>Работа этой конструкции похожа на поведение командлета ForEach-Object. Различия только в синтаксисе. Задача ForEach — принять массив (или набор, что в Windows PowerShell равносильно массиву) и выполнить его перечисление, чтобы можно было каждый раз работать с одним объектом:</p>
+<div class="highlight"><pre><span></span><span class="nv">$services</span> <span class="p">=</span> <span class="nb">Get-Service</span>
+<span class="k">ForEach</span> <span class="p">(</span><span class="nv">$service</span> <span class="k">in</span> <span class="nv">$services</span><span class="p">)</span> <span class="p">{</span>
+<span class="nv">$service</span><span class="p">.</span><span class="n">Stop</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>For можно заменить ForEach или даже командлетом ForEach-Object. Вот пример цикла, который выполняется ровно десять раз:</li>
+</ul>
+<p><code>powershell
+  1..10 | ForEach-Object -process {                   
+  # code here will repeat 10 times
+  # use $_ to access the current iteration
+  # number
+  }</code></p>
+<p><code>powershell
+  function Mine {
+  Get-Service
+  Get-Process
+  }
+  Mine</code></p>
+<p>Здесь определена новая функция по имени Mine. Это, в сущности, превращает Mine в команду, так как запустить функцию можно, просто указав ее имя. Именно это и происходит в пятой строке.</p>
+<ul>
+<li>Параметры в сценарииПараметры определяются особым образом вначале сценария. Можно предварить это определение комментарием, но в любом случае это должна быть первая исполняемая строка сценария. В области определения параметров каждый из них отделяется запятой. Для удобства чтения каждый параметр рекомендуется располагать в собственной строке. Вот пример:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">param</span> <span class="p">(</span>
+<span class="no">[string]</span><span class="nv">$computername</span><span class="p">,</span>
+<span class="no">[string]</span><span class="nv">$logfile</span><span class="p">,</span>
+<span class="no">[int]</span><span class="nv">$attemptcount</span> <span class="p">=</span> <span class="n">5</span>
+<span class="p">)</span>  
+</pre></div>
+
+
+<p>​          Здесь определяются три параметра. В сценарии они используются как любые другие переменные. Вы наверняка заметили, что в пятой строке я присвоил параметру $attemptcount значение по умолчанию. Это значение будет заменено значением входного параметра, но если он не будет задан, сценарий будет выполняться со значением по умолчанию.</p>
+<ul>
+<li>Дополнительные параметры, которые нам упрощают жизнь:
+                   Mandatory – Принимает два значения True обязательный для заполнения и False необязательный;
+               - HelpMessage – Справка по переменной;           <br>
+               - ParameterSetName – Имя переменной к которой относятся данные параметры;<div class="highlight"><pre><span></span>       * Position – Позиция переменной при вызове функции;
+
+       ### Вывод информации
+</pre></div>
+
+
+</li>
+</ul>
+<p>​            Рассмотрим несколько основных вариантов вывода информации на экран:</p>
+<ul>
+<li>
+<p>Запись в файл, используя  Out-File           <br>
+<code>powershell
+           $str = "Hello Habr!"
+           $str | Out-File D:\out_test1.txt</code></p>
+<div class="highlight"><pre><span></span>   или использовать знак &quot;&gt;&quot;
+
+   ```powershell
+   $str = &quot;Hello Habr!&quot;
+   $str &gt; D:\out_test2.txt
+   ```
+</pre></div>
+
+
+</li>
+<li>
+<p>Экспорт данных в .csv файл, используя Export-Csv</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nv">$p</span> <span class="p">=</span> <span class="nb">Get-Process</span>
+<span class="nv">$p</span> <span class="p">|</span> <span class="nb">SELECT </span><span class="n">Name</span><span class="p">,</span> <span class="n">Path</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="n">-Path</span> <span class="n">D</span><span class="err">:</span><span class="p">\</span><span class="n">out_test3</span><span class="p">.</span><span class="n">csv</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Запись в файл HTML, используя ConvertTo-Html*</p>
+<div class="highlight"><pre><span></span>   ```powershell
+   $h = Get-Process 
+   $h | ConvertTo-Html -Property Name, Path &gt; D:\out_test4.html &amp; D:\out_test4.html   #Откроем файле после формирования
+   ```
+</pre></div>
+
+
+</li>
+<li>
+<p>Прочитать файл  -  командлет Get-Content</p>
+</li>
+</ul>
+<p><code>powershell
+  Get-Content D:\out_test1.txt</code></p>
+<p>### Обработка содержимого веб-страниц и HTML сайтов</p>
+<p>источник: <a href="http://winitpro.ru/index.php/2014/10/08/obrabotka-soderzhimogo-veb-stranic-i-html-sajtov-v-powershell/">http://winitpro.ru/index.php/2014/10/08/obrabotka-soderzhimogo-veb-stranic-i-html-sajtov-v-powershell/</a></p>
+<div class="highlight"><pre><span></span><span class="nv">$SiteAdress</span> <span class="p">=</span> <span class="s2">&quot;http://ya.ru&quot;</span>
+<span class="nv">$HttpContent</span> <span class="p">=</span> <span class="nb">Invoke-WebRequest</span> <span class="n">-URI</span> <span class="nv">$SiteAdress</span>
+</pre></div>
+
+
+<h3>Отправка почты из PowerShell</h3>
+<p>источник: http://winitpro.ru/index.php/2011/03/30/otpravka-pochty-iz-powershell/</p>
+<div class="highlight"><pre><span></span><span class="nv">$EmailTo</span> <span class="p">=</span> <span class="s2">&quot;test@test.ru&quot;</span>
+<span class="nv">$EmailFrom</span> <span class="p">=</span> <span class="s2">&quot;test@gmail.com&quot;</span>
+<span class="nv">$Subject</span> <span class="p">=</span> <span class="s2">&quot;Test&quot;</span> 
+<span class="nv">$Body</span> <span class="p">=</span> <span class="s2">&quot;Test Body&quot;</span> 
+<span class="nv">$SMTPServer</span> <span class="p">=</span> <span class="s2">&quot;smtp.google.com&quot;</span> 
+<span class="c"># $filenameAndPath = &quot;C:\CDF.pdf&quot;</span>
+<span class="nv">$SMTPMessage</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">MailMessage</span><span class="p">(</span><span class="nv">$EmailFrom</span><span class="p">,</span><span class="nv">$EmailTo</span><span class="p">,</span><span class="nv">$Subject</span><span class="p">,</span><span class="nv">$Body</span><span class="p">)</span>
+<span class="c"># $attachment = New-Object System.Net.Mail.Attachment($filenameAndPath)</span>
+<span class="c"># $SMTPMessage.Attachments.Add($attachment)</span>
+<span class="nv">$SMTPClient</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">SmtpClient</span><span class="p">(</span><span class="nv">$SmtpServer</span><span class="p">,</span> <span class="n">465</span><span class="p">)</span> 
+<span class="nv">$SMTPClient</span><span class="p">.</span><span class="n">ClientCertificates</span>          
+<span class="nv">$SMTPClient</span><span class="p">.</span><span class="n">EnableSsl</span> <span class="p">=</span> <span class="nv">$true</span>
+<span class="nv">$SMTPClient</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">NetworkCredential</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">);</span> 
+<span class="nv">$SMTPClient</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="nv">$SMTPMessage</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>HTML-отчеты в PowerShell</h3>
+<p>источник: https://technet.microsoft.com/ru-ru/library/hh127059.aspx</p>
+<div class="highlight"><pre><span></span><span class="nb">Get-WmiObject</span> <span class="err">–</span><span class="n">Class</span> <span class="n">Win32_Service</span> <span class="p">|*</span> 
+<span class="nb">Select-Object</span> <span class="err">–</span><span class="n">property</span> <span class="n">Name</span><span class="p">,</span><span class="n">State</span> <span class="p">|*</span>
+<span class="nb">Where-Object</span> <span class="err">–</span><span class="k">Filter</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">StartMode</span> <span class="err">–</span><span class="n">eq</span> <span class="s1">&#39;Auto&#39;</span> <span class="err">–</span><span class="n">and</span> <span class="nv">$_</span><span class="p">.</span><span class="n">State</span> <span class="err">–</span><span class="n">ne</span> <span class="s1">&#39;Running&#39;</span> <span class="p">}</span> <span class="p">|*</span> 
+<span class="nb">ConvertTo-HTML</span> <span class="p">|*</span> 
+<span class="nb">Out-File</span> <span class="n">BadNews</span><span class="p">.</span><span class="n">html</span><span class="p">*</span>
+</pre></div>
+
+
+<h3>Использование в PowerShell Where, Where-Object, ?</h3>
+<p>источник: <a href="http://get-powershell.ru/2015/использование-в-powershell-where-object/">http://get-powershell.ru/2015/%d0%b8%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5-%d0%b2-powershell-where-object/</a></p>
+<p>Операции сравнения</p>
+<p>Прежде всего нужно разобраться с операциями сравнения:</p>
+<ul>
+<li>-lt – Меньше, чем</li>
+<li>-le – Меньше или равно</li>
+<li>-gt – Больше, чем</li>
+<li>-ge – Больше или равно</li>
+<li>-eq – Равно</li>
+<li>-ne – Не равно</li>
+<li>-like – оператор подобия</li>
+<li>-notlike – оператор не-подобия</li>
+</ul>
+<p>Если подставить к первым 7 в начале символ ‘c’ получатся операции сравнения, чувствительные к регистру. Например, -eq не чувствителен к регистру, а -ceq уже чувствителен к регистру.</p>
+<p>Первый вариант.</p>
+<div class="highlight"><pre><span></span><span class="nb">Get-Vm</span> <span class="p">|</span> <span class="nb">Where </span><span class="n">State</span> <span class="o">-eq</span> <span class="n">Running</span>
+<span class="nb">Get-Service</span> <span class="p">|</span> <span class="p">?</span> <span class="n">DisplayName</span> <span class="o">-like</span> <span class="s1">&#39;\*dhcp\*&#39;</span>
+</pre></div>
+
+
+<p>Второй вариант использования Where — это использования параметра FilterScript. Данный параметр является позиционным и его указание не обязательно.</p>
+<p>При использовании данного способа после Where в фигурных скобках указывается условие, которое обращается к свойствам объекта через переменную $.</p>
+<p>Переменная $ или ее аналог $PSItem содержит текущий объект просматриваемый в конвейере. Обращение к свойствам текущего объекта осущесвляется через точку.</p>
+<div class="highlight"><pre><span></span><span class="nb">Get-Service</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="o">-like</span> <span class="s1">&#39;\*dhcp\*&#39;</span><span class="p">}*</span>
+</pre></div>
+
+
+<h3>Sort-Object</h3>
+<p>источник: <a href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.utility/sort-object">https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.utility/sort-object</a></p>
+<h3>Массива (array)</h3>
+<p>источник: <a href="https://www.sysadmins.lv/blog-ru/powershell-massivy-chast-1-sozdanie-massivov.aspx">https://www.sysadmins.lv/blog-ru/powershell-massivy-chast-1-sozdanie-massivov.aspx</a></p>
+<p><em>Variable = Value1, Value2, Value3 &lt;...&gt; ValueN</em></p>
+<ul>
+<li>Массив определенного типа:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nv">$a</span> <span class="p">=</span> <span class="no">[int[]]</span><span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">)</span>
+<span class="nv">$a</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">FullName</span>
+<span class="n">System</span><span class="p">.</span><span class="n">Int32</span><span class="p">[]</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Пустой массив: @()</p>
+</li>
+<li>
+<p>$a = 5..10 </p>
+</li>
+<li>Массивы можно увеличивать в размере при помощи математического оператора сложения или умножения команда вида $a += 0 является упрощённой записью простейшего счётчика: $a = $a + 0. То же самое и касается оператора *=. Это равносильно команде $a = $a * 0</li>
+<li>чтобы создать настоящий массив фиксированного типа следует использовать класс List(T). Такой массив не будет изменять свой тип при изменении размера. И если попытаться в такой массив добавить элемент неправильного типа, вы получите ошибку.</li>
+</ul>
+<h3>Двумерный массив</h3>
+<div class="highlight"><pre><span></span><span class="nv">$b</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="s2">&quot;object[,]&quot;</span> <span class="n">3</span><span class="p">,</span><span class="n">3</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">0</span><span class="p">,</span><span class="n">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">1</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">0</span><span class="p">,</span><span class="n">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">2</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">0</span><span class="p">,</span><span class="n">2</span><span class="p">]</span> <span class="p">=</span> <span class="n">3</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">1</span><span class="p">,</span><span class="n">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">4</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">1</span><span class="p">,</span><span class="n">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">5</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">1</span><span class="p">,</span><span class="n">2</span><span class="p">]</span> <span class="p">=</span> <span class="n">6</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">2</span><span class="p">,</span><span class="n">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">7</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">2</span><span class="p">,</span><span class="n">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">8</span>
+<span class="nv">$b</span><span class="p">[</span><span class="n">2</span><span class="p">,</span><span class="n">2</span><span class="p">]</span> <span class="p">=</span> <span class="n">9</span>
+</pre></div>
+
+
+<p>Первый индекс указывает на номер столбца, второй индекс указывает номер строки. Однако, двумерные массивы нельзя складывать или умножать. В этом случае PowerShell разбивает этот массив в одномерный путём присоединения каждого последуюшего столбца к предыдущему.</p>
+<h3>Хеш-таблицы.</h3>
+<p><em>[hashtable] System.Collections.Hashtable</em></p>
+<p>Различие между хэш-таблицами и массивами в том, что в массивах используются индексы, а в хэш-таблице именованные ключи. Хеш-таблицы строятся по принципу: <em>@{ ключ = «значение» }</em></p>
+<div class="highlight"><pre><span></span><span class="nv">$ht</span> <span class="p">=</span> <span class="p">@{</span><span class="n">odin</span><span class="p">=</span><span class="s2">&quot;one&quot;</span><span class="p">;</span> <span class="n">dva</span><span class="p">=</span><span class="s2">&quot;two&quot;</span><span class="p">;</span> <span class="n">tri</span><span class="p">=</span><span class="s2">&quot;three&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Чтобы добавить элемент к хеш-таблице, можно или присвоить ей тот ключ, которого ещё нет, или воспользоваться методом Add(). Если присваивание делать к существующему ключу — значение ключа изменится на присваиваемое. Для удаления элемента из хеш-таблицы есть метод Remove().</p>
+<div class="highlight"><pre><span></span><span class="nv">$ht</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;chetyre&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">)</span>
+<span class="nv">$ht</span><span class="p">.</span><span class="n">pyat</span> <span class="p">=</span> <span class="s2">&quot;five&quot;</span>
+<span class="nv">$ht</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="s2">&quot;dva&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Обработка ошибок в PowerShell</h3>
+<ul>
+<li><em>http://windowsnotes.ru/powershell-2/obrabotka-oshibok-v-powershell-chast-1/</em></li>
+<li>http://windowsnotes.ru/powershell-2/obrabotka-oshibok-v-powershell-chast-2/</li>
+</ul>
+<h3><a href="http://info-comp.ru/sisadminst/555-directory-windows-powershell-cmdlets.html">Справочник команд PowerShell</a></h3>
+<h3>Удаленное управление на PowerShell</h3>
+<p>ссылки:<a href="http://windowsnotes.ru/powershell-2/udalennoe-upravlenie-s-pomoshhyu-powershell/">http://windowsnotes.ru/powershell-2/udalennoe-upravlenie-s-pomoshhyu-powershell/</a></p>
+<p>PowerShell Remoting   основан на Microsoft реализации протокола Web Services for Management (WS-Management), а для связи использует службу  Windows Remote Management (WinRM). Связь между компьютерами осуществляется по HTTP (по умолчанию) или HTTPS. Весь трафик между двумя компьютерами шифруется на уровне протокола (за исключением случаев, когда используется SSL). Поддерживаются несколько методов аутентификации, включая NTLM и Kerberos.
+В отличие от утилит, использующих различные программные интерфейсы, PS Remoting работает следующим образом: команды, вводимые на локальном компьютере, передаются на удаленный компьютер и там выполняются, затем результат передается обратно. Поскольку все команды выполняются локально, нет необходимости заботится о совместимости. Кроме того, для работы PS Remoting нужен всего один открытый порт на брандмауэре.Windows PowerShell рассчитан не только на локальное использование, но и на удаленное выполнение команд. Данная возможность необходима, чтобы Вы могли со своего рабочего места 
+управлять удаленными компьютерами, т.е. выполнять команды PowerShell.</p>
+<p>Существует несколько способов удаленного управления:</p>
+<ul>
+<li>С помощью параметра <strong>–ComputerName</strong> (есть у многих команд). Другими словами Вы передаете имя компьютера, на котором необходимо выполнить команду, в качестве параметра. Способ обладает недостатком, так как ограничивается выполнением одной команды;</li>
+<li>С помощью сессий. Командлет <strong>Enter-PSSession</strong> (интерактивный сеанс). Таким способом Вы подключаетесь к удаленному компьютеру и все команды, которые Вы будете набирать в оболочке PowerShell, будут выполняться на удаленном компьютере так же, как если бы Вы набирали команды непосредственно на удаленном компьютере. Способ также обладает недостатком, так как сеанс ограничивается одним компьютером;</li>
+<li>С помощью командлета <strong>Invoke-Command</strong> . С помощью данного способа можно выполнять команды или сценарии как на одном компьютере, так и на нескольких.</li>
+</ul>
+<p>Например, чтобы подключиться к удаленному компьютеру (в примере ниже ServerName) интерактивным сеансом выполните следующую команду: </p>
+<div class="highlight"><pre><span></span><span class="nb">Enter-PSSession</span> <span class="n">ServerName</span>
+</pre></div>
+
+
+<h3>Фоновое исполнение заданий</h3>
+<p>В Windows PowerShell есть возможность фонового исполнения заданий, она представляет собой механизм, с помощью которого можно запустить на выполнение команду (например, которая долго выполняется) в фоновом режиме, т.е. после запуска Вы возвращаетесь в текущую сессию и можете продолжить работу, не дожидаясь окончания работы команды. Данная возможность Вам понадобится тогда, когда у Вас возникнет необходимость запустить команду, работа которой занимает достаточно продолжительное время, а как Вы знаете, в течение этого времени сессия оболочки PowerShell блокируется до завершения работы команды, а Вам нужно продолжать работать.Всеми заданиями, которые запущенны в 
+фоновом режиме, Вы можете управлять, например, посмотреть список 
+заданий, остановить работу задания, удалить задание, и, конечно же, 
+посмотреть результат работы задания.В Windows PowerShell для работы с фоновыми заданиями есть следующие командлеты:</p>
+<ul>
+<li>
+<p>Start-Job – запустить фоновую задачу;</p>
+</li>
+<li>
+<p>Stop-Job – остановить фоновую задачу</p>
+</li>
+<li>
+<p>Get-Job – посмотреть список фоновых задач;</p>
+</li>
+<li>
+<p>Receive-Job – посмотреть результат выполнения фоновой задачи;</p>
+</li>
+<li>
+<p>Remove-Job – удалить фоновую задачу;</p>
+</li>
+<li>
+<p>Wait-Job – перевести фоновую задачу на передний план, для того чтобы дожидаться ее окончания.</p>
+</li>
+</ul>
+<p>Для запуска в фоновом режиме необходимо написать команду Start-Job, а в фигурных скобках {} команду или набор команд, которые необходимо выполнить в фоновом режиме.Например, давайте запустим какую-нибудь задачу (показать список служб) в фоновом режиме, затем посмотрим на список фоновых заданий и выведем на экран результат работы нашего задания (т.е. список служб).</p>
+<ul>
+<li>Запуск задачи в фоновом режиме</li>
+</ul>
+<p>​                Start-Job {Get-Service}</p>
+<ul>
+<li>
+<p>Смотрим на список задач запущенных в фоновом режиме
+  Get-Job</p>
+</li>
+<li>
+<p>Отображаем результат работы задания Job1</p>
+</li>
+</ul>
+<p>Receive-Job Job1</p>
+<h3>Функция PowerShell для проверки доступности компьютеров</h3>
+<p>Функция PowerShell для проверки доступности компьютеров в диапазоне 10.10.10.1 – 10.10.10.255</p>
+<div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">Check-Online</span> <span class="p">{</span>
+<span class="k">param</span><span class="p">(</span>
+<span class="nv">$computername</span>
+<span class="p">)</span>
+<span class="nb">test-connection</span> <span class="n">-count</span> <span class="n">1</span> <span class="n">-ComputerName</span> <span class="nv">$computername</span> <span class="n">-TimeToLive</span> <span class="n">5</span> <span class="n">-asJob</span> <span class="p">|</span>
+<span class="nb">Wait-Job</span> <span class="p">|</span>
+<span class="nb">Receive-Job</span> <span class="p">|</span>
+<span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">StatusCode</span> <span class="o">-eq</span> <span class="n">0</span> <span class="p">}</span> <span class="p">|</span>
+<span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">Address</span>
+<span class="p">}</span>
+<span class="nv">$ips</span> <span class="p">=</span> <span class="n">1</span><span class="p">..</span><span class="n">255</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="s2">&quot;10.10.10.$_&quot;</span> <span class="p">}</span>
+<span class="nv">$online</span> <span class="p">=</span> <span class="n">Check-Online</span> <span class="n">-computername</span> <span class="nv">$ips</span>
+<span class="nv">$online</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
