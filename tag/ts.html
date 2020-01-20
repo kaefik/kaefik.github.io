@@ -83,7 +83,7 @@
                 <article>
                     <h1 class="entry-title"><a href="/2018/08/01/javascript-typescript/">JavaScript (HTML+CSS) и даже TypeScript</a></h1>
 <footer class="post-info">
-        <span>Ср 01 августа 2018</span>
+        <span>Wed 01 August 2018</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/css.html">css</a><a href="/tag/html.html">html</a><a href="/tag/javascript.html">javascript</a><a href="/tag/js.html">js</a><a href="/tag/ts.html">ts</a><a href="/tag/typescript.html">typescript</a></span>
 </footer><!-- /.post-info --><h2>JavaScript</h2>
 <ul>
@@ -276,7 +276,7 @@
 } добавим команду build</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span>         npm i webpack-cli --save-dev
+<div class="highlight"><pre><span></span><span class="err">         npm i webpack-cli --save-dev</span>
 </pre></div>
 
 
@@ -288,7 +288,7 @@
 <p>npm run build  - сборка проекта в папку dist</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span>             npm i webpack-dev-server --save-dev
+<div class="highlight"><pre><span></span><span class="err">             npm i webpack-dev-server --save-dev</span>
 </pre></div>
 
 
@@ -297,39 +297,39 @@
 <p>добавим в файл package.json в раздел "scripts" команду:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>&quot;dev&quot;:&quot;webpack-dev-server --mode development --open&quot;
+<div class="highlight"><pre><span></span><span class="err">&quot;dev&quot;:&quot;webpack-dev-server --mode development --open&quot;</span>
 </pre></div>
 
 
 <ul>
 <li>создаем файл webpack.config.js :</li>
 </ul>
-<div class="highlight"><pre><span></span>let conf = {
-entry: &#39;./src/index.js&#39;,
-output: {
-path: path.resolve(__dirname, &#39;./dist&#39;),
-filename: &#39;main.js&#39;
-},
-devServer: {
-overlay: true
-}
-};
-module.exports = conf;
+<div class="highlight"><pre><span></span><span class="err">let conf = {</span>
+<span class="c">entry: &#39;./src/index.js&#39;,</span>
+<span class="c">output: {</span>
+<span class="c">path: path.resolve(__dirname, &#39;./dist&#39;),</span>
+<span class="c">filename: &#39;main.js&#39;</span>
+<span class="err">},</span>
+<span class="c">devServer: {</span>
+<span class="c">overlay: true</span>
+<span class="err">}</span>
+<span class="err">};</span>
+<span class="err">module.exports = conf;</span>
 </pre></div>
 
 
 <ul>
 <li>
 <p>для того чтобы в параметре output использовать абсолютный путь нужно установить полезную биб-ку</p>
-<div class="highlight"><pre><span></span>      ```
-       npm i path --save-dev
-      ```
+<div class="highlight"><pre><span></span><span class="err">      ```</span>
+<span class="err">       npm i path --save-dev</span>
+<span class="err">      ```</span>
 </pre></div>
 
 
 </li>
 <li>
-<div class="highlight"><pre><span></span>              npm install jquery --save
+<div class="highlight"><pre><span></span><span class="err">              npm install jquery --save</span>
 </pre></div>
 
 
@@ -338,7 +338,7 @@ module.exports = conf;
 <h3>Установка babel</h3>
 <ul>
 <li>
-<div class="highlight"><pre><span></span>          npm i babel-core babel-loader babel-preset-env babel-preset-stage-3 --save-dev
+<div class="highlight"><pre><span></span><span class="err">          npm i babel-core babel-loader babel-preset-env babel-preset-stage-3 --save-dev</span>
 </pre></div>
 
 
@@ -348,41 +348,41 @@ module.exports = conf;
 <ul>
 <li>Конфиг .babelrc:                  </li>
 </ul>
-<div class="highlight"><pre><span></span>{
-&quot;presets&quot;: [
-&quot;env&quot;,
-&quot;stage-3&quot;
-]
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">&quot;presets&quot;: [</span>
+<span class="err">&quot;env&quot;,</span>
+<span class="err">&quot;stage-3&quot;</span>
+<span class="err">]</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <ul>
 <li>файл webpack.config.js с добавлением возможности перегона с помощью babel:</li>
 </ul>
-<div class="highlight"><pre><span></span>let path = require(&#39;path&#39;)
-let conf = {
-    entry: &#39;./src/index.js&#39;,
-    output: {
-        path: path.resolve(__dirname, &#39;./dist&#39;),
-        filename: &#39;main.js&#39;,
-        publicPath: &#39;dist/&#39;,
-    },
-    devServer: {
-        overlay: true
-    },
-    module: {
-        rules: [
-            {
-               test: /\.js$/,
-               loader: &#39;babel-loader&#39; ,
-               //exclude: &#39;/node_modules/&#39;
-            }
-        ]
-    }
-};
+<div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">path</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+<span class="n">let</span> <span class="n">conf</span> <span class="o">=</span> <span class="err">{</span>
+    <span class="n">entry</span><span class="p">:</span> <span class="s1">&#39;./src/index.js&#39;</span><span class="p">,</span>
+    <span class="k">output</span><span class="p">:</span> <span class="err">{</span>
+        <span class="n">path</span><span class="p">:</span> <span class="n">path</span><span class="p">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">__dirname</span><span class="p">,</span> <span class="s1">&#39;./dist&#39;</span><span class="p">),</span>
+        <span class="n">filename</span><span class="p">:</span> <span class="s1">&#39;main.js&#39;</span><span class="p">,</span>
+        <span class="n">publicPath</span><span class="p">:</span> <span class="s1">&#39;dist/&#39;</span><span class="p">,</span>
+    <span class="err">}</span><span class="p">,</span>
+    <span class="n">devServer</span><span class="p">:</span> <span class="err">{</span>
+        <span class="k">overlay</span><span class="p">:</span> <span class="k">true</span>
+    <span class="err">}</span><span class="p">,</span>
+    <span class="n">module</span><span class="p">:</span> <span class="err">{</span>
+        <span class="n">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="err">{</span>
+               <span class="n">test</span><span class="p">:</span> <span class="o">/</span><span class="err">\</span><span class="p">.</span><span class="n">js$</span><span class="o">/</span><span class="p">,</span>
+               <span class="n">loader</span><span class="p">:</span> <span class="s1">&#39;babel-loader&#39;</span> <span class="p">,</span>
+               <span class="o">//</span><span class="n">exclude</span><span class="p">:</span> <span class="s1">&#39;/node_modules/&#39;</span>
+            <span class="err">}</span>
+        <span class="p">]</span>
+    <span class="err">}</span>
+<span class="err">}</span><span class="p">;</span>
 
-module.exports = conf;
+<span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="n">conf</span><span class="p">;</span>
 </pre></div>
 
 
@@ -390,29 +390,29 @@ module.exports = conf;
 <ul>
 <li>установка нужных для css лоадеров:</li>
 </ul>
-<div class="highlight"><pre><span></span>npm i style-loader css-loader --save-devнастройка webpack.config.js для работы с cssmodule: {
-rules: [
-{
-test: /\.js$/,
-loader: &#39;babel-loader&#39; ,
-//exclude: &#39;/node_modules/&#39;
-},
-{
-test: /\.css$/,
-use: [
-&#39;style-loader&#39;,
-&#39;css-loader&#39;
-]
-}
-]
-}
+<div class="highlight"><pre><span></span><span class="err">npm i style-loader css-loader --save-devнастройка webpack.config.js для работы с cssmodule: {</span>
+<span class="c">rules: [</span>
+<span class="err">{</span>
+<span class="c">test: /\.js$/,</span>
+<span class="c">loader: &#39;babel-loader&#39; ,</span>
+<span class="err">//exclude: &#39;/node_modules/&#39;</span>
+<span class="err">},</span>
+<span class="err">{</span>
+<span class="c">test: /\.css$/,</span>
+<span class="c">use: [</span>
+<span class="err">&#39;style-loader&#39;,</span>
+<span class="err">&#39;css-loader&#39;</span>
+<span class="err">]</span>
+<span class="err">}</span>
+<span class="err">]</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h3>Подключение плагина <a href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin</a></h3>
 <ul>
 <li>
-<div class="highlight"><pre><span></span>          npm i extract-text-webpack-plugin@next --save-dev
+<div class="highlight"><pre><span></span><span class="err">          npm i extract-text-webpack-plugin@next --save-dev</span>
 </pre></div>
 
 

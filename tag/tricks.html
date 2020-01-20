@@ -83,18 +83,18 @@
                 <article>
                     <h1 class="entry-title"><a href="/2019/06/07/python3-tricks/">трюки с Python3</a></h1>
 <footer class="post-info">
-        <span>Пт 07 июня 2019</span>
+        <span>Fri 07 June 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a><a href="/tag/tricks.html">tricks</a></span>
 </footer><!-- /.post-info --><h2><strong>Объединение строк</strong></h2>
 <p>В программном коде нередко приходится сталкиваться с конкатенацией строк при помощи знака сложения. Создание строки из списка нескольких подстрок удобнее осуществить при помощи строкового метода join:</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;прекрасный&quot;</span><span class="p">,</span> <span class="s2">&quot;язык.&quot;</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 
 
 <p>Пример посложнее с методом join – конвертирование списка чисел в строку:</p>
 <div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)))</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
 </pre></div>
 
@@ -102,10 +102,10 @@
 <h2><strong>Удаление дубликатов в списке</strong></h2>
 <p>Среди регулярно используемых трюков в Python – преобразование списка во множество и обратно в список для удаления повторяющихся элементов списка:</p>
 <div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">items</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">items</span><span class="p">)))</span>
 
 <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">items</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">items</span><span class="p">)))</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
@@ -114,7 +114,7 @@
 <div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">OrderedDict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
 </pre></div>
 
 
@@ -132,9 +132,9 @@
 <span class="k">def</span> <span class="nf">summarize</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="n">c</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">c</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="k">print</span><span class="p">((</span><span class="n">product</span> <span class="k">if</span> <span class="n">c</span> <span class="k">else</span> <span class="n">summarize</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">product</span> <span class="k">if</span> <span class="n">c</span> <span class="k">else</span> <span class="n">summarize</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="mi">12</span>
 </pre></div>
 
@@ -142,7 +142,7 @@
 <h2><strong>Сортировка словаря по значениям</strong></h2>
 <p>Распространена практика использования словарей в качестве таблиц для хранения данных. Сортировка данных словаря по значениям ключей, а не самим ключам, нередко ставит в тупик. Задача решается довольно просто при помощи соответствующего аргумента функции сортировки:</p>
 <div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;яблоки&#39;</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;апельсины&#39;</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;бананы&#39;</span><span class="p">:</span><span class="mi">70</span><span class="p">}</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">))</span>
 <span class="p">[</span><span class="s1">&#39;яблоки&#39;</span><span class="p">,</span> <span class="s1">&#39;бананы&#39;</span><span class="p">,</span> <span class="s1">&#39;апельсины&#39;</span><span class="p">]</span>
 </pre></div>                </article>
             </aside><!-- /#featured -->
@@ -158,7 +158,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Ср 03 января 2018</span>
+        <span>Wed 03 January 2018</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/windows.html">windows</a><a href="/tag/tricks.html">tricks</a></span>
 </footer><!-- /.post-info -->                <p><strong>источник:</strong> <a href="http://computerinfo.ru/ne-udalos-sozdat-novyj-ili-najti-sushhestvuyushhij-razdel/">http://computerinfo.ru/ne-udalos-sozdat-novyj-ili-najti-sushhestvuyushhij-razdel/</a></p>
 <ol>

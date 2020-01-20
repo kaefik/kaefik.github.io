@@ -88,7 +88,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Чт 12 апреля 2018</span>
+        <span>Thu 12 April 2018</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/selenium.html">selenium</a><a href="/tag/test.html">test</a></span>
 </footer><!-- /.post-info -->      <h2>Полезные ссылки</h2>
 <ul>
@@ -223,8 +223,8 @@ driver = webdriver.PhantomJS('C:\phantomjs-1.9.7-windows\phantomjs.exe')<a href=
 <p>Следующий фрагмент кода Java WebDriver должен работать для запуска IE. Код будет игнорировать настройку параметров защищенного режима для всех зон в браузере IE.</p>
 <div class="highlight"><pre><span></span><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="n">DesiredCapabilities</span><span class="o">.</span><span class="n">internetExplorer</span><span class="p">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="n">setCapability</span><span class="p">(</span><span class="n">InternetExplorerDriver</span><span class="o">.</span><span class="n">INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
-<span class="n">File</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">Ripon Al Wasim</span><span class="se">\\</span><span class="s2">IEDriverServer.exe&quot;</span><span class="p">);</span>
-<span class="n">System</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;webdriver.ie.driver&quot;</span><span class="p">,</span> <span class="nb">file</span><span class="o">.</span><span class="n">getAbsolutePath</span><span class="p">());</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">Ripon Al Wasim</span><span class="se">\\</span><span class="s2">IEDriverServer.exe&quot;</span><span class="p">);</span>
+<span class="n">System</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;webdriver.ie.driver&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">getAbsolutePath</span><span class="p">());</span>
 <span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">new</span> <span class="n">InternetExplorerDriver</span><span class="p">(</span><span class="n">capabilities</span><span class="p">);</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.google.com/&quot;</span><span class="p">);</span>
 </pre></div>
@@ -240,7 +240,7 @@ driver = webdriver.PhantomJS('C:\phantomjs-1.9.7-windows\phantomjs.exe')<a href=
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">findElement</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//input[@name=&#39;file_1&#39;]&quot;</span><span class="p">));</span>
 <span class="n">LocalFileDetector</span> <span class="n">detector</span> <span class="o">=</span> <span class="n">new</span> <span class="n">LocalFileDetector</span><span class="p">();</span>
 
-<span class="o">//</span><span class="n">Now</span><span class="p">,</span> <span class="n">give</span> <span class="n">the</span> <span class="nb">file</span> <span class="n">path</span> <span class="ow">and</span> <span class="n">see</span> <span class="n">the</span> <span class="n">magic</span> <span class="p">:)</span>              
+<span class="o">//</span><span class="n">Now</span><span class="p">,</span> <span class="n">give</span> <span class="n">the</span> <span class="n">file</span> <span class="n">path</span> <span class="ow">and</span> <span class="n">see</span> <span class="n">the</span> <span class="n">magic</span> <span class="p">:)</span>              
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D://test66T.txt&quot;</span><span class="p">;</span>
 <span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">getLocalFile</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
 <span class="p">((</span><span class="n">RemoteWebElement</span><span class="p">)</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">setFileDetector</span><span class="p">(</span><span class="n">detector</span><span class="p">);</span>
@@ -262,10 +262,10 @@ driver = webdriver.PhantomJS('C:\phantomjs-1.9.7-windows\phantomjs.exe')<a href=
 <p>Решение — я рекомендую просто взять и вынести себе это в отдельный универсальный метод и использовать его каждый раз когда нужно что-либо загрузить через такую форму.</p>
 <p>Исключение — Safari Driver полностью не поддерживает загрузку файла, т.к. насколько я понял, он javascript-based. Появляющееся окно с выбором файла ставит его в тупиковое положение. Такие сценарии нужно либо избегать, либо добиваться результата другим способом — создавать собственный HTTP запрос или подкладывать данные напрямую на стороне сервера, если такая возможность имеется.</p>
 <p>Пример кода:</p>
-<div class="highlight"><pre><span></span><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">uploadFile</span><span class="o">(</span><span class="n">By</span> <span class="n">uploadInput</span><span class="o">,</span> <span class="n">By</span> <span class="n">uploadButton</span><span class="o">,</span> <span class="n">String</span> <span class="n">filePath</span><span class="o">)</span> <span class="o">{</span>
-       <span class="n">clearInput</span><span class="o">(</span><span class="n">uploadInput</span><span class="o">);</span>
-       <span class="n">findElement</span><span class="o">(</span><span class="n">uploadInput</span><span class="o">).</span><span class="na">sendKeys</span><span class="o">(</span><span class="n">filePath</span><span class="o">);</span>
-       <span class="n">findElement</span><span class="o">(</span><span class="n">uploadButton</span><span class="o">).</span><span class="na">click</span><span class="o">();</span> 
+<div class="highlight"><pre><span></span><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">uploadFile</span><span class="p">(</span><span class="n">By</span> <span class="n">uploadInput</span><span class="p">,</span> <span class="n">By</span> <span class="n">uploadButton</span><span class="p">,</span> <span class="n">String</span> <span class="n">filePath</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">clearInput</span><span class="p">(</span><span class="n">uploadInput</span><span class="p">);</span>
+       <span class="n">findElement</span><span class="p">(</span><span class="n">uploadInput</span><span class="p">).</span><span class="na">sendKeys</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+       <span class="n">findElement</span><span class="p">(</span><span class="n">uploadButton</span><span class="p">).</span><span class="na">click</span><span class="p">();</span> 
 </pre></div>
     </div><!-- /.entry-content -->
 

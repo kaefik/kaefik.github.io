@@ -88,7 +88,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Вс 29 января 2017</span>
+        <span>Sun 29 January 2017</span>
 <span>| tags: <a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a></span>
 </footer><!-- /.post-info -->      <p>источник: <a href="https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet">https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet</a></p>
 <h2>Sailfish Cheat Sheet</h2>
@@ -155,14 +155,14 @@
 <ul>
 <li>Listen to system logs</li>
 </ul>
-<div class="highlight"><pre><span></span> journalctl -fa
+<div class="highlight"><pre><span></span><span class="err"> journalctl -fa</span>
 </pre></div>
 
 
 <ul>
 <li>Search log for keyword 'account' ignoring the case</li>
 </ul>
-<div class="highlight"><pre><span></span> devel-su journalctl | grep -i account
+<div class="highlight"><pre><span></span><span class="err"> devel-su journalctl | grep -i account</span>
 </pre></div>
 
 
@@ -226,9 +226,9 @@
 <ul>
 <li>Execute QML document.</li>
 </ul>
-<div class="highlight"><pre><span></span> pkcon install qt5-qtdeclarative-qmlscene # install qmlscene
- ln -s /usr/lib/qt5/bin/qmlscene /usr/bin/qmlscene # add symbolic link to path
- qmlscene app.qml # run
+<div class="highlight"><pre><span></span><span class="err"> pkcon install qt5-qtdeclarative-qmlscene # install qmlscene</span>
+<span class="err"> ln -s /usr/lib/qt5/bin/qmlscene /usr/bin/qmlscene # add symbolic link to path</span>
+<span class="err"> qmlscene app.qml # run</span>
 </pre></div>
 
 

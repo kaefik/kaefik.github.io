@@ -88,7 +88,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Сб 14 января 2017</span>
+        <span>Sat 14 January 2017</span>
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <h2>Решение проблем при сборке hybris-boot.img и hybris-recovery.img</h2>
 <ul>
@@ -114,7 +114,7 @@
 <p>По мере компиляции у меня выходили ошибки по некоторым модулям, типа несоответствие путей/файлов указаных в файлах сборки. </p>
 <p>Я находил в https://github.com/CyanogenMod нужные модули, затем делал git clone и переходил на нужную мне ветку, в моем случае это cm-13.0, модули были следующие: </p>
 <p><strong>Ошибка:</strong> </p>
-<div class="highlight"><pre><span></span>device/asus/msm8916-common/BoardConfigCommon.mk:163: device/qcom/sepolicy/sepolicy.mk: No such file or directorymake: *** No rule to make target `device/qcom/sepolicy/sepolicy.mk&#39;.  Stop. ~/to/mer/android/droid/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9
+<div class="highlight"><pre><span></span><span class="err">device/asus/msm8916-common/BoardConfigCommon.mk:163: device/qcom/sepolicy/sepolicy.mk: No such file or directorymake: *** No rule to make target `device/qcom/sepolicy/sepolicy.mk&#39;.  Stop. ~/to/mer/android/droid/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9</span>
 </pre></div>
 
 

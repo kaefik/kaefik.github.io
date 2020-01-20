@@ -83,7 +83,7 @@
                 <article>
                     <h1 class="entry-title"><a href="/2019/12/16/machine-learning/">Машинное обучение, возможно и не машинное</a></h1>
 <footer class="post-info">
-        <span>Пн 16 декабря 2019</span>
+        <span>Mon 16 December 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/data.html">data</a><a href="/tag/datascine.html">datascine</a><a href="/tag/python.html">python</a></span>
 </footer><!-- /.post-info --><p><strong>Данные</strong></p>
 <ul>
@@ -102,7 +102,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Вт 08 октября 2019</span>
+        <span>Tue 08 October 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/minecraft.html">minecraft</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a></span>
 </footer><!-- /.post-info -->                <p><strong>Полезные ссылки</strong> </p>
 <ul>
@@ -123,7 +123,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Чт 22 августа 2019</span>
+        <span>Thu 22 August 2019</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/mongodb.html">mongodb</a><a href="/tag/nosql.html">nosql</a><a href="/tag/python.html">python</a></span>
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -137,37 +137,37 @@
 <li><a href="https://defpython.ru/rukovodstvo_po_PyMongo">Руководство по PyMongo</a></li>
 </ul>
 <p>Запуск сервера MongoDB:</p>
-<div class="highlight"><pre><span></span>mongodb
+<div class="highlight"><pre><span></span><span class="err">mongodb</span>
 </pre></div>
 
 
 <p>Подключение к серверу MongoDB</p>
-<div class="highlight"><pre><span></span>mongo --host localhost:27017
+<div class="highlight"><pre><span></span><span class="err">mongo --host localhost:27017</span>
 </pre></div>
 
 
 <p><strong>Команды:</strong></p>
 <ul>
 <li>
-<div class="highlight"><pre><span></span>         use название_БД
+<div class="highlight"><pre><span></span><span class="err">         use название_БД</span>
 </pre></div>
 
 
 </li>
 <li>
-<div class="highlight"><pre><span></span>             db.createCollection(&quot;название_коллекции&quot;)
+<div class="highlight"><pre><span></span><span class="err">             db.createCollection(&quot;название_коллекции&quot;)</span>
 </pre></div>
 
 
 </li>
 <li>
-<div class="highlight"><pre><span></span>             db.название_коллекции.insertOne({&quot;name&quot;:&quot;John&quot;,&quot;email&quot;:&quot;test@mi.ru})
+<div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.insertOne({&quot;name&quot;:&quot;John&quot;,&quot;email&quot;:&quot;test@mi.ru})</span>
 </pre></div>
 
 
 </li>
 <li>
-<div class="highlight"><pre><span></span>             db.название_коллекции.inserMany([{&quot;name&quot;:&quot;John&quot;,&quot;email …</pre></div></li></ul>
+<div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.inserMany([{&quot;name&quot;:&quot;John&quot;,&quot;email …</span></pre></div></li></ul>
                 <a class="readmore" href="/2019/08/22/mongodb-nosql-python/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -180,7 +180,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Пн 10 июня 2019</span>
+        <span>Mon 10 June 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/subprocess.html">subprocess</a></span>
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -200,12 +200,12 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Пт 07 июня 2019</span>
+        <span>Fri 07 June 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a><a href="/tag/tricks.html">tricks</a></span>
 </footer><!-- /.post-info -->                <h2><strong>Объединение строк</strong></h2>
 <p>В программном коде нередко приходится сталкиваться с конкатенацией строк при помощи знака сложения. Создание строки из списка нескольких подстрок удобнее осуществить при помощи строкового метода join:</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;прекрасный&quot;</span><span class="p">,</span> <span class="s2">&quot;язык.&quot;</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 
 
@@ -223,7 +223,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Вс 02 июня 2019</span>
+        <span>Sun 02 June 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/gui.html">gui</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a></span>
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -245,7 +245,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Чт 05 июля 2018</span>
+        <span>Thu 05 July 2018</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/pandas.html">pandas</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a></span>
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -276,7 +276,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Чт 16 ноября 2017</span>
+        <span>Thu 16 November 2017</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/pandas.html">pandas</a><a href="/tag/python.html">python</a><a href="/tag/dannye.html">данные</a></span>
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -302,7 +302,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Сб 04 ноября 2017</span>
+        <span>Sat 04 November 2017</span>
 <span>| tags: <a href="/tag/flask.html">flask</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a><a href="/tag/web.html">web</a></span>
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -332,7 +332,7 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <span>Чт 02 ноября 2017</span>
+        <span>Thu 02 November 2017</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/django.html">Django</a><a href="/tag/python.html">python</a><a href="/tag/web.html">web</a></span>
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>

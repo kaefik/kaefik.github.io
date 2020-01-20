@@ -88,7 +88,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Чт 19 января 2017</span>
+        <span>Thu 19 January 2017</span>
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <p><strong>!!! на 13.02.2017 года проблема с bootloop не решена.</strong></p>
 <h2>ЧИТАЕМ ЛОГИ НЕЗАГРУЖАЮЩЕГОСЯ УСТРОЙСТВА</h2>
@@ -102,13 +102,13 @@ vi /data/.stowaways/sailfishos/etc/systemd/journald.conf
 
 
 <p>The systemd journal is persistent over reboots in devel branch - otherwise edit /etc/systemd/journald.conf and set</p>
-<div class="highlight"><pre><span></span> Storage=persistent
+<div class="highlight"><pre><span></span><span class="err"> Storage=persistent</span>
 </pre></div>
 
 
 <p>Preventing journald from throttling logging from a verbose process - edit /etc/systemd/journald.conf and set</p>
-<div class="highlight"><pre><span></span> RateLimitBurst=9999
- RateLimitInterval=5s
+<div class="highlight"><pre><span></span><span class="err"> RateLimitBurst=9999</span>
+<span class="err"> RateLimitInterval=5s</span>
 </pre></div>
 
 
@@ -129,7 +129,7 @@ mount -o <span class="nb">bind</span> /dev /data/.stowaways/sailfishos/dev<span 
 </li>
 </ol>
 <p>добавить в строку</p>
-<div class="highlight"><pre><span></span>BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
+<div class="highlight"><pre><span></span><span class="err">BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1</span>
 </pre></div>
 
 
@@ -175,26 +175,26 @@ mount -o <span class="nb">bind</span> /dev /data/.stowaways/sailfishos/dev<span 
 <ul>
 <li><strong>изменение в файле hybris/droid-configs/droid-configs-device/sparse/lib/udev/rules.d/998-droid-system.rules</strong> </li>
 </ul>
-<div class="highlight"><pre><span></span>SIM card not detected:
-This often causes a bootloop
-Cellular Modem bringup is now in HADK v1.1.1 section 13.3
-Additional checks:
-Replicate /dev/block structure from Android as closely as possible (for rild to be able to access the modem partition)
-Run ls -lR /dev/block in CM
-Run ls -lR /dev/block in Sailfish OS
-diff the two outputs (this is WIP - android&#39;s toolbox ls might need more parameters to produce a comparable output)
-If you see differences you need to add custom udev rules to create the correct /dev/block structure
-For    devices with /dev/block/platform/msm_sdcc.1/by-name/ paths  (msm_sdcc.1   can be different) add to $ANDROID_ROOT/rpm/ these paths  and files with   contents, and it most probably will help (but still  paste your diff to   the IRC channel):
-https://github.com/mer-hybris-kis3/droid-config-kis3/blob/master/sparse/lib/udev/platform-device
-https://github.com/mer-hybris-kis3/droid-config-kis3/blob/master/sparse/lib/udev/rules.d/998-droid-system.rules
-Some    devices have /dev/block/bootdevice/by-name/ as /dev/block structure  in   CM in which case you need to add the following line to the end of  the   998-droid-system.rules file in the last link:
-ENV{ID_PART_ENTRY_SCHEME}==&quot;gpt&quot;,    ENV{ID_PART_ENTRY_NAME}==&quot;?*&quot;,  IMPORT{program}=&quot;/bin/sh    /lib/udev/platform-device $env{DEVPATH}&quot;,     SYMLINK+=&quot;block/bootdevice/by-name/$env{ID_PART_ENTRY_NAME}&quot;
-If    you have logcat and journal error messages suggesting that RIL/ofono    can&#39;t power the modem on and you have a qcom chipset, have a look in    your init.qcom.rc for lines that power it on when the boot animation    (bootanim) stops. If you have those, try this (paths may need    correcting): https://github.com/stephgosling/android_device_htc_m7-common/commit/9f4abdca65356090e6dd6f0356c5cf4a1870aa5f (note the typo there in the chown line!)
+<div class="highlight"><pre><span></span><span class="err">SIM card not detected:</span>
+<span class="err">This often causes a bootloop</span>
+<span class="err">Cellular Modem bringup is now in HADK v1.1.1 section 13.3</span>
+<span class="err">Additional checks:</span>
+<span class="err">Replicate /dev/block structure from Android as closely as possible (for rild to be able to access the modem partition)</span>
+<span class="err">Run ls -lR /dev/block in CM</span>
+<span class="err">Run ls -lR /dev/block in Sailfish OS</span>
+<span class="err">diff the two outputs (this is WIP - android&#39;s toolbox ls might need more parameters to produce a comparable output)</span>
+<span class="err">If you see differences you need to add custom udev rules to create the correct /dev/block structure</span>
+<span class="err">For    devices with /dev/block/platform/msm_sdcc.1/by-name/ paths  (msm_sdcc.1   can be different) add to $ANDROID_ROOT/rpm/ these paths  and files with   contents, and it most probably will help (but still  paste your diff to   the IRC channel):</span>
+<span class="c">https://github.com/mer-hybris-kis3/droid-config-kis3/blob/master/sparse/lib/udev/platform-device</span>
+<span class="c">https://github.com/mer-hybris-kis3/droid-config-kis3/blob/master/sparse/lib/udev/rules.d/998-droid-system.rules</span>
+<span class="err">Some    devices have /dev/block/bootdevice/by-name/ as /dev/block structure  in   CM in which case you need to add the following line to the end of  the   998-droid-system.rules file in the last link:</span>
+<span class="err">ENV{ID_PART_ENTRY_SCHEME}==&quot;gpt&quot;,    ENV{ID_PART_ENTRY_NAME}==&quot;?*&quot;,  IMPORT{program}=&quot;/bin/sh    /lib/udev/platform-device $env{DEVPATH}&quot;,     SYMLINK+=&quot;block/bootdevice/by-name/$env{ID_PART_ENTRY_NAME}&quot;</span>
+<span class="err">If    you have logcat and journal error messages suggesting that RIL/ofono    can&#39;t power the modem on and you have a qcom chipset, have a look in    your init.qcom.rc for lines that power it on when the boot animation    (bootanim) stops. If you have those, try this (paths may need    correcting): https://github.com/stephgosling/android_device_htc_m7-common/commit/9f4abdca65356090e6dd6f0356c5cf4a1870aa5f (note the typo there in the chown line!)</span>
 </pre></div>
 
 
 <p>Далее переходим к пункту</p>
-<div class="highlight"><pre><span></span>            8. Packaging droid-hal-device
+<div class="highlight"><pre><span></span><span class="err">            8. Packaging droid-hal-device</span>
 </pre></div>
 
 

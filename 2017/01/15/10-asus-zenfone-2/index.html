@@ -88,7 +88,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Вс 15 января 2017</span>
+        <span>Sun 15 January 2017</span>
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <p><strong>Важно!!!</strong> перед всеми манипуляциями над вашим устройством нужно сделать бэкап всего, что вам нужно чтобы откатиться при необходимости. Все вы делаете на свой страх и риск.</p>
 <p>В итоге мы имеем:</p>
@@ -148,7 +148,7 @@ chroot /data/.stowaways/sailfishos/ /bin/su -
 
 
 <p><strong>Шаг 5</strong> : смотрим наш журнал:</p>
-<div class="highlight"><pre><span></span>journalctl -b
+<div class="highlight"><pre><span></span><span class="err">journalctl -b</span>
 </pre></div>
 
 
@@ -179,15 +179,15 @@ chroot /data/.stowaways/sailfishos/ /bin/su -
 <p><strong>Решение:</strong> </p>
 <ul>
 <li>
-<div class="highlight"><pre><span></span>          device/asus/msm8916-common/BoardConfigCommon.mk
+<div class="highlight"><pre><span></span><span class="err">          device/asus/msm8916-common/BoardConfigCommon.mk</span>
 </pre></div>
 
 
 </li>
 </ul>
 <p>в строке которая ниже добавлен параметр:</p>
-<div class="highlight"><pre><span></span>selinux=0
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 selinux=0
+<div class="highlight"><pre><span></span><span class="err">selinux=0</span>
+<span class="err">BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 selinux=0</span>
 </pre></div>
 
 

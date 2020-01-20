@@ -88,7 +88,7 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Сб 14 января 2017</span>
+        <span>Sat 14 January 2017</span>
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <p>Далее нужно выполнить простроение дерева rpm пакетов, но перед эти лучше выполнить следующие команды которые избавят вас от ошибок которые описаны ниже (для тех кто делает впервые лучше посмотреть будут ли выходить эти ошибки):</p>
 <div class="highlight"><pre><span></span>sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper rm mesa-llvmpipe-9.2.5+git2-1.3.23.armv7hl
@@ -139,8 +139,8 @@ RPM build errors:
 <p>Исправление ошибки для cm-13.0: (спасибо https://github.com/ballock/droid-hal-device/commit/7d190e9060a4a9badea1fd18a13d7bf4d38fcaf5)
 Также https://github.com/mer-hybris/droid-hal-device/issues/126</p>
 <h3>$ANDROID_ROOT/rpm/dhd/helpers  в файле makefile :</h3>
-<div class="highlight"><pre><span></span>-TOOLS := apply-permissions usergroupgen
-+TOOLS := usergroupgen
+<div class="highlight"><pre><span></span><span class="err">-TOOLS := apply-permissions usergroupgen</span>
+<span class="err">+TOOLS := usergroupgen</span>
 </pre></div>
 
 

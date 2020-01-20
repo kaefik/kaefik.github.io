@@ -88,19 +88,19 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>Вс 06 августа 2017</span>
+        <span>Sun 06 August 2017</span>
 <span>| tags: <a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/firewall.html">firewall</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a></span>
 </footer><!-- /.post-info -->      <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></li>
 </ul>
 <h2>Запущен ли firewall</h2>
-<div class="highlight"><pre><span></span>sudo systemctl start firewalld.service
+<div class="highlight"><pre><span></span><span class="err">sudo systemctl start firewalld.service</span>
 </pre></div>
 
 
 <p>​     или</p>
-<div class="highlight"><pre><span></span>firewall-cmd --state
+<div class="highlight"><pre><span></span><span class="err">firewall-cmd --state</span>
 </pre></div>
 
 
