@@ -85,6 +85,39 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2017/01/29/ps-sailfish-os-cheat-sheet/" rel="bookmark"
+                           title="Permalink to PS. Sailfish OS Cheat Sheet">PS. Sailfish OS Cheat Sheet</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sun 29 January 2017</span>
+<span>| tags: <a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a></span>
+</footer><!-- /.post-info -->                <p>источник: <a href="https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet">https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet</a></p>
+<h2>Sailfish Cheat Sheet</h2>
+<h3>Development Commands</h3>
+<ul>
+<li>Connect to the device over usb (add "192.168.2.14    device" to /etc/hosts)</li>
+</ul>
+<div class="highlight"><pre><span></span> sudo ifconfig usb0 up device
+</pre></div>
+
+
+<ul>
+<li>Log into the device. Define password in "Settings -&gt; System settings -&gt; Developer mode -&gt; Set password".</li>
+</ul>
+<div class="highlight"><pre><span></span> ssh nemo@device
+</pre></div>
+
+
+<ul>
+<li>Change user …</li></ul>
+                <a class="readmore" href="/2017/01/29/ps-sailfish-os-cheat-sheet/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2017/01/26/other-asus-porting/" rel="bookmark"
                            title="Permalink to Всяко разное интересное по портированию на Sailfish">Всяко разное интересное по портированию на Sailfish</a></h1>
                 </header>
@@ -290,34 +323,6 @@ $ANDROID_ROOT/kernel/asus …</p>
 <p>скрипт со следующим содержимым, здесь я указываю явно Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2</p>
 <p>если изменится …</p>
                 <a class="readmore" href="/2017/01/14/6-scratchbox2/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/01/14/7-create-repo-for-new-device/" rel="bookmark"
-                           title="Permalink to 7. Создание репозитория для нового устройства">7. Создание репозитория для нового устройства</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 14 January 2017</span>
-<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
-</footer><!-- /.post-info -->                <p><strong>Замечание:</strong>
-перед тем как использовать команды нужно заменить слово kaefik на ваш ник в github</p>
-<div class="highlight"><pre><span></span>MER_SDK $ 
-<span class="nb">cd</span> <span class="nv">$ANDROID_ROOT</span> 
-mkdir rpm 
-<span class="nb">cd</span> rpm 
-git init 
-git submodule add https://github.com/mer-hybris/droid-hal-device dhd 
-<span class="c1"># Rename &#39;Z00L&#39; and other values as appropriate </span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt;&#39;EOF&#39; &gt;droid-hal-Z00L.spec </span>
-<span class="s"># These and other macros are documented …</span></pre></div>
-                <a class="readmore" href="/2017/01/14/7-create-repo-for-new-device/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
