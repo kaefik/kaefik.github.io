@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>Шаги для улучшения opensource проект на Python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/kaefik">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="/">Общественная записная книжка  <strong>следы для себя и потомков</strong></a></h1>
+                <nav><ul>
+                </ul>
+<form id="search" action"#" onsubmit="javascript:window.open('https://duckduckgo.com/?q='+document.getElementById('keywords').value+'+site:');">
+                        <input id="keywords" type="text" />
+                    </form>
+                </nav>
+<div id="submenu">
+                    <ul>
+                            <li><a href="/category/anime.html">anime</a></li>
+                            <li><a href="/category/arduino.html">arduino</a></li>
+                            <li><a href="/category/bios.html">bios</a></li>
+                            <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/chromeos.html">chromeos</a></li>
+                            <li><a href="/category/clojure.html">clojure</a></li>
+                            <li><a href="/category/design.html">design</a></li>
+                            <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/game.html">game</a></li>
+                            <li><a href="/category/git.html">git</a></li>
+                            <li><a href="/category/go.html">go</a></li>
+                            <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/javascript.html">javascript</a></li>
+                            <li><a href="/category/lego.html">lego</a></li>
+                            <li><a href="/category/linux.html">linux</a></li>
+                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
+                            <li><a href="/category/lua.html">lua</a></li>
+                            <li><a href="/category/machine_learning.html">machine_learning</a></li>
+                            <li><a href="/category/main.html">main</a></li>
+                            <li><a href="/category/markdown.html">markdown</a></li>
+                            <li><a href="/category/miband.html">miband</a></li>
+                            <li><a href="/category/minecraft.html">minecraft</a></li>
+                            <li><a href="/category/miui.html">miui</a></li>
+                            <li><a href="/category/money.html">money</a></li>
+                            <li><a href="/category/mongodb.html">mongodb</a></li>
+                            <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/network.html">network</a></li>
+                            <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="/category/os.html">os</a></li>
+                            <li><a href="/category/osm.html">osm</a></li>
+                            <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
+                            <li><a href="/category/postgis.html">postgis</a></li>
+                            <li><a href="/category/postgresql.html">PostgreSQL</a></li>
+                            <li><a href="/category/powershell.html">powershell</a></li>
+                            <li><a href="/category/programming.html">programming</a></li>
+                            <li><a href="/category/projects.html">projects</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
+                            <li><a href="/category/radio.html">radio</a></li>
+                            <li><a href="/category/rest-api.html">rest-api</a></li>
+                            <li><a href="/category/rust.html">rust</a></li>
+                            <li><a href="/category/sailfish.html">sailfish</a></li>
+                            <li><a href="/category/security.html">security</a></li>
+                            <li><a href="/category/selenium.html">selenium</a></li>
+                            <li><a href="/category/shell.html">shell</a></li>
+                            <li><a href="/category/swift.html">swift</a></li>
+                            <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vscode.html">vscode</a></li>
+                            <li><a href="/category/web.html">web</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
+                            <li><a href="/category/windows.html">windows</a></li>
+                    </ul>
+                <div>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2019/11/20/steps-opensource-on-python/" rel="bookmark"
+           title="Permalink to Шаги для улучшения opensource проект на Python">Шаги для улучшения opensource проект на Python</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Wed 20 November 2019</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/opensource.html">opensource</a></span>
+</footer><!-- /.post-info -->      <p>источник: https://towardsdatascience.com/10-steps-to-set-up-your-python-project-for-success-14ff88b5d13 </p>
+<p>Добавим к проекту CI, тесты, покрытие тестами и др. </p>
+<ol>
+<li>Установить пакет Black (https://github.com/ambv/black) </li>
+</ol>
+<p>Black - пакет который форматирует код согласно PEP8. </p>
+<p>Добавьте пакет black в файл зависимостей для разработчиков requirements_dev.txt </p>
+<p>Найти как использовать автоматическое форматирование кода с помощью Black в Visual Code. </p>
+<ol>
+<li>Создайте файл <em>.pypirc</em> </li>
+</ol>
+<p>.pypirc <em>- используется инструментом</em> <em>Twine</em> <em>для автоматического входа в</em> <em>PyPI</em> / TestPyPI</p>
+<p>Шаблон файла: </p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">distutils</span><span class="o">]</span><span class="w"> </span>
+<span class="k">index</span><span class="o">-</span><span class="n">servers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">  </span><span class="n">pypi</span><span class="w"> </span>
+<span class="w">  </span><span class="n">testpypi</span><span class="w"> </span>
+
+<span class="o">[</span><span class="n">testpypi</span><span class="o">]</span><span class="w"> </span>
+<span class="nl">repository</span><span class="p">:</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="p">.</span><span class="n">pypi</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">legacy</span><span class="w"> </span>
+<span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_username</span><span class="w"> </span>
+<span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_pypitest_password</span><span class="w"> </span>
+
+<span class="o">[</span><span class="n">pypi</span><span class="o">]</span><span class="w"> </span>
+<span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_username</span><span class="w"> </span>
+<span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_pypi_password</span><span class="w"> </span>
+</pre></div>
+
+
+<p>Настройки файла: </p>
+<div class="highlight"><pre><span></span>chmod <span class="m">600</span> ~/.pypirc 
+twine upload -r testpypi dist/
+twine upload dist/ 
+</pre></div>
+
+
+<ol>
+<li>Установка и настройка pytest </li>
+</ol>
+<p>Добавьте пакет pytest в requirements_dev.txt </p>
+<p>Запустите для того чтобы pytest нашел ваш пакет: </p>
+<div class="highlight"><pre><span></span>pip install -e .
+</pre></div>
+
+
+<ol>
+<li>Создание тестов </li>
+</ol>
+<p>Добавьте папку tests в верхний уровень вашего проекта. Начинайте с test_ имена ваших тестов, pytest автоматически искать. </p>
+<p>Например, </p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Tests for `notebookc` package.&quot;&quot;&quot;</span> 
+<span class="kn">import</span> <span class="nn">pytest</span> 
+<span class="kn">from</span> <span class="nn">notebookc</span> <span class="kn">import</span> <span class="n">notebookc</span>  
+<span class="k">def</span> <span class="nf">test_convert</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;Correct my_name argument prints&quot;&quot;&quot;</span> 
+    <span class="n">notebookc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;Jill&quot;</span><span class="p">)</span> 
+    <span class="n">captured</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span> 
+    <span class="k">assert</span> <span class="s2">&quot;Jall&quot;</span> <span class="ow">in</span> <span class="n">captured</span><span class="o">.</span><span class="n">out</span> 
+</pre></div>
+
+
+<ol>
+<li>Travis CI </li>
+</ol>
+<p>Travis CI - это сервис используется для посторойки и тестирование программных продуктов. </p>
+<ul>
+<li>Создание .travis.yml </li>
+</ul>
+<p>Добавьте файл .travis.yml в папку проекта. </p>
+<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span> <span class="n">xenial</span> 
+<span class="n">language</span><span class="o">:</span> <span class="n">python</span> 
+<span class="n">python</span><span class="o">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span> 
+<span class="n">install</span><span class="o">:</span> 
+  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span> 
+  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
+<span class="n">script</span><span class="o">:</span> 
+  <span class="o">-</span> <span class="n">pytest</span> 
+</pre></div>
+
+
+<ol>
+<li>Тестирование Travis CI </li>
+</ol>
+<p>Закоммитите ваши изменения, отправить в гитхаб, создайте PR. Travis должен автоматически запуститься, сервис сообщит если найдены ошибки в PR.  </p>
+<ol>
+<li>Покрытие кода тестами </li>
+</ol>
+<p>Пакет pytest-cov – для создания отчетов покрытие теста. </p>
+<p>Добавить информацию пакета в файл <em>requirements_dev.txt</em>  </p>
+<p>Запустить: </p>
+<div class="highlight"><pre><span></span>pytest --cov<span class="o">=</span>my_project_name  
+</pre></div>
+
+
+<ol>
+<li>Добавление Coveralls </li>
+</ol>
+<p>Сервис https://coveralls.io/ </p>
+<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span> <span class="n">xenial</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">python</span>
+<span class="n">python</span><span class="o">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">install</span><span class="o">:</span>
+  <span class="err">—</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span> 
+  <span class="err">—</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
+<span class="n">script</span><span class="o">:</span> 
+  <span class="err">—</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">my_package_name</span> 
+<span class="n">after_success</span><span class="o">:</span> 
+  <span class="err">—</span> <span class="n">coveralls</span> 
+</pre></div>
+
+
+<ol>
+<li>Добавление PyUp </li>
+</ol>
+<p>https://pyup.io/ - сервис для опередения проблемных с точки зрения безопасности зависимостей. Автоматически создается PR для обновления в гитхабе. </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://twitter.com/oILnur">Twitter</a></li>
+                            <li><a href="mailto: ilnursoft@gmail.com">Email</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
