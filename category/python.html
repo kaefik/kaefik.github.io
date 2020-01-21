@@ -83,129 +83,71 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2019/11/20/steps-opensource-on-python/">Шаги для улучшения opensource проект на Python</a></h1>
+                    <h1 class="entry-title"><a href="/2019/11/21/environment-variables-python/">Переменные окружения для Python проектов</a></h1>
+<footer class="post-info">
+        <span>Thu 21 November 2019</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
+</footer><!-- /.post-info --><p>Источник: https://habr.com/ru/post/472674/  </p>
+<h2>Переменные окружения bash</h2>
+<p>Например, чтобы запустить flask-приложение, вначале нужно указать в переменной окружения FLASK_APP имя нашего приложения: </p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
+flask run
+</pre></div>
+
+
+<p>С помощью переменных окружения можно получать различные параметры приложение и секретные ключи: </p>
+<div class="highlight"><pre><span></span>import os
+app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get<span class="o">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">)</span>
+</pre></div>
+
+
+<h2>Библиотека <a href="https://pypi.org/project/python-dotenv/">python-dotenv</a></h2>
+<p>Чтобы не задавать каждый раз вручную переменные окружения при новом запуске терминала, можно воспользоваться пакетом python-dotenv. Он позволяет загружать переменные окружения из файла .env в корневом каталоге приложения. </p>
+<div class="highlight"><pre><span></span>pip install python-dotenv 
+</pre></div>
+
+
+<p>Теперь можно создать файл .env со всеми переменными среды, которые необходимы вашему приложению. Важно, добавьте .env-файл в .gitignore, не храните его в системе контроля версий. </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="n">dotenv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;.env&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">):</span>
+    <span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">)</span> 
+</pre></div>
+
+
+<p>Этот .env-файл можно использовать для всех переменных конфигурации, но его нельзя  использовать для переменных среды FLASK_APP и FLASK_DEBUG, так как они  необходимы уже в процессе начальной загрузки приложения. </p>
+<h2>Бибилиотека <a href="https://github.com/bobuk/defaultenv">defaultenv</a></h2>
+<h2>Утилита direnv</h2>
+<p>Переменные среды могут быть автоматически загружены при входе в папку с проектом,  это особенно удобно при работе с несколькими проектами одновременно.  Сделать это позволяет утилита direnv. Direnv — это менеджер переменных среды для терминала, поддерживает bash, zsh, tcsh и др. оболочки. Позволяет автоматически загружать и выгружать  переменные среды в зависимости от вашего текущего каталога. Это  позволяет иметь переменные среды, специфичные для каждого проекта. Перед каждым приглашением проверяется наличие файла .envrc в текущем и родительском каталогах. Если файл существует, он загружается в подшаблон bash, и все экспортированные переменные затем захватываются direnv, а затем становятся доступными для оболочки. </p>
+<div class="highlight"><pre><span></span>sudo apt-get install direnv 
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/11/20/steps-opensource-on-python/" rel="bookmark"
+                           title="Permalink to Шаги для улучшения opensource проект на Python">Шаги для улучшения opensource проект на Python</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Wed 20 November 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/opensource.html">opensource</a></span>
-</footer><!-- /.post-info --><p>источник: https://towardsdatascience.com/10-steps-to-set-up-your-python-project-for-success-14ff88b5d13 </p>
+</footer><!-- /.post-info -->                <p>источник: https://towardsdatascience.com/10-steps-to-set-up-your-python-project-for-success-14ff88b5d13 </p>
 <p>Добавим к проекту CI, тесты, покрытие тестами и др. </p>
 <ol>
 <li>Установить пакет Black (https://github.com/ambv/black) </li>
 </ol>
 <p>Black - пакет который форматирует код согласно PEP8. </p>
 <p>Добавьте пакет black в файл зависимостей для разработчиков requirements_dev.txt </p>
-<p>Найти как использовать автоматическое форматирование кода с помощью Black в Visual Code. </p>
-<ol>
-<li>Создайте файл <em>.pypirc</em> </li>
-</ol>
-<p>.pypirc <em>- используется инструментом</em> <em>Twine</em> <em>для автоматического входа в</em> <em>PyPI</em> / TestPyPI</p>
-<p>Шаблон файла: </p>
-<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">distutils</span><span class="o">]</span><span class="w"> </span>
-<span class="k">index</span><span class="o">-</span><span class="n">servers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">  </span><span class="n">pypi</span><span class="w"> </span>
-<span class="w">  </span><span class="n">testpypi</span><span class="w"> </span>
-
-<span class="o">[</span><span class="n">testpypi</span><span class="o">]</span><span class="w"> </span>
-<span class="nl">repository</span><span class="p">:</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">test</span><span class="p">.</span><span class="n">pypi</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">legacy</span><span class="w"> </span>
-<span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_username</span><span class="w"> </span>
-<span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_pypitest_password</span><span class="w"> </span>
-
-<span class="o">[</span><span class="n">pypi</span><span class="o">]</span><span class="w"> </span>
-<span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_username</span><span class="w"> </span>
-<span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_pypi_password</span><span class="w"> </span>
-</pre></div>
-
-
-<p>Настройки файла: </p>
-<div class="highlight"><pre><span></span>chmod <span class="m">600</span> ~/.pypirc 
-twine upload -r testpypi dist/
-twine upload dist/ 
-</pre></div>
-
-
-<ol>
-<li>Установка и настройка pytest </li>
-</ol>
-<p>Добавьте пакет pytest в requirements_dev.txt </p>
-<p>Запустите для того чтобы pytest нашел ваш пакет: </p>
-<div class="highlight"><pre><span></span>pip install -e .
-</pre></div>
-
-
-<ol>
-<li>Создание тестов </li>
-</ol>
-<p>Добавьте папку tests в верхний уровень вашего проекта. Начинайте с test_ имена ваших тестов, pytest автоматически искать. </p>
-<p>Например, </p>
-<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Tests for `notebookc` package.&quot;&quot;&quot;</span> 
-<span class="kn">import</span> <span class="nn">pytest</span> 
-<span class="kn">from</span> <span class="nn">notebookc</span> <span class="kn">import</span> <span class="n">notebookc</span>  
-<span class="k">def</span> <span class="nf">test_convert</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span> 
-    <span class="sd">&quot;&quot;&quot;Correct my_name argument prints&quot;&quot;&quot;</span> 
-    <span class="n">notebookc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;Jill&quot;</span><span class="p">)</span> 
-    <span class="n">captured</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span> 
-    <span class="k">assert</span> <span class="s2">&quot;Jall&quot;</span> <span class="ow">in</span> <span class="n">captured</span><span class="o">.</span><span class="n">out</span> 
-</pre></div>
-
-
-<ol>
-<li>Travis CI </li>
-</ol>
-<p>Travis CI - это сервис используется для посторойки и тестирование программных продуктов. </p>
-<ul>
-<li>Создание .travis.yml </li>
-</ul>
-<p>Добавьте файл .travis.yml в папку проекта. </p>
-<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span> <span class="n">xenial</span> 
-<span class="n">language</span><span class="o">:</span> <span class="n">python</span> 
-<span class="n">python</span><span class="o">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span> 
-<span class="n">install</span><span class="o">:</span> 
-  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span> 
-  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
-<span class="n">script</span><span class="o">:</span> 
-  <span class="o">-</span> <span class="n">pytest</span> 
-</pre></div>
-
-
-<ol>
-<li>Тестирование Travis CI </li>
-</ol>
-<p>Закоммитите ваши изменения, отправить в гитхаб, создайте PR. Travis должен автоматически запуститься, сервис сообщит если найдены ошибки в PR.  </p>
-<ol>
-<li>Покрытие кода тестами </li>
-</ol>
-<p>Пакет pytest-cov – для создания отчетов покрытие теста. </p>
-<p>Добавить информацию пакета в файл <em>requirements_dev.txt</em>  </p>
-<p>Запустить: </p>
-<div class="highlight"><pre><span></span>pytest --cov<span class="o">=</span>my_project_name  
-</pre></div>
-
-
-<ol>
-<li>Добавление Coveralls </li>
-</ol>
-<p>Сервис https://coveralls.io/ </p>
-<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span> <span class="n">xenial</span>
-<span class="n">language</span><span class="o">:</span> <span class="n">python</span>
-<span class="n">python</span><span class="o">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span>
-<span class="n">install</span><span class="o">:</span>
-  <span class="err">—</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span> 
-  <span class="err">—</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
-<span class="n">script</span><span class="o">:</span> 
-  <span class="err">—</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">my_package_name</span> 
-<span class="n">after_success</span><span class="o">:</span> 
-  <span class="err">—</span> <span class="n">coveralls</span> 
-</pre></div>
-
-
-<ol>
-<li>Добавление PyUp </li>
-</ol>
-<p>https://pyup.io/ - сервис для опередения проблемных с точки зрения безопасности зависимостей. Автоматически создается PR для обновления в гитхабе. </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>Найти как использовать автоматическое форматирование кода с помощью Black в Visual …</p>
+                <a class="readmore" href="/2019/11/20/steps-opensource-on-python/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
