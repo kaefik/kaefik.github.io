@@ -40,7 +40,6 @@
                             <li><a href="/category/javascript.html">javascript</a></li>
                             <li><a href="/category/lego.html">lego</a></li>
                             <li><a href="/category/linux.html">linux</a></li>
-                            <li><a href="/category/linux-with-docker.html">linux-with-docker</a></li>
                             <li><a href="/category/lua.html">lua</a></li>
                             <li><a href="/category/machine_learning.html">machine_learning</a></li>
                             <li><a href="/category/main.html">main</a></li>
@@ -54,7 +53,6 @@
                             <li><a href="/category/network.html">network</a></li>
                             <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
                             <li><a href="/category/os.html">os</a></li>
-                            <li><a href="/category/osm.html">osm</a></li>
                             <li><a href="/category/otkrytye-dannye.html">открытые данные</a></li>
                             <li><a href="/category/postgis.html">postgis</a></li>
                             <li><a href="/category/postgresql.html">PostgreSQL</a></li>
@@ -75,7 +73,6 @@
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
-                            <li><a href="/category/wifi.html">wifi</a></li>
                             <li><a href="/category/windows.html">windows</a></li>
                     </ul>
                 <div>
@@ -248,6 +245,35 @@ depends_on:
 <li><a href="https://docs.docker.com/registry/deploying/">Deploy a registry server</a></li>
 <li><a href="http://boot2docker.io/">boot2docker</a>   is a lightweight Linux distribution based on Tiny Core Linux made specifically to run Docker containers. It runs completely from RAM, weighs ~27MB and boots …</li></ul>
                 <a class="readmore" href="/2018/04/05/docker/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/12/30/linux-with-docker/" rel="bookmark"
+                           title="Permalink to Install Docker">Install Docker</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sat 30 December 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/centos.html">centos</a><a href="/tag/docker.html">docker</a><a href="/tag/fedora.html">fedora</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="http://p.umputun.com/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/">VPN за 3 минуты</a></li>
+</ul>
+<h2>Установка Docker в Ubuntu 18.04</h2>
+<div class="highlight"><pre><span></span>sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository <span class="se">\</span>
+<span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span>
+<span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> \</span>
+<span class="s2">stable …</span></pre></div>
+                <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
