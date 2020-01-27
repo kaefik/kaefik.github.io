@@ -80,11 +80,50 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2019/11/21/environment-variables-python/">Переменные окружения для Python проектов</a></h1>
+                    <h1 class="entry-title"><a href="/2020/01/27/python-and-modules/">Python и модули / пакеты</a></h1>
+<footer class="post-info">
+        <span>Mon 27 January 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li>https://ru.hexlet.io/blog/posts/likbez-po-paketam-i-shpargalka-po-modulyam-v-python</li>
+</ul>
+<p>Существует и возможность явно указать, что конкретное будет  экспортировано при импорте со звёздочкой. Для управления названным  методом импорта существует атрибут <code>__all__</code>, в который можно положить список (а ещё лучше — кортеж) строк с именами, которые будут экспортироваться.</p>
+<h4>Живой пример видимости атрибутов модулей.</h4>
+<p>Рассмотрим пример, демонстрирующий всё вышеописанное. Пусть у нас будет два файла:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Файл &quot;module.py&quot;</span>
+<span class="kn">from</span> <span class="nn">other_module</span> <span class="kn">import</span> <span class="n">CAT</span><span class="p">,</span> <span class="n">DOG</span> <span class="k">as</span> <span class="n">_DOG</span><span class="p">,</span> <span class="n">_GOAT</span>
+
+<span class="n">FISH</span> <span class="o">=</span> <span class="s1">&#39;fish&#39;</span>
+<span class="n">MEAT</span> <span class="o">=</span> <span class="s1">&#39;meat&#39;</span>
+<span class="n">_CARROT</span> <span class="o">=</span> <span class="s1">&#39;carrot&#39;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;FISH&#39;</span><span class="p">,</span> <span class="s1">&#39;_CARROT&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Файл &quot;other_module.py&quot;</span>
+
+<span class="n">CAT</span> <span class="o">=</span> <span class="s1">&#39;cat&#39;</span>
+<span class="n">DOG</span> <span class="o">=</span> <span class="s1">&#39;dog&#39;</span>
+<span class="n">_GOAT</span> <span class="o">=</span> <span class="s1">&#39;goat&#39;</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/11/21/environment-variables-python/" rel="bookmark"
+                           title="Permalink to Переменные окружения для Python проектов">Переменные окружения для Python проектов</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 21 November 2019</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info --><p>Источник: https://habr.com/ru/post/472674/  </p>
+</footer><!-- /.post-info -->                <p>Источник: https://habr.com/ru/post/472674/  </p>
 <h2>Переменные окружения bash</h2>
 <p>Например, чтобы запустить flask-приложение, вначале нужно указать в переменной окружения FLASK_APP имя нашего приложения: </p>
 <div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
@@ -94,35 +133,10 @@ flask run
 
 <p>С помощью переменных окружения можно получать различные параметры приложение и секретные ключи: </p>
 <div class="highlight"><pre><span></span>import os
-app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get<span class="o">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">)</span>
-</pre></div>
-
-
-<h2>Библиотека <a href="https://pypi.org/project/python-dotenv/">python-dotenv</a></h2>
-<p>Чтобы не задавать каждый раз вручную переменные окружения при новом запуске терминала, можно воспользоваться пакетом python-dotenv. Он позволяет загружать переменные окружения из файла .env в корневом каталоге приложения. </p>
-<div class="highlight"><pre><span></span>pip install python-dotenv 
-</pre></div>
-
-
-<p>Теперь можно создать файл .env со всеми переменными среды, которые необходимы вашему приложению. Важно, добавьте .env-файл в .gitignore, не храните его в системе контроля версий. </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
-<span class="n">dotenv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;.env&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">):</span>
-    <span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="p">)</span> 
-</pre></div>
-
-
-<p>Этот .env-файл можно использовать для всех переменных конфигурации, но его нельзя  использовать для переменных среды FLASK_APP и FLASK_DEBUG, так как они  необходимы уже в процессе начальной загрузки приложения. </p>
-<h2>Бибилиотека <a href="https://github.com/bobuk/defaultenv">defaultenv</a></h2>
-<h2>Утилита direnv</h2>
-<p>Переменные среды могут быть автоматически загружены при входе в папку с проектом,  это особенно удобно при работе с несколькими проектами одновременно.  Сделать это позволяет утилита direnv. Direnv — это менеджер переменных среды для терминала, поддерживает bash, zsh, tcsh и др. оболочки. Позволяет автоматически загружать и выгружать  переменные среды в зависимости от вашего текущего каталога. Это  позволяет иметь переменные среды, специфичные для каждого проекта. Перед каждым приглашением проверяется наличие файла .envrc в текущем и родительском каталогах. Если файл существует, он загружается в подшаблон bash, и все экспортированные переменные затем захватываются direnv, а затем становятся доступными для оболочки. </p>
-<div class="highlight"><pre><span></span>sudo apt-get install direnv 
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get …</pre></div>
+                <a class="readmore" href="/2019/11/21/environment-variables-python/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -348,31 +362,10 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
                 <a class="readmore" href="/2017/11/04/flask/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/11/02/python-and-django/" rel="bookmark"
-                           title="Permalink to Python and Django">Python and Django</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 02 November 2017</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/django.html">Django</a><a href="/tag/python.html">python</a><a href="/tag/web.html">web</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://www.djangoproject.com/">https://www.djangoproject.com/</a></li>
-<li><a href="https://pythonworld.ru/web/django-ubuntu1604.html">Настраиваем Django + virtualenv + nginx + gunicorn + PostgreSQL + memcached + letsencrypt на Ubuntu 16.04</a></li>
-</ul>
-<h2>Установка Django</h2>
-<div class="highlight"><pre><span></span>pip install <span class="nv">Django</span><span class="o">==</span><span class="m">1</span>.11.7
-</pre></div>
-                <a class="readmore" href="/2017/11/02/python-and-django/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="/category/python2.html">&raquo;</a>
 </p>
             </section><!-- /#content -->
         <section id="extras" class="body">

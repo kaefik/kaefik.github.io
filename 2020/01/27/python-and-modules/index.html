@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
         <meta charset="utf-8" />
-        <title>Общественная записная книжка - Authors</title>
+        <title>Python и модули / пакеты</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -59,7 +59,7 @@
                             <li><a href="/category/powershell.html">powershell</a></li>
                             <li><a href="/category/programming.html">programming</a></li>
                             <li><a href="/category/projects.html">projects</a></li>
-                            <li><a href="/category/python.html">python</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
                             <li><a href="/category/radio.html">radio</a></li>
                             <li><a href="/category/rest-api.html">rest-api</a></li>
                             <li><a href="/category/rust.html">rust</a></li>
@@ -77,11 +77,46 @@
                     </ul>
                 <div>
         </header><!-- /#banner -->
-
 <section id="content" class="body">
-    <h1>Authors on Общественная записная книжка</h1>        <li><a href="/author/ilnur-s.html">Ильнур С.</a> (118)</li>
-</section>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2020/01/27/python-and-modules/" rel="bookmark"
+           title="Permalink to Python и модули / пакеты">Python и модули / пакеты</a></h1>
+    </header>
 
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 27 January 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
+</footer><!-- /.post-info -->      <h2>Полезные ссылки</h2>
+<ul>
+<li>https://ru.hexlet.io/blog/posts/likbez-po-paketam-i-shpargalka-po-modulyam-v-python</li>
+</ul>
+<p>Существует и возможность явно указать, что конкретное будет  экспортировано при импорте со звёздочкой. Для управления названным  методом импорта существует атрибут <code>__all__</code>, в который можно положить список (а ещё лучше — кортеж) строк с именами, которые будут экспортироваться.</p>
+<h4>Живой пример видимости атрибутов модулей.</h4>
+<p>Рассмотрим пример, демонстрирующий всё вышеописанное. Пусть у нас будет два файла:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Файл &quot;module.py&quot;</span>
+<span class="kn">from</span> <span class="nn">other_module</span> <span class="kn">import</span> <span class="n">CAT</span><span class="p">,</span> <span class="n">DOG</span> <span class="k">as</span> <span class="n">_DOG</span><span class="p">,</span> <span class="n">_GOAT</span>
+
+<span class="n">FISH</span> <span class="o">=</span> <span class="s1">&#39;fish&#39;</span>
+<span class="n">MEAT</span> <span class="o">=</span> <span class="s1">&#39;meat&#39;</span>
+<span class="n">_CARROT</span> <span class="o">=</span> <span class="s1">&#39;carrot&#39;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;FISH&#39;</span><span class="p">,</span> <span class="s1">&#39;_CARROT&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Файл &quot;other_module.py&quot;</span>
+
+<span class="n">CAT</span> <span class="o">=</span> <span class="s1">&#39;cat&#39;</span>
+<span class="n">DOG</span> <span class="o">=</span> <span class="s1">&#39;dog&#39;</span>
+<span class="n">_GOAT</span> <span class="o">=</span> <span class="s1">&#39;goat&#39;</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>
