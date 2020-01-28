@@ -269,6 +269,47 @@
 
 
 <p>У модуля ipaddress есть и много других интересных возможностей, о которых я тут не рассказываю. Почитать подробности о нём можно здесь. Правда, пользуясь этим модулем, учитывайте ограничения, касающиеся его совместной работы с другими модулями, имеющими отношение к сетевому программированию. Например, нельзя использовать экземпляры IPv4Network в виде строк адреса. Подобные объекты для этого сначала надо конвертировать в строки с помощью str.</p>
+<h2>Использование функции enumerate()</h2>
+<p>Если вам нужно адекватным образом отслеживать «индекс элемента» в for-цикле Python, то для этого может подойти функция enumerate(), которая позволяет «пересчитать» итерируемый объект. Её можно использовать не только для обработки списков, но и для работы с другими типами данных — со строками, кортежами, словарями.</p>
+<p>Эта функция принимает два аргумента: итерируемый объект и необязательное начальное значение счётчика.</p>
+<p>Если начальное значение счётчика enumerate() не передаётся — оно, по умолчанию, устанавливается в 0. Функция создаёт объект, генерирующий кортежи, состоящие из индекса элемента и самого этого элемента.</p>
+<div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">27</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Такой код получился гораздо чище кода из предыдущего примера. Мы ушли от работы со списком индексов, мы перебираем сами значения, получая к ним прямой доступ в цикле for, и видим значения, с которыми работаем, в объявлении цикла.</p>
+<p>Вот одна приятная возможность, которая понравится тем, кому нужно выводить нумерованные списки так, чтобы номер первого элемента был бы не 0, в соответствии с его индексом, а 1. Обычно для того, чтобы это сделать, приходится менять выводимый номер элемента. Например — так: i + 1. При использовании же функции enumerate() достаточно передать ей, в качестве второго аргумента, то число, с которого нужно начинать нумерацию. В нашем случае — 1:</p>
+<div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">27</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">1 54</span>
+<span class="sd">2 67</span>
+<span class="sd">3 48</span>
+<span class="sd">4 99</span>
+<span class="sd">5 27</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+
+
+<h3>Использование next</h3>
+<p>Функция enumerate возвращает итератор. Используя функцию next можно получить кортежи.</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">tuple</span><span class="s1">&#39;&gt;</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Если при очередном вызове next, следующий элемент будет отсутствовать, возникает исключение StopIteration. </p>
     </div><!-- /.entry-content -->
 
   </article>
