@@ -143,7 +143,127 @@
 <div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;яблоки&#39;</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;апельсины&#39;</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;бананы&#39;</span><span class="p">:</span><span class="mi">70</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">))</span>
 <span class="p">[</span><span class="s1">&#39;яблоки&#39;</span><span class="p">,</span> <span class="s1">&#39;бананы&#39;</span><span class="p">,</span> <span class="s1">&#39;апельсины&#39;</span><span class="p">]</span>
-</pre></div>                </article>
+</pre></div>
+
+
+<h2>Создание объектов, поддерживающих выражение with</h2>
+<p>Все знают о том, как, например, открыть файл, или, возможно, как установить блокировку с использованием оператора with. Но можно ли самостоятельно реализовать механизм управления блокировками? Да, это вполне реально. Протокол управления контекстом исполнения реализуется с использованием методов <strong>enter</strong> и <strong>exit</strong>:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Connection</span><span class="p">:</span>
+ <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="o">...</span>
+ <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="c1"># Инициализируем соединение...</span>
+
+ <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+  <span class="c1"># Закрываем соединение...</span>
+
+<span class="k">with</span> <span class="n">Connection</span><span class="p">()</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+ <span class="c1"># __enter__() executes</span>
+ <span class="o">...</span>
+ <span class="c1"># conn.__exit__() executes</span>
+</pre></div>
+
+
+<p>Это — наиболее распространённый способ реализации возможностей менеджера контекста в Python, но то же самое можно сделать и проще:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+ <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{name}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+ <span class="k">yield</span>
+ <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;/</span><span class="si">{name}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">tag</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">):</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is Title.&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Очистка входных строковых данных</h2>
+<p>Задача очистки данных, вводимых пользователем, актуальна практически для любой программы. Часто такая обработка входных данных сводится к преобразованию символов в верхний или нижний регистр. Иногда данные можно очистить с помощью регулярного выражения. Но в случаях, когда задача усложняется, можно применить более удачный способ её решения. Например — такой:</p>
+<div class="highlight"><pre><span></span><span class="n">user_input</span> <span class="o">=</span> <span class="s2">&quot;This</span><span class="se">\n</span><span class="s2">string has</span><span class="se">\t</span><span class="s2">some whitespaces...</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+
+<span class="n">character_map</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+ <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+ <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="kc">None</span>
+<span class="p">}</span>
+<span class="n">user_input</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">character_map</span><span class="p">)</span>  <span class="c1"># This string has some whitespaces... &quot;</span>
+</pre></div>
+
+
+<p>Здесь можно видеть, как пробельные символы "\n" и "\t" заменяются на обычные пробелы, и как символ "\r" удаляется из строки полностью. Это — простой пример, но мы можем его расширить, создавая большие таблицы переназначения символов с использованием пакета unicodedata и его функции combining(). Такой подход позволяет убирать из строк всё то, что там не нужно.</p>
+<h2>Пропуск начала итерируемого объекта</h2>
+<p>Иногда нужно работать с файлом, который, как заранее известно, начинается с некоторого числа ненужных строк — вроде строк с комментариями. Для того чтобы пропустить эти строки, можно, снова, прибегнуть к возможностям itertools:</p>
+<div class="highlight"><pre><span></span><span class="n">string_from_file</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">// Author: ...</span>
+<span class="s2">// License: ...</span>
+<span class="s2">//</span>
+<span class="s2">// Date: ...</span>
+
+<span class="s2">Actual content...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">dropwhile</span><span class="p">(</span><span class="k">lambda</span> <span class="n">line</span><span class="p">:</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;//&quot;</span><span class="p">),</span> <span class="n">string_from_file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)):</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Этот код выдаёт лишь строки, находящиеся после блока комментариев, расположенного в начале файла. Такой подход может быть полезен тогда, когда нужно отбросить лишь элементы (в нашем случае — строки) в начале итерируемого объекта, но при этом точное их количество неизвестно.</p>
+<h2>Функции, поддерживающие только именованные аргументы (kwargs)</h2>
+<p>Для того чтобы при использовании некоей функции сделать так, чтобы ей можно было бы передавать только именованные аргументы, можно поступить следующим образом:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+ <span class="k">pass</span>
+
+<span class="n">test</span><span class="p">(</span><span class="s2">&quot;value for a&quot;</span><span class="p">,</span> <span class="s2">&quot;value for b&quot;</span><span class="p">)</span>  <span class="c1"># TypeError: test() takes 0 positional arguments...</span>
+<span class="n">test</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s2">&quot;value 2&quot;</span><span class="p">)</span>  <span class="c1"># А так - работает...</span>
+</pre></div>
+
+
+<h2>Запрос пароля у пользователя во время выполнения программы</h2>
+<p>Множеству инструментов командной строки или скриптов для работы требуется имя пользователя и пароль. Если вам придётся писать подобную программу — вы, возможно, сочтёте полезным модуль getpass:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">()</span>
+
+<span class="c1"># Выполнить некие действия...</span>
+</pre></div>
+
+
+<p>Этот очень простой пакет позволяет запрашивать у пользователя его пароль, а также получать имя пользователя, извлекая имя, под которым он вошёл в систему. Правда, при работе с паролями стоит знать о том, что не все системы поддерживают скрытие паролей. Python постарается вас об этом уведомить. Если это произойдёт — вы увидите соответствующее предупреждение в командной строке.</p>
+<h2>Отладка программы в командной строке</h2>
+<p>Если вы — из тех, кто не хочет пользоваться IDE и пишет код в Vim или Emacs, тогда вы, возможно, попадали в ситуацию, когда вам пригодился бы отладчик, вроде тех, что есть в IDE. И знаете что? У вас такой отладчик уже есть. Для того чтобы им воспользоваться, достаточно запустить программу с помощью конструкции вида python3.8 -i. Флаг -i позволяет, после завершения программы, запустить интерактивную оболочку. С её помощью можно исследовать переменные и вызывать функции. Это интересная возможность, но как насчёт настоящего отладчика (pdb)?</p>
+<h2>Работа с IP-адресами</h2>
+<p>Если вам приходится писать на Python программы для работы с сетью — это значит, что вам может очень пригодиться модуль ipaddress. Одним из вариантов его использование является генерирование списка IP-адресов из диапазона адресов, заданных в формате CIDR (Classless Inter-Domain Routing, бесклассовая адресация).</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipaddress</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_network</span><span class="p">(</span><span class="s1">&#39;74.125.227.0/29&#39;</span><span class="p">)</span>  <span class="c1"># Подходит и для работы с IPv6</span>
+
+<span class="c1"># IPv4Network(&#39;74.125.227.0/29&#39;)</span>
+
+<span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">net</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+
+<span class="c1"># 74.125.227.0</span>
+<span class="c1"># 74.125.227.1</span>
+<span class="c1"># 74.125.227.2</span>
+<span class="c1"># 74.125.227.3</span>
+<span class="c1"># ...</span>
+
+<span class="n">Ещё</span> <span class="n">одна</span> <span class="n">полезная</span> <span class="n">возможность</span> <span class="n">этого</span> <span class="n">модуля</span> <span class="err">—</span> <span class="n">проверка</span> <span class="n">IP</span><span class="o">-</span><span class="n">адреса</span> <span class="n">на</span> <span class="n">предмет</span> <span class="n">принадлежности</span> <span class="n">его</span> <span class="n">к</span> <span class="n">некоей</span> <span class="n">сети</span><span class="p">:</span>
+
+<span class="n">ip</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="s2">&quot;74.125.227.3&quot;</span><span class="p">)</span>
+<span class="n">ip</span> <span class="ow">in</span> <span class="n">net</span>
+<span class="c1"># True</span>
+
+<span class="n">ip</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="s2">&quot;74.125.227.12&quot;</span><span class="p">)</span>
+<span class="n">ip</span> <span class="ow">in</span> <span class="n">net</span>
+<span class="c1"># False</span>
+</pre></div>
+
+
+<p>У модуля ipaddress есть и много других интересных возможностей, о которых я тут не рассказываю. Почитать подробности о нём можно здесь. Правда, пользуясь этим модулем, учитывайте ограничения, касающиеся его совместной работы с другими модулями, имеющими отношение к сетевому программированию. Например, нельзя использовать экземпляры IPv4Network в виде строк адреса. Подобные объекты для этого сначала надо конвертировать в строки с помощью str.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
