@@ -80,38 +80,89 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/01/27/python-and-modules/">Python и модули / пакеты</a></h1>
+                    <h1 class="entry-title"><a href="/2020/01/30/git-reset-error/">Заголовок статьи</a></h1>
 <footer class="post-info">
-        <span>Mon 27 January 2020</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+        <span>Thu 30 January 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
+</footer><!-- /.post-info --><h2>Способы решения проблем при некоректном коммите</h2>
+<p>источник: https://ru.hexlet.io/blog/posts/oh-shit-git</p>
 <ul>
-<li>https://ru.hexlet.io/blog/posts/likbez-po-paketam-i-shpargalka-po-modulyam-v-python</li>
+<li>удаление коммитов начиная с выбранного</li>
 </ul>
-<p>Существует и возможность явно указать, что конкретное будет  экспортировано при импорте со звёздочкой. Для управления названным  методом импорта существует атрибут <code>__all__</code>, в который можно положить список (а ещё лучше — кортеж) строк с именами, которые будут экспортироваться.</p>
-<h4>Живой пример видимости атрибутов модулей.</h4>
-<p>Рассмотрим пример, демонстрирующий всё вышеописанное. Пусть у нас будет два файла:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Файл &quot;module.py&quot;</span>
-<span class="kn">from</span> <span class="nn">other_module</span> <span class="kn">import</span> <span class="n">CAT</span><span class="p">,</span> <span class="n">DOG</span> <span class="k">as</span> <span class="n">_DOG</span><span class="p">,</span> <span class="n">_GOAT</span>
-
-<span class="n">FISH</span> <span class="o">=</span> <span class="s1">&#39;fish&#39;</span>
-<span class="n">MEAT</span> <span class="o">=</span> <span class="s1">&#39;meat&#39;</span>
-<span class="n">_CARROT</span> <span class="o">=</span> <span class="s1">&#39;carrot&#39;</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;FISH&#39;</span><span class="p">,</span> <span class="s1">&#39;_CARROT&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="c1"># Файл &quot;other_module.py&quot;</span>
-
-<span class="n">CAT</span> <span class="o">=</span> <span class="s1">&#39;cat&#39;</span>
-<span class="n">DOG</span> <span class="o">=</span> <span class="s1">&#39;dog&#39;</span>
-<span class="n">_GOAT</span> <span class="o">=</span> <span class="s1">&#39;goat&#39;</span>
-</pre></div>                </article>
+<p><code>bash
+  git reflog
+  # ты увидишь список всех действий во всех ветках
+  # у каждой есть индекс HEAD@{index}
+  # найди тот, после которого ты все поломал
+  git reset HEAD@{index}
+  # волшебная машина времени</code></p>
+<ul>
+<li>Сделал коммит, но забыл кое что</li>
+</ul>
+<p><code>bash
+  # сделай что хотел
+  git add . # или добавляй файлы по одному
+  git commit --amend
+  # теперь измени или оставь старое сообщение коммита
+  # теперь твой последний коммит включает то новое изменение!</code></p>
+<ul>
+<li>Исправить сообщение в коммите</li>
+</ul>
+<p><code>bash
+  git commit --amend</code></p>
+<ul>
+<li>Случайно сделал коммит в мастер, а не в другую ветку</li>
+</ul>
+<p><code>bash
+  # создай новую ветку на основе мастера
+  git branch some-new-branch-name
+  # удали последний коммит из мастера
+  git reset HEAD~ --hard
+  git checkout some-new-branch-name
+  # теперь тот коммит в новой ветке! :)</code></p>
+<ul>
+<li>Сделал коммит в другую ветку</li>
+</ul>
+<p><code>bash
+  # отмени последний коммит, но оставь изменения
+  git reset HEAD~ --soft
+  git stash
+  # перейди в нужную ветку
+  git checkout name-of-the-correct-branch
+  git stash pop
+  git add . # или добавь файлы по одному
+  git commit -m "your message here"
+  # теперь изменения в нужной ветке</code></p>
+<ul>
+<li>про diff</li>
+</ul>
+<p><code>bash
+  git diff --staged</code></p>
+<p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/01/27/python-and-modules/" rel="bookmark"
+                           title="Permalink to Python и модули / пакеты">Python и модули / пакеты</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 27 January 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li>https://ru.hexlet.io/blog/posts/likbez-po-paketam-i-shpargalka-po-modulyam-v-python</li>
+</ul>
+<p>Существует и возможность явно указать, что конкретное будет  экспортировано при импорте со звёздочкой. Для управления названным  методом импорта существует атрибут <code>__all__</code>, в который можно положить список (а ещё лучше — кортеж) строк с именами, которые будут экспортироваться.</p>
+<h4>Живой пример видимости атрибутов модулей …</h4>
+                <a class="readmore" href="/2020/01/27/python-and-modules/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -371,38 +422,6 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <li>
 <div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.inserMany([{&quot;name&quot;:&quot;John&quot;,&quot;email …</span></pre></div></li></ul>
                 <a class="readmore" href="/2019/08/22/mongodb-nosql-python/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/07/20/powershell-scripts-send-mail/" rel="bookmark"
-                           title="Permalink to PowerShell: различные скрипты">PowerShell: различные скрипты</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 20 July 2019</span>
-<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/powershell.html">powershell</a><a href="/tag/windows.html">windows</a></span>
-</footer><!-- /.post-info -->                <h2>Powershell отправка почты с авторизацией через SMTP сервер Яндекса</h2>
-<p>источник: <a href="https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa">https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa</a></p>
-<div class="highlight"><pre><span></span><span class="c">#Адрес сервера SMTP для отправки</span>
-<span class="nv">$serverSmtp</span> <span class="p">=</span> <span class="s2">&quot;smtp.yandex.ru&quot;</span>
-
-<span class="c">#Порт сервера</span>
-<span class="nv">$port</span> <span class="p">=</span> <span class="n">587</span>
-
-<span class="c">#От кого</span>
-<span class="nv">$From</span> <span class="p">=</span> <span class="s2">&quot;login@yandex.ru&quot;</span>
-
-<span class="c">#Кому</span>
-<span class="nv">$To</span> <span class="p">=</span> <span class="s2">&quot;myMail@mail.ru&quot;</span>
-
-<span class="c">#Тема письма</span>
-<span class="nv">$subject</span> <span class="p">=</span> <span class="s2">&quot;Письмо с вложением&quot;</span>
-
-<span class="c">#Логин и пароль от …</span></pre></div>
-                <a class="readmore" href="/2019/07/20/powershell-scripts-send-mail/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

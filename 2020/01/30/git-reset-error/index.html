@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
         <meta charset="utf-8" />
-        <title>Общественная записная книжка - git</title>
+        <title>Заголовок статьи</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -33,7 +33,7 @@
                             <li><a href="/category/design.html">design</a></li>
                             <li><a href="/category/docker.html">docker</a></li>
                             <li><a href="/category/game.html">game</a></li>
-                            <li><a href="/category/git.html">git</a></li>
+                            <li class="active"><a href="/category/git.html">git</a></li>
                             <li><a href="/category/go.html">go</a></li>
                             <li><a href="/category/hackintosh.html">hackintosh</a></li>
                             <li><a href="/category/internet.html">internet</a></li>
@@ -77,14 +77,19 @@
                     </ul>
                 <div>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2020/01/30/git-reset-error/" rel="bookmark"
+           title="Permalink to Заголовок статьи">Заголовок статьи</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/2020/01/30/git-reset-error/">Заголовок статьи</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <span>Thu 30 January 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
-</footer><!-- /.post-info --><h2>Способы решения проблем при некоректном коммите</h2>
+</footer><!-- /.post-info -->      <h2>Способы решения проблем при некоректном коммите</h2>
 <p>источник: https://ru.hexlet.io/blog/posts/oh-shit-git</p>
 <ul>
 <li>удаление коммитов начиная с выбранного</li>
@@ -138,95 +143,11 @@
 </ul>
 <p><code>bash
   git diff --staged</code></p>
-<p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2020/01/20/git-workflow/" rel="bookmark"
-                           title="Permalink to Git workflow">Git workflow</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 20 January 2020</span>
-<span>| tags: <a href="/tag/git.html">git</a><a href="/tag/programmirovanie.html">программирование</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li>15 полезных команд git  - https://dailycoding.io/article/B79SM5pctQBPQNZ2tF24 </li>
-<li>https://towardsdatascience.com/learn-enough-git-to-be-useful-281561eef959 </li>
-</ul>
-<h2>Простая работа с git</h2>
-<ul>
-<li>Создать новую ветку фич и перейти на неё: </li>
-</ul>
-<div class="highlight"><pre><span></span>git checkout -b my_feature_branch
-</pre></div>
-
-
-<ul>
-<li>
-<p><code>bash
-  git status</code></p>
-</li>
-<li>
-<p>Зафиксировать изменения: </p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>git add –A
-</pre></div>
-
-
-<ul>
-<li>Заккоментировать изменения: </li>
-</ul>
-<div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;my commit message&quot;</span> 
-</pre></div>
-
-
-<ul>
-<li>Переключиться на основную …</li></ul>
-                <a class="readmore" href="/2020/01/20/git-workflow/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2018/04/07/git/" rel="bookmark"
-                           title="Permalink to про Git">про Git</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 07 April 2018</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://toster.ru/q/397480">Список курсов по Git</a></li>
-<li><a href="https://githowto.com/ru">Обучающий курс про Git (русский)</a></li>
-<li><a href="https://learngitbranching.js.org/">Git Branching</a></li>
-<li><a href="https://try.github.io/levels/1/challenges/1">Обучалка по Git</a></li>
-</ul>
-<h2>Из локального репозитория на GitHub</h2>
-<p>Наш проект может размещатся в любом каталоге. Для него нужно инициализировать git. Это стандартная процедура:</p>
-<div class="highlight"><pre><span></span>git init
-git add .
-git commit -m <span class="s2">&quot;Init&quot;</span>
-</pre></div>
-
-
-<p>Теперь для проекта git работает и …</p>
-                <a class="readmore" href="/2018/04/07/git/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>

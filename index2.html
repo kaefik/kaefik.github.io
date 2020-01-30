@@ -82,6 +82,31 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2019/11/21/environment-variables-python/" rel="bookmark"
+                           title="Permalink to Переменные окружения для Python проектов">Переменные окружения для Python проектов</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Thu 21 November 2019</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a></span>
+</footer><!-- /.post-info -->                <p>Источник: https://habr.com/ru/post/472674/  </p>
+<h2>Переменные окружения bash</h2>
+<p>Например, чтобы запустить flask-приложение, вначале нужно указать в переменной окружения FLASK_APP имя нашего приложения: </p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
+flask run
+</pre></div>
+
+
+<p>С помощью переменных окружения можно получать различные параметры приложение и секретные ключи: </p>
+<div class="highlight"><pre><span></span>import os
+app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get …</pre></div>
+                <a class="readmore" href="/2019/11/21/environment-variables-python/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2019/11/20/steps-opensource-on-python/" rel="bookmark"
                            title="Permalink to Шаги для улучшения opensource проект на Python">Шаги для улучшения opensource проект на Python</a></h1>
                 </header>
@@ -346,33 +371,6 @@
  pip3 install pysimplegui
 </pre></div>
                 <a class="readmore" href="/2019/06/02/python-and-gui/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/01/01/voice-assistant/" rel="bookmark"
-                           title="Permalink to Голосовые (умные и не очень) ассистенты">Голосовые (умные и не очень) ассистенты</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Tue 01 January 2019</span>
-<span>| tags: <a href="/tag/alisa.html">алиса</a><a href="/tag/google-assistant.html">google assistant</a><a href="/tag/interface.html">interface</a><a href="/tag/voice.html">voice</a><a href="/tag/alexa.html">alexa</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://www.youtube.com/playlist?list=PLOsZ5pPzejqj2jjCTSRd_kgRmMqBI_AEG">Плейлист по Voice User Interfaces (Алиса, Goggle Assistant, Alexa)</a></li>
-</ul>
-<h3><a href="https://alice.yandex.ru/">Алиса</a></h3>
-<ul>
-<li><a href="https://dialogs.yandex.ru/store/">навыки Алисы</a></li>
-<li><a href="https://tech.yandex.ru/dialogs/alice/">Диалоги Алисы</a></li>
-<li><a href="https://events.yandex.ru/events/webinars/alisa-school/?utm_source=dialogsblog&amp;utm_medium=post&amp;utm_campaign=school_alisa">Школа Алисы: как создавать навыки</a></li>
-<li><a href="https://tech.yandex.ru/dialogs/alice/doc/about-docpage/">документация Диалоги Алисы</a></li>
-<li><a href="https://github.com/sameoldmadness/awesome-alice">Список ресурсов для Алисы от разработчика Яндекса</a></li>
-<li><a href="https://aliceskill.ru/">Навыки Алисы - неофициальный каталог навыков Алисы для голосового помощника от Яндекс</a></li>
-<li><a href="https://webasr.yandex.net/ttsdemo.html">Yandex SpeechKit JS API - TTS demo</a>  - для тестирования …</li></ul>
-                <a class="readmore" href="/2019/01/01/voice-assistant/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
