@@ -70,6 +70,7 @@
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
                             <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
@@ -80,11 +81,40 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2019/12/20/config-mouse-keys/">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                    <h1 class="entry-title"><a href="/2020/02/11/vim-basuc/">Vim основы</a></h1>
+<footer class="post-info">
+        <span>Tue 11 February 2020</span>
+<span>| tags: <a href="/tag/vim.html">vim</a><a href="/tag/noevim.html">noevim</a><a href="/tag/linux.html">linux</a><a href="/tag/editor.html">editor</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://www.vim.org/">Vim официальный сайт</a></li>
+<li><a href="https://neovim.io/">NeoVim официальный сайт</a></li>
+<li><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a></li>
+</ul>
+<h2>Книги</h2>
+<ul>
+<li>Дрю Нейл "Практическое использование Vim"</li>
+</ul>
+<p>Давно хотел освоить редактор Vim. Толчком послужила статья или на хабре или в телеграмм канале. </p>
+<p>нужно сначала пройти vimtutor (встроеный курс молодого бойца)</p>
+<p>затем можно начать читать книгу "Практическое использование Vim".</p>
+<p>Как говорится в vimtutor нужна практика и только практика для освоения редактора.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/12/20/config-mouse-keys/" rel="bookmark"
+                           title="Permalink to Настройка дополнительных клавиш мыши в ubuntu (linux)">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Fri 20 December 2019</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/mysh.html">мышь</a><a href="/tag/linux.html">linux</a><a href="/tag/mouse.html">mouse</a><a href="/tag/ubuntu.html">ubuntu</a></span>
-</footer><!-- /.post-info --><p><strong>Полезные ссылки:</strong></p>
+</footer><!-- /.post-info -->                <p><strong>Полезные ссылки:</strong></p>
 <ul>
 <li><a href="https://zepete.livejournal.com/151204.html">Переназначение кнопок мыши в linux. - Мысли злого плебея — ЖЖ</a></li>
 <li><a href="https://tuksik.ru/xbindkeys/">https://tuksik.ru/xbindkeys/</a></li>
@@ -101,48 +131,10 @@ sudo apt install xautomation
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE <span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
-</pre></div>
-
-
-<p>с помощью данной команды у моей мыши определились дополнительны кнопки: Вперёд  - button9, Назад - button8</p>
-<ul>
-<li>
-<p>создать текстовый файл <strong>~/.xbindkeysrc</strong></p>
-</li>
-<li>
-<p>Будем эмулировать нажатия кнопок с помощью xte.
-Можно использовать любую в качестве первой строки. Во второй строке описываетсмя нажатая комбинация кнопок. Для мыши она выглядит так: "b:&lt;номер кнопки мыши&gt;".</p>
-</li>
-<li>Содержимое файла .xbindkeysrc</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">#Launch Quake Terminal</span>
-<span class="s2">&quot;xte &#39;keydown F1&#39; &#39;keyup F1&#39;&quot;</span>
-b:8
-<span class="c1">#Launch Dolphin file manager</span>
-<span class="s2">&quot;dolphin&quot;</span>
-b:9
-</pre></div>
-
-
-<ul>
-<li>запускаем программу  xbindkeys</li>
-</ul>
-<p>Настроим чтобы после перезагрузки запускался, необходимо создать ярлык (текстовый файл с расширением .desktop) в автозагрузке (папке "~/.config/autostart/").</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
-<span class="nv">Type</span><span class="o">=</span>Application
-<span class="nv">Exec</span><span class="o">=</span>xbindkeys
-X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
-<span class="nv">NoDisplay</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">Hidden</span><span class="o">=</span><span class="nb">false</span>
-<span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;mouse button exchange&quot;</span>
-<span class="nv">Comment</span><span class="o">=</span><span class="s2">&quot;переназначение доп клавиш мыши&quot;</span>
-X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>    
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
+                <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -314,42 +306,9 @@ sudo add-apt-repository <span class="se">\</span>
                 <a class="readmore" href="/2017/11/15/fedora-25/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/08/07/samba-centos-fedora/" rel="bookmark"
-                           title="Permalink to Настройка Samba в CentOS (Fedora)">Настройка Samba в CentOS (Fedora)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 07 August 2017</span>
-<span>| tags: <a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/samba.html">samba</a><a href="/tag/linux.html">linux</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://www.howtoforge.com/samba-server-installation-and-configuration-on-centos-7">Samba Server Installation and Configuration on CentOS 7</a></li>
-<li><a href="http://www.linuxnix.com/8-ways-to-mount-smbfs-samba-file-system-in-linux/">8 WAYS TO MOUNT SMBFS (SAMBA FILE SYSTEM) IN LINUX.</a></li>
-<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/pdf/Windows_Integration_Guide/Red_Hat_Enterprise_Linux-7-Windows_Integration_Guide-en-US.pdf">Red Hat Enterprise Linux 7 Windows Integration Guide</a></li>
-</ul>
-<h2>Установка</h2>
-<div class="highlight"><pre><span></span>yum install samba samba-client samba-common
-</pre></div>
-
-
-<h2>Настройка шары для анонимного пользователя</h2>
-<ul>
-<li>содержимое файла:   /etc/samba/smb.conf</li>
-</ul>
-<p>```
-  [global]
-   workgroup = workgroup
-   security = user …</p>
-                <a class="readmore" href="/2017/08/07/samba-centos-fedora/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 2
+    Page 1 / 3
         <a href="/tag/linux2.html">&raquo;</a>
 </p>
             </section><!-- /#content -->

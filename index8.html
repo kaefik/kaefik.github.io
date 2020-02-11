@@ -70,6 +70,7 @@
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
                             <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
@@ -80,6 +81,27 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/10/04/postgresql-table-space/" rel="bookmark"
+                           title="Permalink to PostgreSQL - табличные пространства">PostgreSQL - табличные пространства</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Wed 04 October 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/bd.html">бд</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
+</footer><!-- /.post-info -->                <p><strong>Табличные пространства</strong> - это средство для физической организации данных</p>
+<p>Табл. пр-ва могут быть использованы несколькими БД кластера.</p>
+<p>каждая БД имеет табличное пространство "по умолчанию."</p>
+<p>Табл. пр-во <em>pg_global</em> находится $PGDATA/global/  - общие объекты кластера
+Табл. пр-во <em>pg_default</em> находится $PGDATA/base/dboid  - табл. пр-во по умолчанию</p>
+<p><em>select * from pg_tablespace;</em> - список табличных пространств
+или …</p>
+                <a class="readmore" href="/2017/10/04/postgresql-table-space/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2017/10/02/postgresql-db/" rel="bookmark"
@@ -299,30 +321,10 @@ sudo apt-get install postgresql-9.6-postgis-2 …</pre></div>
                 <a class="readmore" href="/2017/09/04/open-data-russia/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/08/27/wireshark/" rel="bookmark"
-                           title="Permalink to Wireshark - практика перехвата">Wireshark - практика перехвата</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sun 27 August 2017</span>
-<span>| tags: <a href="/tag/hack.html">hack</a><a href="/tag/kali.html">kali</a><a href="/tag/wireshark.html">wireshark</a><a href="/tag/security.html">security</a><a href="/tag/network.html">network</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://forum.antichat.ru/threads/303612/">https://forum.antichat.ru/threads/303612/</a></li>
-<li><a href="https://wiki.wireshark.org/HowToDecrypt802.11">How to Decrypt 802.11</a></li>
-<li><a href="https://habrahabr.ru/company/pentestit/blog/204274/">Wireshark — приручение акулы</a></li>
-</ul>
-                <a class="readmore" href="/2017/08/27/wireshark/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index7.html">&laquo;</a>
-    Page 8 / 12
+    Page 8 / 13
         <a href="/index9.html">&raquo;</a>
 </p>
             </section><!-- /#content -->

@@ -70,6 +70,7 @@
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
                             <li><a href="/category/video.html">video</a></li>
+                            <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
@@ -80,6 +81,33 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/03/15/sdr-dvb-t-realtek-rtl2832u-ubuntu-lsusb/" rel="bookmark"
+                           title="Permalink to Настройка программного приёмника (SDR) из DVB-T адаптера Realtek RTL2832U в Ubuntu (возможно устарело)">Настройка программного приёмника (SDR) из DVB-T адаптера Realtek RTL2832U в Ubuntu (возможно устарело)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Wed 15 March 2017</span>
+<span>| tags: <a href="/tag/radio.html">радио</a><a href="/tag/sdr.html">sdr</a><a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/radio.html">radio</a></span>
+</footer><!-- /.post-info -->                <p><strong>источник</strong> : http://gimmor.blogspot.ru/2014/01/sdr-dvb-t-realtek-rtl2832u-ubuntu.html</p>
+<ol>
+<li><code>bash
+   lsusb</code></li>
+</ol>
+<p>Bus 001 Device 003: ID 0bda:2832 Realtek Semiconductor Corp. RTL2832U DVB-T</p>
+<ol>
+<li>Настройка прав для портов USB (в моем случае это нужно было сделать) </li>
+</ol>
+<div class="highlight"><pre><span></span>sudo groupadd usbusers
+groups имя_пользователя <span class="c1"># вывод списка групп в которых состоит пользователь.</span>
+groups isaifutdinov
+sudo …</pre></div>
+                <a class="readmore" href="/2017/03/15/sdr-dvb-t-realtek-rtl2832u-ubuntu-lsusb/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2017/03/06/golang/" rel="bookmark"
@@ -296,35 +324,10 @@
                 <a class="readmore" href="/2017/01/19/sailfish-os-asus-zenfone-2-z00l/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/01/15/10-asus-zenfone-2/" rel="bookmark"
-                           title="Permalink to 10. Загрузка полученой прошивки в ASUS Zenfone 2">10. Загрузка полученой прошивки в ASUS Zenfone 2</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sun 15 January 2017</span>
-<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
-</footer><!-- /.post-info -->                <p><strong>Важно!!!</strong> перед всеми манипуляциями над вашим устройством нужно сделать бэкап всего, что вам нужно чтобы откатиться при необходимости. Все вы делаете на свой страх и риск.</p>
-<p>В итоге мы имеем:</p>
-<ul>
-<li>
-<p>$ANDROID_ROOT/out/target/product/Z00L/hybris-boot.img</p>
-</li>
-<li>
-<p>$ANDROID_ROOT/out/target/product/Z00L/hybris-recovery.img</p>
-</li>
-<li>
-<p>$ANDROID_ROOT/sfe-Z00L-2.0.5.6-my1/sfe-Z00L-2 …</p></li></ul>
-                <a class="readmore" href="/2017/01/15/10-asus-zenfone-2/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index10.html">&laquo;</a>
-    Page 11 / 12
+    Page 11 / 13
         <a href="/index12.html">&raquo;</a>
 </p>
             </section><!-- /#content -->
