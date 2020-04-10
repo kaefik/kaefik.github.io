@@ -36,6 +36,7 @@
                             <li><a href="/category/git.html">git</a></li>
                             <li><a href="/category/go.html">go</a></li>
                             <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/hobby.html">hobby</a></li>
                             <li><a href="/category/internet.html">internet</a></li>
                             <li><a href="/category/javascript.html">javascript</a></li>
                             <li><a href="/category/lego.html">lego</a></li>
@@ -82,6 +83,40 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/03/26/powershell-get-info-comp/" rel="bookmark"
+                           title="Permalink to PowerShell: получение данных о компьютерах">PowerShell: получение данных о компьютерах</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sun 26 March 2017</span>
+<span>| tags: <a href="/tag/powershell.html">powershell</a><a href="/tag/scripts.html">scripts</a></span>
+</footer><!-- /.post-info -->                <h2>Получение данных о компьютерах</h2>
+<div class="highlight"><pre><span></span><span class="k">function</span> <span class="nb">Get-SystemInfo</span> <span class="p">{</span>
+<span class="cm">&lt;#</span>
+<span class="sd">.SYNOPSIS</span><span class="cm"></span>
+<span class="sd">.DESCRIPTION</span><span class="cm"></span>
+<span class="sd">.EXAMPLE</span><span class="cm"></span>
+<span class="cm">&quot;comp1&quot;,&quot;comp2&quot;,&quot;comp3&quot; | ? { Test-Connection $_ -Count 1 -ea SilentlyContinue } | Get-SystemInfo</span>
+<span class="cm">#&gt;</span>
+<span class="p">[</span><span class="k">CmdletBinding</span><span class="p">(</span> <span class="n">SupportsShouldProcess</span> <span class="p">=</span> <span class="nv">$true</span> <span class="p">)]</span>
+<span class="k">param</span> <span class="p">(</span>
+<span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">ValueFromPipelineByPropertyName</span><span class="p">=</span><span class="nv">$True</span><span class="p">,</span>
+<span class="k">ValueFromPipeline</span><span class="p">=</span><span class="nv">$True</span><span class="p">)]</span>
+<span class="no">[string[]]</span><span class="nv">$ComputerName</span> <span class="p">=</span> <span class="nv">$env:COMPUTERNAME</span>
+<span class="p">)</span>
+<span class="k">begin</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$PSBoundParameters</span><span class="p">.</span><span class="n">Verbose</span><span class="p">)</span> <span class="p">{</span><span class="nv">$VerbosePreference</span> <span class="p">=</span> <span class="s2">&quot;Continue&quot;</span><span class="p">}</span>
+
+<span class="k">function</span> <span class="n">PIDDecoderFromRegistry</span><span class="p">(</span><span class="nv">$digitalProductId</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">base24</span> <span class="n">-Value</span> <span class="s1">&#39;BCDFGHJKMPQRTVWXY2346789&#39;</span>    <span class="n">-Option</span> <span class="n">Constant</span> <span class="c">## &lt;24&gt; символа …</span></pre></div>
+                <a class="readmore" href="/2017/03/26/powershell-get-info-comp/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2017/03/19/my-idea-and-prj/" rel="bookmark"
@@ -306,27 +341,6 @@ sudo …</pre></div>
 <p>• See any framebuffer console</p>
 <p>• See any error messages of any kind …</p>
                 <a class="readmore" href="/2017/01/26/other-asus-porting/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/01/19/11-bootloop-asus-zenfone-2/" rel="bookmark"
-                           title="Permalink to 11. Решение проблемы bootloop Asus Zenfone 2 ( В ПРОЦЕССЕ)">11. Решение проблемы bootloop Asus Zenfone 2 ( В ПРОЦЕССЕ)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 19 January 2017</span>
-<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
-</footer><!-- /.post-info -->                <p><strong>!!! на 13.02.2017 года проблема с bootloop не решена.</strong></p>
-<h2>ЧИТАЕМ ЛОГИ НЕЗАГРУЖАЮЩЕГОСЯ УСТРОЙСТВА</h2>
-<p>источник: <a href="http://neochapay.ru/blogs/zapiski-utkonosa-programmista/sailfish-os-hardware-adaptation-developm-74.html">http://neochapay.ru/blogs/zapiski-utkonosa-programmista/sailfish-os-hardware-adaptation-developm-74.html</a> </p>
-<p>Итак,есть устройство...и естественно оно не загружается...ну так бывает при портировании. Как добраться до логов?</p>
-<p>​           1.  Правим настройки журнала systemd</p>
-<p>​          Заходим в рековери, кастомное </p>
-<div class="highlight"><pre><span></span>adb shell …</pre></div>
-                <a class="readmore" href="/2017/01/19/11-bootloop-asus-zenfone-2/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

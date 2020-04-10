@@ -36,6 +36,7 @@
                             <li><a href="/category/git.html">git</a></li>
                             <li><a href="/category/go.html">go</a></li>
                             <li><a href="/category/hackintosh.html">hackintosh</a></li>
+                            <li><a href="/category/hobby.html">hobby</a></li>
                             <li><a href="/category/internet.html">internet</a></li>
                             <li><a href="/category/javascript.html">javascript</a></li>
                             <li><a href="/category/lego.html">lego</a></li>
@@ -82,6 +83,35 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/12/30/linux-with-docker/" rel="bookmark"
+                           title="Permalink to Install Docker">Install Docker</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sat 30 December 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/centos.html">centos</a><a href="/tag/docker.html">docker</a><a href="/tag/fedora.html">fedora</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="http://p.umputun.com/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/">VPN за 3 минуты</a></li>
+</ul>
+<h2>Установка Docker в Ubuntu 18.04</h2>
+<div class="highlight"><pre><span></span>sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository <span class="se">\</span>
+<span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span>
+<span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> \</span>
+<span class="s2">stable …</span></pre></div>
+                <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2017/12/20/selinux-fedora/" rel="bookmark"
@@ -299,35 +329,6 @@
 <p>эквивалента конструкции:</p>
 <div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">SEQUENCE</span> <span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя …</span></pre></div>
                 <a class="readmore" href="/2017/10/07/postgresql-type-data/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/10/07/prj-where-toilet/" rel="bookmark"
-                           title="Permalink to проект: Где туалет">проект: Где туалет</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 07 October 2017</span>
-<span>| tags: <a href="/tag/karty.html">карты</a><a href="/tag/proekty.html">проекты</a><a href="/tag/tualet.html">туалет</a><a href="/tag/gps.html">gps</a><a href="/tag/maps.html">maps</a><a href="/tag/osm.html">osm</a><a href="/tag/prj.html">prj</a><a href="/tag/project.html">project</a></span>
-</footer><!-- /.post-info -->                <h2>Идея проекта:</h2>
-<ul>
-<li>поиск ближайшего туалета используя текущее расположение пользователя</li>
-</ul>
-<h2>Возможности проекта:</h2>
-<ul>
-<li>поиск ближайшего туалета используя текущее расположение пользователя</li>
-<li>ручное создание точек POI туалета на карте: название, описание, фото места, рейтинг, отзыв</li>
-</ul>
-<h2>Цели проекта:</h2>
-<ul>
-<li>изучение различных технологий в области проектирования и программирования проектов</li>
-<li>закрепление знаний и навыков в области программирования</li>
-</ul>
-<h2>Структура …</h2>
-                <a class="readmore" href="/2017/10/07/prj-where-toilet/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
