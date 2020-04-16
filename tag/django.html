@@ -92,6 +92,7 @@
 <li><a href="https://www.djangoproject.com/">https://www.djangoproject.com/</a></li>
 <li><a href="https://pythonworld.ru/web/django-ubuntu1604.html">Настраиваем Django + virtualenv + nginx + gunicorn + PostgreSQL + memcached + letsencrypt на Ubuntu 16.04</a></li>
 </ul>
+<p><em>ниже конспект книги Django2.1 - практика создания веб-сайтов на Python. Дронов.</em></p>
 <h2>Установка Django</h2>
 <div class="highlight"><pre><span></span>pip install django
 </pre></div>
@@ -179,7 +180,83 @@ for  b in Bb.objects.all():  print(b.pk, ': ', b.title)</code></p>
 <li><strong>delete()</strong> - удаляет текущую запись</li>
 </ul>
 <h3>Шаблоны</h3>
-<p>по умолчанию шаблонизатор ищет все шаблоны в папках templates, вложенных в папки пакетов приложений. Сами файлы шаблонов веб старниц должны иметь расширение html.</p>                </article>
+<p>по умолчанию шаблонизатор ищет все шаблоны в папках templates, вложенных в папки пакетов приложений. Сами файлы шаблонов веб старниц должны иметь расширение html.</p>
+<h3>Административный сайт Django</h3>
+<p><strong>django.contrib.admin</strong> - приложение обеспечивает административный сайт django.</p>
+<p>Чтобы успешно задействовать встроенные средства разграничения доступа django, нужно хотя бы один раз произвести операцию по выполнению миграций.</p>
+<p>Создание суперпользователя:</p>
+<p>manage.py createsuperuser</p>
+<p>http://localhost:8000/admin - админ сайт</p>
+<p>Чтобы любое приложение появилось в списке админ сайта, его нужно регистрировать - открыть модуль админ настроек admin.py пакета приложения bboard:</p>
+<p><code>from .models import Bb
+admin.site.register(Bb)</code></p>
+<p>models.py в пакете bboard:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Bb</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Товар&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;Объявления&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;Объявление&#39;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-published&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<h3>Редактор модели</h3>
+<p>Класс-редактор  объявляется в admin.py пакета приложения.</p>
+<p>class BbAdmin(admin.ModelAdmin):
+    list_display = ('title', 'content', 'price', 'published')
+    list_display_links = ('title', 'content')
+    search_fields = ('title', 'content', )</p>
+<p>admin.site.register(Bb, BbAdmin)</p>
+<h2>Связи между моделями</h2>
+<p>добавим в models.py</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rubric</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">db_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;Название&#39;</span><span class="p">)</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s1">&#39;Рубрики&#39;</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s1">&#39;Рубрика&#39;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="err">`</span>
+</pre></div>
+
+
+<p>Создадим связь "один-ко-многим" (запись Rubric будет связана с многими записями модели Bb) - для этого в Bb создадим поле rubric</p>
+<p><code>rubric = models.ForeignKey('Rubric', null=True, on_delete = models.PROTECT,verbose_name='Рубрика')</code></p>
+<p>Класс ForeignKey - поле внешнего ключа в котором будет харнится ключ записи из первичной модели.</p>
+<p>Выполним генерирование миграций для внесения изменений в структуры БД:</p>
+<p><code>manage.py makemigrations bboard</code></p>
+<p><code>manage.py migrate</code></p>
+<p>Зарегистрируем новую модель на админсайте в модуле admin.py:</p>
+<p><code>from .models import Rubric
+admin.site.register(Rubric)</code></p>
+<h2>Урл-параметры и параметризированные запросы</h2>
+<p>,,,,</p>
+<h2>Обратное разрешение интернет-адресов</h2>
+<p>это мы указываем маршрут, формирующий нужный нам адрес, и если это параметризированный маршрут, значения URL-параметров, а django сам генерирует на основе всего этого правильный адрес.</p>
+<p>Для этого нужно:</p>
+<ul>
+<li>модуль urls.py пакета приложения и исправим код, создающий набор маршрутов:</li>
+</ul>
+<p><code>urlpatterns = [
+      path('&lt;int:rubric_id&gt;/', by_rubric, name = 'by_rubric'),
+      path('', index, name = 'index'),]</code></p>
+<p>имя маршрута указывается в именованном параметре name функции path()</p>
+<ul>
+<li>используем для адреса в гиперссылках тегов шаблонизатора url:</li>
+</ul>
+<p><code>&lt;a href="/bboard/{{rubric.pk}}/"&gt;</code></p>
+<p>замени на</p>
+<p><code>&lt;a href=" {% url 'by_rubric' rubric.pk %} "&gt;</code></p>
+<h2>Формы, связанные с моделями</h2>
+<p>создать модуль forms.py пакета приложения:</p>
+<p><code>from django.forms import ModelForm
+from .models import Bb
+class BbForm(ModelForm):
+    class Meta:
+        model = Bb
+        fields = ('title', 'content', 'price', 'rubric')</code></p>
+<h3>Контроллеры-классы</h3>
+<p>в модуле views.py в пакете приложения:</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
