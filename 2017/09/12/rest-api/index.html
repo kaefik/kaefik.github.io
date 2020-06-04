@@ -94,13 +94,18 @@
 <footer class="post-info">
         <span>Tue 12 September 2017</span>
 <span>| tags: <a href="/tag/api.html">api</a><a href="/tag/rest.html">rest</a><a href="/tag/restapi.html">restapi</a></span>
-</footer><!-- /.post-info -->      <p><strong>Полезные ссылки</strong>
-1. <a href="https://ru.wikipedia.org/wiki/REST">REST API</a>
-2. <a href="https://smartum.pro/ru/blog-ru/gid-dlya-nachinayuschih-po-rest-api/">https://smartum.pro/ru/blog-ru/gid-dlya-nachinayuschih-po-rest-api/</a>
-3. <a href="https://habrahabr.ru/post/265845/">https://habrahabr.ru/post/265845/</a>
-4. <a href="http://eax.me/rest/">http://eax.me/rest/</a>
-5. <a href="http://eax.me/python-flask/">Пишем REST-сервис на Python с использованием Flask</a>
-6. <a href="https://habrahabr.ru/post/276731/">Полноценный REST API для перфекционистов за 5 минут</a></p>
+</footer><!-- /.post-info -->      <p><strong>Полезные ссылки</strong></p>
+<ul>
+<li><a href="https://ru.wikipedia.org/wiki/REST">REST API</a></li>
+<li>
+<p><a href="https://smartum.pro/ru/blog-ru/gid-dlya-nachinayuschih-po-rest-api/">https://smartum.pro/ru/blog-ru/gid-dlya-nachinayuschih-po-rest-api/</a><a href="https://habrahabr.ru/post/265845/">https://habrahabr.ru/post/265845/</a></p>
+</li>
+<li>
+<p><a href="http://eax.me/rest/">http://eax.me/rest/</a></p>
+</li>
+<li><a href="http://eax.me/python-flask/">Пишем REST-сервис на Python с использованием Flask</a></li>
+<li><a href="https://habrahabr.ru/post/276731/">Полноценный REST API для перфекционистов за 5 минут</a></li>
+</ul>
 <h3>Требование к унифицированным интерфейсам:</h3>
 <ul>
 <li>
@@ -114,7 +119,7 @@
 <p>если клиент хранит представление ресурса, включая метаданные — он обладает достаточной информацией для модификации или удаления ресурса.</p>
 <ul>
 <li>
-<p>​    <strong>Самоописываемые» сообщения</strong></p>
+<p>​    <strong>Самоописываемые» сообщения</strong> - идентификация действия по HTTP-методу</p>
 <ul>
 <li>
 <p>каждое сообщение содержит достаточно информации, чтобы понять каким образом его обрабатывать. К примеру, обработчик сообщения (parser) необходимый для извлечения данных может быть указан в списке MIME-типов.
@@ -143,7 +148,7 @@
 <p>модификация - PUT</p>
 </li>
 <li>
-<p>удаление - DELETEТ.</p>
+<p>удаление - DELETE.</p>
 <ul>
 <li>
 <p>GET-запрос /rest/users - получение информации о всех пользователяхGET-запрос /rest/users/125 - получение информации о пользователе с id=125</p>
@@ -155,9 +160,11 @@
 </li>
 </ol>
 </li>
-<li>
-<p><strong>Примеры:</strong></p>
-</li>
+</ul>
+<p>Обычно создание новой сущности реализует тот же контроллер который выдает список сущностей.</p>
+<p>Исправление и удаление - тот же контроллер, что выдает сведения об отдельной сущности.</p>
+<ul>
+<li><strong>Примеры:</strong></li>
 </ul>
 </li>
 </ul>
