@@ -99,6 +99,7 @@
 <li><a href="https://github.com/chriskiehl/Gooey">Gooey</a>-  Turn (almost) any Python command line program into a full GUI application with one line</li>
 <li><a href="https://github.com/chriskiehl/GooeyExamples">GooeyExamples</a>- Example programs to Demonstrate Gooey's functionality</li>
 <li><a href="https://github.com/PySimpleGUI/PySimpleGUI">PySimpleGUI</a> -  модуль на python3 для отрисовки графических интерфейсов (кроссплатформенный).  <a href="https://pysimplegui.readthedocs.io/en/latest/">Документация</a>. </li>
+<li><a href="https://github.com/wooey/Wooey">Wooey</a> is a simple web interface to run command line Python scripts. Think of it as an easy way to get your scripts up on the web for routine data analysis, file processing, or anything else. <a href="https://wooey.readthedocs.io/en/latest/">Документация</a></li>
 </ul>
 <p><strong>Установка Gooey</strong></p>
 <div class="highlight"><pre><span></span>pip install Gooey
@@ -118,6 +119,30 @@
 <p>Если ругается на отсутствие GTK3:</p>
 <div class="highlight"><pre><span></span>sudo apt-get install libgtk-3-dev
 </pre></div>
+
+
+<h2>Wooey</h2>
+<ul>
+<li>Install</li>
+</ul>
+<p><code>bash
+  pip install wooey</code></p>
+<ul>
+<li>
+<p>A Wooey only project</p>
+</li>
+<li>
+<p>wooify -p ProjectName</p>
+</li>
+<li>
+<p>Follow the instructions at the end of the bootstrapper
+     to create the admin user and access the admin page</p>
+</li>
+<li>Login to the admin page wherever the project is
+     being hosted (locally this would be localhost:8000/admin)</li>
+</ul>
+<p>python manage.py createsuperuser </p>
+<p>python manage.py runserver</p>
     </div><!-- /.entry-content -->
 
   </article>
