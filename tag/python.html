@@ -85,38 +85,122 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/08/03/prj-py-ym-to-spotify/">Импорт музыки из плейлистов Яндекс Музыки в Спотифай</a></h1>
+                    <h1 class="entry-title"><a href="/2020/08/13/prj-py-savemp3youtube-bot/">Телеграмм-бот: получаем звук из видео ютуба.</a></h1>
 <footer class="post-info">
-        <span>Mon 03 August 2020</span>
-<span>| tags: <a href="/tag/moiproekty.html">моипроекты</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/spotify.html">spotify</a><a href="/tag/yandex-music.html">yandex-music</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info --><p>Проект создавался для себя, так как у меня есть свои плейлисты в ЯндексМузыки в только что запустившийся сервис музыки Spotify.</p>
-<p>если будут замечания по проекту пишите на почту ilnursoft@gmail.com или на гитхаб.</p>
-<p>ссылка на репозиторий: https://github.com/kaefik/py-ym-to-spotify</p>
-<p><strong>Первоначальная настройка скрипта:</strong></p>
-<p>переименовать файл <em>.env-example</em> в <em>.env</em> и прописать <em>client id</em> и <em>client id secret</em> который берёте из  https://developer.spotify.com/dashboard/login и создаете приложение (create in app): в строке <strong>Redirect URIs</strong> прописываете http://localhost</p>
+        <span>Thu 13 August 2020</span>
+<span>| tags: <a href="/tag/moiproekty.html">моипроекты</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/telegram.html">telegram</a><a href="/tag/python.html">python</a><a href="/tag/youtube.html">youtube</a><a href="/tag/mp3.html">mp3</a></span>
+</footer><!-- /.post-info --><p>Так как я часто смотрю-слушаю длинные разговорные видео на ютубе, хотелось бы только слушать на своем смартфоне в виде подкастов. Хотелось бы просто отправлять ссылку на видео в какой-нибудь сервис и обратно получать звуковую дорожку в виде mp3.</p>
+<p>Встречайте мой проект -  <a href="https://github.com/kaefik/py-savemp3youtube-bot">py-savemp3youtube-bot</a> - телеграмм бот получает ссылку на видео ютуба и возвращает звуковую дорожку видео.</p>
+<h2>Реализованные возможности:</h2>
+<ol>
+<li>
+<p>получение ссылки на видео ютуба -&gt; на выходе пользователю возвращается звуковая дорожка видео (файлы в формате mp3)</p>
+</li>
+<li>
+<p>mp3 файл делятся на несколько каждый длительностью 60 минут</p>
+</li>
+<li>
+<p>администратор бота только один пользователь</p>
+</li>
+<li>
+<p>администратор может выполнять следующие действия: добавить пользователя по id, удалить пользователя из доступа к данному боту, информация о тех пользователях кто имеет доступ</p>
+</li>
+<li>
+<p>каждый пользователь может удалить все mp3 файлы которые хранятся на сервере где работает бот</p>
+</li>
+</ol>
+<h2>Настройка проекта для запуска</h2>
+<h3>Библиотеки:</h3>
 <ul>
-<li><strong>вариант 1.</strong> Использование режима командной строки.</li>
+<li><code>bash
+  pip3 install python-dotenv    
+  pip3 install Telethon
+  pip3 install requests</code></li>
 </ul>
-<p><code>py-ym-to-spotify-cli.py [-h] [--sp_user SP_USER] [--spotify SPOTIFY]   [--debug DEBUG]   ym</code></p>
-<p>ym        -          Input Yandex Music playlist (Веб-ссылка на плейлист в Яндекс Музыки)</p>
-<p>optional arguments (необязательные аргументы): 
-  -h, --help         show this help message and exit (получить помощь об использовании)
-  --sp_user SP_USER  Username Spotify  (пользователь Spotify)
-  --spotify SPOTIFY  Output Spotify playlist (id плейлиста Spotify)
-  --debug DEBUG      Debug flag (default: 0) (режим дебагинга, если 0, то выключен режим)</p>
-<p><strong>шаг 1.</strong> Экспорт треков из указанного плейлиста ym в файл my_playlist.csv</p>
-<p><strong>шаг2.</strong> Импорт треков из файла my_playlist.csv в указанный плейлист спотифай spotify пользователя sp_user</p>
-<p>Если не --sp_user или --spotify будет не указан,  то импорт треков в Spotify будет пропущен.</p>
-<p>шаг 1 нельзя пропустить, только можно пропустить шаг 2.</p>
-<p>После авторизации на Spotify будет осуществлен редирект на http://localhost с кодом авторизации - эту веб-ссылку нужно скопировать и вставить после запроса: <em>Enter the URL you were redirected to: Opening in existing browser session</em>. и нажать <Enter></p>
-<p>Возможные ошибки при выполнении скрипта:</p>
+<p>или просто выполняем </p>
+<p><code>bash
+  pip install -r requirements.txt</code></p>
 <ul>
-<li>ошибка в драйвере для chrome - скачивайте под конкретную версию браузера Google Chrome и операционной системы здесь https://chromedriver.chromium.org/downloads и скопируйте в папку drv</li>
+<li>
+<p>установить программы для работы</p>
+</li>
+<li>
+<p><a href="https://www.youtube-dl.org/">youtube-dl</a> - кроссплатформенный свободный проект с открытым исходным кодом на Python - для работы с видео ютуба. Для ознакомления можно прочитать <a href="https://habr.com/ru/post/369853/">статью</a>.</p>
+<p>Для установки на убунту: </p>
+<p><code>bash
+ apt install youtube-dl</code></p>
+</li>
+<li>
+<p><a href="http://mp3splt.sourceforge.net/mp3splt_page/home.php">mp3splt</a> - для разбивания аудофайлов различных форматов без декодинга.</p>
+<p>Для установки на убунту: </p>
+<p><code>bash
+ apt install mp3splt</code></p>
+</li>
+</ul>
+<p>### Конфигурационные файлы проекта:</p>
+<ul>
+<li><strong>.env</strong> </li>
+</ul>
+<p><code>TLG_APP_API_ID=123456 # APP API ID get from https://my.telegram.org
+  TLG_APP_API_HASH=fdgdfgdgdfgdfgd # APP API HASH get from https://my.telegram.org
+  TLG_APP_NAME=app  # APP NAME get from https://my.telegram.org
+  I_BOT_TOKEN=12345:fdgdfgdfgdfdfgdfg    # TOKEN Bot drom BotFather
+  TLG_ADMIN_ID_CLIENT=12568999  # id administarator bot
+  TLG_PROXY_SERVER = server # адрес MTProxy Telegram
+  TLG_PROXY_PORT = 555 # порт  MTProxy Telegram
+  TLG_PROXY_KEY=sf23231231  # secret key  MTProxy Telegram</code></p>
+<ul>
+<li><strong>db_user_allow.txt</strong> - текстовый файл в котором указываются id пользователей которые имеют доступ к боту (за исключением администратора бота)</li>
+</ul>
+<h3>Запуск проекта:</h3>
+<div class="highlight"><pre><span></span>python start_bot_async.py
+</pre></div>
+
+
+<h3>Команды которые используются ботом для основного функционала:</h3>
+<h4>1. How to download an MP3 track from a YouTube video</h4>
+<div class="highlight"><pre><span></span>youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;
+</pre></div>
+
+
+<h4>2. Разбить аудиофайл на части продолжительностью 60 минут:</h4>
+<div class="highlight"><pre><span></span>mp3splt -t <span class="m">59</span>.0 -d имя_папки_для_выходного_файла имя_входного_файла
+</pre></div>
+
+
+<h3>Полезные ссылки</h3>
+<ul>
+<li>https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot</li>
+<li>
+<p>https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets</p>
+</li>
+<li>
+<p><a href="https://api.telegram.org/botТОКЕН/sendMessage?chat_id=ЧАТ_ID&amp;text=HelloBot">https://api.telegram.org/botТОКЕН/sendMessage?chat_id=ЧАТ_ID&amp;text=HelloBot</a> </p>
+</li>
 </ul>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/08/03/prj-py-ym-to-spotify/" rel="bookmark"
+                           title="Permalink to Импорт музыки из плейлистов Яндекс Музыки в Спотифай">Импорт музыки из плейлистов Яндекс Музыки в Спотифай</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 03 August 2020</span>
+<span>| tags: <a href="/tag/moiproekty.html">моипроекты</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/spotify.html">spotify</a><a href="/tag/yandex-music.html">yandex-music</a><a href="/tag/python.html">python</a></span>
+</footer><!-- /.post-info -->                <p>Проект создавался для себя, так как у меня есть свои плейлисты в ЯндексМузыки в только что запустившийся сервис музыки Spotify.</p>
+<p>если будут замечания по проекту пишите на почту ilnursoft@gmail.com или на гитхаб.</p>
+<p>ссылка на репозиторий: https://github.com/kaefik/py-ym-to-spotify</p>
+<p><strong>Первоначальная настройка скрипта:</strong></p>
+<p>переименовать файл <em>.env-example</em> в <em>.env …</em></p>
+                <a class="readmore" href="/2020/08/03/prj-py-ym-to-spotify/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -308,27 +392,6 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <li>
 <p>Создайте новый репозиторий в созданном вами организации для вашего opensource проекта …</p></li></ol>
                 <a class="readmore" href="/2019/11/08/create-opensource-python/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/10/08/minecraft-python3/" rel="bookmark"
-                           title="Permalink to Minecraft + Python3">Minecraft + Python3</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Tue 08 October 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/minecraft.html">minecraft</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->                <p><strong>Полезные ссылки</strong> </p>
-<ul>
-<li><a href="https://www.minecraft.net/ru-ru/">MineCraft</a></li>
-<li><a href="https://www.spigotmc.org/">Сервер Minecraft</a></li>
-<li><a href="https://www.wiley.com/en-ru/Adventures+in+Minecraft,+2nd+Edition-p-9781119439585">Вэйл Д., О'Хэнлон М. - Minecraft. Программируй свой мир (Вы и ваш ребенок) - 2018</a></li>
-<li><a href="https://adventuresinminecraft.github.io/">Starter Kits for Adventures in Minecraft</a></li>
-</ul>
-                <a class="readmore" href="/2019/10/08/minecraft-python3/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

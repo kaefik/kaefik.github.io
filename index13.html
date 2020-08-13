@@ -87,6 +87,35 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2017/01/14/4-building-relevant-bits-of-cyanogenmod/" rel="bookmark"
+                           title="Permalink to 4. Building Relevant Bits of CyanogenMod">4. Building Relevant Bits of CyanogenMod</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sat 14 January 2017</span>
+<span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
+</footer><!-- /.post-info -->                <h2>Решение проблем при сборке hybris-boot.img и hybris-recovery.img</h2>
+<ul>
+<li>для конфигурирования и сборки проделайте следующие команды: </li>
+</ul>
+<p>Чтобы зайти в Ubuntu Chroot:</p>
+<p><code>bash
+  MER_SDK $
+  ubu-chroot -r $MER_ROOT/sdks/ubuntu 
+  HABUILD_SDK $ 
+  hadk
+  source build/envsetup.sh
+  export USE_CCACHE=1
+  breakfast $DEVICE 
+  make -j4 hybris-hal</code></p>
+<p>The relevant output bits will be in out …</p>
+                <a class="readmore" href="/2017/01/14/4-building-relevant-bits-of-cyanogenmod/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2017/01/14/5-check-config-kernel/" rel="bookmark"
                            title="Permalink to 5. Проверка конфигурации ядра (РЕДАКТИРОВАНИЕ)">5. Проверка конфигурации ядра (РЕДАКТИРОВАНИЕ)</a></h1>
                 </header>
