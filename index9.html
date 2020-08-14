@@ -87,6 +87,36 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2017/10/02/postgresql-db/" rel="bookmark"
+                           title="Permalink to PostgreSQL - Базы данных">PostgreSQL - Базы данных</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 02 October 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
+</footer><!-- /.post-info -->                <h2>БД при создании initdbСоздание таблицы и индекс-</h2>
+<div class="highlight"><pre><span></span><span class="err">              create table t(n numeric);</span>
+</pre></div>
+
+
+<ul>
+<li>template0 -шаблон БД, изменения не рекомендуются</li>
+<li>template1 - шаблон БД, из которой  копируются другие. можно добавлять общие объекты и расширения</li>
+<li>
+<p>postgres - БД для подключений по умолчанию</p>
+</li>
+<li>
+<p>create database test;  - cоздание новой БД</p>
+</li>
+<li>select pg_database_size('test');  - размер БД</li>
+<li>select pg_size_pretty …</li></ul>
+                <a class="readmore" href="/2017/10/02/postgresql-db/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2017/10/01/blogger-template/" rel="bookmark"
                            title="Permalink to Шаблоны для blogger">Шаблоны для blogger</a></h1>
                 </header>
@@ -297,31 +327,6 @@ sudo apt-get install postgresql-9.6-postgis-2 …</pre></div>
 <li><a href="https://habrahabr.ru/company/pentestit/blog/204274/">Wireshark — приручение акулы</a></li>
 </ul>
                 <a class="readmore" href="/2017/08/27/wireshark/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/08/08/lua/" rel="bookmark"
-                           title="Permalink to Lua">Lua</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Tue 08 August 2017</span>
-<span>| tags: <a href="/tag/it.html">it</a><a href="/tag/lua.html">lua</a><a href="/tag/programming.html">programming</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="http://www.w3ii.com/ru/lua/default.html">Lua учебник</a></li>
-<li><a href="https://zserge.wordpress.com/2012/02/23/lua-%D0%B7%D0%B0-60-%D0%BC%D0%B8%D0%BD%D1%83%D1%82/">Lua за 60 минут</a></li>
-<li><a href="http://tylerneylon.com/a/learn-lua/">Lua за 15 минут</a></li>
-<li><a href="https://otm.github.io/2015/07/embedding-lua-in-go/">Embedding Lua in Go</a></li>
-<li><a href="https://studio.zerobrane.com/">ZeroBrane Studio is a lightweight Lua IDE</a></li>
-<li><a href="http://luajit.org/">LuaJIT — a Just-In-Time Compiler for Lua</a></li>
-<li><a href="http://umodel.narod.ru/webhelp/ams/Program_Reference/Actions/RegExp_Lua.htm">Регулярные выражения в Lua</a></li>
-<li><a href="https://habrahabr.ru/post/228001/">Возможности метатаблиц в Lua на примере реализации классов tutorial</a></li>
-<li><a href="https://luarocks.org/">LuaRocks is the package manager for Lua modules …</a></li></ul>
-                <a class="readmore" href="/2017/08/08/lua/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
