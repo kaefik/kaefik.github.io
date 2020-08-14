@@ -85,103 +85,37 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/08/13/prj-py-savemp3youtube-bot/">Телеграмм-бот: получаем звук из видео ютуба.</a></h1>
+                    <h1 class="entry-title"><a href="/2020/08/14/docker-python-project/">Docker Compose</a></h1>
 <footer class="post-info">
-        <span>Thu 13 August 2020</span>
-<span>| tags: <a href="/tag/moiproekty.html">моипроекты</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/telegram.html">telegram</a><a href="/tag/python.html">python</a><a href="/tag/youtube.html">youtube</a><a href="/tag/mp3.html">mp3</a></span>
-</footer><!-- /.post-info --><p>Так как я часто смотрю-слушаю длинные разговорные видео на ютубе, хотелось бы только слушать на своем смартфоне в виде подкастов. Хотелось бы просто отправлять ссылку на видео в какой-нибудь сервис и обратно получать звуковую дорожку в виде mp3.</p>
-<p>Встречайте мой проект -  <a href="https://github.com/kaefik/py-savemp3youtube-bot">py-savemp3youtube-bot</a> - телеграмм бот получает ссылку на видео ютуба и возвращает звуковую дорожку видео.</p>
-<h2>Реализованные возможности:</h2>
-<ol>
-<li>
-<p>получение ссылки на видео ютуба -&gt; на выходе пользователю возвращается звуковая дорожка видео (файлы в формате mp3)</p>
-</li>
-<li>
-<p>mp3 файл делятся на несколько каждый длительностью 60 минут</p>
-</li>
-<li>
-<p>администратор бота только один пользователь</p>
-</li>
-<li>
-<p>администратор может выполнять следующие действия: добавить пользователя по id, удалить пользователя из доступа к данному боту, информация о тех пользователях кто имеет доступ</p>
-</li>
-<li>
-<p>каждый пользователь может удалить все mp3 файлы которые хранятся на сервере где работает бот</p>
-</li>
-</ol>
-<h2>Настройка проекта для запуска</h2>
-<h3>Библиотеки:</h3>
+        <span>Fri 14 August 2020</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/docker.html">docker</a><a href="/tag/python.html">python</a><a href="/tag/programmirovanie.html">программирование</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
 <ul>
-<li><code>bash
-  pip3 install python-dotenv    
-  pip3 install Telethon
-  pip3 install requests</code></li>
-</ul>
-<p>или просто выполняем </p>
-<p><code>bash
-  pip install -r requirements.txt</code></p>
-<ul>
-<li>
-<p>установить программы для работы</p>
-</li>
-<li>
-<p><a href="https://www.youtube-dl.org/">youtube-dl</a> - кроссплатформенный свободный проект с открытым исходным кодом на Python - для работы с видео ютуба. Для ознакомления можно прочитать <a href="https://habr.com/ru/post/369853/">статью</a>.</p>
-<p>Для установки на убунту: </p>
-<p><code>bash
- apt install youtube-dl</code></p>
-</li>
-<li>
-<p><a href="http://mp3splt.sourceforge.net/mp3splt_page/home.php">mp3splt</a> - для разбивания аудофайлов различных форматов без декодинга.</p>
-<p>Для установки на убунту: </p>
-<p><code>bash
- apt install mp3splt</code></p>
-</li>
-</ul>
-<p>### Конфигурационные файлы проекта:</p>
-<ul>
-<li><strong>.env</strong> </li>
-</ul>
-<p><code>TLG_APP_API_ID=123456 # APP API ID get from https://my.telegram.org
-  TLG_APP_API_HASH=fdgdfgdgdfgdfgd # APP API HASH get from https://my.telegram.org
-  TLG_APP_NAME=app  # APP NAME get from https://my.telegram.org
-  I_BOT_TOKEN=12345:fdgdfgdfgdfdfgdfg    # TOKEN Bot drom BotFather
-  TLG_ADMIN_ID_CLIENT=12568999  # id administarator bot
-  TLG_PROXY_SERVER = server # адрес MTProxy Telegram
-  TLG_PROXY_PORT = 555 # порт  MTProxy Telegram
-  TLG_PROXY_KEY=sf23231231  # secret key  MTProxy Telegram</code></p>
-<ul>
-<li><strong>db_user_allow.txt</strong> - текстовый файл в котором указываются id пользователей которые имеют доступ к боту (за исключением администратора бота)</li>
-</ul>
-<h3>Запуск проекта:</h3>
-<div class="highlight"><pre><span></span>python start_bot_async.py
-</pre></div>
-
-
-<h3>Команды которые используются ботом для основного функционала:</h3>
-<h4>1. How to download an MP3 track from a YouTube video</h4>
-<div class="highlight"><pre><span></span>youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;
-</pre></div>
-
-
-<h4>2. Разбить аудиофайл на части продолжительностью 60 минут:</h4>
-<div class="highlight"><pre><span></span>mp3splt -t <span class="m">59</span>.0 -d имя_папки_для_выходного_файла имя_входного_файла
-</pre></div>
-
-
-<h3>Полезные ссылки</h3>
-<ul>
-<li>https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot</li>
-<li>
-<p>https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets</p>
-</li>
-<li>
-<p><a href="https://api.telegram.org/botТОКЕН/sendMessage?chat_id=ЧАТ_ID&amp;text=HelloBot">https://api.telegram.org/botТОКЕН/sendMessage?chat_id=ЧАТ_ID&amp;text=HelloBot</a> </p>
-</li>
+<li><a href="https://ru.sciencewal.com/74228-docker-for-python-development-83ae714468ac-20">Docker для разработки на Python?</a></li>
+<li><a href="https://habr.com/ru/company/cloverr/blog/247629/">Быстрое знакомство с Docker-контейнерами для Django-разработчика</a></li>
+<li><a href="https://www.haikson.com/programmirovanie/python/django-nginx-gunicorn-postgresql-docker/">Разворачиваем python проект с docker на примере django + nginx + gunicorn + postgresql</a></li>
+<li><a href="http://snakeproject.ru/rubric/article.php?art=docker_1_14.08.2019">Пример простого python приложения в docker</a></li>
 </ul>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/08/13/prj-py-savemp3youtube-bot/" rel="bookmark"
+                           title="Permalink to Телеграмм-бот: получаем звук из видео ютуба.">Телеграмм-бот: получаем звук из видео ютуба.</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Thu 13 August 2020</span>
+<span>| tags: <a href="/tag/moiproekty.html">моипроекты</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/telegram.html">telegram</a><a href="/tag/python.html">python</a><a href="/tag/youtube.html">youtube</a><a href="/tag/mp3.html">mp3</a></span>
+</footer><!-- /.post-info -->                <p>Так как я часто смотрю-слушаю длинные разговорные видео на ютубе, хотелось бы только слушать на своем смартфоне в виде подкастов. Хотелось бы просто отправлять ссылку на видео в какой-нибудь сервис и обратно получать звуковую дорожку в виде mp3.</p>
+<p>Встречайте мой проект -  <a href="https://github.com/kaefik/py-savemp3youtube-bot">py-savemp3youtube-bot</a> - телеграмм бот получает ссылку на видео ютуба и …</p>
+                <a class="readmore" href="/2020/08/13/prj-py-savemp3youtube-bot/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -348,50 +282,6 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <p>Добавьте пакет black в файл зависимостей для разработчиков requirements_dev.txt </p>
 <p>Найти как использовать автоматическое форматирование кода с помощью Black в Visual …</p>
                 <a class="readmore" href="/2019/11/20/steps-opensource-on-python/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/11/08/create-opensource-python/" rel="bookmark"
-                           title="Permalink to Создание opensource пакета (библиотеки) на Python">Создание opensource пакета (библиотеки) на Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Fri 08 November 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/opensource.html">opensource</a></span>
-</footer><!-- /.post-info -->                <p><strong>источник:</strong> https://towardsdatascience.com/build-your-first-open-source-python-project-53471c9942a7 </p>
-<ol>
-<li>Определиться с идеей и именем проекта (пакета) </li>
-<li>Установить Python3 </li>
-<li>Venv </li>
-<li>Создание виртуального окружения </li>
-</ol>
-<div class="highlight"><pre><span></span>python3.7 -m venv my_directory_env 
-</pre></div>
-
-
-<p>Активация виртуального окружения: </p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> my_env/bin/activate
-</pre></div>
-
-
-<ul>
-<li>Выйти из виртуального окружения: </li>
-</ul>
-<div class="highlight"><pre><span></span>Deactivate 
-</pre></div>
-
-
-<ol>
-<li>Создать организацию в GitHub </li>
-</ol>
-<p><img alt="img" src="data:image/png;base64,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"> </p>
-<ol>
-<li>
-<p>Создайте новый репозиторий в созданном вами организации для вашего opensource проекта …</p></li></ol>
-                <a class="readmore" href="/2019/11/08/create-opensource-python/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

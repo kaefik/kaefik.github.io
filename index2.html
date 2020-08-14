@@ -87,6 +87,33 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2020/01/30/git-reset-error/" rel="bookmark"
+                           title="Permalink to Способы решения проблем при некоректном коммите">Способы решения проблем при некоректном коммите</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Thu 30 January 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
+</footer><!-- /.post-info -->                <p>источник: https://ru.hexlet.io/blog/posts/oh-shit-git</p>
+<ul>
+<li>удаление коммитов начиная с выбранного</li>
+</ul>
+<p><code>bash
+  git reflog
+  # ты увидишь список всех действий во всех ветках
+  # у каждой есть индекс HEAD@{index}
+  # найди тот, после которого ты все поломал
+  git reset HEAD@{index}
+  # волшебная машина времени</code></p>
+<ul>
+<li>Сделал коммит, но забыл кое что …</li></ul>
+                <a class="readmore" href="/2020/01/30/git-reset-error/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2020/01/27/python-and-modules/" rel="bookmark"
                            title="Permalink to Python и модули / пакеты">Python и модули / пакеты</a></h1>
                 </header>
@@ -334,28 +361,6 @@ flask run
 <div class="highlight"><pre><span></span>import os
 app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get …</pre></div>
                 <a class="readmore" href="/2019/11/21/environment-variables-python/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/11/20/steps-opensource-on-python/" rel="bookmark"
-                           title="Permalink to Шаги для улучшения opensource проект на Python">Шаги для улучшения opensource проект на Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Wed 20 November 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/opensource.html">opensource</a></span>
-</footer><!-- /.post-info -->                <p>источник: https://towardsdatascience.com/10-steps-to-set-up-your-python-project-for-success-14ff88b5d13 </p>
-<p>Добавим к проекту CI, тесты, покрытие тестами и др. </p>
-<ol>
-<li>Установить пакет Black (https://github.com/ambv/black) </li>
-</ol>
-<p>Black - пакет который форматирует код согласно PEP8. </p>
-<p>Добавьте пакет black в файл зависимостей для разработчиков requirements_dev.txt </p>
-<p>Найти как использовать автоматическое форматирование кода с помощью Black в Visual …</p>
-                <a class="readmore" href="/2019/11/20/steps-opensource-on-python/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

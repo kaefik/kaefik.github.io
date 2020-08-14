@@ -85,11 +85,33 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2019/12/20/config-mouse-keys/">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                    <h1 class="entry-title"><a href="/2020/08/14/docker-python-project/">Docker Compose</a></h1>
+<footer class="post-info">
+        <span>Fri 14 August 2020</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/docker.html">docker</a><a href="/tag/python.html">python</a><a href="/tag/programmirovanie.html">программирование</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://ru.sciencewal.com/74228-docker-for-python-development-83ae714468ac-20">Docker для разработки на Python?</a></li>
+<li><a href="https://habr.com/ru/company/cloverr/blog/247629/">Быстрое знакомство с Docker-контейнерами для Django-разработчика</a></li>
+<li><a href="https://www.haikson.com/programmirovanie/python/django-nginx-gunicorn-postgresql-docker/">Разворачиваем python проект с docker на примере django + nginx + gunicorn + postgresql</a></li>
+<li><a href="http://snakeproject.ru/rubric/article.php?art=docker_1_14.08.2019">Пример простого python приложения в docker</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/12/20/config-mouse-keys/" rel="bookmark"
+                           title="Permalink to Настройка дополнительных клавиш мыши в ubuntu (linux)">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Fri 20 December 2019</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/mysh.html">мышь</a><a href="/tag/linux.html">linux</a><a href="/tag/mouse.html">mouse</a><a href="/tag/ubuntu.html">ubuntu</a></span>
-</footer><!-- /.post-info --><p><strong>Полезные ссылки:</strong></p>
+</footer><!-- /.post-info -->                <p><strong>Полезные ссылки:</strong></p>
 <ul>
 <li><a href="https://zepete.livejournal.com/151204.html">Переназначение кнопок мыши в linux. - Мысли злого плебея — ЖЖ</a></li>
 <li><a href="https://tuksik.ru/xbindkeys/">https://tuksik.ru/xbindkeys/</a></li>
@@ -106,48 +128,10 @@ sudo apt install xautomation
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE <span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
-</pre></div>
-
-
-<p>с помощью данной команды у моей мыши определились дополнительны кнопки: Вперёд  - button9, Назад - button8</p>
-<ul>
-<li>
-<p>создать текстовый файл <strong>~/.xbindkeysrc</strong></p>
-</li>
-<li>
-<p>Будем эмулировать нажатия кнопок с помощью xte.
-Можно использовать любую в качестве первой строки. Во второй строке описываетсмя нажатая комбинация кнопок. Для мыши она выглядит так: "b:&lt;номер кнопки мыши&gt;".</p>
-</li>
-<li>Содержимое файла .xbindkeysrc</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">#Launch Quake Terminal</span>
-<span class="s2">&quot;xte &#39;keydown F1&#39; &#39;keyup F1&#39;&quot;</span>
-b:8
-<span class="c1">#Launch Dolphin file manager</span>
-<span class="s2">&quot;dolphin&quot;</span>
-b:9
-</pre></div>
-
-
-<ul>
-<li>запускаем программу  xbindkeys</li>
-</ul>
-<p>Настроим чтобы после перезагрузки запускался, необходимо создать ярлык (текстовый файл с расширением .desktop) в автозагрузке (папке "~/.config/autostart/").</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
-<span class="nv">Type</span><span class="o">=</span>Application
-<span class="nv">Exec</span><span class="o">=</span>xbindkeys
-X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
-<span class="nv">NoDisplay</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">Hidden</span><span class="o">=</span><span class="nb">false</span>
-<span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;mouse button exchange&quot;</span>
-<span class="nv">Comment</span><span class="o">=</span><span class="s2">&quot;переназначение доп клавиш мыши&quot;</span>
-X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>    
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
+                <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -375,27 +359,6 @@ X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>
 <p><code>list disk</code></p>
 <p>Данная команда показывает все …</p>
                 <a class="readmore" href="/2018/01/03/windows-install-tricks/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/12/30/fedora-atomic/" rel="bookmark"
-                           title="Permalink to Fedora Atomic">Fedora Atomic</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 30 December 2017</span>
-<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/atomic.html">atomic</a><a href="/tag/docker.html">docker</a><a href="/tag/fedora.html">fedora</a><a href="/tag/linux.html">linux</a></span>
-</footer><!-- /.post-info -->                <h2>Atomic Host из проекта Project Atomic</h2>
-<p>это легкая, неизменяемая платформа, созданная с единственной целью запуска приложений в контейнерах.
-Версия Atomic Host для Fedora использует тот же репозиторий пакетов, что и Fedora Server, и предоставляет новейшие версии Atomic.</p>
-<h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://getfedora.org/ru/atomic/">https://getfedora.org/ru/atomic/</a></li>
-<li><a href="http://www.projectatomic.io/">Building the Next Generation Container OS …</a></li></ul>
-                <a class="readmore" href="/2017/12/30/fedora-atomic/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
