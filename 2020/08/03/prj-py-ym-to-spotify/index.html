@@ -102,16 +102,19 @@
 <ul>
 <li><strong>вариант 1.</strong> Использование режима командной строки.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">  py-ym-to-spotify-cli.py [-h] [--sp_user SP_USER] [--spotify SPOTIFY]   [--debug DEBUG]   ym</span>
+<div class="highlight"><pre><span></span>  <span class="n">py</span><span class="o">-</span><span class="n">ym</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="n">spotify</span><span class="o">-</span><span class="n">cli</span><span class="p">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="c1">--sp_user SP_USER] [--spotify SPOTIFY]   [--debug DEBUG]   ym</span>
+
+
+<span class="n">ym</span>        <span class="o">-</span>          <span class="k">Input</span> <span class="n">Yandex</span> <span class="n">Music</span> <span class="n">playlist</span> <span class="p">(</span><span class="err">Веб</span><span class="o">-</span><span class="err">ссылка</span> <span class="err">на</span> <span class="err">плейлист</span> <span class="err">в</span> <span class="err">Яндекс</span> <span class="err">Музыки</span><span class="p">)</span>
+
+<span class="n">optional</span> <span class="n">arguments</span> <span class="p">(</span><span class="err">необязательные</span> <span class="err">аргументы</span><span class="p">):</span> 
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="c1">--help         show this help message and exit (получить помощь об использовании)</span>
+  <span class="c1">--sp_user SP_USER  Username Spotify  (пользователь Spotify)</span>
+  <span class="c1">--spotify SPOTIFY  Output Spotify playlist (id плейлиста Spotify)</span>
+  <span class="c1">--debug DEBUG      Debug flag (default: 0) (режим дебагинга, если 0, то выключен режим)</span>
 </pre></div>
 
 
-<p>ym        -          Input Yandex Music playlist (Веб-ссылка на плейлист в Яндекс Музыки)</p>
-<p>optional arguments (необязательные аргументы): 
-  -h, --help         show this help message and exit (получить помощь об использовании)
-  --sp_user SP_USER  Username Spotify  (пользователь Spotify)
-  --spotify SPOTIFY  Output Spotify playlist (id плейлиста Spotify)
-  --debug DEBUG      Debug flag (default: 0) (режим дебагинга, если 0, то выключен режим)</p>
 <p><strong>шаг 1.</strong> Экспорт треков из указанного плейлиста ym в файл my_playlist.csv</p>
 <p><strong>шаг2.</strong> Импорт треков из файла my_playlist.csv в указанный плейлист спотифай spotify пользователя sp_user</p>
 <p>Если не --sp_user или --spotify будет не указан,  то импорт треков в Spotify будет пропущен.</p>
