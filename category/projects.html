@@ -112,58 +112,72 @@
 <h2>Настройка проекта для запуска</h2>
 <h3>Библиотеки:</h3>
 <ul>
-<li><code>pip3 install python-dotenv    
+<li>```
+  pip3 install python-dotenv  <br>
   pip3 install Telethon
-  pip3 install requests</code></li>
+  pip3 install requests</li>
 </ul>
-<p>или просто выполняем </p>
-<p><code>pip install -r requirements.txt</code></p>
-<ul>
-<li>
-<p>установить программы для работы</p>
-</li>
-<li>
-<p><a href="https://www.youtube-dl.org/">youtube-dl</a> - кроссплатформенный свободный проект с открытым исходным кодом на Python - для работы с видео ютуба. Для ознакомления можно прочитать <a href="https://habr.com/ru/post/369853/">статью</a>.</p>
-<p>Для установки на убунту: </p>
-<p><code>apt install youtube-dl</code></p>
-</li>
-<li>
-<p><a href="http://mp3splt.sourceforge.net/mp3splt_page/home.php">mp3splt</a> - для разбивания аудофайлов различных форматов без декодинга.</p>
-<p>Для установки на убунту: </p>
-<p><code>apt install mp3splt</code></p>
-</li>
-</ul>
-<p>### Конфигурационные файлы проекта:</p>
-<ul>
-<li><strong>.env</strong> </li>
-</ul>
-<p><code>TLG_APP_API_ID=123456 # APP API ID get from https://my.telegram.org
+<div class="highlight"><pre><span></span><span class="err">  или просто выполняем </span>
+</pre></div>
+
+
+<p>pip install -r requirements.txt</p>
+<div class="highlight"><pre><span></span><span class="o">*</span> <span class="err">установить</span> <span class="err">программы</span> <span class="err">для</span> <span class="err">работы</span>
+
+  <span class="mi">1</span><span class="p">.</span> <span class="p">[</span><span class="n">youtube</span><span class="o">-</span><span class="n">dl</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">youtube</span><span class="o">-</span><span class="n">dl</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="p">)</span> <span class="o">-</span> <span class="err">кроссплатформенный</span> <span class="err">свободный</span> <span class="err">проект</span> <span class="err">с</span> <span class="err">открытым</span> <span class="err">исходным</span> <span class="err">кодом</span> <span class="err">на</span> <span class="n">Python</span> <span class="o">-</span> <span class="err">для</span> <span class="err">работы</span> <span class="err">с</span> <span class="err">видео</span> <span class="err">ютуба</span><span class="p">.</span> <span class="err">Для</span> <span class="err">ознакомления</span> <span class="err">можно</span> <span class="err">прочитать</span> <span class="p">[</span><span class="err">статью</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">habr</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">ru</span><span class="o">/</span><span class="n">post</span><span class="o">/</span><span class="mi">369853</span><span class="o">/</span><span class="p">).</span>
+
+     <span class="err">Для</span> <span class="err">установки</span> <span class="err">на</span> <span class="err">убунту</span><span class="p">:</span> 
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err"> apt install youtube-dl</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="mf">2.</span><span class="w"> </span><span class="o">[</span><span class="n">mp3splt</span><span class="o">]</span><span class="p">(</span><span class="nl">http</span><span class="p">:</span><span class="o">//</span><span class="n">mp3splt</span><span class="p">.</span><span class="n">sourceforge</span><span class="p">.</span><span class="n">net</span><span class="o">/</span><span class="n">mp3splt_page</span><span class="o">/</span><span class="n">home</span><span class="p">.</span><span class="n">php</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">для</span><span class="w"> </span><span class="n">разбивания</span><span class="w"> </span><span class="n">аудофайлов</span><span class="w"> </span><span class="n">различных</span><span class="w"> </span><span class="n">форматов</span><span class="w"> </span><span class="n">без</span><span class="w"> </span><span class="n">декодинга</span><span class="p">.</span><span class="w"></span>
+
+<span class="w">     </span><span class="n">Для</span><span class="w"> </span><span class="n">установки</span><span class="w"> </span><span class="n">на</span><span class="w"> </span><span class="nl">убунту</span><span class="p">:</span><span class="w"> </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err"> apt install mp3splt</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>  <span class="o">###</span> <span class="err">Конфигурационные</span> <span class="err">файлы</span> <span class="err">проекта</span><span class="p">:</span>
+
+<span class="o">*</span> <span class="o">**</span><span class="p">.</span><span class="n">env</span><span class="o">**</span> 
+</pre></div>
+
+
+<p>TLG_APP_API_ID=123456 # APP API ID get from https://my.telegram.org
   TLG_APP_API_HASH=fdgdfgdgdfgdfgd # APP API HASH get from https://my.telegram.org
   TLG_APP_NAME=app  # APP NAME get from https://my.telegram.org
   I_BOT_TOKEN=12345:fdgdfgdfgdfdfgdfg    # TOKEN Bot drom BotFather
   TLG_ADMIN_ID_CLIENT=12568999  # id administarator bot
   TLG_PROXY_SERVER = server # адрес MTProxy Telegram
   TLG_PROXY_PORT = 555 # порт  MTProxy Telegram
-  TLG_PROXY_KEY=sf23231231  # secret key  MTProxy Telegram</code></p>
-<ul>
-<li><strong>db_user_allow.txt</strong> - текстовый файл в котором указываются id пользователей которые имеют доступ к боту (за исключением администратора бота)</li>
-</ul>
-<h3>Запуск проекта:</h3>
-<div class="highlight"><pre><span></span><span class="err">python start_bot_async.py</span>
+  TLG_PROXY_KEY=sf23231231  # secret key  MTProxy Telegram</p>
+<div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">**</span><span class="n">db_user_allow</span><span class="p">.</span><span class="n">txt</span><span class="o">**</span> <span class="o">-</span> <span class="err">текстовый</span> <span class="err">файл</span> <span class="err">в</span> <span class="err">котором</span> <span class="err">указываются</span> <span class="n">id</span> <span class="err">пользователей</span> <span class="err">которые</span> <span class="err">имеют</span> <span class="err">доступ</span> <span class="err">к</span> <span class="err">боту</span> <span class="p">(</span><span class="err">за</span> <span class="err">исключением</span> <span class="err">администратора</span> <span class="err">бота</span><span class="p">)</span>
+
+<span class="o">###</span> <span class="err">Запуск</span> <span class="err">проекта</span><span class="p">:</span>
 </pre></div>
 
 
-<h3>Команды которые используются ботом для основного функционала:</h3>
-<h4>1. How to download an MP3 track from a YouTube video</h4>
-<div class="highlight"><pre><span></span><span class="err">youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;</span>
+<p>python start_bot_async.py</p>
+<div class="highlight"><pre><span></span><span class="o">###</span> <span class="err">Команды</span> <span class="err">которые</span> <span class="err">используются</span> <span class="err">ботом</span> <span class="err">для</span> <span class="err">основного</span> <span class="err">функционала</span><span class="p">:</span>
+
+<span class="o">####</span> <span class="mi">1</span><span class="p">.</span> <span class="n">How</span> <span class="k">to</span> <span class="n">download</span> <span class="n">an</span> <span class="n">MP3</span> <span class="n">track</span> <span class="k">from</span> <span class="n">a</span> <span class="n">YouTube</span> <span class="n">video</span>
 </pre></div>
 
 
-<h4>2. Разбить аудиофайл на части продолжительностью 60 минут:</h4>
-<div class="highlight"><pre><span></span><span class="err">mp3splt -t 59.0 -d имя_папки_для_выходного_файла имя_входного_файла</span>
+<p>youtube-dl --extract-audio --audio-format mp3 <video URL></p>
+<div class="highlight"><pre><span></span><span class="err">#### 2. Разбить аудиофайл на части продолжительностью 60 минут:</span>
 </pre></div>
 
 
+<p>mp3splt -t 59.0 -d имя_папки_для_выходного_файла имя_входного_файла
+```</p>
 <h3>Полезные ссылки</h3>
 <ul>
 <li>https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot</li>
