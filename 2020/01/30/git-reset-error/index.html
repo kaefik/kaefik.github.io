@@ -98,55 +98,67 @@
 <ul>
 <li>удаление коммитов начиная с выбранного</li>
 </ul>
-<p><code>bash
-  git reflog
-  # ты увидишь список всех действий во всех ветках
-  # у каждой есть индекс HEAD@{index}
-  # найди тот, после которого ты все поломал
-  git reset HEAD@{index}
-  # волшебная машина времени</code></p>
+<div class="highlight"><pre><span></span><span class="err">  git reflog</span>
+<span class="err">  # ты увидишь список всех действий во всех ветках</span>
+<span class="err">  # у каждой есть индекс HEAD@{index}</span>
+<span class="err">  # найди тот, после которого ты все поломал</span>
+<span class="err">  git reset HEAD@{index}</span>
+<span class="err">  # волшебная машина времени</span>
+</pre></div>
+
+
 <ul>
 <li>Сделал коммит, но забыл кое что</li>
 </ul>
-<p><code>bash
-  # сделай что хотел
-  git add . # или добавляй файлы по одному
-  git commit --amend
-  # теперь измени или оставь старое сообщение коммита
-  # теперь твой последний коммит включает то новое изменение!</code></p>
+<div class="highlight"><pre><span></span><span class="err">  # сделай что хотел</span>
+<span class="err">  git add . # или добавляй файлы по одному</span>
+<span class="err">  git commit --amend</span>
+<span class="err">  # теперь измени или оставь старое сообщение коммита</span>
+<span class="err">  # теперь твой последний коммит включает то новое изменение!</span>
+</pre></div>
+
+
 <ul>
 <li>Исправить сообщение в коммите</li>
 </ul>
-<p><code>bash
-  git commit --amend</code></p>
+<div class="highlight"><pre><span></span><span class="err">  git commit --amend</span>
+</pre></div>
+
+
 <ul>
 <li>Случайно сделал коммит в мастер, а не в другую ветку</li>
 </ul>
-<p><code>bash
-  # создай новую ветку на основе мастера
-  git branch some-new-branch-name
-  # удали последний коммит из мастера
-  git reset HEAD~ --hard
-  git checkout some-new-branch-name
-  # теперь тот коммит в новой ветке! :)</code></p>
+<div class="highlight"><pre><span></span><span class="err">  # создай новую ветку на основе мастера</span>
+<span class="err">  git branch some-new-branch-name</span>
+<span class="err">  # удали последний коммит из мастера</span>
+<span class="err">  git reset HEAD~ --hard</span>
+<span class="err">  git checkout some-new-branch-name</span>
+<span class="err">  # теперь тот коммит в новой ветке! :)</span>
+</pre></div>
+
+
 <ul>
 <li>Сделал коммит в другую ветку</li>
 </ul>
-<p><code>bash
-  # отмени последний коммит, но оставь изменения
-  git reset HEAD~ --soft
-  git stash
-  # перейди в нужную ветку
-  git checkout name-of-the-correct-branch
-  git stash pop
-  git add . # или добавь файлы по одному
-  git commit -m "your message here"
-  # теперь изменения в нужной ветке</code></p>
+<div class="highlight"><pre><span></span><span class="err">  # отмени последний коммит, но оставь изменения</span>
+<span class="err">  git reset HEAD~ --soft</span>
+<span class="err">  git stash</span>
+<span class="err">  # перейди в нужную ветку</span>
+<span class="err">  git checkout name-of-the-correct-branch</span>
+<span class="err">  git stash pop</span>
+<span class="err">  git add . # или добавь файлы по одному</span>
+<span class="err">  git commit -m &quot;your message here&quot;</span>
+<span class="err">  # теперь изменения в нужной ветке</span>
+</pre></div>
+
+
 <ul>
 <li>про diff</li>
 </ul>
-<p><code>bash
-  git diff --staged</code></p>
+<div class="highlight"><pre><span></span><span class="err">  git diff --staged</span>
+</pre></div>
+
+
 <p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>
     </div><!-- /.entry-content -->
 
