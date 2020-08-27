@@ -112,14 +112,12 @@
 <h2>Настройка проекта для запуска</h2>
 <h3>Библиотеки:</h3>
 <ul>
-<li><code>bash
-  pip3 install python-dotenv    
+<li><code>pip3 install python-dotenv    
   pip3 install Telethon
   pip3 install requests</code></li>
 </ul>
 <p>или просто выполняем </p>
-<p><code>bash
-  pip install -r requirements.txt</code></p>
+<p><code>pip install -r requirements.txt</code></p>
 <ul>
 <li>
 <p>установить программы для работы</p>
@@ -127,14 +125,12 @@
 <li>
 <p><a href="https://www.youtube-dl.org/">youtube-dl</a> - кроссплатформенный свободный проект с открытым исходным кодом на Python - для работы с видео ютуба. Для ознакомления можно прочитать <a href="https://habr.com/ru/post/369853/">статью</a>.</p>
 <p>Для установки на убунту: </p>
-<p><code>bash
- apt install youtube-dl</code></p>
+<p><code>apt install youtube-dl</code></p>
 </li>
 <li>
 <p><a href="http://mp3splt.sourceforge.net/mp3splt_page/home.php">mp3splt</a> - для разбивания аудофайлов различных форматов без декодинга.</p>
 <p>Для установки на убунту: </p>
-<p><code>bash
- apt install mp3splt</code></p>
+<p><code>apt install mp3splt</code></p>
 </li>
 </ul>
 <p>### Конфигурационные файлы проекта:</p>
@@ -153,18 +149,18 @@
 <li><strong>db_user_allow.txt</strong> - текстовый файл в котором указываются id пользователей которые имеют доступ к боту (за исключением администратора бота)</li>
 </ul>
 <h3>Запуск проекта:</h3>
-<div class="highlight"><pre><span></span>python start_bot_async.py
+<div class="highlight"><pre><span></span><span class="err">python start_bot_async.py</span>
 </pre></div>
 
 
 <h3>Команды которые используются ботом для основного функционала:</h3>
 <h4>1. How to download an MP3 track from a YouTube video</h4>
-<div class="highlight"><pre><span></span>youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;
+<div class="highlight"><pre><span></span><span class="err">youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;</span>
 </pre></div>
 
 
 <h4>2. Разбить аудиофайл на части продолжительностью 60 минут:</h4>
-<div class="highlight"><pre><span></span>mp3splt -t <span class="m">59</span>.0 -d имя_папки_для_выходного_файла имя_входного_файла
+<div class="highlight"><pre><span></span><span class="err">mp3splt -t 59.0 -d имя_папки_для_выходного_файла имя_входного_файла</span>
 </pre></div>
 
 
