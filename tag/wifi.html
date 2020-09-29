@@ -79,6 +79,7 @@
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
                             <li><a href="/category/windows.html">windows</a></li>
                     </ul>
                 <div>
@@ -86,53 +87,59 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2017/07/13/wifi/">Wifi - взлом, безопасност...</a></h1>
+                    <h1 class="entry-title"><a href="/2020/09/29/unifi-wifi/">UniFi, вайфай и прочее безобразие</a></h1>
+<footer class="post-info">
+        <span>Tue 29 September 2020</span>
+<span>| tags: <a href="/tag/wifi.html">wifi</a><a href="/tag/linux.html">linux</a><a href="/tag/tftp.html">tftp</a><a href="/tag/unifi.html">unifi</a></span>
+</footer><!-- /.post-info --><h3>Прошивка UniFi точек</h3>
+<p>Прошивки для UniFi: https://www.ui.com/download/unifi/unifi-ap/uap</p>
+<p>Видео как подключаться напрямую к точке чтобы видеть что происходит при загрузке вайфай точки: <a href="https://www.youtube.com/watch?v=pFsMsVWeuZE">How to connect a UBNT to your console via USB-UART.</a></p>
+<p>Вот как прошивать через режим  tftp <a href="https://help.ui.com/hc/en-us/articles/204910124-UniFi-TFTP-Recovery-for-Bricked-Access-Points">тут</a>:</p>
+<p>'''
+connect 192.168.1.20
+binary
+rexmt 1
+timeout 60
+'''</p>
+<h3>Светодиодная индикация точек UniFi</h3>
+<p>(Источник)[https://lantorg.com/article/unifi-led-indikatsiya-tochki-dostupa]</p>
+<ul>
+<li>Если UniFi мигает желтым или оранжевым - происходит инициализация. </li>
+<li>Если UniFi горит (непрерывно) оранжевым/янтарным -  точка инициализирована, установлены заводские настройки. </li>
+<li>Непрерывно горит зеленым - точка интегрирована в сеть и нормально работает. </li>
+<li>UniFi горит зеленым, но не постоянно: раз  в 3-4 секунды происходит мигание - точка изолирована, не получает отклика от шлюза. </li>
+<li>Попеременно желтым и зеленым - чаще всего бывает во время обновления прошивки, означает занятость точки доступа, не выключайте и не трогайте ее. </li>
+<li>UniFi быстро мигает зеленым - такая светоиндикация применяется для поиска точки доступа. В веб-интерфейсе вы нажимаете кнопку locate на точке, которую хотите найти - соответствующее устройство начинает мигать.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/07/13/wifi/" rel="bookmark"
+                           title="Permalink to Wifi - взлом, безопасност...">Wifi - взлом, безопасност...</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 13 July 2017</span>
 <span>| tags: <a href="/tag/bezopasnost.html">безопасность</a><a href="/tag/vzlom.html">взлом</a><a href="/tag/securuty.html">securuty</a><a href="/tag/wifi.html">wifi</a></span>
-</footer><!-- /.post-info --><p><strong>Примечание.</strong> вся информация публикуется для ознакомления и только в образовательных целях.</p>
+</footer><!-- /.post-info -->                <p><strong>Примечание.</strong> вся информация публикуется для ознакомления и только в образовательных целях.</p>
 <h2>Рекомендации к защите WiFi сетей</h2>
 <ul>
 <li>Используйте WPA2-PSK-CCMP с паролем от 12 символов a-z (2000+ лет перебора на ATI-кластере). </li>
 <li>Измените имя сети по умолчанию на нечто уникальное (защита от rainbow-таблиц). </li>
 <li>Отключите WPS (достаточно перебрать 10000 комбинаций PIN). </li>
-<li>Не полагайтесь на MAC-фильтрацию и скрытие SSID.</li>
-</ul>
-<p>Ниже будет информация почему даны такие рекомендации - &gt;</p>
-<h2>Обнаружение BSSID скрытой сети</h2>
-<p>«скрытая» сеть — не что иное, как сеть, не передающая маячки о своём существовании 10 раз в секунду, либо передающие их, но с пустым ESSID и другими полями. На этом разница заканчивается.</p>
-<p>Как только к такой сети подключается клиент, он передаёт её ESSID и пароль, и если такая сеть существует в радиусе действия — точка доступа отвечает на запрос и проводит все обычные процедуры по авторизации и передаче данных. А если клиент уже был подключен ранее — его можно увидеть в списке активных адаптеров… и отключить.</p>
-<p>Каждый подключенный клиент общается с базовой станцией по её BSSID — и это именно то, что мы видим в обеих таблицах <strong>airodump-ng</strong>. Мы можем «отключить» клиента от сети, после чего он должен будет подключиться вновь — и в этот момент <strong>airodump-ng</strong> перехватит рукопожатие со всеми идентификаторами и ключами. Либо мы можем просто оставить ноутбук включенным на пару часов с <strong>airodump-ng</strong> на нужном канале и подождать. Кстати, при успешном «вскрытии» в правом верхнем углу появится сообщение вида [ Decloak: 00:00:11:11:22:22 ] с BSSID точки доступа, конспирацию которой мы раскрыли.</p>
-<ul>
-<li>Перезапустим <strong>airodump-ng</strong> и зафиксируем его на канале 5 (это канал нашей атакуемой станции), после чего выполним отключение клиента в соседнем окне терминала:</li>
-</ul>
-<div class="highlight"><pre><span></span>airodump-ng -c5 mon0
-aireplay mon0 -0 <span class="m">5</span> -a 4F:B1:A4:05:5C:21 -c 5B:23:15:00:C8:57
-</pre></div>
-
-
-<p>Если сигнал достаточно сильный, число пакетов велико и клиент/точка доступа нас услышали — они отключатся друг от друга, затем передадут информацию о сети вновь при подключении и <strong>airodump-ng</strong> покажет их и строчку [ Decloak ].</p>
-<h2>Фильрация по MAC</h2>
-<p>В Linux изменить MAC своего адаптера можно следующим образом (работает как для проводных сетей, так и для беспроводных):</p>
-<div class="highlight"><pre><span></span>ifconfig wlan0 down
-ifconfig wlan0 hw ether <span class="m">00</span>:11:22:AA:AA:AA****
-ifconfig wlan0 up
-</pre></div>
-
-
-<p>Кроме того, в *nix есть <strong>macchanger</strong> — с его помощью можно выставить себе случайный MAC. Если поставить его в  init.d, то неприятель будет совершенно сбит с толку, так как при каждой загрузке наш MAC будет другим (работает для любых проводных и беспроводных адаптеров, как и <strong>ifconfig</strong>).</p>
-<div class="highlight"><pre><span></span><span class="c1"># Случайный MAC:</span>
-macchanger -r wlan0
-<span class="c1"># Определённый MAC:</span>
-macchanger -m <span class="m">11</span>:22:33:AA:BB:CC wlan0
-<span class="c1"># Показать MAC:</span>
-macchanger -s wlan0
-</pre></div>                </article>
+<li>Не полагайтесь на …</li></ul>
+                <a class="readmore" href="/2017/07/13/wifi/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

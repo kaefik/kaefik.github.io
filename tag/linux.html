@@ -79,6 +79,7 @@
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
+                            <li><a href="/category/wifi.html">wifi</a></li>
                             <li><a href="/category/windows.html">windows</a></li>
                     </ul>
                 <div>
@@ -86,11 +87,46 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/02/11/vim-basuc/">Vim основы</a></h1>
+                    <h1 class="entry-title"><a href="/2020/09/29/unifi-wifi/">UniFi, вайфай и прочее безобразие</a></h1>
+<footer class="post-info">
+        <span>Tue 29 September 2020</span>
+<span>| tags: <a href="/tag/wifi.html">wifi</a><a href="/tag/linux.html">linux</a><a href="/tag/tftp.html">tftp</a><a href="/tag/unifi.html">unifi</a></span>
+</footer><!-- /.post-info --><h3>Прошивка UniFi точек</h3>
+<p>Прошивки для UniFi: https://www.ui.com/download/unifi/unifi-ap/uap</p>
+<p>Видео как подключаться напрямую к точке чтобы видеть что происходит при загрузке вайфай точки: <a href="https://www.youtube.com/watch?v=pFsMsVWeuZE">How to connect a UBNT to your console via USB-UART.</a></p>
+<p>Вот как прошивать через режим  tftp <a href="https://help.ui.com/hc/en-us/articles/204910124-UniFi-TFTP-Recovery-for-Bricked-Access-Points">тут</a>:</p>
+<p>'''
+connect 192.168.1.20
+binary
+rexmt 1
+timeout 60
+'''</p>
+<h3>Светодиодная индикация точек UniFi</h3>
+<p>(Источник)[https://lantorg.com/article/unifi-led-indikatsiya-tochki-dostupa]</p>
+<ul>
+<li>Если UniFi мигает желтым или оранжевым - происходит инициализация. </li>
+<li>Если UniFi горит (непрерывно) оранжевым/янтарным -  точка инициализирована, установлены заводские настройки. </li>
+<li>Непрерывно горит зеленым - точка интегрирована в сеть и нормально работает. </li>
+<li>UniFi горит зеленым, но не постоянно: раз  в 3-4 секунды происходит мигание - точка изолирована, не получает отклика от шлюза. </li>
+<li>Попеременно желтым и зеленым - чаще всего бывает во время обновления прошивки, означает занятость точки доступа, не выключайте и не трогайте ее. </li>
+<li>UniFi быстро мигает зеленым - такая светоиндикация применяется для поиска точки доступа. В веб-интерфейсе вы нажимаете кнопку locate на точке, которую хотите найти - соответствующее устройство начинает мигать.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/02/11/vim-basuc/" rel="bookmark"
+                           title="Permalink to Vim основы">Vim основы</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Tue 11 February 2020</span>
 <span>| tags: <a href="/tag/vim.html">vim</a><a href="/tag/noevim.html">noevim</a><a href="/tag/linux.html">linux</a><a href="/tag/editor.html">editor</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://www.vim.org/">Vim официальный сайт</a></li>
 <li><a href="https://neovim.io/">NeoVim официальный сайт</a></li>
@@ -106,14 +142,10 @@
 <ul>
 <li>Дрю Нейл "Практическое использование Vim"</li>
 </ul>
-<p>Давно хотел освоить редактор Vim. Толчком послужила статья или на хабре или в телеграмм канале. </p>
-<p>нужно сначала пройти vimtutor (встроеный курс молодого бойца)</p>
-<p>затем можно начать читать книгу "Практическое использование Vim".</p>
-<p>Как говорится в vimtutor нужна практика и только практика для освоения редактора.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>Давно хотел освоить редактор Vim. Толчком послужила статья или на …</p>
+                <a class="readmore" href="/2020/02/11/vim-basuc/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -301,33 +333,6 @@ sudo add-apt-repository <span class="se">\</span>
 <h2>Настройка сервера OpenVPN</h2>
 <p>1 …</p>
                 <a class="readmore" href="/2017/12/17/openvpn-fedora-27/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/11/15/fedora-25/" rel="bookmark"
-                           title="Permalink to Fedora 25/26 - CentOS 7">Fedora 25/26 - CentOS 7</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Wed 15 November 2017</span>
-<span>| tags: <a href="/tag/fedora.html">fedora</a><a href="/tag/linux.html">linux</a><a href="/tag/tatar.html">tatar</a></span>
-</footer><!-- /.post-info -->                <ul>
-<li><a href="https://ask.fedoraproject.org/en/question/9111/sticky-what-plugins-do-i-need-to-install-to-watch-movies-and-listen-to-music/">установка кодеков для видео и музыки</a></li>
-<li><a href="http://www.kaefik.ru/2017/08/samba-centos-fedora.html">Настройка Samba в CentOS (Fedora)</a></li>
-<li><a href="http://www.kaefik.ru/2017/08/ssh-centos-fedora.html">настройка SSH CentOS - Fedora</a></li>
-<li><a href="http://www.kaefik.ru/2017/08/firewalld-cenos-fedora.html">Настройка брэндмауэра firewalld (CenOS, Fedora)</a></li>
-<li><a href="http://www.kaefik.ru/2017/12/openvpn-fedora-27.html">Установка и настройка OpenVPN в Fedora 27</a></li>
-<li><a href="https://sysadmin.pm/journald-journalctl/">Шпаргалка по работе с journalctl</a></li>
-<li><a href="http://www.kaefik.ru/2017/12/selinux-fedora.html">Настройка SELinux в Fedora</a></li>
-<li><a href="https://www.if-not-true-then-false.com/2010/install-adobe-acrobat-pdf-reader-on-fedora-centos-red-hat-rhel/">Установка Adobe Reader</a></li>
-<li><a href="https://www.rpmfind.net/linux/rpm2html/search.php?query=msttcorefonts">Установка шрифтов MS Fonts</a></li>
-<li><a href="https://losst.ru/avtozagruzka-linux">Автогзагрузка в Linux</a></li>
-</ul>
-<h2>Fedora Atomic,Docker, VM …</h2>
-                <a class="readmore" href="/2017/11/15/fedora-25/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
