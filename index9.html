@@ -77,6 +77,7 @@
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vpn.html">vpn</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
                             <li><a href="/category/wifi.html">wifi</a></li>
@@ -87,6 +88,31 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/10/07/postgresql-type-data/" rel="bookmark"
+                           title="Permalink to PostgreSQL - Типы данных">PostgreSQL - Типы данных</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sat 07 October 2017</span>
+<span>| tags: <a href="/tag/db.html">db</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/sql.html">SQL</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/tipy-dannykh.html">типы данных</a></span>
+</footer><!-- /.post-info -->                <h2><a href="http://postgresql.ru.net/manual/datatype.html">Типы данных</a></h2>
+<h3>Серийные типы</h3>
+<p>Типы данных serial и bigserial не являются полноценными типами, а просто являются удобной нотацией для создания колонок уникальных идентификаторов (свойство сходное с AUTO_INCREMENT поддерживается и некоторыми другими СУБД). В текущей реализации, конструкция:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="err">имя</span><span class="n">_таблицы</span> <span class="p">(</span>
+  <span class="err">имя</span><span class="n">_колонки</span> <span class="nb">SERIAL</span>
+<span class="p">);</span>
+</pre></div>
+
+
+<p>эквивалента конструкции:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">SEQUENCE</span> <span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя …</span></pre></div>
+                <a class="readmore" href="/2017/10/07/postgresql-type-data/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2017/10/07/prj-where-toilet/" rel="bookmark"
@@ -298,37 +324,6 @@
 <div class="highlight"><pre><span></span>sudo apt-get install postgresql-9.6
 sudo apt-get install postgresql-9.6-postgis-2 …</pre></div>
                 <a class="readmore" href="/2017/09/18/save-geo-data-to-db/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/09/12/rest-api/" rel="bookmark"
-                           title="Permalink to REST API с чем это едят">REST API с чем  это едят</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Tue 12 September 2017</span>
-<span>| tags: <a href="/tag/api.html">api</a><a href="/tag/rest.html">rest</a><a href="/tag/restapi.html">restapi</a></span>
-</footer><!-- /.post-info -->                <p><strong>Полезные ссылки</strong></p>
-<ul>
-<li><a href="https://ru.wikipedia.org/wiki/REST">REST API</a></li>
-<li>
-<p><a href="https://smartum.pro/ru/blog-ru/gid-dlya-nachinayuschih-po-rest-api/">https://smartum.pro/ru/blog-ru/gid-dlya-nachinayuschih-po-rest-api/</a><a href="https://habrahabr.ru/post/265845/">https://habrahabr.ru/post/265845/</a></p>
-</li>
-<li>
-<p><a href="http://eax.me/rest/">http://eax.me/rest/</a></p>
-</li>
-<li><a href="http://eax.me/python-flask/">Пишем REST-сервис на Python с использованием Flask</a></li>
-<li><a href="https://habrahabr.ru/post/276731/">Полноценный REST API для перфекционистов за 5 минут</a></li>
-</ul>
-<h3>Требование к унифицированным интерфейсам:</h3>
-<ul>
-<li>
-<p><strong>Идентификация ресурсов по интернет адресу</strong></p>
-<p>Все ресурсы идентифицируются в запросах, например, с …</p></li></ul>
-                <a class="readmore" href="/2017/09/12/rest-api/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

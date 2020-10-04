@@ -77,6 +77,7 @@
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vpn.html">vpn</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
                             <li><a href="/category/wifi.html">wifi</a></li>
@@ -87,35 +88,178 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/09/29/unifi-wifi/">UniFi, вайфай и прочее безобразие</a></h1>
+                    <h1 class="entry-title"><a href="/2020/10/04/vpn-wireguard/">Настройка vpn WireGuard</a></h1>
 <footer class="post-info">
-        <span>Tue 29 September 2020</span>
-<span>| tags: <a href="/tag/wifi.html">wifi</a><a href="/tag/linux.html">linux</a><a href="/tag/tftp.html">tftp</a><a href="/tag/unifi.html">unifi</a></span>
-</footer><!-- /.post-info --><h3>Прошивка UniFi точек</h3>
-<p>Прошивки для UniFi: https://www.ui.com/download/unifi/unifi-ap/uap</p>
-<p>Видео как подключаться напрямую к точке чтобы видеть что происходит при загрузке вайфай точки: <a href="https://www.youtube.com/watch?v=pFsMsVWeuZE">How to connect a UBNT to your console via USB-UART.</a></p>
-<p>Вот как прошивать через режим  tftp <a href="https://help.ui.com/hc/en-us/articles/204910124-UniFi-TFTP-Recovery-for-Bricked-Access-Points">тут</a>:</p>
-<div class="highlight"><pre><span></span><span class="err">connect 192.168.1.20</span>
-<span class="err">binary</span>
-<span class="err">rexmt 1</span>
-<span class="err">timeout 60</span>
+        <span>Sun 04 October 2020</span>
+<span>| tags: <a href="/tag/vpn.html">vpn</a><a href="/tag/linux.html">linux</a><a href="/tag/android.html">android</a><a href="/tag/wireguard.html">wireguard</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://www.wireguard.com">WireGuard official page</a> </li>
+<li><a href="https://linuxize.com/post/how-to-set-up-wireguard-vpn-on-ubuntu-18-04/">How to Set Up WireGuard VPN on Ubuntu 18.04</a></li>
+<li><a href="https://www.youtube.com/watch?v=myn6yE1wgK4">Setting Up WireGuard Client On Android</a></li>
+</ul>
+<h2>Настройка сервера</h2>
+<ol>
+<li>Установка</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">sudo apt install wireguard</span>
 </pre></div>
 
 
-<h3>Светодиодная индикация точек UniFi</h3>
-<p>(Источник)[https://lantorg.com/article/unifi-led-indikatsiya-tochki-dostupa]</p>
+<ol>
+<li>Генерация public и private ключей</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey</span>
+</pre></div>
+
+
+<ol>
+<li>Создание конфигурации интерфейса vpn /etc/wireguard/wg0.conf:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">[Interface]</span>
+<span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.1/24</span>
+<span class="na">SaveConfig</span> <span class="o">=</span> <span class="s">true</span>
+<span class="na">ListenPort</span> <span class="o">=</span> <span class="s">51820</span>
+<span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">SERVER_PRIVATE_KEY</span>
+<span class="na">PostUp</span> <span class="o">=</span> <span class="s">iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE</span>
+<span class="na">PostDown</span> <span class="o">=</span> <span class="s">iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE</span>
+</pre></div>
+
+
+<p>где </p>
 <ul>
-<li>Если UniFi мигает желтым или оранжевым - происходит инициализация. </li>
-<li>Если UniFi горит (непрерывно) оранжевым/янтарным -  точка инициализирована, установлены заводские настройки. </li>
-<li>Непрерывно горит зеленым - точка интегрирована в сеть и нормально работает. </li>
-<li>UniFi горит зеленым, но не постоянно: раз  в 3-4 секунды происходит мигание - точка изолирована, не получает отклика от шлюза. </li>
-<li>Попеременно желтым и зеленым - чаще всего бывает во время обновления прошивки, означает занятость точки доступа, не выключайте и не трогайте ее. </li>
-<li>UniFi быстро мигает зеленым - такая светоиндикация применяется для поиска точки доступа. В веб-интерфейсе вы нажимаете кнопку locate на точке, которую хотите найти - соответствующее устройство начинает мигать.</li>
-</ul>                </article>
+<li>SERVER_PRIVATE_KEY - содержимое файла /etc/wireguard/privatekey</li>
+<li>PostUp - command or script which is executed before bringing the interface up. In this example, we’re using iptables to enable masquerading. This will allow traffic to leave the server, giving the VPN clients access to the Internet.
+Make sure to replace ens3 after -A POSTROUTING to match the name of your public network interface. You can easily find the interface by running the following command:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">ip -o -4 route show to default | awk &#39;{print $5}&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>PostDown - command or script which is executed before bringing the interface down. The iptables rules will be removed once the interface is down.</p>
+</li>
+<li>
+<p>файлы wg0.conf и privatekey не должны быть доступны обычным пользователям:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">sudo chmod 600 /etc/wireguard/{privatekey,wg0.conf}</span>
+</pre></div>
+
+
+<ol>
+<li>поднять интерфейс wg0</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">wg-quick up wg0 </span>
+<span class="err">wg show wg0</span>
+<span class="err">ip a show wg0</span>
+<span class="err">sudo systemctl enable wg-quick@wg0</span>
+</pre></div>
+
+
+<ol>
+<li>Настройки сети и фаервола</li>
+<li>добавить в файл /etc/sysctl.conf строку:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">net.ipv4.ip_forward=1</span>
+</pre></div>
+
+
+<ul>
+<li>применить изменения:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">sudo sysctl -p</span>
+</pre></div>
+
+
+<ul>
+<li>открыть порт 51820:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">sudo ufw allow 51820/udp</span>
+</pre></div>
+
+
+<h2>Настройка клиента Android</h2>
+<ol>
+<li>генерация ключей для клиента</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">cd /etc/wireguard/</span>
+<span class="err">wg genkey | sudo tee phone_privatekey | wg pubkey &gt; phone_publickey</span>
+</pre></div>
+
+
+<ol>
+<li>создадим файл конфигурации android2.conf</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">[Interface]</span>
+<span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">&lt;приватный ключ из файла phone_privatekey&gt;</span>
+<span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.3/32</span>
+<span class="na">DNS</span> <span class="o">=</span> <span class="s">8.8.8.8</span>
+
+<span class="k">[Peer]</span>
+<span class="na">PublicKey</span> <span class="o">=</span> <span class="s">&lt;public ключ сервера в моём случае из файла publickey&gt;</span>
+<span class="na">Endpoint</span> <span class="o">=</span> <span class="s">&lt;ip server&gt;:51820</span>
+</pre></div>
+
+
+<ol>
+<li>добавим в конец файла wg0.conf информацию о подключении:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">[Peer]</span>
+<span class="na">PublicKey</span> <span class="o">=</span> <span class="s">&lt;public ключ из файла phone_publickey&gt;</span>
+<span class="na">AllowedIPs</span> <span class="o">=</span> <span class="s">10.0.0.3/32</span>
+</pre></div>
+
+
+<ol>
+<li>перезапустим интерфейс wg0:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">wg-quick down wg0</span>
+<span class="err">wg-quick up wg0</span>
+</pre></div>
+
+
+<ol>
+<li>установим программу генерации qr-кодов на сервере:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">apt install qrencode</span>
+</pre></div>
+
+
+<ol>
+<li>генерация qr-кода который отсканируем в программе WireGuard на андроиде:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">qrencode -t utf8 &lt; android2.conf</span>
+</pre></div>
+
+
+<ol>
+<li>пробуем подключаться к впн.</li>
+</ol>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/09/29/unifi-wifi/" rel="bookmark"
+                           title="Permalink to UniFi, вайфай и прочее безобразие">UniFi, вайфай и прочее безобразие</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Tue 29 September 2020</span>
+<span>| tags: <a href="/tag/wifi.html">wifi</a><a href="/tag/linux.html">linux</a><a href="/tag/tftp.html">tftp</a><a href="/tag/unifi.html">unifi</a></span>
+</footer><!-- /.post-info -->                <h3>Прошивка UniFi точек</h3>
+<p>Прошивки для UniFi: https://www.ui.com/download/unifi/unifi-ap/uap</p>
+<p>Видео как подключаться напрямую к точке чтобы видеть что происходит при загрузке вайфай точки: <a href="https://www.youtube.com/watch?v=pFsMsVWeuZE">How to connect a UBNT to your console via USB-UART.</a></p>
+<p>Вот как прошивать через режим  tftp <a href="https://help.ui.com/hc/en-us/articles/204910124-UniFi-TFTP-Recovery-for-Bricked-Access-Points">тут</a>:</p>
+<div class="highlight"><pre><span></span><span class="err">connect 192.168.1.20 …</span></pre></div>
+                <a class="readmore" href="/2020/09/29/unifi-wifi/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -314,26 +458,6 @@ sudo add-apt-repository <span class="se">\</span>
 <h2>Отключение SELinux</h2>
 <p>отключение понадобилось когда после установки на сервер Fedora 27 Server Edition компьютер не завершал работу или не перезагружался. После того как я отключил данный параметр проблема решилась. Понимаю, что это костыль, но пока так. Скорее всего это связано с raid массивом, для …</p>
                 <a class="readmore" href="/2017/12/20/selinux-fedora/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/12/17/openvpn-fedora-27/" rel="bookmark"
-                           title="Permalink to Установка и настройка OpenVPN в Fedora 27">Установка и настройка OpenVPN в Fedora 27</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sun 17 December 2017</span>
-<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/openvpn.html">openvpn</a><a href="/tag/vpn.html">vpn</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a></span>
-</footer><!-- /.post-info -->                <p><strong>источник:</strong> <a href="https://chichivica.github.io/2017/08/02/Install-OpenVPN-on-Fedora-26/">Install OpenVPN on Fedora 26</a>- оказалось некоторые неточности которые мешают воспроизвести инструкцию как она есть. Таким образом, ниже инструкция которая поможет избежать проблем при настройке сервера и клиента с которым я столкнулся.</p>
-<ul>
-<li><a href="https://tecadmin.net/install-openvpn-server-ubuntu/">How to Install and Configure OpenVPN Server on Ubuntu 16.04, 14.04</a></li>
-</ul>
-<h2>Настройка сервера OpenVPN</h2>
-<p>1 …</p>
-                <a class="readmore" href="/2017/12/17/openvpn-fedora-27/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
