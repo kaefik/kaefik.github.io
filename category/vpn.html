@@ -131,20 +131,14 @@ Make sure to replace ens3 after -A POSTROUTING to match the name of your public 
 
 
 <ul>
-<li>
-<p>PostDown - command or script which is executed before bringing the interface down. The iptables rules will be removed once the interface is down.</p>
-</li>
-<li>
-<p>файлы wg0.conf и privatekey не должны быть доступны обычным пользователям:</p>
-</li>
+<li>PostDown - command or script which is executed before bringing the interface down. The iptables rules will be removed once the interface is down.</li>
 </ul>
+<p>4.файлы wg0.conf и privatekey не должны быть доступны обычным пользователям:</p>
 <div class="highlight"><pre><span></span><span class="err">sudo chmod 600 /etc/wireguard/{privatekey,wg0.conf}</span>
 </pre></div>
 
 
-<ol>
-<li>поднять интерфейс wg0</li>
-</ol>
+<p>5.поднять интерфейс wg0</p>
 <div class="highlight"><pre><span></span><span class="err">wg-quick up wg0 </span>
 <span class="err">wg show wg0</span>
 <span class="err">ip a show wg0</span>
@@ -152,40 +146,36 @@ Make sure to replace ens3 after -A POSTROUTING to match the name of your public 
 </pre></div>
 
 
-<ol>
-<li>Настройки сети и фаервола</li>
-<li>добавить в файл /etc/sysctl.conf строку:</li>
-</ol>
+<p>6.Настройки сети и фаервола
+    * добавить в файл /etc/sysctl.conf строку:</p>
 <div class="highlight"><pre><span></span><span class="err">net.ipv4.ip_forward=1</span>
 </pre></div>
 
 
-<ul>
-<li>применить изменения:</li>
-</ul>
+<div class="highlight"><pre><span></span><span class="err">* применить изменения:</span>
+</pre></div>
+
+
 <div class="highlight"><pre><span></span><span class="err">sudo sysctl -p</span>
 </pre></div>
 
 
-<ul>
-<li>открыть порт 51820:</li>
-</ul>
+<div class="highlight"><pre><span></span><span class="err">* открыть порт 51820:</span>
+</pre></div>
+
+
 <div class="highlight"><pre><span></span><span class="err">sudo ufw allow 51820/udp</span>
 </pre></div>
 
 
 <h2>Настройка клиента Android</h2>
-<ol>
-<li>генерация ключей для клиента</li>
-</ol>
+<p>1.генерация ключей для клиента</p>
 <div class="highlight"><pre><span></span><span class="err">cd /etc/wireguard/</span>
 <span class="err">wg genkey | sudo tee phone_privatekey | wg pubkey &gt; phone_publickey</span>
 </pre></div>
 
 
-<ol>
-<li>создадим файл конфигурации android2.conf</li>
-</ol>
+<p>2.создадим файл конфигурации android2.conf</p>
 <div class="highlight"><pre><span></span><span class="k">[Interface]</span>
 <span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">&lt;приватный ключ из файла phone_privatekey&gt;</span>
 <span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.3/32</span>
@@ -197,59 +187,43 @@ Make sure to replace ens3 after -A POSTROUTING to match the name of your public 
 </pre></div>
 
 
-<ol>
-<li>добавим в конец файла wg0.conf информацию о подключении:</li>
-</ol>
+<p>3.добавим в конец файла wg0.conf информацию о подключении:</p>
 <div class="highlight"><pre><span></span><span class="k">[Peer]</span>
 <span class="na">PublicKey</span> <span class="o">=</span> <span class="s">&lt;public ключ из файла phone_publickey&gt;</span>
 <span class="na">AllowedIPs</span> <span class="o">=</span> <span class="s">10.0.0.3/32</span>
 </pre></div>
 
 
-<ol>
-<li>перезапустим интерфейс wg0:</li>
-</ol>
+<p>4.перезапустим интерфейс wg0:</p>
 <div class="highlight"><pre><span></span><span class="err">wg-quick down wg0</span>
 <span class="err">wg-quick up wg0</span>
 </pre></div>
 
 
-<ol>
-<li>установим программу генерации qr-кодов на сервере:</li>
-</ol>
+<p>5.установим программу генерации qr-кодов на сервере:</p>
 <div class="highlight"><pre><span></span><span class="err">apt install qrencode</span>
 </pre></div>
 
 
-<ol>
-<li>генерация qr-кода который отсканируем в программе WireGuard на андроиде:</li>
-</ol>
+<p>6.генерация qr-кода который отсканируем в программе WireGuard на андроиде:</p>
 <div class="highlight"><pre><span></span><span class="err">qrencode -t utf8 &lt; android2.conf</span>
 </pre></div>
 
 
-<ol>
-<li>пробуем подключаться к впн.</li>
-</ol>
+<p>7.пробуем подключаться к впн.</p>
 <h2>Настройка клиента Linux</h2>
-<ol>
-<li>установка</li>
-</ol>
+<p>1.установка</p>
 <div class="highlight"><pre><span></span><span class="err">sudo apt install openresolv</span>
 <span class="err">sudo apt install wireguard</span>
 </pre></div>
 
 
-<ol>
-<li>генерация ключей на клиенте</li>
-</ol>
+<p>2.генерация ключей на клиенте</p>
 <div class="highlight"><pre><span></span><span class="err">wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey</span>
 </pre></div>
 
 
-<ol>
-<li>создать файл /etc/wireguard/wg0.conf</li>
-</ol>
+<p>3.создать файл /etc/wireguard/wg0.conf</p>
 <div class="highlight"><pre><span></span><span class="k">[Interface]</span>
 <span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">CLIENT_PRIVATE_KEY</span>
 <span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.2/32</span>
@@ -263,23 +237,17 @@ Make sure to replace ens3 after -A POSTROUTING to match the name of your public 
 </pre></div>
 
 
-<ol>
-<li>на сервере выполнить команду:</li>
-</ol>
+<p>4.на сервере выполнить команду:</p>
 <div class="highlight"><pre><span></span><span class="err">sudo wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips 10.0.0.2</span>
 </pre></div>
 
 
-<ol>
-<li>чтобы подключиться к впн выполните команду:</li>
-</ol>
+<p>5.чтобы подключиться к впн выполните команду:</p>
 <div class="highlight"><pre><span></span><span class="err">wg-quick up wg0</span>
 </pre></div>
 
 
-<ol>
-<li>чтобы отключиться от впн выполните команду:</li>
-</ol>
+<p>6.чтобы отключиться от впн выполните команду:</p>
 <div class="highlight"><pre><span></span><span class="err">wg-quick down wg0</span>
 </pre></div>                </article>
 <p class="paginator">
