@@ -88,11 +88,168 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/08/27/python-oop-attr/">Attr - полезная практика ООП в Python</a></h1>
+                    <h1 class="entry-title"><a href="/2020/10/31/python-testing/">Тестирование в Python</a></h1>
+<footer class="post-info">
+        <span>Sat 31 October 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/testing.html">testing</a></span>
+</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+<ul>
+<li><a href="http://telegra.ph/Testirovanie-v-Python-unittest-CHast-2-TestCase-02-09">Тестирование в Python [unittest]. Часть 2. TestCase</a></li>
+<li><a href="https://github.com/behave/behave">Behave is behavior-driven development, Python style.</a></li>
+<li><a href="https://pythonworld.ru/moduli/modul-unittest.html">Модуль unittest: тестируем свои программы</a></li>
+<li>Тестирование в Python [unittest]  <a href="http://telegra.ph/Testirovanie-v-Python-unittest-CHast-1-Vvedenie-02-09">Часть1</a>  <a href="http://telegra.ph/Testirovanie-v-Python-unittest-CHast-2-TestCase-02-09">Часть2</a>  <a href="http://telegra.ph/Testirovanie-v-Python-unittest-CHast-3-TestSuite-Zagruzka-i-zapusk-testov-02-13">Часть3</a>  <a href="http://telegra.ph/Testirovanie-v-Python-unittest-CHast-4-Propusk-testov-02-22">Часть4</a></li>
+<li><a href="https://proglib.io/p/python-testing/">Погружаемся в основы и нюансы тестирования Python-кода</a></li>
+<li><a href="https://cyberguru.tech/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/pytest">Эффективное тестирование Python с Pytest</a></li>
+<li><a href="https://coderlessons.com/tutorials/python-technologies/uznaite-pytest/pytest-kratkoe-rukovodstvo">Pytest — Краткое руководство</a></li>
+<li><a href="https://coderlessons.com/tutorials/kachestvo-programmnogo-obespecheniia/izuchite-unittest-framework/unittest-framework-tutorial">UnitTest Framework Tutorial</a></li>
+<li><a href="https://coderlessons.com/tutorials/kompiuternoe-programmirovanie/uchebnik-python/56-iunit-testirovanie-python">Юнит-тестирование Python</a></li>
+</ul>
+<h2>Фреймворки тестирования</h2>
+<ul>
+<li>unittest  - встроен в стандартную библиотеку Python. Он содержит и тестовую среду, и Test Runner.</li>
+<li>nose или nose2</li>
+<li>pytest - поддерживает тесты, созданные с unittest. Его плюс заключается в особенностях написания TestCase. TestCase в pytest — это серия функций в файле Python, которые начинаются с имени test_.</li>
+</ul>
+<h2>unittest</h2>
+<p>источник: https://devpractice.ru/unit-testing-in-python-part-2/</p>
+<h3>элементы unittest</h3>
+<ul>
+<li><strong>Test fixture</strong> – обеспечивает подготовку окружения для выполнения тестов, а также организацию мероприятий по их корректному завершению (например очистка ресурсов).</li>
+<li><strong>Test case</strong> – это элементарная единица тестирования, в рамках которой проверяется работа компонента тестируемой программы (метод, класс, поведение и т.п.). Для реализации этой сущности используется класс TestCase.</li>
+<li><strong>Test suite</strong> – это коллекция тестов, которая может в себя включать как отдельные test case’ы так и целые коллекции (т.е. можно создавать коллекции коллекций). Коллекции используются с целью объединения тестов для совместного запуска.</li>
+<li><strong>Test runner</strong> – это компонент, которые оркестрирует (координирует взаимодействие) запуск тестов и предоставляет пользователю результат их выполнения.</li>
+</ul>
+<h3>интерфейс командной строки</h3>
+<ul>
+<li>запуск всех тестов</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err"> python -m unittest test_calc.py</span>
+</pre></div>
+
+
+<ul>
+<li>Запуск тестов из класса CalcTest.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">python -m unittest utest_calc.CalcTest</span>
+</pre></div>
+
+
+<ul>
+<li>запуск Test Discovery</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">python -m unittest</span>
+</pre></div>
+
+
+<h3>Работа с TestCase</h3>
+<p>При выборе имени класса наследника от TestCase можете руководствоваться следующим правилом: [ИмяТестируемойСущности]Tests. [ИмяТестируемойСущности] – это некоторая логическая единица, тесты для которой нужно написать.</p>
+<p>имена тестов будем начинать с префикса test_. Далее, под словом тест будем понимать метод класса-наследника от TestCase, который начинается с префикса test_.</p>
+<p>Все методы класса TestCase можно разделить на три группы:
+* методы, используемые при запуске тестов;
+* методы, используемые при непосредственном написании тестов (проверка условий, сообщение об ошибках);
+* методы, позволяющие собирать информацию о самом тесте.</p>
+<h4>Методы, используемые при запуске тестов.</h4>
+<ul>
+<li>setUp() - вызывается перед запуском теста, используется для подготовки окружения для теста.</li>
+<li>tearDown() - вызывается после завершения работы теста/</li>
+</ul>
+<p>методы setUp() и tearDown() вызываются для всех тестов в рамках класса, в котором они переопределены.</p>
+<ul>
+<li>setUpClass() - Метод действует на уровне класса, т.е. выполняется перед запуском тестов класса.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">@classmethod</span>
+<span class="err">def setUpClass(cls):</span>
+<span class="err">    ...</span>
+</pre></div>
+
+
+<ul>
+<li>tearDownClass() - запускается после выполнения всех методов класса</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">@classmethod</span>
+<span class="err">def tearDownClass(cls):</span>
+<span class="err">    ...</span>
+</pre></div>
+
+
+<ul>
+<li>fail(msg=None) -  метод сигнализирует о том, что произошла ошибка в тесте.</li>
+<li>countTestCases() - Возвращает количество тестов в объекте класса-наследника от TestCase.</li>
+<li>
+<p>id()  - Возвращает строковый идентификатор теста. Как правило это полное имя метода, включающее имя модуля и имя класса.</p>
+</li>
+<li>
+<p>TestCase класс предоставляет набор assert-методов для проверки и генерации ошибок:</p>
+<div class="highlight"><pre><span></span><span class="err">- assertEqual(a, b)          a == b</span>
+<span class="err">- assertNotEqual(a, b)       a != b</span>
+<span class="err">- assertTrue(x)              bool(x) is True</span>
+<span class="err">- assertFalse(x)             bool(x) is False</span>
+<span class="err">- assertIs(a, b)             a is b</span>
+<span class="err">- assertIsNot(a, b)          a is not b</span>
+<span class="err">- assertIsNone(x)            x is None</span>
+<span class="err">- assertIsNotNone(x)         x is not None</span>
+<span class="err">- assertIn(a, b)             a in b</span>
+<span class="err">- assertNotIn(a, b)          a not in b</span>
+<span class="err">- assertIsInstance(a, b)     isinstance(a, b)</span>
+<span class="err">- assertNotIsInstance(a, b)  not isinstance(a, b)</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Assert’ы для контроля выбрасываемых исключений и warning’ов:</p>
+<div class="highlight"><pre><span></span><span class="err">- assertRaises(exc, fun, *args, **kwds)  - Функция fun(*args, **kwds) вызывает исключение exc</span>
+<span class="err">- assertRaisesRegex(exc, r, fun, *args, **kwds) - Функция fun(*args, **kwds) вызывает исключение exc, сообщение которого совпадает с регулярным выражением r</span>
+<span class="err">- assertWarns(warn, fun, *args, **kwds) - Функция fun(*args, **kwds) выдает сообщение warn</span>
+<span class="err">- assertWarnsRegex(warn, r, fun, *args, **kwds) - Функция fun(*args, **kwds) выдает сообщение warn и оно совпадает с регулярным выражением r</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Assert’ы для проверки различных ситуаций:</p>
+<div class="highlight"><pre><span></span><span class="err">- assertAlmostEqual(a, b)   round(a-b, 7) == 0</span>
+<span class="err">- assertNotAlmostEqual(a, b)    round(a-b, 7) != 0</span>
+<span class="err">- assertGreater(a, b)   a &gt; b</span>
+<span class="err">- assertGreaterEqual(a, b)  a &gt;= b</span>
+<span class="err">- assertLess(a, b)  a &lt; b</span>
+<span class="err">- assertLessEqual(a, b) a &lt;= b</span>
+<span class="err">- assertRegex(s, r) r.search(s)</span>
+<span class="err">- assertNotRegex(s, r)  not r.search(s)</span>
+<span class="err">- assertCountEqual(a, b)    a и b имеют одинаковые элементы (порядок неважен)</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>ипо-зависимые assert’ы, которые используются при вызове assertEqual(). Приводятся на тот случай, если необходимо использовать конкретный метод.</p>
+<div class="highlight"><pre><span></span><span class="err">- assertMultiLineEqual(a, b)       строки (strings)</span>
+<span class="err">- assertSequenceEqual(a, b)        последовательности (sequences)</span>
+<span class="err">- assertListEqual(a, b)            списки (lists)</span>
+<span class="err">- assertTupleEqual(a, b)           кортежи (tuplse)</span>
+<span class="err">- assertSetEqual(a, b)             множества или неизменяемые множества (frozensets)</span>
+<span class="err">- assertDictEqual(a, b)            словари (dicts)</span>
+</pre></div>
+
+
+</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/08/27/python-oop-attr/" rel="bookmark"
+                           title="Permalink to Attr - полезная практика ООП в Python">Attr - полезная практика ООП в Python</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 27 August 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
-</footer><!-- /.post-info --><p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
+</footer><!-- /.post-info -->                <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
 <h2>Установка библиотеки</h2>
 <div class="highlight"><pre><span></span><span class="err">pip install attrs</span>
 </pre></div>
@@ -115,104 +272,10 @@
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
 
 <span class="nd">@attrs</span>
-<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
-    <span class="n">age</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
-
-<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-
-<span class="err">где</span> <span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span> <span class="o">//</span> <span class="bp">True</span>
-</pre></div>
-
-
-<h4>Атрибуты без инициализации</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">skills</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">этот</span><span class="w"> </span><span class="n">атрибут</span><span class="w"> </span><span class="n">инициализируем</span><span class="w"> </span><span class="n">позднее</span><span class="w"></span>
-
-<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-
-
-<h4>Значения по умолчанию</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
-
-<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">()</span><span class="w"></span>
-<span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-
-
-<p>если мы хотим установить атрибут с пустой коллекцией в качестве значения по умолчанию? Обычно мы не хотим передавать [] в качестве аргумента.
-для этого нужно использовать "фабричный метод" из attr</p>
-<div class="highlight"><pre><span></span><span class="err">@attrs</span>
-<span class="err">class Person(object):</span>
-<span class="err">    name = attrib(default=&#39;Chris&#39;)</span>
-<span class="err">    age = attrib(default=32)</span>
-<span class="err">    skills = attrib(factory=list)</span>
-</pre></div>
-
-
-<h4>Проверка атрибутов</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-
-<span class="w">    </span><span class="nv">@student_id</span><span class="p">.</span><span class="n">validator</span><span class="w"></span>
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">check_student_id</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">attribute</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="k">value</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span><span class="w"></span>
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;student_id must be 6 characters! got {len(str(value))}&#39;</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-
-
-<p>Обратите внимание, что для этого нам нужно определить функцию. Она должна быть аннотирована как @<attribute_name>.validator</p>
-<h4>Подклассы</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_name</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="w"></span>
-
-<span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="k">User</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="nf">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_user_id</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nf">user_id</span><span class="w"></span>
-
-<span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">,</span><span class="w"> </span><span class="k">User</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_student_id</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">student_id</span><span class="w"></span>
-
-
-
-<span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="nf">user_id</span><span class="o">=</span><span class="s1">&#39;ctao&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">student_id</span><span class="o">=</span><span class="mi">123456</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-
-
-<p>Student наследует как от Person, так и от User</p>
-<h4>Сериализация в словарь</h4>
-<div class="highlight"><pre><span></span><span class="err">attr.asdict(student)</span>
-</pre></div>
-
-
-<p>легко сериализовать экземпляры в словари, которые затем можно использовать в JSON </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
+                <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -405,26 +468,6 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <p>Пример посложнее с методом join – конвертирование списка чисел в строку:</p>
 <div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4 …</span></pre></div>
                 <a class="readmore" href="/2019/06/07/python3-tricks/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/06/02/python-and-gui/" rel="bookmark"
-                           title="Permalink to Python and GUI">Python and GUI</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sun 02 June 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/gui.html">gui</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://github.com/chriskiehl/Gooey">Gooey</a>-  Turn (almost) any Python command line program into a full GUI application with one line</li>
-<li><a href="https://github.com/chriskiehl/GooeyExamples">GooeyExamples</a>- Example programs to Demonstrate Gooey's functionality</li>
-<li><a href="https://github.com/PySimpleGUI/PySimpleGUI">PySimpleGUI</a> -  модуль на python3 для отрисовки графических интерфейсов (кроссплатформенный).  <a href="https://pysimplegui.readthedocs.io/en/latest/">Документация</a>. </li>
-<li><a href="https://github.com/wooey/Wooey">Wooey</a> is a simple web interface to run command line Python scripts. Think of it …</li></ul>
-                <a class="readmore" href="/2019/06/02/python-and-gui/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

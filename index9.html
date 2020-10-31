@@ -90,6 +90,30 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2017/10/07/postgresql-sql-ext/" rel="bookmark"
+                           title="Permalink to PostgreSQL - язык SQL (расширенные возможности)">PostgreSQL - язык SQL (расширенные возможности)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sat 07 October 2017</span>
+<span>| tags: <a href="/tag/db.html">db</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/sql.html">sql</a></span>
+</footer><!-- /.post-info -->                <h2>Представления</h2>
+<p>можно создать представление по данному запросу, фактически присвоить имя запросу, а затем обращаться к нему как к обычной таблице:</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">myview</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">temp_lo</span><span class="p">,</span> <span class="n">temp_hi</span><span class="p">,</span> <span class="n">prcp</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="k">location</span>
+    <span class="k">FROM</span> <span class="n">weather</span><span class="p">,</span> <span class="n">cities</span>
+    <span class="k">WHERE</span> <span class="n">city</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Представления позволяют вам скрыть внутреннее устройство ваших таблиц, которые могут меняться по мере …</p>
+                <a class="readmore" href="/2017/10/07/postgresql-sql-ext/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2017/10/07/postgresql-type-data/" rel="bookmark"
                            title="Permalink to PostgreSQL - Типы данных">PostgreSQL - Типы данных</a></h1>
                 </header>
@@ -299,31 +323,6 @@
 <li><a href="http://postgresql.leopard.in.ua/html/">Работа с PostgreSQL: настройка и масштабирование</a></li>
 <li><a href="https://www.youtube.com/watch?v=h_GdEaF1Ymc&amp;list=PLaFqU3KCWw6KzGwUubZm-9-vKsi6vh5qC">Администрирование PostgreSQL 9 …</a></li></ul>
                 <a class="readmore" href="/2017/09/18/postgresql/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/09/18/save-geo-data-to-db/" rel="bookmark"
-                           title="Permalink to Хранение географических координат в Базах Данных">Хранение географических координат в Базах Данных</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 18 September 2017</span>
-<span>| tags: <a href="/tag/bd.html">бд</a><a href="/tag/geografichekie-koordinaty.html">географичекие координаты</a><a href="/tag/dolgota.html">долгота</a><a href="/tag/shirota.html">широта</a><a href="/tag/postgis.html">postgis</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки:</h2>
-<ul>
-<li><a href="https://habrahabr.ru/post/228023/">Работа с геолокациями в режиме highload</a></li>
-<li><a href="https://live.osgeo.org/ru/quickstart/postgis_quickstart.html">Введение в PostGIS</a></li>
-<li><a href="http://postgis.net/install/">Установка PostGIS</a></li>
-<li><a href="http://postgis.net/docs/manual-2.4/">Документация по PostGIS</a></li>
-</ul>
-<h2>Установка PostGIS</h2>
-<p>The following will install postgresql 9.6, PostGIS 2.3, PGAdmin4, pgRouting 2.3 and additional supplied modules including the adminpack extension:</p>
-<div class="highlight"><pre><span></span>sudo apt-get install postgresql-9.6
-sudo apt-get install postgresql-9.6-postgis-2 …</pre></div>
-                <a class="readmore" href="/2017/09/18/save-geo-data-to-db/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

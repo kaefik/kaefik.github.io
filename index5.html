@@ -90,6 +90,35 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2018/10/19/dsd-gqrx/" rel="bookmark"
+                           title="Permalink to Декодирование цифрового сигнала с помощью dsd и gqrx">Декодирование цифрового сигнала с помощью dsd и gqrx</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Fri 19 October 2018</span>
+<span>| tags: <a href="/tag/radio.html">радио</a><a href="/tag/radioliubitel.html">радиолюбитель</a><a href="/tag/sviaz.html">связь</a><a href="/tag/digital.html">digital</a><a href="/tag/dsd.html">dsd</a><a href="/tag/sdr.html">sdr</a><a href="/tag/ubuntu.html">ubuntu</a></span>
+</footer><!-- /.post-info -->                <p>для информации: <a href="https://www.george-smart.co.uk/scrapbook/digital_speech_decoder/">https://www.george-smart.co.uk/scrapbook/digital_speech_decoder/</a>
+- socat stdout udp-listen:7355| padsp dsd -i - -o /dev/dsp</p>
+<ul>
+<li>запускаем gqrx настраиваемся на частоту и нажимаем кнопку UDP, чтобы вещание пошло через 7355 порт</li>
+</ul>
+<h2>Настройки GQRX:</h2>
+<ul>
+<li>
+<p>Mode: Narrow FM</p>
+</li>
+<li>
+<p>настройки Mode (жмем три точки) пункт tau ставим в off</p>
+</li>
+</ul>
+<h2>Сборка …</h2>
+                <a class="readmore" href="/2018/10/19/dsd-gqrx/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2018/10/18/sdr/" rel="bookmark"
                            title="Permalink to Радио, SDR и все с ним связано">Радио, SDR  и все с ним связано</a></h1>
                 </header>
@@ -334,35 +363,6 @@ npm run eject
 <ul>
 <li><a href="http://momentjs.com/">Moment JS</a> - Parse …</li></ul>
                 <a class="readmore" href="/2018/08/01/javascript-typescript/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2018/07/29/javascript-work-enviroment/" rel="bookmark"
-                           title="Permalink to Настройка рабочего окружения для JavaScript">Настройка рабочего окружения для JavaScript</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sun 29 July 2018</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/javascript.html">javascript</a><a href="/tag/js.html">js</a><a href="/tag/yarn.html">yarn</a><a href="/tag/webpack.html">webpack</a></span>
-</footer><!-- /.post-info -->                <h2>Настройка ESLint и Prettier в VS Code</h2>
-<ul>
-<li><a href="https://github.com/airbnb/javascript">AirBnB: JavaScript Style Guide</a></li>
-<li><a href="https://eslint.org/">ESLint</a> - a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.</li>
-<li>
-<p><a href="https://github.com/prettier/prettier">Prettier</a> - Code formatter</p>
-</li>
-<li>
-<p><a href="https://www.npmjs.com/package/eslint-config-airbnb-bundle#user-content-vscode">Eslint with Airbnb style</a></p>
-</li>
-</ul>
-<p>Чтобы Pretier заработал автоматически нужно в настройки VS Code прописать:</p>
-<div class="highlight"><pre><span></span><span class="c1">// Set the default</span>
-<span class="s2">&quot;editor.formatOnSave&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="c1">// Enable per-language …</span></pre></div>
-                <a class="readmore" href="/2018/07/29/javascript-work-enviroment/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
