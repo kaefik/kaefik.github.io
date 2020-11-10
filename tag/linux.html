@@ -33,6 +33,7 @@
                             <li><a href="/category/clojure.html">clojure</a></li>
                             <li><a href="/category/design.html">design</a></li>
                             <li><a href="/category/docker.html">docker</a></li>
+                            <li><a href="/category/emacs.html">emacs</a></li>
                             <li><a href="/category/english.html">english</a></li>
                             <li><a href="/category/freepbx.html">freepbx</a></li>
                             <li><a href="/category/game.html">game</a></li>
@@ -88,11 +89,55 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/10/04/vpn-wireguard/">Настройка vpn WireGuard</a></h1>
+                    <h1 class="entry-title"><a href="/2020/11/10/emacs-basic/">Emacs основы</a></h1>
+<footer class="post-info">
+        <span>Tue 10 November 2020</span>
+<span>| tags: <a href="/tag/emacs.html">emacs</a><a href="/tag/linux.html">linux</a><a href="/tag/editor.html">editor</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/">GNU Emacs</a></li>
+<li><a href="http://lib.ru/unixhelp/emacs.txt">Шпаргалка по редактору "Emacs"</a></li>
+</ul>
+<h2>Команды для работы с текстом</h2>
+<ul>
+<li><strong>C-p</strong> : перейти на предыдущую строку</li>
+<li><strong>C-n</strong> : перейти на следующую строку</li>
+<li><strong>C-f</strong> : перейти на один символ вперёд</li>
+<li><strong>C-b</strong> : перейти на один символ назад</li>
+<li><strong>C-u N !!!</strong> : N раз выполнить !!!</li>
+<li><strong>C-a</strong> : перейти к началу текущей строки</li>
+<li><strong>C-e</strong> : перейти к концу текущей строки</li>
+<li><strong>C-v</strong> : перейти вперёд на экран (аналог Page Down)</li>
+<li><strong>M-v</strong> : перейти назад на экран (аналог Page Up)</li>
+<li><strong>C-l</strong> : установить текущую строку по центру экрана (отцентрировать)</li>
+<li><strong>M-&lt;</strong> : перейти в начало файла</li>
+<li><strong>M-&gt; </strong>: перейти в конец файла</li>
+<li><strong>M-f</strong> : перейти к следующему слову</li>
+<li><strong>M-b</strong> : перейти к предыдущему слову</li>
+<li><strong>M-a</strong> : перейти к началу текуего параграфа.</li>
+<li><strong>M-e</strong> : перейти к концу текущего параграфа.</li>
+<li><strong>C-s</strong> : нажмите C-s, после чего введите слово для поиска.</li>
+<li><strong>C-r</strong> : обратный поиск, в остальном то же самое что и C-s.</li>
+<li><strong>C-M-s</strong> : нажмите C-s после ввода регулярного выражения, чтобы начать поиск.</li>
+<li><strong>C-M-r</strong> : обратный поиск, в остальном то же самое что и C-M-s.</li>
+<li><strong>$emacs +N file</strong> : перейти на N-ую строку после открытия файла</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/10/04/vpn-wireguard/" rel="bookmark"
+                           title="Permalink to Настройка vpn WireGuard">Настройка vpn WireGuard</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Sun 04 October 2020</span>
 <span>| tags: <a href="/tag/vpn.html">vpn</a><a href="/tag/linux.html">linux</a><a href="/tag/android.html">android</a><a href="/tag/wireguard.html">wireguard</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://www.wireguard.com">WireGuard official page</a> </li>
 <li><a href="https://linuxize.com/post/how-to-set-up-wireguard-vpn-on-ubuntu-18-04/">How to Set Up WireGuard VPN on Ubuntu 18.04</a></li>
@@ -109,151 +154,10 @@
 </pre></div>
 
 
-<p>3.Создание конфигурации интерфейса vpn /etc/wireguard/wg0.conf:</p>
-<div class="highlight"><pre><span></span><span class="k">[Interface]</span>
-<span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.1/24</span>
-<span class="na">SaveConfig</span> <span class="o">=</span> <span class="s">true</span>
-<span class="na">ListenPort</span> <span class="o">=</span> <span class="s">51820</span>
-<span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">SERVER_PRIVATE_KEY</span>
-<span class="na">PostUp</span> <span class="o">=</span> <span class="s">iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE</span>
-<span class="na">PostDown</span> <span class="o">=</span> <span class="s">iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE</span>
-</pre></div>
-
-
-<p>где </p>
-<ul>
-<li>SERVER_PRIVATE_KEY - содержимое файла /etc/wireguard/privatekey</li>
-<li>PostUp - command or script which is executed before bringing the interface up. In this example, we’re using iptables to enable masquerading. This will allow traffic to leave the server, giving the VPN clients access to the Internet.
-Make sure to replace ens3 after -A POSTROUTING to match the name of your public network interface. You can easily find the interface by running the following command:</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">ip -o -4 route show to default | awk &#39;{print $5}&#39;</span>
-</pre></div>
-
-
-<ul>
-<li>PostDown - command or script which is executed before bringing the interface down. The iptables rules will be removed once the interface is down.</li>
-</ul>
-<p>4.файлы wg0.conf и privatekey не должны быть доступны обычным пользователям:</p>
-<div class="highlight"><pre><span></span><span class="err">sudo chmod 600 /etc/wireguard/{privatekey,wg0.conf}</span>
-</pre></div>
-
-
-<p>5.поднять интерфейс wg0</p>
-<div class="highlight"><pre><span></span><span class="err">wg-quick up wg0 </span>
-<span class="err">wg show wg0</span>
-<span class="err">ip a show wg0</span>
-<span class="err">sudo systemctl enable wg-quick@wg0</span>
-</pre></div>
-
-
-<p>6.Настройки сети и фаервола
-    * добавить в файл /etc/sysctl.conf строку:</p>
-<div class="highlight"><pre><span></span><span class="err">net.ipv4.ip_forward=1</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="err">* применить изменения:</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="err">sudo sysctl -p</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="err">* открыть порт 51820:</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="err">sudo ufw allow 51820/udp</span>
-</pre></div>
-
-
-<h2>Настройка клиента Android</h2>
-<p>1.генерация ключей для клиента</p>
-<div class="highlight"><pre><span></span><span class="err">cd /etc/wireguard/</span>
-<span class="err">wg genkey | sudo tee phone_privatekey | wg pubkey &gt; phone_publickey</span>
-</pre></div>
-
-
-<p>2.создадим файл конфигурации android2.conf</p>
-<div class="highlight"><pre><span></span><span class="k">[Interface]</span>
-<span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">&lt;приватный ключ из файла phone_privatekey&gt;</span>
-<span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.3/32</span>
-<span class="na">DNS</span> <span class="o">=</span> <span class="s">8.8.8.8</span>
-
-<span class="k">[Peer]</span>
-<span class="na">PublicKey</span> <span class="o">=</span> <span class="s">&lt;public ключ сервера в моём случае из файла publickey&gt;</span>
-<span class="na">Endpoint</span> <span class="o">=</span> <span class="s">&lt;ip server&gt;:51820</span>
-</pre></div>
-
-
-<p>3.добавим в конец файла wg0.conf информацию о подключении:</p>
-<div class="highlight"><pre><span></span><span class="k">[Peer]</span>
-<span class="na">PublicKey</span> <span class="o">=</span> <span class="s">&lt;public ключ из файла phone_publickey&gt;</span>
-<span class="na">AllowedIPs</span> <span class="o">=</span> <span class="s">10.0.0.3/32</span>
-</pre></div>
-
-
-<p>4.перезапустим интерфейс wg0:</p>
-<div class="highlight"><pre><span></span><span class="err">wg-quick down wg0</span>
-<span class="err">wg-quick up wg0</span>
-</pre></div>
-
-
-<p>5.установим программу генерации qr-кодов на сервере:</p>
-<div class="highlight"><pre><span></span><span class="err">apt install qrencode</span>
-</pre></div>
-
-
-<p>6.генерация qr-кода который отсканируем в программе WireGuard на андроиде:</p>
-<div class="highlight"><pre><span></span><span class="err">qrencode -t utf8 &lt; android2.conf</span>
-</pre></div>
-
-
-<p>7.пробуем подключаться к впн.</p>
-<h2>Настройка клиента Linux</h2>
-<p>1.установка</p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt install openresolv</span>
-<span class="err">sudo apt install wireguard</span>
-</pre></div>
-
-
-<p>2.генерация ключей на клиенте</p>
-<div class="highlight"><pre><span></span><span class="err">wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey</span>
-</pre></div>
-
-
-<p>3.создать файл /etc/wireguard/wg0.conf</p>
-<div class="highlight"><pre><span></span><span class="k">[Interface]</span>
-<span class="na">PrivateKey</span> <span class="o">=</span> <span class="s">CLIENT_PRIVATE_KEY</span>
-<span class="na">Address</span> <span class="o">=</span> <span class="s">10.0.0.2/32</span>
-<span class="na">DNS</span> <span class="o">=</span> <span class="s">8.8.8.8</span>
-
-
-<span class="k">[Peer]</span>
-<span class="na">PublicKey</span> <span class="o">=</span> <span class="s">SERVER_PUBLIC_KEY</span>
-<span class="na">Endpoint</span> <span class="o">=</span> <span class="s">SERVER_IP_ADDRESS:51820</span>
-<span class="na">AllowedIPs</span> <span class="o">=</span> <span class="s">0.0.0.0/0</span>
-</pre></div>
-
-
-<p>4.на сервере выполнить команду:</p>
-<div class="highlight"><pre><span></span><span class="err">sudo wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips 10.0.0.2</span>
-</pre></div>
-
-
-<p>5.чтобы подключиться к впн выполните команду:</p>
-<div class="highlight"><pre><span></span><span class="err">wg-quick up wg0</span>
-</pre></div>
-
-
-<p>6.чтобы отключиться от впн выполните команду:</p>
-<div class="highlight"><pre><span></span><span class="err">wg-quick down wg0</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>3 …</p>
+                <a class="readmore" href="/2020/10/04/vpn-wireguard/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -451,26 +355,6 @@ sudo add-apt-repository <span class="se">\</span>
 <span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> \</span>
 <span class="s2">stable …</span></pre></div>
                 <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/12/20/selinux-fedora/" rel="bookmark"
-                           title="Permalink to Настройка SELinux в Fedora">Настройка SELinux в Fedora</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Wed 20 December 2017</span>
-<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/fedora.html">fedora</a><a href="/tag/security.html">security</a><a href="/tag/selinux.html">selinux</a><a href="/tag/linux.html">linux</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://docs-old.fedoraproject.org/en-US/Fedora/11/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Working_with_SELinux-Enabling_and_Disabling_SELinux.html">Enabling and Disabling SELinux</a></li>
-</ul>
-<h2>Отключение SELinux</h2>
-<p>отключение понадобилось когда после установки на сервер Fedora 27 Server Edition компьютер не завершал работу или не перезагружался. После того как я отключил данный параметр проблема решилась. Понимаю, что это костыль, но пока так. Скорее всего это связано с raid массивом, для …</p>
-                <a class="readmore" href="/2017/12/20/selinux-fedora/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
