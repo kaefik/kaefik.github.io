@@ -89,11 +89,30 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/10/31/python-testing/">Тестирование в Python</a></h1>
+                    <h1 class="entry-title"><a href="/2020/11/10/python-typing/">Введение в аннотации типов Python</a></h1>
+<footer class="post-info">
+        <span>Tue 10 November 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/typing.html">typing</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a></span>
+</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+<ul>
+<li><a href="https://habr.com/ru/company/lamoda/blog/432656/">Введение в аннотации типов Python</a></li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/10/31/python-testing/" rel="bookmark"
+                           title="Permalink to Тестирование в Python">Тестирование в Python</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Sat 31 October 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/testing.html">testing</a></span>
-</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
 <li><a href="http://telegra.ph/Testirovanie-v-Python-unittest-CHast-2-TestCase-02-09">Тестирование в Python [unittest]. Часть 2. TestCase</a></li>
 <li><a href="https://github.com/behave/behave">Behave is behavior-driven development, Python style.</a></li>
@@ -105,140 +124,10 @@
 <li><a href="https://coderlessons.com/tutorials/kachestvo-programmnogo-obespecheniia/izuchite-unittest-framework/unittest-framework-tutorial">UnitTest Framework Tutorial</a></li>
 <li><a href="https://coderlessons.com/tutorials/kompiuternoe-programmirovanie/uchebnik-python/56-iunit-testirovanie-python">Юнит-тестирование Python</a></li>
 </ul>
-<h2>Фреймворки тестирования</h2>
-<ul>
-<li>unittest  - встроен в стандартную библиотеку Python. Он содержит и тестовую среду, и Test Runner.</li>
-<li>nose или nose2</li>
-<li>pytest - поддерживает тесты, созданные с unittest. Его плюс заключается в особенностях написания TestCase. TestCase в pytest — это серия функций в файле Python, которые начинаются с имени test_.</li>
-</ul>
-<h2>unittest</h2>
-<p>источник: https://devpractice.ru/unit-testing-in-python-part-2/</p>
-<h3>элементы unittest</h3>
-<ul>
-<li><strong>Test fixture</strong> – обеспечивает подготовку окружения для выполнения тестов, а также организацию мероприятий по их корректному завершению (например очистка ресурсов).</li>
-<li><strong>Test case</strong> – это элементарная единица тестирования, в рамках которой проверяется работа компонента тестируемой программы (метод, класс, поведение и т.п.). Для реализации этой сущности используется класс TestCase.</li>
-<li><strong>Test suite</strong> – это коллекция тестов, которая может в себя включать как отдельные test case’ы так и целые коллекции (т.е. можно создавать коллекции коллекций). Коллекции используются с целью объединения тестов для совместного запуска.</li>
-<li><strong>Test runner</strong> – это компонент, которые оркестрирует (координирует взаимодействие) запуск тестов и предоставляет пользователю результат их выполнения.</li>
-</ul>
-<h3>интерфейс командной строки</h3>
-<ul>
-<li>запуск всех тестов</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err"> python -m unittest test_calc.py</span>
-</pre></div>
-
-
-<ul>
-<li>Запуск тестов из класса CalcTest.</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">python -m unittest utest_calc.CalcTest</span>
-</pre></div>
-
-
-<ul>
-<li>запуск Test Discovery</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">python -m unittest</span>
-</pre></div>
-
-
-<h3>Работа с TestCase</h3>
-<p>При выборе имени класса наследника от TestCase можете руководствоваться следующим правилом: [ИмяТестируемойСущности]Tests. [ИмяТестируемойСущности] – это некоторая логическая единица, тесты для которой нужно написать.</p>
-<p>имена тестов будем начинать с префикса test_. Далее, под словом тест будем понимать метод класса-наследника от TestCase, который начинается с префикса test_.</p>
-<p>Все методы класса TestCase можно разделить на три группы:
-* методы, используемые при запуске тестов;
-* методы, используемые при непосредственном написании тестов (проверка условий, сообщение об ошибках);
-* методы, позволяющие собирать информацию о самом тесте.</p>
-<h4>Методы, используемые при запуске тестов.</h4>
-<ul>
-<li>setUp() - вызывается перед запуском теста, используется для подготовки окружения для теста.</li>
-<li>tearDown() - вызывается после завершения работы теста/</li>
-</ul>
-<p>методы setUp() и tearDown() вызываются для всех тестов в рамках класса, в котором они переопределены.</p>
-<ul>
-<li>setUpClass() - Метод действует на уровне класса, т.е. выполняется перед запуском тестов класса.</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">@classmethod</span>
-<span class="err">def setUpClass(cls):</span>
-<span class="err">    ...</span>
-</pre></div>
-
-
-<ul>
-<li>tearDownClass() - запускается после выполнения всех методов класса</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">@classmethod</span>
-<span class="err">def tearDownClass(cls):</span>
-<span class="err">    ...</span>
-</pre></div>
-
-
-<ul>
-<li>fail(msg=None) -  метод сигнализирует о том, что произошла ошибка в тесте.</li>
-<li>countTestCases() - Возвращает количество тестов в объекте класса-наследника от TestCase.</li>
-<li>
-<p>id()  - Возвращает строковый идентификатор теста. Как правило это полное имя метода, включающее имя модуля и имя класса.</p>
-</li>
-<li>
-<p>TestCase класс предоставляет набор assert-методов для проверки и генерации ошибок:</p>
-<div class="highlight"><pre><span></span><span class="err">- assertEqual(a, b)          a == b</span>
-<span class="err">- assertNotEqual(a, b)       a != b</span>
-<span class="err">- assertTrue(x)              bool(x) is True</span>
-<span class="err">- assertFalse(x)             bool(x) is False</span>
-<span class="err">- assertIs(a, b)             a is b</span>
-<span class="err">- assertIsNot(a, b)          a is not b</span>
-<span class="err">- assertIsNone(x)            x is None</span>
-<span class="err">- assertIsNotNone(x)         x is not None</span>
-<span class="err">- assertIn(a, b)             a in b</span>
-<span class="err">- assertNotIn(a, b)          a not in b</span>
-<span class="err">- assertIsInstance(a, b)     isinstance(a, b)</span>
-<span class="err">- assertNotIsInstance(a, b)  not isinstance(a, b)</span>
-</pre></div>
-
-
-</li>
-<li>
-<p>Assert’ы для контроля выбрасываемых исключений и warning’ов:</p>
-<div class="highlight"><pre><span></span><span class="err">- assertRaises(exc, fun, *args, **kwds)  - Функция fun(*args, **kwds) вызывает исключение exc</span>
-<span class="err">- assertRaisesRegex(exc, r, fun, *args, **kwds) - Функция fun(*args, **kwds) вызывает исключение exc, сообщение которого совпадает с регулярным выражением r</span>
-<span class="err">- assertWarns(warn, fun, *args, **kwds) - Функция fun(*args, **kwds) выдает сообщение warn</span>
-<span class="err">- assertWarnsRegex(warn, r, fun, *args, **kwds) - Функция fun(*args, **kwds) выдает сообщение warn и оно совпадает с регулярным выражением r</span>
-</pre></div>
-
-
-</li>
-<li>
-<p>Assert’ы для проверки различных ситуаций:</p>
-<div class="highlight"><pre><span></span><span class="err">- assertAlmostEqual(a, b)   round(a-b, 7) == 0</span>
-<span class="err">- assertNotAlmostEqual(a, b)    round(a-b, 7) != 0</span>
-<span class="err">- assertGreater(a, b)   a &gt; b</span>
-<span class="err">- assertGreaterEqual(a, b)  a &gt;= b</span>
-<span class="err">- assertLess(a, b)  a &lt; b</span>
-<span class="err">- assertLessEqual(a, b) a &lt;= b</span>
-<span class="err">- assertRegex(s, r) r.search(s)</span>
-<span class="err">- assertNotRegex(s, r)  not r.search(s)</span>
-<span class="err">- assertCountEqual(a, b)    a и b имеют одинаковые элементы (порядок неважен)</span>
-</pre></div>
-
-
-</li>
-<li>
-<p>ипо-зависимые assert’ы, которые используются при вызове assertEqual(). Приводятся на тот случай, если необходимо использовать конкретный метод.</p>
-<div class="highlight"><pre><span></span><span class="err">- assertMultiLineEqual(a, b)       строки (strings)</span>
-<span class="err">- assertSequenceEqual(a, b)        последовательности (sequences)</span>
-<span class="err">- assertListEqual(a, b)            списки (lists)</span>
-<span class="err">- assertTupleEqual(a, b)           кортежи (tuplse)</span>
-<span class="err">- assertSetEqual(a, b)             множества или неизменяемые множества (frozensets)</span>
-<span class="err">- assertDictEqual(a, b)            словари (dicts)</span>
-</pre></div>
-
-
-</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<h2>Фреймворки тестирования …</h2>
+                <a class="readmore" href="/2020/10/31/python-testing/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -459,32 +348,10 @@
                 <a class="readmore" href="/2017/01/19/sailfish-os-asus-zenfone-2-z00l/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/01/14/sailfish-os/" rel="bookmark"
-                           title="Permalink to Полезные ссылки по портированию Sailfish OS">Полезные ссылки по портированию Sailfish OS</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 14 January 2017</span>
-<span>| tags: <a href="/tag/ssylki.html">ссылки</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a></span>
-</footer><!-- /.post-info -->                <p>Данная страница будет пополняться по потребностям.</p>
-<ul>
-<li><a href="http://www.merproject.org/logs/%23sailfishos-porters/">http://www.merproject.org/logs/%23sailfishos-porters/</a></li>
-<li><a href="http://neochapay.ru/hadk.html">http://neochapay.ru/hadk.html</a></li>
-<li><a href="https://sailfishos.org/develop/hadk/">https://sailfishos.org/develop/hadk/</a></li>
-<li><a href="https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet">https://sailfishos.org/wiki/Sailfish_OS_Cheat_Sheet</a></li>
-<li><a href="https://github.com/mer-hybris/build-script">https://github.com/mer-hybris/build-script</a></li>
-<li><a href="https://yadi.sk/i/gKhUUncD3CV74Z">faq-hadk-v2</a></li>
-</ul>
-                <a class="readmore" href="/2017/01/14/sailfish-os/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="/tag/ssylki2.html">&raquo;</a>
 </p>
             </section><!-- /#content -->
         <section id="extras" class="body">
