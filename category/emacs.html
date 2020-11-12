@@ -101,13 +101,15 @@
 <li><a href="https://jblevins.org/projects/markdown-mode/">Markdown Mode for Emacs</a></li>
 <li><a href="https://www.opennet.ru/docs/RUS/emacs_begin/">Emacs для начинающих</a></li>
 <li><a href="http://alexott.net/ru/emacs/emacs-manual/emacs_toc.html">Руководство по GNU Emacs</a></li>
+<li></li>
 </ul>
 <h2>Установка Emacs</h2>
 <div class="highlight"><pre><span></span><span class="err">    sudo apt install emacs emacs-goodies-el</span>
 </pre></div>
 
 
-<h2>Команды для работы с текстом</h2>
+<h2>Команды</h2>
+<h3>Перемещения по тексту</h3>
 <ul>
 <li><strong>C-p</strong> : перейти на предыдущую строку</li>
 <li><strong>C-n</strong> : перейти на следующую строку</li>
@@ -120,7 +122,7 @@
 <li><strong>M-v</strong> : перейти назад на экран (аналог Page Up)</li>
 <li><strong>C-l</strong> : установить текущую строку по центру экрана (отцентрировать)</li>
 <li><strong>M-&lt;</strong> : перейти в начало файла</li>
-<li><strong>M-&gt; </strong>: перейти в конец файла</li>
+<li><strong>M-&gt;</strong>: перейти в конец файла</li>
 <li><strong>M-f</strong> : перейти к следующему слову</li>
 <li><strong>M-b</strong> : перейти к предыдущему слову</li>
 <li><strong>M-a</strong> : перейти к началу текуего параграфа.</li>
@@ -135,13 +137,46 @@
 <li>
 <p><strong>M-g g N</strong>: перейти на N-ю строку </p>
 </li>
-<li>
-<p><strong>C-x C-f</strong> - создание нового файла</p>
-</li>
+</ul>
+<h3>Удаления текста</h3>
+<ul>
+<li><strong><DEL></strong>         Delete the character just before the cursor</li>
+<li><strong>C-d</strong>            Delete the next character after the cursor</li>
+<li><strong>M-<DEL></strong>      Kill the word immediately before the cursor</li>
+<li><strong>M-d</strong>        Kill the next word after the cursor</li>
+<li><strong>C-k</strong>            Kill from the cursor position to end of line</li>
+<li><strong>M-k</strong>            Kill to the end of the current sentence</li>
 </ul>
 <h3>Работа с выделением</h3>
 <ul>
-<li></li>
+<li><strong>C-<SPC></strong> - начало выделения текста</li>
+<li><strong>C-w</strong>     - вырезать выделенную область</li>
+<li><strong>M-w</strong>     - скопировать выделенную область</li>
+<li><strong>C-y</strong>     - вставить текст которую ранее скопировали/вырезали</li>
+<li>
+<p><strong>M-y</strong>     - заменить текст</p>
+</li>
+<li>
+<p><strong>C-/</strong> - отмена действий</p>
+</li>
+</ul>
+<h3>Работа с файлами</h3>
+<ul>
+<li><strong>C-x C-f</strong> - создание нового файла</li>
+<li><strong>C-x C-s</strong> - сохранение файла</li>
+</ul>
+<h3>Работа с буферами</h3>
+<ul>
+<li><strong>C-x C-b</strong> - список буферов</li>
+<li><strong>C-x b</strong>     - перейти на буфер</li>
+</ul>
+<h3>Работа с окнами</h3>
+<ul>
+<li><strong>C-x 1</strong> - оставить только один буфер</li>
+<li><strong>C-x 0</strong> - закрыть буфер</li>
+<li><strong>C-x o</strong> - перейти на следующий буфер</li>
+<li><strong>C-x 2</strong> - открыть горизонтальное окно</li>
+<li><strong>C-x 3</strong> - открыть вертикальное окно</li>
 </ul>
 <h2>пустой конфиг <strong>.emacs</strong></h2>
 <div class="highlight"><pre><span></span><span class="err">;; System-type definition</span>
@@ -165,6 +200,12 @@
 </pre></div>
 
 
+<h2>Плагины Emacs</h2>
+<ul>
+<li><a href="https://www.emacswiki.org/emacs/SrSpeedbar">Sr SpeedBar</a> - для удобной навигации по файловой системе</li>
+<li><a href="https://www.emacswiki.org/emacs/Yasnippet">Yasnippet</a> - для различных снипетов</li>
+<li><a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</a> </li>
+</ul>
 <p>Пример конфигурационного файла .emacs:</p>
 <div class="highlight"><pre><span></span><span class="p">;;</span><span class="w"> </span><span class="k">System</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="n">definition</span><span class="w"></span>
 <span class="p">(</span><span class="n">defun</span><span class="w"> </span><span class="k">system</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="n">linux</span><span class="p">()</span><span class="w"></span>
