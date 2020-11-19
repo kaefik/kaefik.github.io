@@ -186,6 +186,39 @@ ls
 
 
 <p>см <a href="https://habr.com/post/203282/">Режимы  git reset</a></p>
+<h3>Режимы reset</h3>
+<ul>
+<li>жесткий ресет -  состояния директории и индекса меняет как было при указанном коммите</li>
+<li>
+<p>мягкий ресет  - обычно используют если вдруг ошибся при коммите (что-то не доделал или еще что-нибудь), не меняет содержимое каталога и индекса, а просто перемещает HEAD на указанный коммит</p>
+</li>
+<li>
+<p>жесткий ресет из коммита HEAD </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">git reset --hard</span>
+</pre></div>
+
+
+<ul>
+<li>жесткий ресет из указанного коммита</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">git reset --hard коммит</span>
+</pre></div>
+
+
+<ul>
+<li>мягкий ресет</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">git reset --soft коммит</span>
+</pre></div>
+
+
+<p>*мягкий ресет на предыдущий коммит</p>
+<div class="highlight"><pre><span></span><span class="err">git reset --soft @~</span>
+</pre></div>
+
+
 <h2>Исправление ошибок в коммитах</h2>
 <p>источник: <a href="https://habr.com/company/ruvds/blog/425665/">https://habr.com/company/ruvds/blog/425665/</a>
 Здесь мы рассмотрим несколько сценариев появления ошибок в коммитах и их исправления.</p>
@@ -216,7 +249,38 @@ git commit --amend --no-edit
 </pre></div>
 
 
-<p>​    </p>
+<h2>Теги</h2>
+<ul>
+<li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">git tag имя_тега коммит</span>
+</pre></div>
+
+
+<ul>
+<li>создание аннотированного тега (с дополнительной информацией)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="err">имя</span><span class="n">_тега</span>
+<span class="o">```</span><span class="err">​</span>    
+
+<span class="o">*</span> <span class="err">удаление</span> <span class="err">тегов</span>
+</pre></div>
+
+
+<p>git tag -d имена_тегов</p>
+<div class="highlight"><pre><span></span><span class="o">##</span> <span class="err">Использование</span> <span class="err">тегов</span> <span class="err">для</span> <span class="err">экспорта</span>
+
+<span class="o">*</span> <span class="err">получить</span> <span class="err">ближайший</span> <span class="err">тег</span>
+</pre></div>
+
+
+<p>git describe коммит</p>
+<div class="highlight"><pre><span></span><span class="err">* поместить архив проекта с указанного коммита(тега)</span>
+</pre></div>
+
+
+<p>git archive -o путь_для_архива коммит_или_тег
+```</p>
     </div><!-- /.entry-content -->
 
   </article>
