@@ -155,11 +155,11 @@
 
 <p>если мы хотим установить атрибут с пустой коллекцией в качестве значения по умолчанию? Обычно мы не хотим передавать [] в качестве аргумента.
 для этого нужно использовать "фабричный метод" из attr</p>
-<div class="highlight"><pre><span></span><span class="err">@attrs</span>
-<span class="err">class Person(object):</span>
-<span class="err">    name = attrib(default=&#39;Chris&#39;)</span>
-<span class="err">    age = attrib(default=32)</span>
-<span class="err">    skills = attrib(factory=list)</span>
+<div class="highlight"><pre><span></span>@attrs
+class Person<span class="o">(</span>object<span class="o">)</span>:
+    <span class="nv">name</span> <span class="o">=</span> attrib<span class="o">(</span><span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="o">)</span>
+    <span class="nv">age</span> <span class="o">=</span> attrib<span class="o">(</span><span class="nv">default</span><span class="o">=</span><span class="m">32</span><span class="o">)</span>
+    <span class="nv">skills</span> <span class="o">=</span> attrib<span class="o">(</span><span class="nv">factory</span><span class="o">=</span>list<span class="o">)</span>
 </pre></div>
 
 
@@ -209,7 +209,7 @@
 
 <p>Student наследует как от Person, так и от User</p>
 <h4>Сериализация в словарь</h4>
-<div class="highlight"><pre><span></span><span class="err">attr.asdict(student)</span>
+<div class="highlight"><pre><span></span>attr.asdict<span class="o">(</span>student<span class="o">)</span>
 </pre></div>
 
 
