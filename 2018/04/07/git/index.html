@@ -309,6 +309,40 @@ git tag -d имена_тегов
 <p><a href="https://www.youtube.com/watch?v=BP53rBf1PUE&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=57">cherry-pick</a></p>
 <div class="highlight"><pre><span></span>git cherry-pick коммит
 </pre></div>
+
+
+<h2>Перебазирование веток: rebase</h2>
+<p><a href="https://www.youtube.com/watch?v=Du7Ay5o-Png&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=59">источник</a></p>
+<div class="highlight"><pre><span></span>git rebase ветка
+</pre></div>
+
+
+<ul>
+<li>отмена rebase и возврать HEAD в предыдущее состояние</li>
+</ul>
+<div class="highlight"><pre><span></span>git rebase --abort
+</pre></div>
+
+
+<ul>
+<li>отмена rebase, но HEAD остается на том коммите когда  был превран rebase</li>
+</ul>
+<div class="highlight"><pre><span></span>git rebase --quit
+</pre></div>
+
+
+<ul>
+<li>пропустить конфликтный коммит</li>
+</ul>
+<div class="highlight"><pre><span></span>git rebase --skip
+</pre></div>
+
+
+<ul>
+<li>продолжить rebase</li>
+</ul>
+<div class="highlight"><pre><span></span>git rebase --continue
+</pre></div>
     </div><!-- /.entry-content -->
 
   </article>

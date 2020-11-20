@@ -360,12 +360,12 @@
 </ul>
 <h2>Настройка сервера</h2>
 <p>1.Установка</p>
-<div class="highlight"><pre><span></span><span class="err">    sudo apt install wireguard</span>
+<div class="highlight"><pre><span></span>    sudo apt install wireguard
 </pre></div>
 
 
 <p>2.Генерация public и private ключей</p>
-<div class="highlight"><pre><span></span><span class="err">    wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey</span>
+<div class="highlight"><pre><span></span>    wg genkey <span class="p">|</span> sudo tee /etc/wireguard/privatekey <span class="p">|</span> wg pubkey <span class="p">|</span> sudo tee /etc/wireguard/publickey
 </pre></div>
 
 
