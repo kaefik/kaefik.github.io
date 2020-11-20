@@ -109,71 +109,49 @@
 <li><a href="https://defpython.ru/rukovodstvo_po_PyMongo">Руководство по PyMongo</a></li>
 </ul>
 <p>Запуск сервера MongoDB:</p>
-<div class="highlight"><pre><span></span><span class="err">mongodb</span>
+<div class="highlight"><pre><span></span>mongodb
 </pre></div>
 
 
 <p>Подключение к серверу MongoDB</p>
-<div class="highlight"><pre><span></span><span class="err">mongo --host localhost:27017</span>
+<div class="highlight"><pre><span></span>mongo --host localhost:27017
 </pre></div>
 
 
 <p><strong>Команды:</strong></p>
 <ul>
 <li>
-<div class="highlight"><pre><span></span><span class="err">         use название_БД</span>
-</pre></div>
-
-
+<p>use название_БД</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">             db.createCollection(&quot;название_коллекции&quot;)</span>
-</pre></div>
-
-
+<p>db.createCollection("название_коллекции")</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.insertOne({&quot;name&quot;:&quot;John&quot;,&quot;email&quot;:&quot;test@mi.ru})</span>
-</pre></div>
-
-
+<p>db.название_коллекции.insertOne({"name":"John","email":"test@mi.ru})</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.inserMany([{&quot;name&quot;:&quot;John&quot;,&quot;email&quot;:&quot;test@mi.ru}])</span>
-</pre></div>
-
-
+<p>db.название_коллекции.inserMany([{"name":"John","email":"test@mi.ru}])</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.find()</span>
-</pre></div>
-
-
+<p>db.название_коллекции.find()</p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">             db.название_коллекции.find().limit(2)</span>
-</pre></div>
-
-
+<p>db.название_коллекции.find().limit(2)</p>
 </li>
 </ul>
 <p><strong>Mongo-Python-Driver</strong>  </p>
 <p>нужно скачать и установить библиотеку Python ползволяющую работать с MongoDB:</p>
-<ul>
-<li>
-<div class="highlight"><pre><span></span><span class="err">         pip3 install py-mongo</span>
+<div class="highlight"><pre><span></span>pip3 install py-mongo
 </pre></div>
 
 
-</li>
-</ul>
 <p><strong>Flask-MongoEngine</strong></p>
 <ul>
 <li><a href="https://flask-mongoengine.readthedocs.io/en/latest/">Документация MongoEngine</a></li>
 <li><a href="https://python.hotexamples.com/ru/examples/flask.ext.mongoengine/MongoEngine/-/python-mongoengine-class-examples.html">Примеры использования</a></li>
 </ul>
 <p><strong>Installing Flask-MongoEngine</strong></p>
-<div class="highlight"><pre><span></span><span class="err">pip3 install flask-mongoengine</span>
+<div class="highlight"><pre><span></span>pip3 install flask-mongoengine
 </pre></div>
     </div><!-- /.entry-content -->
 
