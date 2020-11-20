@@ -128,21 +128,21 @@
 <ul>
 <li>запуск всех тестов</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err"> python -m unittest test_calc.py</span>
+<div class="highlight"><pre><span></span> python -m unittest test_calc.py
 </pre></div>
 
 
 <ul>
 <li>Запуск тестов из класса CalcTest.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">python -m unittest utest_calc.CalcTest</span>
+<div class="highlight"><pre><span></span>python -m unittest utest_calc.CalcTest
 </pre></div>
 
 
 <ul>
 <li>запуск Test Discovery</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">python -m unittest</span>
+<div class="highlight"><pre><span></span>python -m unittest
 </pre></div>
 
 
@@ -162,18 +162,18 @@
 <ul>
 <li>setUpClass() - Метод действует на уровне класса, т.е. выполняется перед запуском тестов класса.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">@classmethod</span>
-<span class="err">def setUpClass(cls):</span>
-<span class="err">    ...</span>
+<div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">setUpClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="o">...</span>
 </pre></div>
 
 
 <ul>
 <li>tearDownClass() - запускается после выполнения всех методов класса</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">@classmethod</span>
-<span class="err">def tearDownClass(cls):</span>
-<span class="err">    ...</span>
+<div class="highlight"><pre><span></span><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">tearDownClass</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="o">...</span>
 </pre></div>
 
 
