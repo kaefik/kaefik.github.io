@@ -109,21 +109,21 @@
 <ul>
 <li>посмотреть все настройки</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git config --list</span>
+<div class="highlight"><pre><span></span>git config --list
 </pre></div>
 
 
 <ul>
 <li>проверить какой редактор открывается по умолчанию</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git config --global -e</span>
+<div class="highlight"><pre><span></span>git config --global -e
 </pre></div>
 
 
 <ul>
 <li>установка редактора emacs в консольном режиме</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git config --global core.editor &quot;emacs -nw&quot;</span>
+<div class="highlight"><pre><span></span>git config --global core.editor <span class="s2">&quot;emacs -nw&quot;</span>
 </pre></div>
 
 
@@ -181,7 +181,7 @@ ls
 
 <p>Вы увидите копию проекта hello.</p>
 <h2>Откат изменений</h2>
-<div class="highlight"><pre><span></span><span class="err">git reset {--hard|--soft} HEAD {имя_файла}</span>
+<div class="highlight"><pre><span></span>git reset <span class="o">{</span>--hard<span class="p">|</span>--soft<span class="o">}</span> HEAD <span class="o">{</span>имя_файла<span class="o">}</span>
 </pre></div>
 
 
@@ -196,34 +196,34 @@ ls
 <p>жесткий ресет из коммита HEAD </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git reset --hard</span>
+<div class="highlight"><pre><span></span>git reset --hard
 </pre></div>
 
 
 <ul>
 <li>жесткий ресет из указанного коммита</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git reset --hard коммит</span>
+<div class="highlight"><pre><span></span>git reset --hard коммит
 </pre></div>
 
 
 <ul>
 <li>мягкий ресет</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git reset --soft коммит</span>
+<div class="highlight"><pre><span></span>git reset --soft коммит
 </pre></div>
 
 
 <p>*мягкий ресет на предыдущий коммит</p>
-<div class="highlight"><pre><span></span><span class="err">git reset --soft @~</span>
+<div class="highlight"><pre><span></span>git reset --soft @~
 </pre></div>
 
 
 <ul>
 <li>чтобы откатить изменения т что есть в коммите и также удалить все остальные файлы и директории которые неотслеживаемые</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git reset --hard</span>
-<span class="err">git clean -dxf</span>
+<div class="highlight"><pre><span></span>git reset --hard
+git clean -dxf
 </pre></div>
 
 
@@ -261,46 +261,54 @@ git commit --amend --no-edit
 <ul>
 <li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">git tag имя_тега коммит</span>
+<div class="highlight"><pre><span></span>git tag имя_тега коммит
 </pre></div>
 
 
 <ul>
 <li>создание аннотированного тега (с дополнительной информацией)</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="err">имя</span><span class="n">_тега</span>
-<span class="o">```</span><span class="err">​</span>    
+<div class="highlight"><pre><span></span>git tag -a имя_тега
+<span class="sb">```</span>​
 
-<span class="o">*</span> <span class="err">удаление</span> <span class="err">тегов</span>
+* удаление тегов
+<span class="sb">```</span>bash
+git tag -d имена_тегов
 </pre></div>
 
 
-<p>git tag -d имена_тегов</p>
-<div class="highlight"><pre><span></span><span class="o">##</span> <span class="err">Использование</span> <span class="err">тегов</span> <span class="err">для</span> <span class="err">экспорта</span>
-
-<span class="o">*</span> <span class="err">получить</span> <span class="err">ближайший</span> <span class="err">тег</span>
+<h2>Использование тегов для экспорта</h2>
+<ul>
+<li>получить ближайший тег</li>
+</ul>
+<div class="highlight"><pre><span></span>git describe коммит
 </pre></div>
 
 
-<p>git describe коммит</p>
-<div class="highlight"><pre><span></span><span class="err">* поместить архив проекта с указанного коммита(тега)</span>
+<ul>
+<li>поместить архив проекта с указанного коммита(тега)</li>
+</ul>
+<div class="highlight"><pre><span></span>git archive -o путь_для_архива коммит_или_тег
 </pre></div>
 
 
-<p>git archive -o путь_для_архива коммит_или_тег</p>
-<div class="highlight"><pre><span></span><span class="o">##</span> <span class="err">Слияние</span> <span class="err">и</span> <span class="err">разрешение</span> <span class="err">конфликтов</span>
-
-<span class="err">источник</span><span class="p">:</span> <span class="p">[</span><span class="err">Слияние</span> <span class="err">–</span> <span class="err">Истинное</span> <span class="err">слияние</span> <span class="err">и</span> <span class="err">разрешение</span> <span class="err">конфликтов</span> <span class="err">в</span> <span class="n">git</span> <span class="n">merge</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">youtube</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">watch</span><span class="o">?</span><span class="n">v</span><span class="o">=</span><span class="n">rJTQzEQcdk4</span><span class="o">&amp;</span><span class="n">list</span><span class="o">=</span><span class="n">PLDyvV36pndZHkDRik6kKF6gSb0N0W995h</span><span class="o">&amp;</span><span class="k">index</span><span class="o">=</span><span class="mi">49</span><span class="p">)</span>
+<h2>Слияние и разрешение конфликтов</h2>
+<p>источник: <a href="https://www.youtube.com/watch?v=rJTQzEQcdk4&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=49">Слияние – Истинное слияние и разрешение конфликтов в git merge</a></p>
+<div class="highlight"><pre><span></span>git merge ветка
 </pre></div>
 
 
-<p>git merge ветка</p>
-<div class="highlight"><pre><span></span><span class="err">* узнать на каком коммите где ветки разделились</span>
+<ul>
+<li>узнать на каком коммите где ветки разделились</li>
+</ul>
+<div class="highlight"><pre><span></span>git merge-base ветка1 ветка2
 </pre></div>
 
 
-<p>git merge-base ветка1 ветка2
-```</p>
+<h2>Копирование коммитов: cherry-pick</h2>
+<p><a href="https://www.youtube.com/watch?v=BP53rBf1PUE&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=57">cherry-pick</a></p>
+<div class="highlight"><pre><span></span>git cherry-pick коммит
+</pre></div>
     </div><!-- /.entry-content -->
 
   </article>
