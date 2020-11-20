@@ -119,14 +119,14 @@
 </ol>
 <h2>Настройка проекта для запуска</h2>
 <h3>Библиотеки:</h3>
-<div class="highlight"><pre><span></span><span class="err">  pip3 install python-dotenv    </span>
-<span class="err">  pip3 install Telethon</span>
-<span class="err">  pip3 install requests</span>
+<div class="highlight"><pre><span></span>  pip3 install python-dotenv    
+  pip3 install Telethon
+  pip3 install requests
 </pre></div>
 
 
 <p>или просто выполняем </p>
-<div class="highlight"><pre><span></span><span class="err">  pip install -r requirements.txt</span>
+<div class="highlight"><pre><span></span>  pip install -r requirements.txt
 </pre></div>
 
 
@@ -139,7 +139,7 @@
 <p>Для установки на убунту: </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">    apt install youtube-dl</span>
+<div class="highlight"><pre><span></span>    apt install youtube-dl
 </pre></div>
 
 
@@ -149,7 +149,7 @@
 <p>Для установки на убунту: </p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><span class="err">     apt install mp3splt</span>
+<div class="highlight"><pre><span></span>     apt install mp3splt
 </pre></div>
 
 
@@ -157,14 +157,14 @@
 <ul>
 <li><strong>.env</strong> </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">  TLG_APP_API_ID=123456 # APP API ID get from https://my.telegram.org</span>
-<span class="err">  TLG_APP_API_HASH=fdgdfgdgdfgdfgd # APP API HASH get from https://my.telegram.org</span>
-<span class="err">  TLG_APP_NAME=app  # APP NAME get from https://my.telegram.org</span>
-<span class="err">  I_BOT_TOKEN=12345:fdgdfgdfgdfdfgdfg    # TOKEN Bot drom BotFather</span>
-<span class="err">  TLG_ADMIN_ID_CLIENT=12568999  # id administarator bot</span>
-<span class="err">  TLG_PROXY_SERVER = server # адрес MTProxy Telegram</span>
-<span class="err">  TLG_PROXY_PORT = 555 # порт  MTProxy Telegram</span>
-<span class="err">  TLG_PROXY_KEY=sf23231231  # secret key  MTProxy Telegram</span>
+<div class="highlight"><pre><span></span>  <span class="nv">TLG_APP_API_ID</span><span class="o">=</span><span class="m">123456</span> <span class="c1"># APP API ID get from https://my.telegram.org</span>
+  <span class="nv">TLG_APP_API_HASH</span><span class="o">=</span>fdgdfgdgdfgdfgd <span class="c1"># APP API HASH get from https://my.telegram.org</span>
+  <span class="nv">TLG_APP_NAME</span><span class="o">=</span>app  <span class="c1"># APP NAME get from https://my.telegram.org</span>
+  <span class="nv">I_BOT_TOKEN</span><span class="o">=</span><span class="m">12345</span>:fdgdfgdfgdfdfgdfg    <span class="c1"># TOKEN Bot drom BotFather</span>
+  <span class="nv">TLG_ADMIN_ID_CLIENT</span><span class="o">=</span><span class="m">12568999</span>  <span class="c1"># id administarator bot</span>
+  <span class="nv">TLG_PROXY_SERVER</span> <span class="o">=</span> server <span class="c1"># адрес MTProxy Telegram</span>
+  <span class="nv">TLG_PROXY_PORT</span> <span class="o">=</span> <span class="m">555</span> <span class="c1"># порт  MTProxy Telegram</span>
+  <span class="nv">TLG_PROXY_KEY</span><span class="o">=</span>sf23231231  <span class="c1"># secret key  MTProxy Telegram</span>
 </pre></div>
 
 
@@ -172,18 +172,18 @@
 <li><strong>db_user_allow.txt</strong> - текстовый файл в котором указываются id пользователей которые имеют доступ к боту (за исключением администратора бота)</li>
 </ul>
 <h3>Запуск проекта:</h3>
-<div class="highlight"><pre><span></span><span class="err">python start_bot_async.py</span>
+<div class="highlight"><pre><span></span>python start_bot_async.py
 </pre></div>
 
 
 <h3>Команды которые используются ботом для основного функционала:</h3>
 <h4>1. How to download an MP3 track from a YouTube video</h4>
-<div class="highlight"><pre><span></span><span class="err">youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;</span>
+<div class="highlight"><pre><span></span>youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;
 </pre></div>
 
 
 <h4>2. Разбить аудиофайл на части продолжительностью 60 минут:</h4>
-<div class="highlight"><pre><span></span><span class="err">mp3splt -t 59.0 -d имя_папки_для_выходного_файла имя_входного_файла</span>
+<div class="highlight"><pre><span></span>mp3splt -t <span class="m">59</span>.0 -d имя_папки_для_выходного_файла имя_входного_файла
 </pre></div>
 
 
