@@ -78,7 +78,6 @@
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
-                            <li><a href="/category/vpn.html">vpn</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
                             <li><a href="/category/wifi.html">wifi</a></li>
@@ -89,32 +88,6 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/09/30/postgresql-psql/" rel="bookmark"
-                           title="Permalink to PostgreSQL - использование psql">PostgreSQL - использование psql</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 30 September 2017</span>
-<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/data.html">data</a><a href="/tag/db.html">db</a><a href="/tag/postgresql.html">PostgreSQL</a></span>
-</footer><!-- /.post-info -->                <ul>
-<li>\? - все команды psql</li>
-<li>\h - все sql команды той бд к которой подключаемся</li>
-<li>\h команда - </li>
-<li>\q - выход bp psql</li>
-</ul>
-<h2>Параметры подключения к БД</h2>
-<ul>
-<li>База данных: -d database или $PGDATBASE (совпадаети с именем пользователя)</li>
-<li>имя сервера: -h host или $PGHOST  (умолчание: локальное соединение)</li>
-<li>порт: -p port или $PGPORT  ( по умолчанию 5432)</li>
-<li>имя …</li></ul>
-                <a class="readmore" href="/2017/09/30/postgresql-psql/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2017/09/20/postgresql-config/" rel="bookmark"
@@ -337,6 +310,37 @@ sudo apt-get install postgresql-9.6-postgis-2 …</pre></div>
    workgroup = workgroup
    security = user …</p>
                 <a class="readmore" href="/2017/08/07/samba-centos-fedora/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/08/07/ssh-centos-fedora/" rel="bookmark"
+                           title="Permalink to настройка SSH CentOS - Fedora">настройка SSH CentOS - Fedora</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 07 August 2017</span>
+<span>| tags: <a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/ssh.html">ssh</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://blog.tinned-software.net/change-ssh-port-in-centos-with-selinux/">Change SSH port in CentOS with SELinux</a></li>
+<li><a href="http://sharadchhetri.com/2014/10/07/semanage-command-found-centos-7-rhel-7/">semanage command not found on CentOS 7 and RHEL 7</a></li>
+<li><a href="http://bytefreaks.net/gnulinux/fedora-25-install-start-enable-ssh-server">Fedora 25: install / start / enable ssh server</a></li>
+<li><a href="https://habrahabr.ru/post/122445/">Памятка пользователям SSH</a></li>
+</ul>
+<p>In CentOS the ssh server configuration can be found at /etc/ssh/sshd_config.</p>
+<ul>
+<li>
+<p>Port 22</p>
+</li>
+<li>
+<p>Port 1234</p>
+</li>
+</ul>
+<p>From sshd’s perspective …</p>
+                <a class="readmore" href="/2017/08/07/ssh-centos-fedora/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
