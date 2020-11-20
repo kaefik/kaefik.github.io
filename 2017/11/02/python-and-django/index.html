@@ -113,7 +113,10 @@
 
 
 <h2>Проект Django</h2>
-<p><code>django-admin startproject samplesite</code></p>
+<div class="highlight"><pre><span></span>django-admin startproject samplesite<span class="sb">`</span>
+</pre></div>
+
+
 <h3>Структура проекта:</h3>
 <ul>
 <li>
@@ -129,11 +132,17 @@
 </li>
 </ul>
 <p>Отладочный сервер: </p>
-<p><code>manage.py runserver</code></p>
+<div class="highlight"><pre><span></span>manage.py runserver
+</pre></div>
+
+
 <h3>Приложения - отдельный фрагмент функциональности сайта.</h3>
 <p>Приложение это обычный пакет питон.</p>
 <p>Создание нового приложения</p>
-<p><code>manage.py startapp bboard</code></p>
+<div class="highlight"><pre><span></span>manage.py startapp bboard
+</pre></div>
+
+
 <h4>Структура приложений</h4>
 <ul>
 <li>admin.py - модуль админ настроек и классов-редакторов</li>
@@ -217,11 +226,15 @@ admin.site.register(Bb)</code></p>
 
 <h3>Редактор модели</h3>
 <p>Класс-редактор  объявляется в admin.py пакета приложения.</p>
-<p>class BbAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content', 'price', 'published')
-    list_display_links = ('title', 'content')
-    search_fields = ('title', 'content', )</p>
-<p>admin.site.register(Bb, BbAdmin)</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BbAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;published&#39;</span><span class="p">)</span>
+    <span class="n">list_display_links</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="p">)</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Bb</span><span class="p">,</span> <span class="n">BbAdmin</span><span class="p">)</span>
+</pre></div>
+
+
 <h2>Связи между моделями</h2>
 <p>добавим в models.py</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rubric</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -244,7 +257,6 @@ admin.site.register(Bb)</code></p>
 <p><code>from .models import Rubric
 admin.site.register(Rubric)</code></p>
 <h2>Урл-параметры и параметризированные запросы</h2>
-<p>,,,,</p>
 <h2>Обратное разрешение интернет-адресов</h2>
 <p>это мы указываем маршрут, формирующий нужный нам адрес, и если это параметризированный маршрут, значения URL-параметров, а django сам генерирует на основе всего этого правильный адрес.</p>
 <p>Для этого нужно:</p>
@@ -263,12 +275,15 @@ admin.site.register(Rubric)</code></p>
 <p><code>&lt;a href=" {% url 'by_rubric' rubric.pk %} "&gt;</code></p>
 <h2>Формы, связанные с моделями</h2>
 <p>создать модуль forms.py пакета приложения:</p>
-<p><code>from django.forms import ModelForm
-from .models import Bb
-class BbForm(ModelForm):
-    class Meta:
-        model = Bb
-        fields = ('title', 'content', 'price', 'rubric')</code></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.forms</span> <span class="kn">import</span> <span class="n">ModelForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Bb</span>
+<span class="k">class</span> <span class="nc">BbForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Bb</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;rubric&#39;</span><span class="p">)</span>
+</pre></div>
+
+
 <h3>Контроллеры-классы</h3>
 <p>в модуле views.py в пакете приложения:</p>
 <hr>
@@ -285,9 +300,10 @@ class BbForm(ModelForm):
 <ul>
 <li><strong>императивный</strong> - непосредственное переопределения метода get_absolute_url() в классе модели.</li>
 </ul>
-<p><code>class Rubric(models.Model):
-  def get_absolute_url(self):
-    return "/bboard/%s/ " % self.pk</code></p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rubric</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;/bboard/</span><span class="si">%s</span><span class="s2">/ &quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">pk</span>
+</pre></div>
     </div><!-- /.entry-content -->
 
   </article>
