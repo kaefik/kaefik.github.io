@@ -99,21 +99,21 @@
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
 </footer><!-- /.post-info -->      <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
 <h2>Установка библиотеки</h2>
-<div class="highlight"><pre><span></span><span class="err">pip install attrs</span>
+<div class="highlight"><pre><span></span>pip install attrs
 </pre></div>
 
 
 <h2>Использование</h2>
 <h3>без использования библиотек</h3>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Person</span>(<span class="n">object</span>):
-    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>, <span class="nb">name</span>, <span class="n">age</span>):
-        <span class="k">self</span>.<span class="nb">name</span> = <span class="nb">name</span>
-        <span class="k">self</span>.<span class="n">age</span> = <span class="n">age</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
 
-<span class="n">p1</span> = <span class="n">Person</span>(<span class="s">&#39;Chris&#39;</span>, <span class="mi">32</span>)
-<span class="n">p2</span> = <span class="n">Person</span>(<span class="s">&#39;Chris&#39;</span>, <span class="mi">32</span>)
+<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 
-<span class="n">где</span> <span class="n">p1</span> == <span class="n">p2</span> // <span class="nb">False</span>
+<span class="n">где</span> <span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span> <span class="o">//</span> <span class="kc">False</span>
 </pre></div>
 
 
