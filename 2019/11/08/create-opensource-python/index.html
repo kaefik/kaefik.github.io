@@ -186,7 +186,10 @@
 <p>Twine - сборник утилит для безопасной публикации python-пакетов на PyPI. Добавьте в файл <em>requirements_dev.</em><em>txt</em> строку: twine==1.13.0 </p>
 <p>И переустановите заново заисимости. </p>
 <p>Запустите следующую команду для создания вашего пакета: </p>
-<p>python setup.py sdist bdist_wheel  </p>
+<div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel  
+</pre></div>
+
+
 <ol>
 <li>Создание TestPyPI аккаунт </li>
 </ol>
@@ -212,10 +215,10 @@
 
 
 <p>Установка пакета из TestPyPI, используя установку других пакетов из PyPI: </p>
-<ul>
-<li><code>bash
-  pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple my_package</code></li>
-</ul>
+<div class="highlight"><pre><span></span>  pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple my_package 
+</pre></div>
+
+
 <p>Проверка использования вашего пакета в тестовом скрипте.  </p>
 <ol>
 <li>Отправка в GitHub </li>

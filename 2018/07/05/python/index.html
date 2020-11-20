@@ -160,16 +160,12 @@ that make use of innovative user interfaces, such as multi-touch apps.</li>
 <li><a href="https://github.com/behave/behave">Behave is behavior-driven development, Python style.</a></li>
 </ul>
 <h2>QR Code</h2>
-<ul>
-<li>
-<div class="highlight"><pre><span></span><span class="err">           sudo apt-get install libzbar-dev</span>
+<div class="highlight"><pre><span></span>sudo apt-get install libzbar-dev
 </pre></div>
 
 
-</li>
-<li>
-<p><strong><a href="https://github.com/tgalal/yowsup">YowSup</a></strong></p>
-</li>
+<ul>
+<li><strong><a href="https://github.com/tgalal/yowsup">YowSup</a></strong></li>
 </ul>
 <h2>The python WhatsApp library</h2>
 <h2>- <a href="https://habrahabr.ru/post/327404/">Отправка служебных сообщений в whatsapp через yowsup2 методом http-get, в том числе отчетов бэкап-сервера Bacula</a></h2>
@@ -212,7 +208,7 @@ that make use of innovative user interfaces, such as multi-touch apps.</li>
 <p>Если нужно быстро и легко расшарить файлы из директории</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">python3 -m http.server</span>
+<div class="highlight"><pre><span></span>python3 -m http.server
 </pre></div>
 
 
@@ -297,7 +293,8 @@ that make use of innovative user interfaces, such as multi-touch apps.</li>
 <p><a href="http://python.gotrained.com/scrapy-tutorial-web-scraping-craigslist/">Scrapy туториал</a></p>
 </li>
 </ul>
-<p><code>scrapy startproject name_project
+<p><code>bash
+  scrapy startproject name_project
   # создание файла-класса  name_spider в папке spider
   scrapy genspider name_spider  url_site</code></p>
 <p><img alt="Структура проекта Scrapy" src="img/image0.png"></p>
@@ -338,23 +335,29 @@ Unlike the crawler which goes to all the links, Scrapy Shell save the DOM of an 
 <h3>Use Xvfb to launch Headless Browser Firefox on Ubuntu Server without Desktop GUI</h3>
 <p>add var enviroment:
         export DISPLAY=:99 </p>
+<div class="highlight"><pre><span></span>yum install xorg-x11-server-Xvfb
+</pre></div>
+
+
 <ul>
-<li><code>yum install xorg-x11-server-Xvfb</code></li>
 <li>Copy <code>Xvfb.service</code> file under <code>/etc/systemd/system/</code></li>
-<li><code>chmod +x /etc/systemd/system/Xvfb.service</code></li>
-<li><code>systemctl enable Xvfb.service</code></li>
-<li><code>systemctl start Xvfb.service</code></li>
 </ul>
+<div class="highlight"><pre><span></span>chmod +x /etc/systemd/system/Xvfb.service
+systemctl <span class="nb">enable</span> Xvfb.service
+systemctl start Xvfb.service
+</pre></div>
+
+
 <p>file <strong>Xvfb.service</strong></p>
-<div class="highlight"><pre><span></span><span class="k">[Unit]</span>
-<span class="na">Description</span><span class="o">=</span><span class="s">X Virtual Frame Buffer Service</span>
-<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+<div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>X Virtual Frame Buffer Service
+<span class="nv">After</span><span class="o">=</span>network.target
 
-<span class="k">[Service]</span>
-<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/Xvfb :99 -screen 0 1024x768x24</span>
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/Xvfb :99 -screen <span class="m">0</span> 1024x768x24
 
-<span class="k">[Install]</span>
-<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
 </pre></div>
 
 
@@ -399,13 +402,13 @@ Unlike the crawler which goes to all the links, Scrapy Shell save the DOM of an 
 </ul>
 <p>Использовать virtualenv! Оно создаст изолированные окружения для ваших приложений и позволит устанавливать пакеты именно в эти окружения, а не глобально.</p>
 <p>Для установки воспользуемся pip:  </p>
-<div class="highlight"><pre><span></span><span class="err">pip3 install virtualenv</span>
+<div class="highlight"><pre><span></span>pip3 install virtualenv
 </pre></div>
 
 
 <p>Две основные команды:</p>
-<div class="highlight"><pre><span></span><span class="err">virtualenv myproject</span>
-<span class="err">source myproject/bin/activate</span>
+<div class="highlight"><pre><span></span>virtualenv myproject
+<span class="nb">source</span> myproject/bin/activate
 </pre></div>
 
 
