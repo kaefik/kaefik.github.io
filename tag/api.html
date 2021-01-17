@@ -89,11 +89,37 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2017/09/12/rest-api/">REST API с чем  это едят</a></h1>
+                    <h1 class="entry-title"><a href="/2020/01/17/python-fastapi/">FastAPI and Python</a></h1>
+<footer class="post-info">
+        <span>Fri 17 January 2020</span>
+<span>| tags: <a href="/tag/python.html">python</a><a href="/tag/fastapi.html">fastapi</a><a href="/tag/api.html">api</a></span>
+</footer><!-- /.post-info --><h1>Полезные ссылки</h1>
+<ul>
+<li><a href="https://fastapi.tiangolo.com">FastAPI</a></li>
+<li><a href="https://habr.com/ru/post/478620/">Почему Вы должны попробовать FastAPI?</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLaED5GKTiQG8GW5Rv2hf3tRS-d9t9liUt">Уроки FastAPI - youtube</a></li>
+<li><a href="https://nuancesprog.ru/p/10210/">Как перейти от Flask к FastAPI</a></li>
+</ul>
+<h1>Установка FastAPI</h1>
+<div class="highlight"><pre><span></span>pip install wheel -U
+pip install uvicorn fastapi pydantic 
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/09/12/rest-api/" rel="bookmark"
+                           title="Permalink to REST API с чем это едят">REST API с чем  это едят</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Tue 12 September 2017</span>
 <span>| tags: <a href="/tag/api.html">api</a><a href="/tag/rest.html">rest</a><a href="/tag/restapi.html">restapi</a></span>
-</footer><!-- /.post-info --><p><strong>Полезные ссылки</strong></p>
+</footer><!-- /.post-info -->                <p><strong>Полезные ссылки</strong></p>
 <ul>
 <li><a href="https://ru.wikipedia.org/wiki/REST">REST API</a></li>
 <li>
@@ -109,69 +135,10 @@
 <ul>
 <li>
 <p><strong>Идентификация ресурсов по интернет адресу</strong></p>
-<p>Все ресурсы идентифицируются в запросах, например, с использованием URI в интернет-системах. Ресурсы концептуально отделены от представлений, которые возвращаются клиентам</p>
-</li>
-<li>
-<p>​    <strong>Манипуляция ресурсами через представление</strong></p>
-</li>
-</ul>
-<p>если клиент хранит представление ресурса, включая метаданные — он обладает достаточной информацией для модификации или удаления ресурса.</p>
-<ul>
-<li>
-<p>​    <strong>Самоописываемые» сообщения</strong> - идентификация действия по HTTP-методу</p>
-<ul>
-<li>
-<p>каждое сообщение содержит достаточно информации, чтобы понять каким образом его обрабатывать. К примеру, обработчик сообщения (parser) необходимый для извлечения данных может быть указан в списке MIME-типов.
-   Всё взаимодействие с сервером сводится к 4 операциям (4 - это необходимый и достаточный минимум, в конкретной реализации типов операций может быть больше):</p>
-</li>
-<li>
-<p>получение данных с сервера (обычно в формате JSON, или XML)</p>
-</li>
-<li>
-<p>добавление новых данных на сервер</p>
-</li>
-<li>
-<p>модификация существующих данных на сервере</p>
-</li>
-<li>
-<p>удаление данных на сервере</p>
-<p>Операция получения данных не может приводить к изменению состояния сервера. Для каждого типа операции используется свой метод HTTP-запроса</p>
-<ol>
-<li>
-<p>получение - GET</p>
-</li>
-<li>
-<p>добавление - POST</p>
-</li>
-<li>
-<p>модификация - PUT</p>
-</li>
-<li>
-<p>удаление - DELETE.</p>
-<ul>
-<li>
-<p>GET-запрос /rest/users - получение информации о всех пользователяхGET-запрос /rest/users/125 - получение информации о пользователе с id=125</p>
-</li>
-<li>
-<p>POST-запрос /rest/users - добавление нового пользователяPUT-запрос /rest/users/125 - изменение информации о пользователе с id=125DELETE-запрос /rest/users/125 - удаление пользователя с id=125</p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<p>Обычно создание новой сущности реализует тот же контроллер который выдает список сущностей.</p>
-<p>Исправление и удаление - тот же контроллер, что выдает сведения об отдельной сущности.</p>
-<ul>
-<li><strong>Примеры:</strong></li>
-</ul>
-</li>
-</ul>
-<h2>- <a href="http://www.appsmail.ru/platform/api?method=photos.get&amp;app_id=423004&amp;session_key=551fd0e4779e35859dfccd03397dc8a0&amp;sig=bba26c74957f72a75ab833bd5f0c1d83&amp;aid=_myphoto">http://www.appsmail.ru/platform/api?method=photos.get&amp;app_id=423004&amp;session_key=551fd0e4779e35859dfccd03397dc8a0&amp;sig=bba26c74957f72a75ab833bd5f0c1d83&amp;aid=_myphoto</a></h2>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>Все ресурсы идентифицируются в запросах, например, с …</p></li></ul>
+                <a class="readmore" href="/2017/09/12/rest-api/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
