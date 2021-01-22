@@ -44,6 +44,7 @@
                             <li><a href="/category/hackintosh.html">hackintosh</a></li>
                             <li><a href="/category/hobby.html">hobby</a></li>
                             <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/java.html">java</a></li>
                             <li><a href="/category/javascript.html">javascript</a></li>
                             <li><a href="/category/lego.html">lego</a></li>
                             <li><a href="/category/linux.html">linux</a></li>
@@ -90,6 +91,44 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/08/27/python-oop-attr/" rel="bookmark"
+                           title="Permalink to Attr - полезная практика ООП в Python">Attr - полезная практика ООП в Python</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Thu 27 August 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
+</footer><!-- /.post-info -->                <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
+<h2>Установка библиотеки</h2>
+<div class="highlight"><pre><span></span>pip install attrs
+</pre></div>
+
+
+<h2>Использование</h2>
+<h3>без использования библиотек</h3>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="n">где</span> <span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span> <span class="o">//</span> <span class="kc">False</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
+
+<span class="nd">@attrs</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
+                <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2020/08/14/docker-python-project/" rel="bookmark"
@@ -281,41 +320,10 @@
                 <a class="readmore" href="/2020/04/02/upwork/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2020/02/11/vim-basuc/" rel="bookmark"
-                           title="Permalink to Vim основы">Vim основы</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Tue 11 February 2020</span>
-<span>| tags: <a href="/tag/vim.html">vim</a><a href="/tag/noevim.html">noevim</a><a href="/tag/linux.html">linux</a><a href="/tag/editor.html">editor</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://www.vim.org/">Vim официальный сайт</a></li>
-<li><a href="https://neovim.io/">NeoVim официальный сайт</a></li>
-<li><a href="https://vim.rtorr.com/">Vim Cheat Sheet</a></li>
-<li><a href="https://habr.com/ru/post/149220/">Vim на рабочий стол</a></li>
-</ul>
-<h2>Для python разработчиков</h2>
-<ul>
-<li><a href="https://yufanlu.net/2018/09/03/neovim-python/">Setup Neovim for Python</a></li>
-<li><a href="https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/">A Complete Guide to Setting up Neovim for Python Development on Linux</a></li>
-</ul>
-<h2>Книги</h2>
-<ul>
-<li>Дрю Нейл "Практическое использование Vim"</li>
-</ul>
-<p>Давно хотел освоить редактор Vim. Толчком послужила статья или на …</p>
-                <a class="readmore" href="/2020/02/11/vim-basuc/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="/index.html">&laquo;</a>
-    Page 2 / 14
+    Page 2 / 15
         <a href="/index3.html">&raquo;</a>
 </p>
             </section><!-- /#content -->
