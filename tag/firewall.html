@@ -77,6 +77,7 @@
                             <li><a href="/category/shell.html">shell</a></li>
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/ubuntu.html">ubuntu</a></li>
                             <li><a href="/category/upwork.html">upwork</a></li>
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
@@ -91,11 +92,118 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2017/08/06/firewalld-cenos-fedora/">Настройка брэндмауэра firewalld (CenOS, Fedora)</a></h1>
+                    <h1 class="entry-title"><a href="/2021/03/01/firewall-ubuntu/">Настройка брэндмауэра ufw в Ubuntu</a></h1>
+<footer class="post-info">
+        <span>Mon 01 March 2021</span>
+<span>| tags: <a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/firewall.html">firewall</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a><a href="/tag/ufw.html">ufw</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://losst.ru/nastrojka-ufw-ubuntu#5_%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_UFW">Настройка UFW</a></li>
+</ul>
+<h3>Политика по умолчанию</h3>
+<div class="highlight"><pre><span></span>ufw default deny incoming   <span class="c1"># Все входящие пакеты будем отклонять</span>
+ufw default allow outgoing  <span class="c1"># все исходящие разрешим</span>
+</pre></div>
+
+
+<h3>Добавление правил</h3>
+<p>ufw allow имя_службы
+ufw allow порт
+ufw allow порт/протокол</p>
+<ul>
+<li>чтобы открыть порт ufw для SSH</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow OpenSSH
+ufw allow <span class="m">22</span>
+ufw allow <span class="m">22</span>/tcp
+</pre></div>
+
+
+<ul>
+<li>чтобы посмотреть имена приложений</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw app list
+</pre></div>
+
+
+<ul>
+<li>Можно также указать направление следования трафика с помощью слов out для исходящего и in для входящего.</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow направление порт
+</pre></div>
+
+
+<ul>
+<li>разрешим только исходящий трафик на порт 80, а входящий запретим:</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow out <span class="m">80</span>/tcp
+ufw deny in <span class="m">80</span>/tcp
+</pre></div>
+
+
+<ul>
+<li>открыть порт DNS 53</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow <span class="m">53</span>/tcp
+ufw allow <span class="m">53</span>/udp
+</pre></div>
+
+
+<ul>
+<li>можно использовать более полный синтаксис добавления правил:</li>
+</ul>
+<p>ufw allow proto протокол from ip_источника to ip_назначения port порт_назначения</p>
+<p>В качестве ip_источника может использоваться также и адрес подсети. Например, разрешим доступ со всех IP-адресов для интерфейса eth0 по протоколу tcp к нашему IP-адресу и порту 3318:</p>
+<div class="highlight"><pre><span></span>ufw allow proto tcp from <span class="m">0</span>.0.0.0/24 to <span class="m">192</span>.168.1.5 port <span class="m">3318</span>
+</pre></div>
+
+
+<h3>Включение UFW</h3>
+<div class="highlight"><pre><span></span>ufw <span class="nb">enable</span>
+</pre></div>
+
+
+<h3>Правила limit ufw</h3>
+<p>С помощью правил limit можно ограничить количество подключений к определённому порту с одного IP-адреса, это может быть полезно для защиты от атак перебора паролей. </p>
+<div class="highlight"><pre><span></span>ufw limit ssh/tcp
+</pre></div>
+
+
+<h3>Блокировка активности с определенным адресом</h3>
+<ul>
+<li>Для блокировки или закрытия всех пакетов с 192.168.1.5, вводим:</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw deny from <span class="m">192</span>.168.1.5 to any
+</pre></div>
+
+
+<ul>
+<li>Блокировка определенных IP и номера порта через ufw</li>
+</ul>
+<p>ufw deny from {ip-address-here} to any port {port-number-here}</p>
+<div class="highlight"><pre><span></span>ufw deny from <span class="m">202</span>.54.1.5 to any port <span class="m">80</span>
+</pre></div>
+
+
+<h3>Проверка правил</h3>
+<div class="highlight"><pre><span></span>ufw status numbered
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/08/06/firewalld-cenos-fedora/" rel="bookmark"
+                           title="Permalink to Настройка брэндмауэра firewalld (CenOS, Fedora)">Настройка брэндмауэра firewalld (CenOS, Fedora)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Sun 06 August 2017</span>
 <span>| tags: <a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/firewall.html">firewall</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></li>
 </ul>
@@ -118,97 +226,14 @@
 
 
 <ul>
-<li>Since we haven't given firewalld any commands to deviate from the default zone, and none of our interfaces are configured to bind to another zone, that zone will also be the only "active" zone (the zone that is controlling the traffic for our interfaces). We can verify that by typing:</li>
-</ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-active-zones
-</pre></div>
-
-
-<ul>
-<li>How do we know what rules are associated with the public zone though? We can print out the default zone's configuration by typing:</li>
-</ul>
-<div class="highlight"><pre><span></span>firewall-cmd --list-all
-</pre></div>
-
-
-<ul>
-<li>To get a list of the available zones, type:</li>
-</ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-zones
-</pre></div>
-
-
-<ul>
-<li>Changing the Zone of an Interface for the Current Session</li>
-</ul>
-<p>You can transition an interface between zones during a session by using the --zone= parameter in combination with the --change-interface= parameter. As with all commands that modify the firewall, you will need to use sudo.</p>
-<p>For instance, we can transition our eth0 interface to the "home" zone by typing this:         </p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>home --change-interface<span class="o">=</span>eth0
-</pre></div>
-
-
-<ul>
-<li>изменить зону для интерфейса на постоянной основе</li>
-</ul>
-<p>/etc/sysconfig/network-scripts directory with files of the format ifcfg-interface.</p>
-<p>​      ZONE= variable to the zone you wish to associate with the interface.</p>
-<h2>Настройка правила для приложений</h2>
-<ul>
-<li>Получение список всех сервисов</li>
-</ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-services
-</pre></div>
-
-
-<p>You can get more details about each of these services by looking at their associated .xml file within the /usr/lib/firewalld/services directory. For instance, the SSH service is defined like this:</p>
-<p>​                /usr/lib/firewalld/services/ssh.xml</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;service&gt;</span>
-<span class="nt">&lt;short&gt;</span>SSH<span class="nt">&lt;/short&gt;</span>
-<span class="nt">&lt;description&gt;</span>
-</pre></div>
-
-
-<p>Secure Shell (SSH) is a protocol for logging into and executing commands on remote machines. It provides secure encrypted communications. If you plan on accessing your machine remotely via SSH over a firewalled interface, enable this option. You need the openssh-server package installed for this option to be useful.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;port</span> <span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span> <span class="na">port=</span><span class="s">&quot;22&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/service&gt;</span>
-</pre></div>
-
-
-<ul>
-<li>For instance, if we are running a web server serving conventional HTTP traffic, we can allow this traffic for interfaces in our "public" zone for this session by typing:           </li>
-</ul>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --add-service<span class="o">=</span>http
-</pre></div>
-
-
-<p>You can leave out the --zone= if you wish to modify the default zone. We can verify the operation was successful by using the --list-all or --list-services operations:</p>
-<div class="highlight"><pre><span></span>firewall-cmd --zone<span class="o">=</span>public --list-services
-</pre></div>
-
-
-<p>We can make our "public" zone change permanent by typing:</p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --permanent --add-service<span class="o">=</span>http
-</pre></div>
-
-
-<p>You can verify that this was successful by adding the --permanent flag to the --list-services operation. You need to use sudo for any --permanent operations:</p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --permanent --list-services
-</pre></div>
-
-
-<ul>
-<li>Открыть порт для приложения</li>
-</ul>
-<p>if our application runs on port 5000 and uses TCP, we could add this to the "public" zone for this session using the --add-port= parameter. Protocols can be either tcp or udp:             </p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">5000</span>/tcp    
-</pre></div>                </article>
+<li>Since we haven't given firewalld any …</li></ul>
+                <a class="readmore" href="/2017/08/06/firewalld-cenos-fedora/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

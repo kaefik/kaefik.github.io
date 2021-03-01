@@ -77,6 +77,7 @@
                             <li><a href="/category/shell.html">shell</a></li>
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/ubuntu.html">ubuntu</a></li>
                             <li><a href="/category/upwork.html">upwork</a></li>
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
@@ -91,11 +92,118 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2019/12/20/config-mouse-keys/">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                    <h1 class="entry-title"><a href="/2021/03/01/firewall-ubuntu/">Настройка брэндмауэра ufw в Ubuntu</a></h1>
+<footer class="post-info">
+        <span>Mon 01 March 2021</span>
+<span>| tags: <a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/firewall.html">firewall</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a><a href="/tag/ufw.html">ufw</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://losst.ru/nastrojka-ufw-ubuntu#5_%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_UFW">Настройка UFW</a></li>
+</ul>
+<h3>Политика по умолчанию</h3>
+<div class="highlight"><pre><span></span>ufw default deny incoming   <span class="c1"># Все входящие пакеты будем отклонять</span>
+ufw default allow outgoing  <span class="c1"># все исходящие разрешим</span>
+</pre></div>
+
+
+<h3>Добавление правил</h3>
+<p>ufw allow имя_службы
+ufw allow порт
+ufw allow порт/протокол</p>
+<ul>
+<li>чтобы открыть порт ufw для SSH</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow OpenSSH
+ufw allow <span class="m">22</span>
+ufw allow <span class="m">22</span>/tcp
+</pre></div>
+
+
+<ul>
+<li>чтобы посмотреть имена приложений</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw app list
+</pre></div>
+
+
+<ul>
+<li>Можно также указать направление следования трафика с помощью слов out для исходящего и in для входящего.</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow направление порт
+</pre></div>
+
+
+<ul>
+<li>разрешим только исходящий трафик на порт 80, а входящий запретим:</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow out <span class="m">80</span>/tcp
+ufw deny in <span class="m">80</span>/tcp
+</pre></div>
+
+
+<ul>
+<li>открыть порт DNS 53</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw allow <span class="m">53</span>/tcp
+ufw allow <span class="m">53</span>/udp
+</pre></div>
+
+
+<ul>
+<li>можно использовать более полный синтаксис добавления правил:</li>
+</ul>
+<p>ufw allow proto протокол from ip_источника to ip_назначения port порт_назначения</p>
+<p>В качестве ip_источника может использоваться также и адрес подсети. Например, разрешим доступ со всех IP-адресов для интерфейса eth0 по протоколу tcp к нашему IP-адресу и порту 3318:</p>
+<div class="highlight"><pre><span></span>ufw allow proto tcp from <span class="m">0</span>.0.0.0/24 to <span class="m">192</span>.168.1.5 port <span class="m">3318</span>
+</pre></div>
+
+
+<h3>Включение UFW</h3>
+<div class="highlight"><pre><span></span>ufw <span class="nb">enable</span>
+</pre></div>
+
+
+<h3>Правила limit ufw</h3>
+<p>С помощью правил limit можно ограничить количество подключений к определённому порту с одного IP-адреса, это может быть полезно для защиты от атак перебора паролей. </p>
+<div class="highlight"><pre><span></span>ufw limit ssh/tcp
+</pre></div>
+
+
+<h3>Блокировка активности с определенным адресом</h3>
+<ul>
+<li>Для блокировки или закрытия всех пакетов с 192.168.1.5, вводим:</li>
+</ul>
+<div class="highlight"><pre><span></span>ufw deny from <span class="m">192</span>.168.1.5 to any
+</pre></div>
+
+
+<ul>
+<li>Блокировка определенных IP и номера порта через ufw</li>
+</ul>
+<p>ufw deny from {ip-address-here} to any port {port-number-here}</p>
+<div class="highlight"><pre><span></span>ufw deny from <span class="m">202</span>.54.1.5 to any port <span class="m">80</span>
+</pre></div>
+
+
+<h3>Проверка правил</h3>
+<div class="highlight"><pre><span></span>ufw status numbered
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/12/20/config-mouse-keys/" rel="bookmark"
+                           title="Permalink to Настройка дополнительных клавиш мыши в ubuntu (linux)">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Fri 20 December 2019</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/mysh.html">мышь</a><a href="/tag/linux.html">linux</a><a href="/tag/mouse.html">mouse</a><a href="/tag/ubuntu.html">ubuntu</a></span>
-</footer><!-- /.post-info --><p><strong>Полезные ссылки:</strong></p>
+</footer><!-- /.post-info -->                <p><strong>Полезные ссылки:</strong></p>
 <ul>
 <li><a href="https://zepete.livejournal.com/151204.html">Переназначение кнопок мыши в linux. - Мысли злого плебея — ЖЖ</a></li>
 <li><a href="https://tuksik.ru/xbindkeys/">https://tuksik.ru/xbindkeys/</a></li>
@@ -112,48 +220,10 @@ sudo apt install xautomation
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE <span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
-</pre></div>
-
-
-<p>с помощью данной команды у моей мыши определились дополнительны кнопки: Вперёд  - button9, Назад - button8</p>
-<ul>
-<li>
-<p>создать текстовый файл <strong>~/.xbindkeysrc</strong></p>
-</li>
-<li>
-<p>Будем эмулировать нажатия кнопок с помощью xte.
-Можно использовать любую в качестве первой строки. Во второй строке описываетсмя нажатая комбинация кнопок. Для мыши она выглядит так: "b:&lt;номер кнопки мыши&gt;".</p>
-</li>
-<li>Содержимое файла .xbindkeysrc</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="c1">#Launch Quake Terminal</span>
-<span class="s2">&quot;xte &#39;keydown F1&#39; &#39;keyup F1&#39;&quot;</span>
-b:8
-<span class="c1">#Launch Dolphin file manager</span>
-<span class="s2">&quot;dolphin&quot;</span>
-b:9
-</pre></div>
-
-
-<ul>
-<li>запускаем программу  xbindkeys</li>
-</ul>
-<p>Настроим чтобы после перезагрузки запускался, необходимо создать ярлык (текстовый файл с расширением .desktop) в автозагрузке (папке "~/.config/autostart/").</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
-<span class="nv">Type</span><span class="o">=</span>Application
-<span class="nv">Exec</span><span class="o">=</span>xbindkeys
-X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
-<span class="nv">NoDisplay</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">Hidden</span><span class="o">=</span><span class="nb">false</span>
-<span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;mouse button exchange&quot;</span>
-<span class="nv">Comment</span><span class="o">=</span><span class="s2">&quot;переназначение доп клавиш мыши&quot;</span>
-X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>    
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
+                <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

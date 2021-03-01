@@ -77,6 +77,7 @@
                             <li><a href="/category/shell.html">shell</a></li>
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/ubuntu.html">ubuntu</a></li>
                             <li><a href="/category/upwork.html">upwork</a></li>
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
@@ -91,6 +92,38 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/12/20/config-mouse-keys/" rel="bookmark"
+                           title="Permalink to Настройка дополнительных клавиш мыши в ubuntu (linux)">Настройка дополнительных клавиш мыши в ubuntu (linux)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Fri 20 December 2019</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/mysh.html">мышь</a><a href="/tag/linux.html">linux</a><a href="/tag/mouse.html">mouse</a><a href="/tag/ubuntu.html">ubuntu</a></span>
+</footer><!-- /.post-info -->                <p><strong>Полезные ссылки:</strong></p>
+<ul>
+<li><a href="https://zepete.livejournal.com/151204.html">Переназначение кнопок мыши в linux. - Мысли злого плебея — ЖЖ</a></li>
+<li><a href="https://tuksik.ru/xbindkeys/">https://tuksik.ru/xbindkeys/</a></li>
+</ul>
+<p><strong>Алгоритм который у меня сработал - Переназначение при помощи xbindkeys</strong> </p>
+<ul>
+<li>Установка библиотек:</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo apt install xbindkeys
+sudo apt install xautomation
+</pre></div>
+
+
+<ul>
+<li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
+</ul>
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
+                <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="/2019/12/16/machine-learning/" rel="bookmark"
@@ -352,26 +385,6 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 
 <span class="c">#Логин и пароль от …</span></pre></div>
                 <a class="readmore" href="/2019/07/20/powershell-scripts-send-mail/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/06/10/python-and-subprocess/" rel="bookmark"
-                           title="Permalink to Python and subprocess">Python and subprocess</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 10 June 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/subprocess.html">subprocess</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://docs.python.org/3/library/subprocess.html?highlight=subprocess#replacing-bin-sh-shell-backquote">module subprocess</a></li>
-<li><a href="http://queirozf.com/entries/python-3-subprocess-examples">expamle using subprocess</a></li>
-<li>Использование python для взаимодействия с ffmpeg -<a href="http://rus-linux.net/MyLDP/mm/Hacking_FFmpeg_with_Python_part_1.html">Часть 1</a>,<a href="http://rus-linux.net/MyLDP/mm/Hacking_FFmpeg_with_Python_part_2.html">Часть 2</a></li>
-</ul>
-                <a class="readmore" href="/2019/06/10/python-and-subprocess/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
