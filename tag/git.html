@@ -92,11 +92,91 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/01/30/git-reset-error/">Способы решения проблем при некоректном коммите</a></h1>
+                    <h1 class="entry-title"><a href="/2021/03/12/git/">Теги Git</a></h1>
+<footer class="post-info">
+        <span>Fri 12 March 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a><a href="/tag/tags.html">tags</a></span>Translations:
+        <a href="/2018/04/07/git/">ru</a>
+
+</footer><!-- /.post-info --><h3>Полезные ссылки</h3>
+<ul>
+<li><a href="https://www.shellhacks.com/git-delete-tag-remote-local/">Git: Delete Tag – Remote &amp; Local</a></li>
+</ul>
+<h2>Теги</h2>
+<ul>
+<li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
+</ul>
+<div class="highlight"><pre><span></span>git tag имя_тега коммит
+</pre></div>
+
+
+<ul>
+<li>создание аннотированного тега (с дополнительной информацией)</li>
+</ul>
+<div class="highlight"><pre><span></span>git tag -a имя_тега
+или 
+git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
+</pre></div>
+
+
+<ul>
+<li>удаление тегов</li>
+</ul>
+<div class="highlight"><pre><span></span>git tag -d имена_тегов
+</pre></div>
+
+
+<h2>Использование тегов для экспорта</h2>
+<ul>
+<li>получить ближайший тег</li>
+</ul>
+<div class="highlight"><pre><span></span>git describe коммит
+</pre></div>
+
+
+<ul>
+<li>поместить архив проекта с указанного коммита(тега)</li>
+</ul>
+<div class="highlight"><pre><span></span>git archive -o путь_для_архива коммит_или_тег
+</pre></div>
+
+
+<ul>
+<li></li>
+</ul>
+<div class="highlight"><pre><span></span>git rebase --continue
+</pre></div>
+
+
+<h2>Отправка Git-тегов</h2>
+<ul>
+<li>Перенести все теги в удаленный репозиторий:</li>
+</ul>
+<div class="highlight"><pre><span></span>git push origin --tags
+</pre></div>
+
+
+<ul>
+<li>Отправить конкретный тег в удаленный репозиторий:</li>
+</ul>
+<div class="highlight"><pre><span></span>git push origin &lt;tag_name&gt;
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/01/30/git-reset-error/" rel="bookmark"
+                           title="Permalink to Способы решения проблем при некоректном коммите">Способы решения проблем при некоректном коммите</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 30 January 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
-</footer><!-- /.post-info --><p>источник: https://ru.hexlet.io/blog/posts/oh-shit-git</p>
+</footer><!-- /.post-info -->                <p>источник: https://ru.hexlet.io/blog/posts/oh-shit-git</p>
 <ul>
 <li>удаление коммитов начиная с выбранного</li>
 </ul>
@@ -112,60 +192,10 @@
 <ul>
 <li>Сделал коммит, но забыл кое что</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># сделай что хотел</span>
-  git add . <span class="c1"># или добавляй файлы по одному</span>
-  git commit --amend
-  <span class="c1"># теперь измени или оставь старое сообщение коммита</span>
-  <span class="c1"># теперь твой последний коммит включает то новое изменение!</span>
-</pre></div>
-
-
-<ul>
-<li>Исправить сообщение в коммите</li>
-</ul>
-<div class="highlight"><pre><span></span>  git commit --amend
-</pre></div>
-
-
-<ul>
-<li>Случайно сделал коммит в мастер, а не в другую ветку</li>
-</ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># создай новую ветку на основе мастера</span>
-  git branch some-new-branch-name
-  <span class="c1"># удали последний коммит из мастера</span>
-  git reset HEAD~ --hard
-  git checkout some-new-branch-name
-  <span class="c1"># теперь тот коммит в новой ветке! :)</span>
-</pre></div>
-
-
-<ul>
-<li>Сделал коммит в другую ветку</li>
-</ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># отмени последний коммит, но оставь изменения</span>
-  git reset HEAD~ --soft
-  git stash
-  <span class="c1"># перейди в нужную ветку</span>
-  git checkout name-of-the-correct-branch
-  git stash pop
-  git add . <span class="c1"># или добавь файлы по одному</span>
-  git commit -m <span class="s2">&quot;your message here&quot;</span>
-  <span class="c1"># теперь изменения в нужной ветке</span>
-</pre></div>
-
-
-<ul>
-<li>про diff</li>
-</ul>
-<div class="highlight"><pre><span></span>  git diff --staged
-</pre></div>
-
-
-<p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<div class="highlight"><pre><span></span>  <span class="c1"># сделай …</span></pre></div>
+                <a class="readmore" href="/2020/01/30/git-reset-error/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -225,7 +255,9 @@ git add –A
                 <div class="entry-content">
 <footer class="post-info">
         <span>Sat 07 April 2018</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>Translations:
+        <a href="/2021/03/12/git/">ru</a>
+
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://toster.ru/q/397480">Список курсов по Git</a></li>
