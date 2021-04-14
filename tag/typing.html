@@ -102,9 +102,11 @@
 </ul>
 <h2>Автоматическая аннотация типов в legacy code</h2>
 <p>с помощью инструментов <a href="https://monkeytype.readthedocs.io/en/latest/index.html">MonkeyType</a> и <a href="https://github.com/dropbox/pyannotate">pyannotate</a> можно для начала аннотировать свой уже написанный код.</p>
-<h3>Правила для типизации</h3>
+<h3>Правила для типизации (хорошая практика)</h3>
 <ul>
 <li>избегать тип Any</li>
+<li>типизировать каждую функцию целиком</li>
+<li>не использовать cast</li>
 </ul>
 <h2>Конфигурация mypy</h2>
 <p>вдохновение было вот отсюда https://www.youtube.com/watch?v=kyVspqEcs-s</p>
@@ -114,16 +116,16 @@
 <span class="na">disallow_untyped_defs</span> <span class="o">=</span> <span class="s">True   # запретить нетипизированные функции</span>
 <span class="na">disallow_incomlete_defs</span> <span class="o">=</span> <span class="s">True # запретить неполностью типизированные функции</span>
 <span class="na">warn_unused_configs</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">plugins</span> <span class="o">=</span><span class="s"></span>
+<span class="na">plugins</span> <span class="o">=</span>   <span class="s"># плагины для mypy</span>
 <span class="s">    mypy_django_plugin.main</span>
 <span class="s">    mypy_drf_plugin.main</span>
-<span class="na">mypy_path</span> <span class="o">=</span> <span class="s">./stubs</span>
-<span class="na">disallow_any_decorated</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">mypy_path</span> <span class="o">=</span> <span class="s">./stubs </span>
+<span class="na">disallow_any_decorated</span> <span class="o">=</span> <span class="s">True  # запрет чтобы декораторы были нетипизированы</span>
 
-<span class="na">warn_unreachable</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">strict_equality</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">warn_unreachable</span> <span class="o">=</span> <span class="s">True  № предупреждение что код не будет выполнен</span>
+<span class="na">strict_equality</span> <span class="o">=</span> <span class="s">True # проверка на строгое равенство</span>
 <span class="na">implicit_reexport</span> <span class="o">=</span> <span class="s">False</span>
-<span class="na">allow_redefinition</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">allow_redefinition</span> <span class="o">=</span> <span class="s">True  # позволяет переопределить переменную с произвольным типом в том                            # же блоке</span>
 <span class="na">warn_unused_ignore</span> <span class="o">=</span> <span class="s">True</span>
 
 <span class="na">[my-project.test.*]  # игнорировать ошибки у конкретного модуля</span>
