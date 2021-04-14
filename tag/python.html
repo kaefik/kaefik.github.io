@@ -147,14 +147,15 @@
 </ul>
 <h2>Автоматическая аннотация типов в legacy code</h2>
 <p>с помощью инструментов <a href="https://monkeytype.readthedocs.io/en/latest/index.html">MonkeyType</a> и <a href="https://github.com/dropbox/pyannotate">pyannotate</a> можно для начала аннотировать свой уже написанный код.</p>
+<h3>Правила для типизации</h3>
+<ul>
+<li>избегать тип Any</li>
+</ul>
 <h2>Конфигурация mypy</h2>
 <p>вдохновение было вот отсюда https://www.youtube.com/watch?v=kyVspqEcs-s</p>
 <div class="highlight"><pre><span></span><span class="k">[mypy]</span>
-<span class="na">disallow_any_unimported</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">disallow_untyped_calls</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">disallow_untyped_defs</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">disallow_incomlete_defs</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">warn_unused_configs …</span></pre></div>
+<span class="na">disallow_any_unimported</span> <span class="o">=</span> <span class="s">True </span>
+<span class="na">disallow_untyped_calls …</span></pre></div>
                 <a class="readmore" href="/2020/11/10/python-typing/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
