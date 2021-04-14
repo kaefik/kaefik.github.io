@@ -99,7 +99,29 @@
 </footer><!-- /.post-info --><h2>Общие ссылки</h2>
 <ul>
 <li><a href="https://habr.com/ru/company/lamoda/blog/432656/">Введение в аннотации типов Python</a></li>
-</ul>                </article>
+</ul>
+<h2>Автоматическая аннотация типов в legacy code</h2>
+<p>с помощью инструментов <a href="https://monkeytype.readthedocs.io/en/latest/index.html">MonkeyType</a> и <a href="https://github.com/dropbox/pyannotate">pyannotate</a> можно для начала аннотировать свой уже написанный код.</p>
+<h2>Конфигурация mypy</h2>
+<p>вдохновение было вот отсюда https://www.youtube.com/watch?v=kyVspqEcs-s</p>
+<div class="highlight"><pre><span></span><span class="k">[mypy]</span>
+<span class="na">disallow_any_unimported</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">disallow_untyped_calls</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">disallow_untyped_defs</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">disallow_incomlete_defs</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">warn_unused_configs</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">plugins</span> <span class="o">=</span><span class="s"></span>
+<span class="s">    mypy_django_plugin.main</span>
+<span class="s">    mypy_drf_plugin.main</span>
+<span class="na">mypy_path</span> <span class="o">=</span> <span class="s">./stubs</span>
+<span class="na">disallow_any_decorated</span> <span class="o">=</span> <span class="s">True</span>
+
+<span class="na">warn_unreachable</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">strict_equality</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">implicit_reexport</span> <span class="o">=</span> <span class="s">False</span>
+<span class="na">allow_redefinition</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">warn_unused_ignore</span> <span class="o">=</span> <span class="s">True</span>
+</pre></div>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>

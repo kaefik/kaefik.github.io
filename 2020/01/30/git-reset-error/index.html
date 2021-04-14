@@ -167,6 +167,17 @@
 
 
 <p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>
+<h2>Удалить локально последний коммит</h2>
+<div class="highlight"><pre><span></span><span class="c1">#Удалить его локально</span>
+git reset HEAD~1 --hard
+
+<span class="c1">#Сделать force push на сервер</span>
+git push -f
+</pre></div>
+
+
+<p>Сделать force push на сервер
+git push -f</p>
     </div><!-- /.entry-content -->
 
   </article>
