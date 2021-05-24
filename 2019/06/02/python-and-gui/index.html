@@ -107,6 +107,8 @@
 <li><a href="https://github.com/chriskiehl/GooeyExamples">GooeyExamples</a>- Example programs to Demonstrate Gooey's functionality</li>
 <li><a href="https://github.com/PySimpleGUI/PySimpleGUI">PySimpleGUI</a> -  модуль на python3 для отрисовки графических интерфейсов (кроссплатформенный).  <a href="https://pysimplegui.readthedocs.io/en/latest/">Документация</a>. </li>
 <li><a href="https://github.com/wooey/Wooey">Wooey</a> is a simple web interface to run command line Python scripts. Think of it as an easy way to get your scripts up on the web for routine data analysis, file processing, or anything else. <a href="https://wooey.readthedocs.io/en/latest/">Документация</a></li>
+<li><a href="https://github.com/ChrisKnott/Eel#install">Eel</a> is a little Python library for making simple Electron-like offline HTML/JS GUI apps, with full access to Python capabilities and libraries.</li>
+<li><a href="https://habr.com/ru/post/550426/">Python &amp; EEL. Делаем просто на Python’е и красиво на JS</a></li>
 </ul>
 <p><strong>Установка Gooey</strong></p>
 <div class="highlight"><pre><span></span>pip install Gooey
@@ -163,6 +165,55 @@ sudo apt-get install libwxbase3.0-0v5
 <div class="highlight"><pre><span></span>python manage.py createsuperuser 
 python manage.py runserver
 </pre></div>
+
+
+<h2>EEL</h2>
+<ul>
+<li>установка зависимости:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">pip install eel</span>
+</pre></div>
+
+
+<ul>
+<li>в корне проекта файл start.py</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eel</span>
+<span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">rnd</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Привет&quot;</span><span class="p">,</span> <span class="s2">&quot;Привет, мир&quot;</span><span class="p">,</span> <span class="s2">&quot;Вывод&quot;</span><span class="p">,</span> <span class="s2">&quot;Test EEL&quot;</span><span class="p">]</span>
+<span class="nd">@eel</span><span class="o">.</span><span class="n">expose</span>
+<span class="k">def</span> <span class="nf">testfunc</span><span class="p">():</span>
+   <span class="k">global</span> <span class="n">values</span>
+   <span class="k">return</span> <span class="n">rnd</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="n">eel</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;front&quot;</span><span class="p">)</span>
+<span class="n">eel</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span> 
+</pre></div>
+
+
+<ul>
+<li>в папке front создадим файл index.hrml</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;eel.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;text-p&quot;</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;click-elem&quot;</span><span class="p">&gt;</span>Click<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+       <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;click-elem&quot;</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;text-p&quot;</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">eel</span><span class="p">.</span><span class="nx">testfunc</span><span class="p">()();</span>
+       <span class="p">}</span>
+   <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>всё можно запускать файл start.py </p>
     </div><!-- /.entry-content -->
 
   </article>
