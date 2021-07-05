@@ -138,7 +138,7 @@
 <p>Для установки на убунту: </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>    apt install youtube-dl
+<div class="highlight"><pre><span></span>sudo -H pip3 install --upgrade youtube-dl
 </pre></div>
 
 
@@ -172,6 +172,28 @@
 </ul>
 <h3>Запуск проекта:</h3>
 <div class="highlight"><pre><span></span>python start_bot_async.py
+</pre></div>
+
+
+<h3>Добавление в автозапуск программы при загрузке сервера Ubuntu</h3>
+<p>в папке /etc/systemd/system/ создадим файл start-youtube-audio.service</p>
+<p>Содержимое файла:</p>
+<div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Youtube video to audio</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">путь до скрипта запуска программы</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">default.target</span>
+</pre></div>
+
+
+<p>выполним команды</p>
+<div class="highlight"><pre><span></span><span class="err">systemctl daemon-reload</span>
+<span class="err">systemctl enable start-youtube-audio.service</span>
+<span class="err">systemctl start start-youtube-audio.service</span>
 </pre></div>
 
 
