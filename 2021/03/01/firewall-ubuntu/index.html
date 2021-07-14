@@ -190,6 +190,31 @@ ufw allow <span class="m">53</span>/udp
 </pre></div>
 
 
+<h2>Запрет icmp пинга</h2>
+<div class="highlight"><pre><span></span>sudo cp /etc/ufw/before.rules /etc/ufw/before.rules_backup
+</pre></div>
+
+
+<p>Найти в файле <strong>/etc/ufw/before.rules</strong> строки</p>
+<div class="highlight"><pre><span></span><span class="c1"># ok icmp codes for INPUT</span>
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type source-quench -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
+</pre></div>
+
+
+<p>поменять ACCEPT на DROP, чтобы получилось следующее</p>
+<div class="highlight"><pre><span></span><span class="c1"># ok icmp codes for INPUT</span>
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
+-A ufw-before-input -p icmp --icmp-type source-quench -j DROP
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+</pre></div>
+
+
 <h3>Проверка правил</h3>
 <div class="highlight"><pre><span></span>ufw status numbered
 </pre></div>
