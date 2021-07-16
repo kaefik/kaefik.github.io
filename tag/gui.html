@@ -102,17 +102,18 @@
 <ul>
 <li><a href="https://nuancesprog.ru/p/13141/">Как запустить любое ПО с графическим интерфейсом в Docker?</a></li>
 <li><a href="https://losst.ru/oshibka-cannot-open-display-linux">ОШИБКА CANNOT OPEN DISPLAY В LINUX</a></li>
+<li><a href="https://habr.com/ru/post/240509/">Docker: запуск графических приложений в контейнерах</a></li>
 </ul>
 <h1>Шаги которые нужно проделать</h1>
 <ol>
 <li>Создать Dockerfile</li>
 </ol>
-<p><code>dockerfile
+<p><code>bash
    FROM centos:8
    RUN yum install firefox -y
    CMD ["/usr/bin/firefox"]</code></p>
 <p>или вот такой:</p>
-<p><code>dockerfile
+<p><code>bash
    FROM ubuntu:20.04
    # нужно Configuring tzdata
    ENV TZ=Europe/Moscow
