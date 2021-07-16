@@ -94,6 +94,34 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2017/12/30/linux-with-docker/" rel="bookmark"
+                           title="Permalink to Install Docker">Install Docker</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sat 30 December 2017</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/centos.html">centos</a><a href="/tag/docker.html">docker</a><a href="/tag/fedora.html">fedora</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="http://p.umputun.com/2014/08/12/svoi-sobstviennyi-vpn-za-3-minuty/">VPN за 3 минуты</a></li>
+<li><a href="https://docs.docker.com/engine/install/ubuntu/">установка докер в убунту</a></li>
+</ul>
+<h2>Установка Docker в Ubuntu 18.04</h2>
+<div class="highlight"><pre><span></span>sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository <span class="se">\</span>
+<span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux …</span></pre></div>
+                <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2017/12/20/selinux-fedora/" rel="bookmark"
                            title="Permalink to Настройка SELinux в Fedora">Настройка SELinux в Fedora</a></h1>
                 </header>
@@ -334,41 +362,6 @@
 </li>
 <li><a href="http://windowsitpro.com/blog/linux-powershell-awesome-not-awkward-together">Linux + PowerShell = Awesome, Not Awkward …</a></li></ul>
                 <a class="readmore" href="/2017/06/26/powershell-basic/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/06/19/how-to-check-and-monitor-hard-disk/" rel="bookmark"
-                           title="Permalink to How to Check and Monitor Hard Disk Health on Linux with Smartmontools">How to Check and Monitor Hard Disk Health on Linux with Smartmontools</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 19 June 2017</span>
-<span>| tags: <a href="/tag/hdd.html">hdd</a><a href="/tag/linux.html">linux</a><a href="/tag/smart.html">smart</a></span>
-</footer><!-- /.post-info -->                <p>источник: <a href="https://www.maketecheasier.com/monitor-hard-disk-health-linux/">https://www.maketecheasier.com/monitor-hard-disk-health-linux/</a></p>
-<h2>Smartctl</h2>
-<ul>
-<li>To get information about a drive, use the -i option.</li>
-</ul>
-<div class="highlight"><pre><span></span>sudo smartctl -i /dev/sda 
-</pre></div>
-
-
-<ul>
-<li>
-<p>if SMART support is available but not enabled, it can be turned on with the following command:</p>
-<div class="highlight"><pre><span></span><span class="err">     ```bash</span>
-</pre></div>
-
-
-<p>sudo smartctl -s on /dev/sda
-         ```</p>
-</li>
-<li>
-<p>To check the device …</p></li></ul>
-                <a class="readmore" href="/2017/06/19/how-to-check-and-monitor-hard-disk/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

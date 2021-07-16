@@ -92,11 +92,70 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/02/15/python-qt5/">Python and QT5</a></h1>
+                    <h1 class="entry-title"><a href="/2021/07/17/docker/">Запуск в docker GUI-приложения в Ubuntu</a></h1>
+<footer class="post-info">
+        <span>Sat 17 July 2021</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/docker.html">docker</a><a href="/tag/gui.html">gui</a><a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/linux.html">linux</a></span>Translations:
+        <a href="/2018/04/05/docker/">ru</a>
+
+</footer><!-- /.post-info --><h1>Полезные ссылки</h1>
+<ul>
+<li><a href="https://nuancesprog.ru/p/13141/">Как запустить любое ПО с графическим интерфейсом в Docker?</a></li>
+<li><a href="https://losst.ru/oshibka-cannot-open-display-linux">ОШИБКА CANNOT OPEN DISPLAY В LINUX</a></li>
+</ul>
+<h1>Шаги которые нужно проделать</h1>
+<ol>
+<li>Создать Dockerfile</li>
+</ol>
+<p><code>dockerfile
+   FROM centos:8
+   RUN yum install firefox -y
+   CMD ["/usr/bin/firefox"]</code></p>
+<p>или вот такой:</p>
+<p><code>dockerfile
+   FROM ubuntu:20.04
+   # нужно Configuring tzdata
+   ENV TZ=Europe/Moscow
+   #RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone
+   # установка приложения
+   RUN apt update &amp;&amp; apt upgrade &amp;&amp; apt install firefox -y
+   CMD ["/usr/bin/firefox"]</code></p>
+<ol>
+<li>Создаем образ </li>
+</ol>
+<p><code>bash
+   docker build -t название_образа .</code></p>
+<p>если всё прошло без ошибок то в списке образов будет образ с вашим именем.</p>
+<ol>
+<li>Снимаем ограничения доступа к Xorg</li>
+</ol>
+<p>для того чтобы приложение могло под root получать доступ. действует до перезагрузки вашего  компьютера.</p>
+<p><code>bash
+   sudo xhost +SI:localuser:root</code></p>
+<ol>
+<li>Запускаем докер контейнер</li>
+</ol>
+<p><code>bash
+   docker run --name имя_контейнера -it -e DISPLAY=$DISPLAY --net=host название_образа</code></p>
+<p>если нет переменной окружения DISPLAY:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span>:0
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/02/15/python-qt5/" rel="bookmark"
+                           title="Permalink to Python and QT5">Python and QT5</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Sat 15 February 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/gui.html">gui</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a><a href="/tag/qt.html">qt</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://www.riverbankcomputing.com/static/Docs/PyQt5/index.html">PyQt5 Reference Guide</a>
 *<a href="https://doc.qt.io/">QT documentation</a></li>
@@ -122,12 +181,10 @@ pip3 install pyqt5-tools
 <div class="highlight"><pre><span></span>sudo apt install qtcreator
 sudo apt install build-essential
 sudo apt install qt5-default
-sudo apt install qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+sudo apt install qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples …</pre></div>
+                <a class="readmore" href="/2020/02/15/python-qt5/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

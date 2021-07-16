@@ -94,6 +94,39 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2017/08/07/samba-centos-fedora/" rel="bookmark"
+                           title="Permalink to Настройка Samba в CentOS (Fedora)">Настройка Samba в CentOS (Fedora)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 07 August 2017</span>
+<span>| tags: <a href="/tag/centos.html">centos</a><a href="/tag/fedora.html">fedora</a><a href="/tag/samba.html">samba</a><a href="/tag/linux.html">linux</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://www.howtoforge.com/samba-server-installation-and-configuration-on-centos-7">Samba Server Installation and Configuration on CentOS 7</a></li>
+<li><a href="http://www.linuxnix.com/8-ways-to-mount-smbfs-samba-file-system-in-linux/">8 WAYS TO MOUNT SMBFS (SAMBA FILE SYSTEM) IN LINUX.</a></li>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/pdf/Windows_Integration_Guide/Red_Hat_Enterprise_Linux-7-Windows_Integration_Guide-en-US.pdf">Red Hat Enterprise Linux 7 Windows Integration Guide</a></li>
+</ul>
+<h2>Установка</h2>
+<div class="highlight"><pre><span></span>yum install samba samba-client samba-common
+</pre></div>
+
+
+<h2>Настройка шары для анонимного пользователя</h2>
+<ul>
+<li>содержимое файла:   /etc/samba/smb.conf</li>
+</ul>
+<p>```
+  [global]
+   workgroup = workgroup
+   security = user …</p>
+                <a class="readmore" href="/2017/08/07/samba-centos-fedora/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2017/08/07/ssh-centos-fedora/" rel="bookmark"
                            title="Permalink to настройка SSH CentOS - Fedora">настройка SSH CentOS - Fedora</a></h1>
                 </header>
@@ -324,41 +357,6 @@
 </li>
 <li><a href="http://windowsitpro.com/blog/linux-powershell-awesome-not-awkward-together">Linux + PowerShell = Awesome, Not Awkward …</a></li></ul>
                 <a class="readmore" href="/2017/06/26/powershell-basic/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2017/06/19/how-to-check-and-monitor-hard-disk/" rel="bookmark"
-                           title="Permalink to How to Check and Monitor Hard Disk Health on Linux with Smartmontools">How to Check and Monitor Hard Disk Health on Linux with Smartmontools</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 19 June 2017</span>
-<span>| tags: <a href="/tag/hdd.html">hdd</a><a href="/tag/linux.html">linux</a><a href="/tag/smart.html">smart</a></span>
-</footer><!-- /.post-info -->                <p>источник: <a href="https://www.maketecheasier.com/monitor-hard-disk-health-linux/">https://www.maketecheasier.com/monitor-hard-disk-health-linux/</a></p>
-<h2>Smartctl</h2>
-<ul>
-<li>To get information about a drive, use the -i option.</li>
-</ul>
-<div class="highlight"><pre><span></span>sudo smartctl -i /dev/sda 
-</pre></div>
-
-
-<ul>
-<li>
-<p>if SMART support is available but not enabled, it can be turned on with the following command:</p>
-<div class="highlight"><pre><span></span><span class="err">     ```bash</span>
-</pre></div>
-
-
-<p>sudo smartctl -s on /dev/sda
-         ```</p>
-</li>
-<li>
-<p>To check the device …</p></li></ul>
-                <a class="readmore" href="/2017/06/19/how-to-check-and-monitor-hard-disk/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

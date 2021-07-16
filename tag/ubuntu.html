@@ -92,11 +92,70 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2021/03/01/firewall-ubuntu/">Настройка брэндмауэра ufw в Ubuntu</a></h1>
+                    <h1 class="entry-title"><a href="/2021/07/17/docker/">Запуск в docker GUI-приложения в Ubuntu</a></h1>
+<footer class="post-info">
+        <span>Sat 17 July 2021</span>
+<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/docker.html">docker</a><a href="/tag/gui.html">gui</a><a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/linux.html">linux</a></span>Translations:
+        <a href="/2018/04/05/docker/">ru</a>
+
+</footer><!-- /.post-info --><h1>Полезные ссылки</h1>
+<ul>
+<li><a href="https://nuancesprog.ru/p/13141/">Как запустить любое ПО с графическим интерфейсом в Docker?</a></li>
+<li><a href="https://losst.ru/oshibka-cannot-open-display-linux">ОШИБКА CANNOT OPEN DISPLAY В LINUX</a></li>
+</ul>
+<h1>Шаги которые нужно проделать</h1>
+<ol>
+<li>Создать Dockerfile</li>
+</ol>
+<p><code>dockerfile
+   FROM centos:8
+   RUN yum install firefox -y
+   CMD ["/usr/bin/firefox"]</code></p>
+<p>или вот такой:</p>
+<p><code>dockerfile
+   FROM ubuntu:20.04
+   # нужно Configuring tzdata
+   ENV TZ=Europe/Moscow
+   #RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone
+   # установка приложения
+   RUN apt update &amp;&amp; apt upgrade &amp;&amp; apt install firefox -y
+   CMD ["/usr/bin/firefox"]</code></p>
+<ol>
+<li>Создаем образ </li>
+</ol>
+<p><code>bash
+   docker build -t название_образа .</code></p>
+<p>если всё прошло без ошибок то в списке образов будет образ с вашим именем.</p>
+<ol>
+<li>Снимаем ограничения доступа к Xorg</li>
+</ol>
+<p>для того чтобы приложение могло под root получать доступ. действует до перезагрузки вашего  компьютера.</p>
+<p><code>bash
+   sudo xhost +SI:localuser:root</code></p>
+<ol>
+<li>Запускаем докер контейнер</li>
+</ol>
+<p><code>bash
+   docker run --name имя_контейнера -it -e DISPLAY=$DISPLAY --net=host название_образа</code></p>
+<p>если нет переменной окружения DISPLAY:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span>:0
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2021/03/01/firewall-ubuntu/" rel="bookmark"
+                           title="Permalink to Настройка брэндмауэра ufw в Ubuntu">Настройка брэндмауэра ufw в Ubuntu</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Mon 01 March 2021</span>
 <span>| tags: <a href="/tag/ubuntu.html">ubuntu</a><a href="/tag/firewall.html">firewall</a><a href="/tag/linux.html">linux</a><a href="/tag/security.html">security</a><a href="/tag/ufw.html">ufw</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://losst.ru/nastrojka-ufw-ubuntu#5_%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_UFW">Настройка UFW</a></li>
 </ul>
@@ -115,108 +174,10 @@ ufw allow порт/протокол</p>
 </ul>
 <div class="highlight"><pre><span></span>ufw allow OpenSSH
 ufw allow <span class="m">22</span>
-ufw allow <span class="m">22</span>/tcp
-</pre></div>
-
-
-<ul>
-<li>чтобы посмотреть имена приложений</li>
-</ul>
-<div class="highlight"><pre><span></span>ufw app list
-</pre></div>
-
-
-<ul>
-<li>Можно также указать направление следования трафика с помощью слов out для исходящего и in для входящего.</li>
-</ul>
-<div class="highlight"><pre><span></span>ufw allow направление порт
-</pre></div>
-
-
-<ul>
-<li>разрешим только исходящий трафик на порт 80, а входящий запретим:</li>
-</ul>
-<div class="highlight"><pre><span></span>ufw allow out <span class="m">80</span>/tcp
-ufw deny in <span class="m">80</span>/tcp
-</pre></div>
-
-
-<ul>
-<li>открыть порт DNS 53</li>
-</ul>
-<div class="highlight"><pre><span></span>ufw allow <span class="m">53</span>/tcp
-ufw allow <span class="m">53</span>/udp
-</pre></div>
-
-
-<ul>
-<li>можно использовать более полный синтаксис добавления правил:</li>
-</ul>
-<p>ufw allow proto протокол from ip_источника to ip_назначения port порт_назначения</p>
-<p>В качестве ip_источника может использоваться также и адрес подсети. Например, разрешим доступ со всех IP-адресов для интерфейса eth0 по протоколу tcp к нашему IP-адресу и порту 3318:</p>
-<div class="highlight"><pre><span></span>ufw allow proto tcp from <span class="m">0</span>.0.0.0/24 to <span class="m">192</span>.168.1.5 port <span class="m">3318</span>
-</pre></div>
-
-
-<h3>Включение UFW</h3>
-<div class="highlight"><pre><span></span>ufw <span class="nb">enable</span>
-</pre></div>
-
-
-<h3>Правила limit ufw</h3>
-<p>С помощью правил limit можно ограничить количество подключений к определённому порту с одного IP-адреса, это может быть полезно для защиты от атак перебора паролей. </p>
-<div class="highlight"><pre><span></span>ufw limit ssh/tcp
-</pre></div>
-
-
-<h3>Блокировка активности с определенным адресом</h3>
-<ul>
-<li>Для блокировки или закрытия всех пакетов с 192.168.1.5, вводим:</li>
-</ul>
-<div class="highlight"><pre><span></span>ufw deny from <span class="m">192</span>.168.1.5 to any
-</pre></div>
-
-
-<ul>
-<li>Блокировка определенных IP и номера порта через ufw</li>
-</ul>
-<p>ufw deny from {ip-address-here} to any port {port-number-here}</p>
-<div class="highlight"><pre><span></span>ufw deny from <span class="m">202</span>.54.1.5 to any port <span class="m">80</span>
-</pre></div>
-
-
-<h2>Запрет icmp пинга</h2>
-<div class="highlight"><pre><span></span>sudo cp /etc/ufw/before.rules /etc/ufw/before.rules_backup
-</pre></div>
-
-
-<p>Найти в файле <strong>/etc/ufw/before.rules</strong> строки</p>
-<div class="highlight"><pre><span></span><span class="c1"># ok icmp codes for INPUT</span>
--A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
--A ufw-before-input -p icmp --icmp-type source-quench -j ACCEPT
--A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
--A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
--A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
-</pre></div>
-
-
-<p>поменять ACCEPT на DROP, чтобы получилось следующее</p>
-<div class="highlight"><pre><span></span><span class="c1"># ok icmp codes for INPUT</span>
--A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
--A ufw-before-input -p icmp --icmp-type source-quench -j DROP
--A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
--A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
--A ufw-before-input -p icmp --icmp-type echo-request -j DROP
-</pre></div>
-
-
-<h3>Проверка правил</h3>
-<div class="highlight"><pre><span></span>ufw status numbered
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+ufw allow <span class="m">22 …</span></pre></div>
+                <a class="readmore" href="/2021/03/01/firewall-ubuntu/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
