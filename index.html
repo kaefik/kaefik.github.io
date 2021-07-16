@@ -129,15 +129,17 @@
 </ul>
 <h1>Шаги которые нужно проделать</h1>
 <ol>
-<li>Создать Dockerfile</li>
+<li>Создать Dockerfile </li>
 </ol>
-<p><code>bash
-   FROM centos:8
-   RUN yum install firefox -y
-   CMD ["/usr/bin/firefox"]</code></p>
+<div class="highlight"><pre><span></span>FROM centos:8
+RUN yum install firefox -y
+CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+</pre></div>
+
+
 <p>или вот такой:</p>
-<p><code>bash
-   FROM ubuntu:20.04 …</code></p>
+<div class="highlight"><pre><span></span>FROM ubuntu:20.04
+<span class="c1"># нужно Configuring …</span></pre></div>
                 <a class="readmore" href="/2021/07/17/docker/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -152,9 +154,9 @@
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>

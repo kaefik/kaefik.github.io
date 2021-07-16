@@ -111,38 +111,48 @@
 </ul>
 <h1>Шаги которые нужно проделать</h1>
 <ol>
-<li>Создать Dockerfile</li>
+<li>Создать Dockerfile </li>
 </ol>
-<p><code>bash
-   FROM centos:8
-   RUN yum install firefox -y
-   CMD ["/usr/bin/firefox"]</code></p>
+<div class="highlight"><pre><span></span>FROM centos:8
+RUN yum install firefox -y
+CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+</pre></div>
+
+
 <p>или вот такой:</p>
-<p><code>bash
-   FROM ubuntu:20.04
-   # нужно Configuring tzdata
-   ENV TZ=Europe/Moscow
-   #RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone
-   # установка приложения
-   RUN apt update &amp;&amp; apt upgrade &amp;&amp; apt install firefox -y
-   CMD ["/usr/bin/firefox"]</code></p>
+<div class="highlight"><pre><span></span>FROM ubuntu:20.04
+<span class="c1"># нужно Configuring tzdata</span>
+ENV <span class="nv">TZ</span><span class="o">=</span>Europe/Moscow
+<span class="c1">#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone</span>
+<span class="c1"># установка приложения</span>
+RUN apt update <span class="o">&amp;&amp;</span> apt upgrade <span class="o">&amp;&amp;</span> apt install firefox -y
+CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+</pre></div>
+
+
 <ol>
 <li>Создаем образ </li>
 </ol>
-<p><code>bash
-   docker build -t название_образа .</code></p>
+<div class="highlight"><pre><span></span>docker build -t название_образа .
+</pre></div>
+
+
 <p>если всё прошло без ошибок то в списке образов будет образ с вашим именем.</p>
 <ol>
 <li>Снимаем ограничения доступа к Xorg</li>
 </ol>
 <p>для того чтобы приложение могло под root получать доступ. действует до перезагрузки вашего  компьютера.</p>
-<p><code>bash
-   sudo xhost +SI:localuser:root</code></p>
+<div class="highlight"><pre><span></span>sudo xhost +SI:localuser:root 
+</pre></div>
+
+
 <ol>
 <li>Запускаем докер контейнер</li>
 </ol>
-<p><code>bash
-   docker run --name имя_контейнера -it -e DISPLAY=$DISPLAY --net=host название_образа</code></p>
+<div class="highlight"><pre><span></span>docker run --name имя_контейнера -it -e <span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span> --net<span class="o">=</span>host название_образа
+</pre></div>
+
+
 <p>если нет переменной окружения DISPLAY:</p>
 <div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span>:0
 </pre></div>
