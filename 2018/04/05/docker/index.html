@@ -121,7 +121,9 @@
 <p><a href="https://docs.docker.com/registry/insecure/">Test an insecure registry</a></p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">             docker pull registry</span>
+<div class="highlight"><pre><span></span><span class="err">         ```bash</span>
+<span class="err">         docker pull registry</span>
+<span class="err">         ```</span>
 </pre></div>
 
 
@@ -174,7 +176,7 @@
 
 
 <p>Cоздание контейнера:</p>
-<div class="highlight"><pre><span></span><span class="err">docker build -t имя_контейнера</span>
+<div class="highlight"><pre><span></span><span class="err">docker build -t имя_контейнера .</span>
 </pre></div>
 
 
@@ -185,6 +187,11 @@
 
 <p>Удаление   контейнера</p>
 <div class="highlight"><pre><span></span>docker rm -f имя_контейнера
+</pre></div>
+
+
+<p>Удление образа</p>
+<div class="highlight"><pre><span></span>docker rmi -f имя_контейнера
 </pre></div>
     </div><!-- /.entry-content -->
 
