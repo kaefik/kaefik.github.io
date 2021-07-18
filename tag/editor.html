@@ -58,6 +58,7 @@
                             <li><a href="/category/money.html">money</a></li>
                             <li><a href="/category/mongodb.html">mongodb</a></li>
                             <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/nano.html">nano</a></li>
                             <li><a href="/category/network.html">network</a></li>
                             <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
                             <li><a href="/category/os.html">os</a></li>
@@ -92,11 +93,65 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2020/11/10/emacs-basic/">Emacs основы</a></h1>
+                    <h1 class="entry-title"><a href="/2021/07/18/nano-editor/">Редактор Nano</a></h1>
+<footer class="post-info">
+        <span>Sun 18 July 2021</span>
+<span>| tags: <a href="/tag/nano.html">nano</a><a href="/tag/linux.html">linux</a><a href="/tag/editor.html">editor</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://habr.com/ru/post/106471/">Nano редактор часть 1</a></li>
+<li><a href="https://habr.com/ru/post/106554/">Nano редактор часть 2</a></li>
+</ul>
+<p>Alt эмулируется одинарным нажатием на Esc, Ctrl — двойным. Вместо <code>Alt-X</code> можно набрать <code>Esc X</code>, вместо <code>Ctrl K</code> можно набрать <code>Esc Esc K</code>.</p>
+<h2>Перемещение по тексту</h2>
+<p>слово вперёд — <strong><code>Ctrl-Space</code></strong>
+На слово назад — <strong><code>Alt-Space</code></strong> (курсор встаёт в начале слова)
+В начало файла — <strong><code>Alt-|</code></strong> или <code>Alt-\</code> (короче, Alt- и «эта» кнопка)
+В конец файла — <strong><code>Alt-/</code></strong> или <code>Alt-?</code> (аналогично, Alt «эта» кнопка)
+До первой пустой строки вниз — <strong><code>Alt-0</code></strong> (или Alt-))
+До первой пустой строки вверх — <strong><code>Alt-9</code></strong> (или Alt-()
+(в терминах nano текст, отделённый пустыми строками называется «параграф», так что последние две команды называются «предыдущий параграф», «следующий параграф»)</p>
+<p>Включить выключить перенос строк — <strong><code>Alt-L</code></strong>
+Переход на строку с указанным номером — <strong><code>Alt-G</code></strong></p>
+<h2>Работа с фрагментом текста</h2>
+<p><strong>Alt-A</strong> или <strong>Ctrl-^</strong> - отмечается начало выделение</p>
+<p>Применимы все функции навигации, включая переход по номеру строки или поиск (в следующих выпусках).</p>
+<p><strong><code>Ctrl-K</code></strong> (или <strong><code>F9</code></strong>) -  выделенный текст можно удалить или скопировать в буффер. </p>
+<p><strong><code>Alt-6</code></strong> - Выделенный текст можно скопировать в буффер обмена</p>
+<p><strong><code>Ctrl-U</code></strong> или <strong><code>F10</code></strong> - вставить текст из буффера обмена </p>
+<p><strong><code>Ctrl-K</code></strong>  - при отсутствии выделения удаляет строку. Либо целиком, либо от курсора до конца строки. Поведение переключается комбинацией <strong><code>Alt-K</code></strong> (по-умолчанию стоит режим удалять строку целиком, а <strong><code>Alt-K</code></strong> переключает его туда-сюда).</p>
+<p>Обратите внимание — удалённая строка в буффере, так что её можно вставить с помощью <strong>Ctrl-U</strong>`.</p>
+<p><strong><code>Alt-T</code></strong>, стирающая всё от курсора и до конца файла (команда trunkate).</p>
+<p>Для вставки текста из другого файла используется кнопка <strong><code>Ins</code></strong> (думаю, все пользователи vim хорошо знают поведение этой кнопки в nano).</p>
+<h2>Undo / Redo</h2>
+<p>Отмена действий по-умолчанию не работает и требует запуска редактора с опцией «поддержка отмены» (да, nano по-умолчанию не поддерживает undo). Ключ командной строки -u.</p>
+<p>nano -u sometext</p>
+<p>После этого начинают работать команды:</p>
+<p><strong><code>Alt-U</code></strong> — undo
+<strong><code>Alt-E</code></strong> — redo.</p>
+<h2>Поиск по тексту</h2>
+<p>поиск — <strong><code>Ctrl-W</code></strong></p>
+<p>Повторный поиск (без появления диалога) — <strong><code>Alt-W</code></strong></p>
+<p>Замена <strong><code>Ctrl-\</code></strong>
+Повторной замены нет, так как при замене выдаётся запрос «да/нет, отмена, всё».</p>
+<p>Многобуфферность (возможность иметь несколько открытых файлов).</p>
+<p>Включается командой <strong><code>Alt-F</code></strong>. После этого работают кнопки <strong><code>Alt-&lt;</code></strong> и <strong><code>Alt-&gt;</code></strong> (или они же без шифта: Alt-., Alt-, (альт точка, альт запятая)).</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2020/11/10/emacs-basic/" rel="bookmark"
+                           title="Permalink to Emacs основы">Emacs основы</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Tue 10 November 2020</span>
 <span>| tags: <a href="/tag/emacs.html">emacs</a><a href="/tag/linux.html">linux</a><a href="/tag/editor.html">editor</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://www.gnu.org/software/emacs/">GNU Emacs</a></li>
 <li><a href="https://www.gnu.org/software/emacs/manual/elisp.html">GNU Emacs Lisp Reference Manual</a></li>
@@ -115,235 +170,10 @@
 <h3>Перемещения по тексту</h3>
 <ul>
 <li><strong>C-p</strong> : перейти на предыдущую строку</li>
-<li><strong>C-n</strong> : перейти на следующую строку</li>
-<li><strong>C-f</strong> : перейти на один символ вперёд</li>
-<li><strong>C-b</strong> : перейти на один символ назад</li>
-<li><strong>C-u N !!!</strong> : N раз выполнить !!!</li>
-<li><strong>C-a</strong> : перейти к началу текущей строки</li>
-<li><strong>C-e</strong> : перейти к концу текущей строки</li>
-<li><strong>C-v</strong> : перейти вперёд на экран (аналог Page Down)</li>
-<li><strong>M-v</strong> : перейти назад на экран (аналог Page Up)</li>
-<li><strong>C-l</strong> : установить текущую строку по центру экрана (отцентрировать)</li>
-<li><strong>M-&lt;</strong> : перейти в начало файла</li>
-<li><strong>M-&gt;</strong>: перейти в конец файла</li>
-<li><strong>M-f</strong> : перейти к следующему слову</li>
-<li><strong>M-b</strong> : перейти к предыдущему слову</li>
-<li><strong>M-a</strong> : перейти к началу текуего параграфа.</li>
-<li><strong>M-e</strong> : перейти к концу текущего параграфа.</li>
-<li><strong>C-s</strong> : нажмите C-s, после чего введите слово для поиска.</li>
-<li><strong>C-r</strong> : обратный поиск, в остальном то же самое что и C-s.</li>
-<li><strong>C-M-s</strong> : нажмите C-s после ввода регулярного выражения, чтобы начать поиск.</li>
-<li><strong>C-M-r</strong> : обратный поиск, в остальном то же самое что и C-M-s.</li>
-<li>
-<p><strong>$emacs +N file</strong> : перейти на N-ую строку после открытия файла</p>
-</li>
-<li>
-<p><strong>M-g g N</strong>: перейти на N-ю строку </p>
-</li>
-</ul>
-<h3>Удаления текста</h3>
-<ul>
-<li><strong><DEL></strong>         Delete the character just before the cursor</li>
-<li><strong>C-d</strong>            Delete the next character after the cursor</li>
-<li><strong>M-<DEL></strong>      Kill the word immediately before the cursor</li>
-<li><strong>M-d</strong>        Kill the next word after the cursor</li>
-<li><strong>C-k</strong>            Kill from the cursor position to end of line</li>
-<li><strong>M-k</strong>            Kill to the end of the current sentence</li>
-</ul>
-<h3>Работа с выделением</h3>
-<ul>
-<li><strong>C-<SPC></strong> - начало выделения текста</li>
-<li><strong>C-w</strong>     - вырезать выделенную область</li>
-<li><strong>M-w</strong>     - скопировать выделенную область</li>
-<li><strong>C-y</strong>     - вставить текст которую ранее скопировали/вырезали</li>
-<li>
-<p><strong>M-y</strong>     - заменить текст</p>
-</li>
-<li>
-<p><strong>C-/</strong> - отмена действий</p>
-</li>
-</ul>
-<h3>Работа с файлами</h3>
-<ul>
-<li><strong>C-x C-f</strong> - создание нового файла</li>
-<li><strong>C-x C-s</strong> - сохранение файла</li>
-<li><strong>C-x C-w</strong> - сохранение буфера с новым именем</li>
-</ul>
-<h3>Работа с буферами</h3>
-<ul>
-<li><strong>C-x C-b</strong>      - список буферов</li>
-<li><strong>C-x b</strong>        - перейти на буфер</li>
-<li><strong>C-x k</strong> buffer - закрыть буфер buffer</li>
-<li><strong>M-x kill-some-buffers</strong> - закрыть все буферы</li>
-</ul>
-<h3>Работа с окнами</h3>
-<ul>
-<li><strong>C-x 1</strong> - оставить только один буфер</li>
-<li><strong>C-x 0</strong> - закрыть буфер</li>
-<li><strong>C-x o</strong> - перейти на следующий буфер</li>
-<li><strong>C-x 2</strong> - открыть горизонтальное окно</li>
-<li><strong>C-x 3</strong> - открыть вертикальное окно</li>
-</ul>
-<h2>пустой конфиг <strong>.emacs</strong></h2>
-<div class="highlight"><pre><span></span><span class="err">;; System-type definition</span>
-<span class="err">(defun system-is-linux()</span>
-<span class="err">    (string-equal system-type &quot;gnu/linux&quot;))</span>
-<span class="err">(defun system-is-windows()</span>
-<span class="err">    (string-equal system-type &quot;windows-nt&quot;))</span>
-</pre></div>
-
-
-<h2>IDE for Common Lisp</h2>
-<p><a href="https://habr.com/ru/post/248663/">источник</a></p>
-<ul>
-<li>пакеты для превращения emacs в среду Common Lisp:<ul>
-<li>реализация Common Lisp - <a href="https://ru.wikipedia.org/wiki/Steel_Bank_Common_Lisp">SBCL</a></li>
-<li><a href="https://ru.wikipedia.org/wiki/SLIME">Slime</a> — режим Emacs для разработки приложений на языке Common Lisp</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">    sudo apt install slime sbcl</span>
-</pre></div>
-
-
-<h2>IDE for Python</h2>
-<ul>
-<li><a href="https://gist.github.com/widdowquinn/987164746810f4e8b88402628b387d39">Turning emacs into a Python IDE</a></li>
-<li><a href="https://habr.com/ru/post/188376/">Emacs как IDE для Python</a></li>
-<li><a href="https://dunmaksim.blogspot.com/2015/10/emacs-python.html">EMACS для Python</a></li>
-</ul>
-<h2>Плагины Emacs</h2>
-<ul>
-<li><a href="https://www.emacswiki.org/emacs/SrSpeedbar">Sr SpeedBar</a> - для удобной навигации по файловой системе</li>
-<li><a href="https://www.emacswiki.org/emacs/Yasnippet">Yasnippet</a> - для различных снипетов</li>
-<li><a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</a> </li>
-</ul>
-<p>Пример конфигурационного файла .emacs:</p>
-<div class="highlight"><pre><span></span><span class="p">;;</span><span class="w"> </span><span class="k">System</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="n">definition</span><span class="w"></span>
-<span class="p">(</span><span class="n">defun</span><span class="w"> </span><span class="k">system</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="n">linux</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">equal</span><span class="w"> </span><span class="k">system</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="ss">&quot;gnu/linux&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="p">(</span><span class="n">defun</span><span class="w"> </span><span class="k">system</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="n">windows</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="p">(</span><span class="n">string</span><span class="o">-</span><span class="n">equal</span><span class="w"> </span><span class="k">system</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="ss">&quot;windows-nt&quot;</span><span class="p">))</span><span class="w"></span>
-
-<span class="p">;;</span><span class="w"> </span><span class="k">Start</span><span class="w"> </span><span class="n">Emacs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">server</span><span class="w"></span>
-<span class="p">(</span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="k">system</span><span class="o">-</span><span class="k">is</span><span class="o">-</span><span class="n">linux</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">(</span><span class="n">require</span><span class="w"> </span><span class="s1">&#39;server)</span>
-<span class="s1">    (unless (server-running-p)</span>
-<span class="s1">        (server-start))) ;; запустить Emacs как сервер, если ОС - GNU/Linux</span>
-
-<span class="s1">;; MS Windows path-variable</span>
-<span class="s1">(when (system-is-windows)</span>
-<span class="s1">    (setq win-sbcl-exe          &quot;C:/sbcl/sbcl.exe&quot;)</span>
-<span class="s1">    (setq win-init-path         &quot;C:/.emacs.d&quot;)</span>
-<span class="s1">    (setq win-init-ct-path      &quot;C:/.emacs.d/plugins/color-theme&quot;)</span>
-<span class="s1">    (setq win-init-ac-path      &quot;C:/.emacs.d/plugins/auto-complete&quot;)</span>
-<span class="s1">    (setq win-init-slime-path   &quot;C:/slime&quot;)</span>
-<span class="s1">    (setq win-init-ac-dict-path &quot;C:/.emacs.d/plugins/auto-complete/dict&quot;))</span>
-
-<span class="s1">;; Unix path-variable</span>
-<span class="s1">(when (system-is-linux)</span>
-<span class="s1">    (setq unix-sbcl-bin          &quot;/usr/bin/sbcl&quot;)</span>
-<span class="s1">    (setq unix-init-path         &quot;~/.emacs.d&quot;)</span>
-<span class="s1">    (setq unix-init-ct-path      &quot;~/.emacs.d/plugins/color-theme&quot;)</span>
-<span class="s1">    (setq unix-init-ac-path      &quot;~/.emacs.d/plugins/auto-complete&quot;)</span>
-<span class="s1">    (setq unix-init-slime-path   &quot;/usr/share/common-lisp/source/slime/&quot;)</span>
-<span class="s1">    (setq unix-init-ac-dict-path &quot;~/.emacs.d/plugins/auto-complete/dict&quot;))</span>
-
-<span class="s1">;; My name and e-mail adress</span>
-<span class="s1">(setq user-full-name   &quot;kaefik&quot;)</span>
-<span class="s1">(setq user-mail-adress &quot;ilnursoft@gmail.com&quot;)</span>
-
-<span class="s1">;; Imenu</span>
-<span class="s1">(require &#39;</span><span class="n">imenu</span><span class="p">)</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="n">imenu</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">rescan</span><span class="w">      </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">автоматически</span><span class="w"> </span><span class="n">обновлять</span><span class="w"> </span><span class="n">список</span><span class="w"> </span><span class="n">функций</span><span class="w"> </span><span class="n">в</span><span class="w"> </span><span class="n">буфере</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="n">imenu</span><span class="o">-</span><span class="k">use</span><span class="o">-</span><span class="n">popup</span><span class="o">-</span><span class="n">menu</span><span class="w"> </span><span class="n">nil</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">диалоги</span><span class="w"> </span><span class="n">Imenu</span><span class="w"> </span><span class="n">только</span><span class="w"> </span><span class="n">в</span><span class="w"> </span><span class="n">минибуфере</span><span class="w"></span>
-<span class="p">(</span><span class="k">global</span><span class="o">-</span><span class="k">set</span><span class="o">-</span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">kbd</span><span class="w"> </span><span class="ss">&quot;&lt;f6&gt;&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;imenu) ;; вызов Imenu на F6</span>
-
-<span class="s1">;; Display the name of the current buffer in the title bar</span>
-<span class="s1">(setq frame-title-format &quot;GNU Emacs: %b&quot;)</span>
-
-<span class="s1">;; Org-mode settings</span>
-<span class="s1">(require &#39;</span><span class="n">org</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">Вызвать</span><span class="w"> </span><span class="n">org</span><span class="o">-</span><span class="n">mode</span><span class="w"></span>
-<span class="p">(</span><span class="k">global</span><span class="o">-</span><span class="k">set</span><span class="o">-</span><span class="k">key</span><span class="w"> </span><span class="ss">&quot;\C-ca&quot;</span><span class="w"> </span><span class="s1">&#39;org-agenda) ;; поределение клавиатурных комбинаций для внутренних</span>
-<span class="s1">(global-set-key &quot;\C-cb&quot; &#39;</span><span class="n">org</span><span class="o">-</span><span class="n">iswitchb</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">подрежимов</span><span class="w"> </span><span class="n">org</span><span class="o">-</span><span class="n">mode</span><span class="w"></span>
-<span class="p">(</span><span class="k">global</span><span class="o">-</span><span class="k">set</span><span class="o">-</span><span class="k">key</span><span class="w"> </span><span class="ss">&quot;\C-cl&quot;</span><span class="w"> </span><span class="s1">&#39;org-store-link)</span>
-<span class="s1">(add-to-list &#39;</span><span class="n">auto</span><span class="o">-</span><span class="n">mode</span><span class="o">-</span><span class="n">alist</span><span class="w"> </span><span class="s1">&#39;(&quot;\\.org$&quot; . Org-mode)) ;; ассоциируем *.org файлы с org-mode</span>
-
-<span class="s1">;; Inhibit startup/splash screen</span>
-<span class="s1">(setq inhibit-splash-screen   t)</span>
-<span class="s1">(setq ingibit-startup-message t) ;; экран приветствия можно вызвать комбинацией C-h C-a</span>
-
-<span class="s1">;; Show-paren-mode settings</span>
-<span class="s1">(show-paren-mode t) ;; включить выделение выражений между {},[],()</span>
-<span class="s1">(setq show-paren-style &#39;</span><span class="n">expression</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">выделить</span><span class="w"> </span><span class="n">цветом</span><span class="w"> </span><span class="n">выражения</span><span class="w"> </span><span class="n">между</span><span class="w"> </span><span class="err">{}</span><span class="p">,</span><span class="err">[]</span><span class="p">,()</span><span class="w"></span>
-
-<span class="p">;;</span><span class="w"> </span><span class="n">Coding</span><span class="o">-</span><span class="k">system</span><span class="w"> </span><span class="n">settings</span><span class="w"></span>
-<span class="p">(</span><span class="k">set</span><span class="o">-</span><span class="k">language</span><span class="o">-</span><span class="n">environment</span><span class="w"> </span><span class="s1">&#39;UTF-8)</span>
-<span class="s1">(if (system-is-linux) ;; для GNU/Linux кодировка utf-8, для MS Windows - windows-1251</span>
-<span class="s1">    (progn</span>
-<span class="s1">        (setq default-buffer-file-coding-system &#39;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="n">setq</span><span class="o">-</span><span class="k">default</span><span class="w"> </span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="k">read</span><span class="w">    </span><span class="s1">&#39;utf-8)</span>
-<span class="s1">        (setq file-name-coding-system           &#39;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="k">set</span><span class="o">-</span><span class="n">selection</span><span class="o">-</span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="w">            </span><span class="s1">&#39;utf-8)</span>
-<span class="s1">        (set-keyboard-coding-system        &#39;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">unix</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="k">set</span><span class="o">-</span><span class="n">terminal</span><span class="o">-</span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="w">             </span><span class="s1">&#39;utf-8)</span>
-<span class="s1">        (prefer-coding-system                   &#39;</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="p">(</span><span class="n">progn</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="n">prefer</span><span class="o">-</span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="w">                   </span><span class="s1">&#39;windows-1251)</span>
-<span class="s1">        (set-terminal-coding-system             &#39;</span><span class="n">windows</span><span class="o">-</span><span class="mi">1251</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="k">set</span><span class="o">-</span><span class="n">keyboard</span><span class="o">-</span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="w">        </span><span class="s1">&#39;windows-1251-unix)</span>
-<span class="s1">        (set-selection-coding-system            &#39;</span><span class="n">windows</span><span class="o">-</span><span class="mi">1251</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="k">file</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="w">           </span><span class="s1">&#39;windows-1251)</span>
-<span class="s1">        (setq-default coding-system-for-read    &#39;</span><span class="n">windows</span><span class="o">-</span><span class="mi">1251</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="k">default</span><span class="o">-</span><span class="n">buffer</span><span class="o">-</span><span class="k">file</span><span class="o">-</span><span class="n">coding</span><span class="o">-</span><span class="k">system</span><span class="w"> </span><span class="s1">&#39;windows-1251)))</span>
-
-<span class="s1">;; Linum plugin</span>
-<span class="s1">(require &#39;</span><span class="n">linum</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">вызвать</span><span class="w"> </span><span class="n">Linum</span><span class="w"></span>
-<span class="p">(</span><span class="n">line</span><span class="o">-</span><span class="n">number</span><span class="o">-</span><span class="n">mode</span><span class="w">   </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">показать</span><span class="w"> </span><span class="n">номер</span><span class="w"> </span><span class="n">строки</span><span class="w"> </span><span class="n">в</span><span class="w"> </span><span class="n">mode</span><span class="o">-</span><span class="n">line</span><span class="w"></span>
-<span class="p">(</span><span class="k">global</span><span class="o">-</span><span class="n">linum</span><span class="o">-</span><span class="n">mode</span><span class="w">  </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">показывать</span><span class="w"> </span><span class="n">номера</span><span class="w"> </span><span class="n">строк</span><span class="w"> </span><span class="n">во</span><span class="w"> </span><span class="n">всех</span><span class="w"> </span><span class="n">буферах</span><span class="w"></span>
-<span class="p">(</span><span class="k">column</span><span class="o">-</span><span class="n">number</span><span class="o">-</span><span class="n">mode</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">показать</span><span class="w"> </span><span class="n">номер</span><span class="w"> </span><span class="n">столбца</span><span class="w"> </span><span class="n">в</span><span class="w"> </span><span class="n">mode</span><span class="o">-</span><span class="n">line</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="n">linum</span><span class="o">-</span><span class="nf">format</span><span class="w"> </span><span class="ss">&quot; %d&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">задаем</span><span class="w"> </span><span class="n">формат</span><span class="w"> </span><span class="n">нумерации</span><span class="w"> </span><span class="n">строк</span><span class="w"></span>
-
-<span class="p">;;</span><span class="w"> </span><span class="n">Line</span><span class="w"> </span><span class="n">wrapping</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="n">word</span><span class="o">-</span><span class="n">wrap</span><span class="w">          </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">переносить</span><span class="w"> </span><span class="n">по</span><span class="w"> </span><span class="n">словам</span><span class="w"></span>
-<span class="p">(</span><span class="k">global</span><span class="o">-</span><span class="n">visual</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">mode</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
-
-<span class="p">;;</span><span class="w"> </span><span class="n">IDO</span><span class="w"> </span><span class="n">plugin</span><span class="w"></span>
-<span class="p">(</span><span class="n">require</span><span class="w"> </span><span class="s1">&#39;ido)</span>
-<span class="s1">(ido-mode                      t)</span>
-<span class="s1">(icomplete-mode                t)</span>
-<span class="s1">(ido-everywhere                t)</span>
-<span class="s1">(setq ido-vitrual-buffers      t)</span>
-<span class="s1">(setq ido-enable-flex-matching t)</span>
-
-<span class="s1">;; Buffer Selection and ibuffer settings</span>
-<span class="s1">(require &#39;</span><span class="n">bs</span><span class="p">)</span><span class="w"></span>
-<span class="p">(</span><span class="n">require</span><span class="w"> </span><span class="s1">&#39;ibuffer)</span>
-<span class="s1">(defalias &#39;</span><span class="n">list</span><span class="o">-</span><span class="n">buffers</span><span class="w"> </span><span class="s1">&#39;ibuffer) ;; отдельный список буферов при нажатии C-x C-b</span>
-<span class="s1">(global-set-key (kbd &quot;&lt;f2&gt;&quot;) &#39;</span><span class="n">bs</span><span class="o">-</span><span class="n">show</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">запуск</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">selection</span><span class="w"> </span><span class="n">кнопкой</span><span class="w"> </span><span class="n">F2</span><span class="w"></span>
-
-
-<span class="p">;;</span><span class="w"> </span><span class="n">Indent</span><span class="w"> </span><span class="n">settings</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="o">-</span><span class="k">default</span><span class="w"> </span><span class="n">indent</span><span class="o">-</span><span class="n">tabs</span><span class="o">-</span><span class="n">mode</span><span class="w"> </span><span class="n">nil</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">отключить</span><span class="w"> </span><span class="n">возможность</span><span class="w"> </span><span class="n">ставить</span><span class="w"> </span><span class="n">отступы</span><span class="w"> </span><span class="n">TAB</span><span class="s1">&#39;ом</span>
-<span class="s1">(setq-default tab-width          4) ;; ширина табуляции - 4 пробельных символа</span>
-<span class="s1">(setq-default c-basic-offset     4)</span>
-<span class="s1">(setq-default standart-indent    4) ;; стандартная ширина отступа - 4 пробельных символа</span>
-<span class="s1">(setq-default lisp-body-indent   4) ;; сдвигать Lisp-выражения на 4 пробельных символа</span>
-<span class="s1">(global-set-key (kbd &quot;RET&quot;) &#39;</span><span class="n">newline</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">indent</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">при</span><span class="w"> </span><span class="n">нажатии</span><span class="w"> </span><span class="n">Enter</span><span class="w"> </span><span class="n">перевести</span><span class="w"> </span><span class="n">каретку</span><span class="w"> </span><span class="n">и</span><span class="w"> </span><span class="n">сделать</span><span class="w"> </span><span class="n">отступ</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="n">lisp</span><span class="o">-</span><span class="n">indent</span><span class="o">-</span><span class="k">function</span><span class="w">  </span><span class="err">&#39;</span><span class="n">common</span><span class="o">-</span><span class="n">lisp</span><span class="o">-</span><span class="n">indent</span><span class="o">-</span><span class="k">function</span><span class="p">)</span><span class="w"></span>
-
-<span class="p">;;</span><span class="w"> </span><span class="n">Scrolling</span><span class="w"> </span><span class="n">settings</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="k">scroll</span><span class="o">-</span><span class="n">step</span><span class="w">               </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">вверх</span><span class="o">-</span><span class="n">вниз</span><span class="w"> </span><span class="n">по</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">строке</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="k">scroll</span><span class="o">-</span><span class="n">margin</span><span class="w">            </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="n">сдвигать</span><span class="w"> </span><span class="n">буфер</span><span class="w"> </span><span class="n">верх</span><span class="o">/</span><span class="n">вниз</span><span class="w"> </span><span class="n">когда</span><span class="w"> </span><span class="n">курсор</span><span class="w"> </span><span class="n">в</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">шагах</span><span class="w"> </span><span class="n">от</span><span class="w"> </span><span class="n">верхней</span><span class="o">/</span><span class="n">нижней</span><span class="w"> </span><span class="n">границы</span><span class="w">  </span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="k">scroll</span><span class="o">-</span><span class="n">conservatively</span><span class="w"> </span><span class="mi">10000</span><span class="p">)</span><span class="w"></span>
-
-<span class="p">;;</span><span class="w"> </span><span class="n">Clipboard</span><span class="w"> </span><span class="n">settings</span><span class="w"></span>
-<span class="p">(</span><span class="n">setq</span><span class="w"> </span><span class="n">x</span><span class="o">-</span><span class="k">select</span><span class="o">-</span><span class="n">enable</span><span class="o">-</span><span class="n">clipboard</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<li><strong>C-n</strong> : перейти …</li></ul>
+                <a class="readmore" href="/2020/11/10/emacs-basic/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
