@@ -93,11 +93,41 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2019/07/20/powershell-scripts-send-mail/">PowerShell: различные скрипты</a></h1>
+                    <h1 class="entry-title"><a href="/2021/08/06/python/">Создание исполняемых файлов из python проектов</a></h1>
+<footer class="post-info">
+        <span>Fri 06 August 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
+        <a href="/2021/06/06/python/">ru</a>
+        <a href="/2021/08/05/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+
+</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+<ul>
+<li>https://habr.com/ru/company/vdsina/blog/557316/</li>
+</ul>
+<h2>Auto PY to EXE</h2>
+<p>Установка через pip</p>
+<p>При помощи следующей команды можно установить текущую версию Auto PY to EXE.</p>
+<div class="highlight"><pre><span></span>pip install auto-py-to-exe      
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2019/07/20/powershell-scripts-send-mail/" rel="bookmark"
+                           title="Permalink to PowerShell: различные скрипты">PowerShell: различные скрипты</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Sat 20 July 2019</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/powershell.html">powershell</a><a href="/tag/windows.html">windows</a></span>
-</footer><!-- /.post-info --><h2>Powershell отправка почты с авторизацией через SMTP сервер Яндекса</h2>
+</footer><!-- /.post-info -->                <h2>Powershell отправка почты с авторизацией через SMTP сервер Яндекса</h2>
 <p>источник: <a href="https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa">https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa</a></p>
 <div class="highlight"><pre><span></span><span class="c">#Адрес сервера SMTP для отправки</span>
 <span class="nv">$serverSmtp</span> <span class="p">=</span> <span class="s2">&quot;smtp.yandex.ru&quot;</span>
@@ -114,44 +144,10 @@
 <span class="c">#Тема письма</span>
 <span class="nv">$subject</span> <span class="p">=</span> <span class="s2">&quot;Письмо с вложением&quot;</span>
 
-<span class="c">#Логин и пароль от ящики с которого отправляете login@yandex.ru</span>
-<span class="nv">$user</span> <span class="p">=</span> <span class="s2">&quot;login&quot;</span>
-<span class="nv">$pass</span> <span class="p">=</span> <span class="s2">&quot;12345678&quot;</span>
-
-<span class="c">#Путь до файла</span>
-<span class="nv">$file</span> <span class="p">=</span> <span class="s2">&quot;C:\arhive.zip&quot;</span>
-
-<span class="c">#Создаем два экземпляра класса</span>
-<span class="nv">$att</span> <span class="p">=</span> <span class="nb">New-object</span> <span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">Attachment</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span>
-<span class="nv">$mes</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">MailMessage</span>
-
-<span class="c">#Формируем данные для отправки</span>
-<span class="nv">$mes</span><span class="p">.</span><span class="n">From</span> <span class="p">=</span> <span class="nv">$from</span>
-<span class="nv">$mes</span><span class="p">.</span><span class="n">To</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$to</span><span class="p">)</span>
-<span class="nv">$mes</span><span class="p">.</span><span class="n">Subject</span> <span class="p">=</span> <span class="nv">$subject</span>
-<span class="nv">$mes</span><span class="p">.</span><span class="n">IsBodyHTML</span> <span class="p">=</span> <span class="nv">$true</span>
-<span class="nv">$mes</span><span class="p">.</span><span class="n">Body</span> <span class="p">=</span> <span class="s2">&quot;&lt;h1&gt;Тестовое письмо&lt;/h1&gt;&quot;</span>
-
-<span class="c">#Добавляем файл</span>
-<span class="nv">$mes</span><span class="p">.</span><span class="n">Attachments</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$att</span><span class="p">)</span>
-
-<span class="c">#Создаем экземпляр класса подключения к SMTP серверу</span>
-<span class="nv">$smtp</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">Mail</span><span class="p">.</span><span class="n">SmtpClient</span><span class="p">(</span><span class="nv">$serverSmtp</span><span class="p">,</span> <span class="nv">$port</span><span class="p">)</span>
-
-<span class="c">#Сервер использует SSL</span>
-<span class="nv">$smtp</span><span class="p">.</span><span class="n">EnableSSL</span> <span class="p">=</span> <span class="nv">$true</span>
-
-<span class="c">#Создаем экземпляр класса для авторизации на сервере яндекса</span>
-<span class="nv">$smtp</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">NetworkCredential</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="nv">$pass</span><span class="p">);</span>
-
-<span class="c">#Отправляем письмо, освобождаем память</span>
-<span class="nv">$smtp</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="nv">$mes</span><span class="p">)</span>
-<span class="nv">$att</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<span class="c">#Логин и пароль от …</span></pre></div>
+                <a class="readmore" href="/2019/07/20/powershell-scripts-send-mail/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
