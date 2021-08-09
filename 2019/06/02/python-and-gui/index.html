@@ -143,6 +143,33 @@ sudo apt-get install libwxbase3.0-0v5
 </pre></div>
 
 
+<h2>Pyinstaller and Gooey</h2>
+<div class="highlight"><pre><span></span><span class="err">Exception in thread Thread-1:</span>
+<span class="err">Traceback (most recent call last):</span>
+<span class="err">  File &quot;threading.py&quot;, line 917, in _bootstrap_inner</span>
+<span class="err">  File &quot;threading.py&quot;, line 865, in run</span>
+<span class="err">  File &quot;lib\site-packages\gooey\gui\processor.py&quot;, line 71, in _forward_stdout</span>
+<span class="err">  File &quot;lib\site-packages\gooey\gui\processor.py&quot;, line 84, in _extract_progress</span>
+<span class="c">UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0xf1 in position 16: invalid continuation byte</span>
+</pre></div>
+
+
+<p>Решение: (https://github.com/chriskiehl/Gooey/issues/520)</p>
+<p>Following this <a href="http://www.macfreek.nl/memory/Encoding_of_Python_stdout">great resource</a>, it seems that using the <code>codecs</code> module to redirect <code>stdout</code> and <code>stderr</code> works.</p>
+<ol>
+<li>Forget about the modification of <code>processor.py</code></li>
+<li>Add near the top of your (main) script:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span> <span class="o">!=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">getwriter</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">encoding</span> <span class="o">!=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">getwriter</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If this works for you, that could be the solution.</p>
 <h2>Wooey</h2>
 <ul>
 <li>Install</li>

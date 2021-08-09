@@ -102,11 +102,11 @@
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
-        <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
 
 </footer><!-- /.post-info -->      <h2>Общие ссылки</h2>
 <ul>
@@ -117,6 +117,29 @@
 <p>Установка через pip</p>
 <p>При помощи следующей команды можно установить текущую версию Auto PY to EXE.</p>
 <div class="highlight"><pre><span></span>pip install auto-py-to-exe      
+</pre></div>
+
+
+<h2>Pyinstaller</h2>
+<div class="highlight"><pre><span></span><span class="err">pip install pypiwin32</span>
+<span class="err">pip install pyinstaller</span>
+</pre></div>
+
+
+<p>PyInstaller анализирует файл myscript.py и делает следующее:</p>
+<ol>
+<li>Пишет файл myscript.spec в той же папке, где находится скрипт.</li>
+<li>Создает папку build в той же папке, где находится скрипт.</li>
+<li>Записывает некоторые логи и рабочие файлы в папку build.</li>
+<li>Создает папку dist в той же папке, где находится скрипт.</li>
+<li>Пишет исполняемый файл в папку dist.</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="err">pyinstaller --onefile --icon=name.ico --noconsole myscript.py</span>
+</pre></div>
+
+
+<p>если есть конфигурационный файл myscript.spec, то </p>
+<div class="highlight"><pre><span></span><span class="err">pyinstaller myscript.spec</span>
 </pre></div>
     </div><!-- /.entry-content -->
 
