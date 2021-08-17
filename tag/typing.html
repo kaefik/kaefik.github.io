@@ -100,7 +100,19 @@
 </footer><!-- /.post-info --><h2>Общие ссылки</h2>
 <ul>
 <li><a href="https://habr.com/ru/company/lamoda/blog/432656/">Введение в аннотации типов Python</a></li>
+<li><a href="https://github.com/typeddjango/awesome-python-typing">Awesome Python Typing </a></li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy documentation</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-3107/">PEP 3107 -- Function Annotations</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0484/">PEP 484 -- Type Hints</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0526/">PEP 526 -- Syntax for Variable Annotations</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0563/">PEP 563 -- Postponed Evaluation of Annotations</a></li>
+<li></li>
 </ul>
+<p>чтобы не проверять типы в модулях в которых нет аннотации можно добавить напротив импорта модуля </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span> <span class="c1"># type: ignore</span>
+</pre></div>
+
+
 <h2>Автоматическая аннотация типов в legacy code</h2>
 <p>с помощью инструментов <a href="https://monkeytype.readthedocs.io/en/latest/index.html">MonkeyType</a> и <a href="https://github.com/dropbox/pyannotate">pyannotate</a> можно для начала аннотировать свой уже написанный код.</p>
 <h3>Правила для типизации (хорошая практика)</h3>
