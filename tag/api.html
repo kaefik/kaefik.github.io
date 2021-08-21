@@ -103,11 +103,65 @@
 <li><a href="https://habr.com/ru/post/478620/">Почему Вы должны попробовать FastAPI?</a></li>
 <li><a href="https://www.youtube.com/playlist?list=PLaED5GKTiQG8GW5Rv2hf3tRS-d9t9liUt">Уроки FastAPI - youtube</a></li>
 <li><a href="https://nuancesprog.ru/p/10210/">Как перейти от Flask к FastAPI</a></li>
+<li>https://pythonru.com/biblioteki/znakomstvo-s-fastapi</li>
 </ul>
 <h1>Установка FastAPI</h1>
 <div class="highlight"><pre><span></span>pip install wheel -U
 pip install uvicorn fastapi pydantic 
-</pre></div>                </article>
+</pre></div>
+
+
+<h2>OpenAPI</h2>
+<p>FastAPI генерирует «схему» из API с помощью стандарта OpenAPI.</p>
+<table>
+<thead>
+<tr>
+<th>структура</th>
+<th>описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Схема (schema)</td>
+<td>определение или описание чего-либо. Не код, отвечающий за реализацию, а просто абстрактное описание.</td>
+</tr>
+<tr>
+<td>API-схема</td>
+<td>В этом случае OpenAPI — это спецификация, которая предписывает, как именно определять схему API. Определение включает пути, возможные принимаемые параметры и так далее.</td>
+</tr>
+<tr>
+<td>Схема данных</td>
+<td>Понятие «схема» может также указывать на форму некоторых данных: например, JSON-содержимое. В этом случае тут будут указываться JSON-атрибуты, использованные типы данных и другое.</td>
+</tr>
+<tr>
+<td>OpenAPI и JSON Schema</td>
+<td>OpenAPI определяет схему API для созданного API. А она, в свою очередь, включает определения отправленных или полученных через API данных с помощью JSON — стандарта схем данных JSON.</td>
+</tr>
+</tbody>
+</table>
+<p>FastAPI автоматически генерирует JSON-схему с описаниями API.</p>
+<p>Их можно увидеть прямо на сайте: http://127.0.0.1:8000/openapi.json</p>
+<p>При создании API «путь» — это основной способ разделения «concerns» и «resources».</p>
+<p>Операция здесь — это один из HTTP-методов:</p>
+<ul>
+<li><code>POST</code></li>
+<li><code>GET</code></li>
+<li><code>PUT</code></li>
+<li><code>DELETE</code></li>
+<li><code>OPTIONS</code></li>
+<li><code>HEAD</code></li>
+<li><code>PATCH</code></li>
+<li><code>TRACE</code></li>
+</ul>
+<p>В протоколе HTTP с каждым путем можно взаимодействовать с помощью одного из таких методов.</p>
+<p>При создании API обычно эти методы выполняют определенное действие:</p>
+<ul>
+<li><code>POST</code> — создает данные</li>
+<li><code>GET</code> — читает данные</li>
+<li><code>PUT</code> — обновляет данные</li>
+<li><code>DELETE</code> — удаляет данные</li>
+</ul>
+<p>В OpenAPI каждый из таких методов называется <code>operations</code>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
