@@ -95,6 +95,37 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2020/01/30/git-reset-error/" rel="bookmark"
+                           title="Permalink to Способы решения проблем при некоректном коммите">Способы решения проблем при некоректном коммите</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Thu 30 January 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/git.html">git</a></span>
+</footer><!-- /.post-info -->                <p>источник: https://ru.hexlet.io/blog/posts/oh-shit-git</p>
+<ul>
+<li>удаление коммитов начиная с выбранного</li>
+</ul>
+<div class="highlight"><pre><span></span>  git reflog
+  <span class="c1"># ты увидишь список всех действий во всех ветках</span>
+  <span class="c1"># у каждой есть индекс HEAD@{index}</span>
+  <span class="c1"># найди тот, после которого ты все поломал</span>
+  git reset HEAD@<span class="o">{</span>index<span class="o">}</span>
+  <span class="c1"># волшебная машина времени</span>
+</pre></div>
+
+
+<ul>
+<li>Сделал коммит, но забыл кое что</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="c1"># сделай …</span></pre></div>
+                <a class="readmore" href="/2020/01/30/git-reset-error/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2020/01/27/python-and-modules/" rel="bookmark"
                            title="Permalink to Python и модули / пакеты">Python и модули / пакеты</a></h1>
                 </header>
@@ -356,38 +387,6 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <li>
 <p>db.название_коллекции.inserMany([{"name":"John","email …</p></li></ul>
                 <a class="readmore" href="/2019/08/22/mongodb-nosql-python/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/07/20/powershell-scripts-send-mail/" rel="bookmark"
-                           title="Permalink to PowerShell: различные скрипты">PowerShell: различные скрипты</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Sat 20 July 2019</span>
-<span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/programmirovanie.html">программирование</a><a href="/tag/powershell.html">powershell</a><a href="/tag/windows.html">windows</a></span>
-</footer><!-- /.post-info -->                <h2>Powershell отправка почты с авторизацией через SMTP сервер Яндекса</h2>
-<p>источник: <a href="https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa">https://bezramok-tlt.ru/blog/posts/powershell-otpravka-pochty-s-avtorizaciey-cherez-smtp-server-yandeksa</a></p>
-<div class="highlight"><pre><span></span><span class="c">#Адрес сервера SMTP для отправки</span>
-<span class="nv">$serverSmtp</span> <span class="p">=</span> <span class="s2">&quot;smtp.yandex.ru&quot;</span>
-
-<span class="c">#Порт сервера</span>
-<span class="nv">$port</span> <span class="p">=</span> <span class="n">587</span>
-
-<span class="c">#От кого</span>
-<span class="nv">$From</span> <span class="p">=</span> <span class="s2">&quot;login@yandex.ru&quot;</span>
-
-<span class="c">#Кому</span>
-<span class="nv">$To</span> <span class="p">=</span> <span class="s2">&quot;myMail@mail.ru&quot;</span>
-
-<span class="c">#Тема письма</span>
-<span class="nv">$subject</span> <span class="p">=</span> <span class="s2">&quot;Письмо с вложением&quot;</span>
-
-<span class="c">#Логин и пароль от …</span></pre></div>
-                <a class="readmore" href="/2019/07/20/powershell-scripts-send-mail/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
