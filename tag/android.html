@@ -83,6 +83,7 @@
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
                             <li><a href="/category/voice-assistant.html">voice-assistant</a></li>
+                            <li><a href="/category/vpn.html">vpn</a></li>
                             <li><a href="/category/vscode.html">vscode</a></li>
                             <li><a href="/category/web.html">web</a></li>
                             <li><a href="/category/wifi.html">wifi</a></li>
@@ -93,11 +94,182 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2017/05/11/miui-asus-z00l/">портирование MIUI на Asus Z00L</a></h1>
+                    <h1 class="entry-title"><a href="/2020/10/04/vpn-wireguard/">Настройка vpn WireGuard</a></h1>
+<footer class="post-info">
+        <span>Sun 04 October 2020</span>
+<span>| tags: <a href="/tag/vpn.html">vpn</a><a href="/tag/linux.html">linux</a><a href="/tag/android.html">android</a><a href="/tag/wireguard.html">wireguard</a></span>
+</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://www.wireguard.com">WireGuard official page</a> </li>
+<li><a href="https://linuxize.com/post/how-to-set-up-wireguard-vpn-on-ubuntu-18-04/">How to Set Up WireGuard VPN on Ubuntu 18.04</a></li>
+<li><a href="https://www.youtube.com/watch?v=myn6yE1wgK4">Setting Up WireGuard Client On Android</a></li>
+</ul>
+<h2>Настройка сервера</h2>
+<p>1.Установка</p>
+<div class="highlight"><pre><span></span>    sudo apt install wireguard
+</pre></div>
+
+
+<p>2.Генерация public и private ключей</p>
+<div class="highlight"><pre><span></span>    wg genkey <span class="p">|</span> sudo tee /etc/wireguard/privatekey <span class="p">|</span> wg pubkey <span class="p">|</span> sudo tee /etc/wireguard/publickey
+</pre></div>
+
+
+<p>3.Создание конфигурации интерфейса vpn /etc/wireguard/wg0.conf:</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Interface<span class="o">]</span>
+<span class="nv">Address</span> <span class="o">=</span> <span class="m">10</span>.0.0.1/24
+<span class="nv">SaveConfig</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">ListenPort</span> <span class="o">=</span> <span class="m">51820</span>
+<span class="nv">PrivateKey</span> <span class="o">=</span> SERVER_PRIVATE_KEY
+<span class="nv">PostUp</span> <span class="o">=</span> iptables -A FORWARD -i %i -j ACCEPT<span class="p">;</span> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+<span class="nv">PostDown</span> <span class="o">=</span> iptables -D FORWARD -i %i -j ACCEPT<span class="p">;</span> iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+</pre></div>
+
+
+<p>где </p>
+<ul>
+<li>SERVER_PRIVATE_KEY - содержимое файла /etc/wireguard/privatekey</li>
+<li>PostUp - command or script which is executed before bringing the interface up. In this example, we’re using iptables to enable masquerading. This will allow traffic to leave the server, giving the VPN clients access to the Internet.
+Make sure to replace ens3 after -A POSTROUTING to match the name of your public network interface. You can easily find the interface by running the following command:</li>
+</ul>
+<div class="highlight"><pre><span></span>ip -o -4 route show to default <span class="p">|</span> awk <span class="s1">&#39;{print $5}&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>PostDown - command or script which is executed before bringing the interface down. The iptables rules will be removed once the interface is down.</li>
+</ul>
+<p>4.файлы wg0.conf и privatekey не должны быть доступны обычным пользователям:</p>
+<div class="highlight"><pre><span></span>sudo chmod <span class="m">600</span> /etc/wireguard/<span class="o">{</span>privatekey,wg0.conf<span class="o">}</span>
+</pre></div>
+
+
+<p>5.поднять интерфейс wg0</p>
+<div class="highlight"><pre><span></span>wg-quick up wg0 
+wg show wg0
+ip a show wg0
+sudo systemctl <span class="nb">enable</span> wg-quick@wg0
+</pre></div>
+
+
+<p>6.Настройки сети и фаервола
+* добавить в файл /etc/sysctl.conf строку:</p>
+<div class="highlight"><pre><span></span>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+</pre></div>
+
+
+<ul>
+<li>применить изменения:</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo sysctl -p
+</pre></div>
+
+
+<ul>
+<li>открыть порт 51820:</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo ufw allow <span class="m">51820</span>/udp
+</pre></div>
+
+
+<h2>Настройка клиента Android</h2>
+<p>1.генерация ключей для клиента</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /etc/wireguard/
+wg genkey <span class="p">|</span> sudo tee phone_privatekey <span class="p">|</span> wg pubkey &gt; phone_publickey
+</pre></div>
+
+
+<p>2.создадим файл конфигурации android2.conf</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Interface<span class="o">]</span>
+<span class="nv">PrivateKey</span> <span class="o">=</span> &lt;приватный ключ из файла phone_privatekey&gt;
+<span class="nv">Address</span> <span class="o">=</span> <span class="m">10</span>.0.0.3/32
+<span class="nv">DNS</span> <span class="o">=</span> <span class="m">8</span>.8.8.8
+
+<span class="o">[</span>Peer<span class="o">]</span>
+<span class="nv">PublicKey</span> <span class="o">=</span> &lt;public ключ сервера в моём случае из файла publickey&gt;
+<span class="nv">Endpoint</span> <span class="o">=</span> &lt;ip server&gt;:51820
+<span class="nv">AllowedIPs</span> <span class="o">=</span> <span class="m">0</span>.0.0.0/0
+</pre></div>
+
+
+<p>3.добавим в конец файла wg0.conf информацию о подключении:</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Peer<span class="o">]</span>
+<span class="nv">PublicKey</span> <span class="o">=</span> &lt;public ключ из файла phone_publickey&gt;
+<span class="nv">AllowedIPs</span> <span class="o">=</span> <span class="m">10</span>.0.0.3/32
+</pre></div>
+
+
+<p>4.перезапустим интерфейс wg0:</p>
+<div class="highlight"><pre><span></span>wg-quick down wg0
+wg-quick up wg0
+</pre></div>
+
+
+<p>5.установим программу генерации qr-кодов на сервере:</p>
+<div class="highlight"><pre><span></span>apt install qrencode
+</pre></div>
+
+
+<p>6.генерация qr-кода который отсканируем в программе WireGuard на андроиде:</p>
+<div class="highlight"><pre><span></span>qrencode -t utf8 &lt; android2.conf
+</pre></div>
+
+
+<p>7.пробуем подключаться к впн.</p>
+<h2>Настройка клиента Linux</h2>
+<p>1.установка</p>
+<div class="highlight"><pre><span></span>sudo apt install openresolv
+sudo apt install wireguard
+</pre></div>
+
+
+<p>2.генерация ключей на клиенте</p>
+<div class="highlight"><pre><span></span>wg genkey <span class="p">|</span> sudo tee /etc/wireguard/privatekey <span class="p">|</span> wg pubkey <span class="p">|</span> sudo tee /etc/wireguard/publickey
+</pre></div>
+
+
+<p>3.создать файл /etc/wireguard/wg0.conf</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>Interface<span class="o">]</span>
+<span class="nv">PrivateKey</span> <span class="o">=</span> CLIENT_PRIVATE_KEY
+<span class="nv">Address</span> <span class="o">=</span> <span class="m">10</span>.0.0.2/32
+<span class="nv">DNS</span> <span class="o">=</span> <span class="m">8</span>.8.8.8
+
+<span class="o">[</span>Peer<span class="o">]</span>
+<span class="nv">PublicKey</span> <span class="o">=</span> SERVER_PUBLIC_KEY
+<span class="nv">Endpoint</span> <span class="o">=</span> SERVER_IP_ADDRESS:51820
+<span class="nv">AllowedIPs</span> <span class="o">=</span> <span class="m">0</span>.0.0.0/0
+</pre></div>
+
+
+<p>4.на сервере выполнить команду:</p>
+<div class="highlight"><pre><span></span>sudo wg <span class="nb">set</span> wg0 peer CLIENT_PUBLIC_KEY allowed-ips <span class="m">10</span>.0.0.2
+</pre></div>
+
+
+<p>5.чтобы подключиться к впн выполните команду:</p>
+<div class="highlight"><pre><span></span>wg-quick up wg0
+</pre></div>
+
+
+<p>6.чтобы отключиться от впн выполните команду:</p>
+<div class="highlight"><pre><span></span>wg-quick down wg0
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2017/05/11/miui-asus-z00l/" rel="bookmark"
+                           title="Permalink to портирование MIUI на Asus Z00L">портирование MIUI на Asus Z00L</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 11 May 2017</span>
 <span>| tags: <a href="/tag/ssylki.html">ссылки</a><a href="/tag/asus.html">asus</a><a href="/tag/miui.html">miui</a><a href="/tag/z00l.html">z00l</a><a href="/tag/android.html">android</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://github.com/micode">https://github.com/micode</a></li>
 <li><a href="http://en.miui.com/thread-9630-1-1.html">http://en.miui.com/thread-9630-1-1.html</a></li>
@@ -105,12 +277,14 @@
 <li><a href="https://github.com/MiCode/patchrom/blob/marshmallow/Patchrom%20Developer%20Guide.pdf">https://github.com/MiCode/patchrom/blob/marshmallow/Patchrom%20Developer%20Guide.pdf</a></li>
 <li><a href="http://miuipro.ru/miuipro-port/">http://miuipro.ru/miuipro-port/</a></li>
 <li><a href="http://www.osbusters.net/2015/11/how-to-port-miui-7-rom-to-qualcomm-smartphones.html">http://www.osbusters.net/2015/11/how-to-port-miui-7-rom-to-qualcomm-smartphones.html</a></li>
-</ul>                </article>
+</ul>
+                <a class="readmore" href="/2017/05/11/miui-asus-z00l/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

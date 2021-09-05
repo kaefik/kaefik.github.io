@@ -29,12 +29,14 @@
                             <li><a href="/category/arduino.html">arduino</a></li>
                             <li><a href="/category/bios.html">bios</a></li>
                             <li><a href="/category/blogger.html">blogger</a></li>
+                            <li><a href="/category/c.html">c#</a></li>
                             <li><a href="/category/chromeos.html">chromeos</a></li>
                             <li><a href="/category/clojure.html">clojure</a></li>
                             <li><a href="/category/design.html">design</a></li>
                             <li><a href="/category/docker.html">docker</a></li>
                             <li><a href="/category/emacs.html">emacs</a></li>
                             <li><a href="/category/english.html">english</a></li>
+                            <li><a href="/category/familytree.html">familytree</a></li>
                             <li><a href="/category/freepbx.html">freepbx</a></li>
                             <li><a href="/category/game.html">game</a></li>
                             <li><a href="/category/git.html">git</a></li>
@@ -42,6 +44,7 @@
                             <li><a href="/category/hackintosh.html">hackintosh</a></li>
                             <li><a href="/category/hobby.html">hobby</a></li>
                             <li><a href="/category/internet.html">internet</a></li>
+                            <li><a href="/category/java.html">java</a></li>
                             <li><a href="/category/javascript.html">javascript</a></li>
                             <li><a href="/category/lego.html">lego</a></li>
                             <li><a href="/category/linux.html">linux</a></li>
@@ -55,6 +58,7 @@
                             <li><a href="/category/money.html">money</a></li>
                             <li><a href="/category/mongodb.html">mongodb</a></li>
                             <li><a href="/category/mouse.html">mouse</a></li>
+                            <li><a href="/category/nano.html">nano</a></li>
                             <li><a href="/category/network.html">network</a></li>
                             <li><a href="/category/openstreetmap.html">openstreetmap</a></li>
                             <li><a href="/category/os.html">os</a></li>
@@ -74,6 +78,7 @@
                             <li><a href="/category/shell.html">shell</a></li>
                             <li><a href="/category/swift.html">swift</a></li>
                             <li><a href="/category/tatar.html">tatar</a></li>
+                            <li><a href="/category/ubuntu.html">ubuntu</a></li>
                             <li><a href="/category/upwork.html">upwork</a></li>
                             <li><a href="/category/video.html">video</a></li>
                             <li><a href="/category/vim.html">vim</a></li>
@@ -116,8 +121,8 @@
 <span class="nv">SaveConfig</span> <span class="o">=</span> <span class="nb">true</span>
 <span class="nv">ListenPort</span> <span class="o">=</span> <span class="m">51820</span>
 <span class="nv">PrivateKey</span> <span class="o">=</span> SERVER_PRIVATE_KEY
-<span class="nv">PostUp</span> <span class="o">=</span> iptables -A FORWARD -i %i -j ACCEPT<span class="p">;</span> iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE
-<span class="nv">PostDown</span> <span class="o">=</span> iptables -D FORWARD -i %i -j ACCEPT<span class="p">;</span> iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE
+<span class="nv">PostUp</span> <span class="o">=</span> iptables -A FORWARD -i %i -j ACCEPT<span class="p">;</span> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+<span class="nv">PostDown</span> <span class="o">=</span> iptables -D FORWARD -i %i -j ACCEPT<span class="p">;</span> iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 </pre></div>
 
 
@@ -148,23 +153,21 @@ sudo systemctl <span class="nb">enable</span> wg-quick@wg0
 
 
 <p>6.Настройки сети и фаервола
-    * добавить в файл /etc/sysctl.conf строку:</p>
+* добавить в файл /etc/sysctl.conf строку:</p>
 <div class="highlight"><pre><span></span>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="err">* применить изменения:</span>
-</pre></div>
-
-
+<ul>
+<li>применить изменения:</li>
+</ul>
 <div class="highlight"><pre><span></span>sudo sysctl -p
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="err">* открыть порт 51820:</span>
-</pre></div>
-
-
+<ul>
+<li>открыть порт 51820:</li>
+</ul>
 <div class="highlight"><pre><span></span>sudo ufw allow <span class="m">51820</span>/udp
 </pre></div>
 
@@ -185,6 +188,7 @@ wg genkey <span class="p">|</span> sudo tee phone_privatekey <span class="p">|</
 <span class="o">[</span>Peer<span class="o">]</span>
 <span class="nv">PublicKey</span> <span class="o">=</span> &lt;public ключ сервера в моём случае из файла publickey&gt;
 <span class="nv">Endpoint</span> <span class="o">=</span> &lt;ip server&gt;:51820
+<span class="nv">AllowedIPs</span> <span class="o">=</span> <span class="m">0</span>.0.0.0/0
 </pre></div>
 
 
