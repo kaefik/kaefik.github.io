@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="yandex-verification" content="f7918c520c4b54dd" />
-        <title>Общественная записная книжка - debug</title>
+        <title>Общественная записная книжка - celery</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -94,29 +94,52 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2021/06/07/python/">Python - отладка и написания кода (полезные модули/пакеты)</a></h1>
+                    <h1 class="entry-title"><a href="/2021/09/23/python-celery/">Celery -</a></h1>
 <footer class="post-info">
-        <span>Mon 07 June 2021</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2020/06/04/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/08/05/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
-
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+        <span>Thu 23 September 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
+</footer><!-- /.post-info --><h2>Общие ссылки</h2>
 <ul>
-<li>
-<p><a href="https://nuancesprog.ru/p/12663/">3 инструмента для отслеживания и визуализации выполнения кода на Python</a></p>
-</li>
-<li>
-<p><a href="https://nuancesprog.ru/p/8572/">Attr - одна из лучших практик объектно-ориентированного Python</a></p>
-</li>
-<li><a href="https://github.com/realpython/python-guide">Hitchhiker's Guide to Python</a></li>
-<li><a href="https://dramatiq.io/index.html">Dramatiq: background tasks</a> - </li>
+<li><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></li>
 </ul>
-<h3><a href="https://github.com/Delgan/loguru">Loguru</a>  —  для лучшего вывода исключений</h3>
-<p>возможность отлавливать неожиданные ошибки и отображать значение переменной, которое приводит к сбою кода.</p>                </article>
+<h2>Пример использования</h2>
+<p>источник: <a href="https://habr.com/ru/company/biggo/blog/102742/">https://habr.com/ru/company/biggo/blog/102742/</a></p>
+<p>Начнем c конфигурации worker'a. Это демон, который собственно получает задания из очереди и выполняет их. Рекомендуемая очередь — RabbitMQ</p>
+<p>Конфигурация хранится celeryconfig.py</p>
+<p>Запуск демона: celeryd -l INFO -B
+Включаем логгирование в консоль и опция -B запуск демона периодических заданий. Последний можно запустить отдельно коммандой celerybeat</p>
+<p>Теперь создадим тестовое задание. В конфиге мы импортируем tasks, поэтому и файл заданий у нас tasks.py:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">task</span>
+<span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">periodic_task</span>
+<span class="kn">from</span> <span class="nn">celery.task.schedules</span> <span class="kn">import</span> <span class="n">crontab</span>
+
+<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">60</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">mail_queue</span><span class="p">():</span>
+
+    <span class="nb">print</span> <span class="s2">&quot;Task is executed every minute&quot;</span>
+
+<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">crontab</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">transactions</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="s2">&quot;Task is executed every day on 0:10&quot;</span>
+
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">delayed_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">some_function</span><span class="p">()</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">delayed_heavy_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">some_heavy_function</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Итак, у нас 4 задания в tasks. Первые два выполняются по расписанию, т.к. они отмечены декоратором @periodic_task. А вот два последних будут вызваны непосредственно из кода программы. Вот таким образом:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">delayed_function</span><span class="p">,</span> <span class="n">delayed_heavy_function</span>
+
+<span class="n">delayed_function</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">id</span><span class="p">],</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># Будет запущена через 300 секунд</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">delayed_heavy_function</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1">#Будет запущена сразу(как только появится возможность), в асинхронном режиме</span>
+</pre></div>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>

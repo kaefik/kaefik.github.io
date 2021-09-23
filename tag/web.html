@@ -94,28 +94,84 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2021/08/05/python/">Cross-origin resource sharing - совместное использование ресурсов между разными источниками</a></h1>
+                    <h1 class="entry-title"><a href="/2021/09/23/python-celery/">Celery -</a></h1>
+<footer class="post-info">
+        <span>Thu 23 September 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
+</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+<ul>
+<li><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></li>
+</ul>
+<h2>Пример использования</h2>
+<p>источник: <a href="https://habr.com/ru/company/biggo/blog/102742/">https://habr.com/ru/company/biggo/blog/102742/</a></p>
+<p>Начнем c конфигурации worker'a. Это демон, который собственно получает задания из очереди и выполняет их. Рекомендуемая очередь — RabbitMQ</p>
+<p>Конфигурация хранится celeryconfig.py</p>
+<p>Запуск демона: celeryd -l INFO -B
+Включаем логгирование в консоль и опция -B запуск демона периодических заданий. Последний можно запустить отдельно коммандой celerybeat</p>
+<p>Теперь создадим тестовое задание. В конфиге мы импортируем tasks, поэтому и файл заданий у нас tasks.py:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">task</span>
+<span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">periodic_task</span>
+<span class="kn">from</span> <span class="nn">celery.task.schedules</span> <span class="kn">import</span> <span class="n">crontab</span>
+
+<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">60</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">mail_queue</span><span class="p">():</span>
+
+    <span class="nb">print</span> <span class="s2">&quot;Task is executed every minute&quot;</span>
+
+<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">crontab</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">transactions</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="s2">&quot;Task is executed every day on 0:10&quot;</span>
+
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">delayed_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">some_function</span><span class="p">()</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">delayed_heavy_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">some_heavy_function</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Итак, у нас 4 задания в tasks. Первые два выполняются по расписанию, т.к. они отмечены декоратором @periodic_task. А вот два последних будут вызваны непосредственно из кода программы. Вот таким образом:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">delayed_function</span><span class="p">,</span> <span class="n">delayed_heavy_function</span>
+
+<span class="n">delayed_function</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">id</span><span class="p">],</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># Будет запущена через 300 секунд</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">delayed_heavy_function</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1">#Будет запущена сразу(как только появится возможность), в асинхронном режиме</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2021/08/05/python/" rel="bookmark"
+                           title="Permalink to Cross-origin resource sharing - совместное использование ресурсов между разными источниками">Cross-origin resource sharing - совместное использование ресурсов между разными источниками</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 05 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/cors.html">cors</a><a href="/tag/requests.html">requests</a></span>Translations:
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
-</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
 <li><a href="https://reqbin.com/req/python/c-xgafmluu/convert-curl-to-python-requests">Convert Curl to Python Requests</a></li>
 <li><a href="https://webdevblog.ru/chto-takoe-cors/">Что такое CORS</a></li>
 <li><a href="https://medium.com/edureka/python-requests-tutorial-30edabfa6a1c">Python Requests Tutorial — GET and POST Requests in Python</a></li>
 <li><a href="https://habr.com/ru/company/macloud/blog/553826/">CORS для чайников: история возникновения, как устроен и оптимальные методы работы</a></li>
 <li><a href="https://docs-python.ru/packages/modul-requests-python/izvlechenie-ustanovka-cookies/">Извлечение и установка cookies с модулем requests в Python</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+</ul>
+                <a class="readmore" href="/2021/08/05/python/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

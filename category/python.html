@@ -94,11 +94,68 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2021/09/03/python-and-gui-tkinter/">Python and GUI Tkinter</a></h1>
+                    <h1 class="entry-title"><a href="/2021/09/23/python-celery/">Celery -</a></h1>
+<footer class="post-info">
+        <span>Thu 23 September 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
+</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+<ul>
+<li><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></li>
+</ul>
+<h2>Пример использования</h2>
+<p>источник: <a href="https://habr.com/ru/company/biggo/blog/102742/">https://habr.com/ru/company/biggo/blog/102742/</a></p>
+<p>Начнем c конфигурации worker'a. Это демон, который собственно получает задания из очереди и выполняет их. Рекомендуемая очередь — RabbitMQ</p>
+<p>Конфигурация хранится celeryconfig.py</p>
+<p>Запуск демона: celeryd -l INFO -B
+Включаем логгирование в консоль и опция -B запуск демона периодических заданий. Последний можно запустить отдельно коммандой celerybeat</p>
+<p>Теперь создадим тестовое задание. В конфиге мы импортируем tasks, поэтому и файл заданий у нас tasks.py:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">task</span>
+<span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">periodic_task</span>
+<span class="kn">from</span> <span class="nn">celery.task.schedules</span> <span class="kn">import</span> <span class="n">crontab</span>
+
+<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">60</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">mail_queue</span><span class="p">():</span>
+
+    <span class="nb">print</span> <span class="s2">&quot;Task is executed every minute&quot;</span>
+
+<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">crontab</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">transactions</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="s2">&quot;Task is executed every day on 0:10&quot;</span>
+
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">delayed_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">some_function</span><span class="p">()</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">delayed_heavy_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">some_heavy_function</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Итак, у нас 4 задания в tasks. Первые два выполняются по расписанию, т.к. они отмечены декоратором @periodic_task. А вот два последних будут вызваны непосредственно из кода программы. Вот таким образом:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">delayed_function</span><span class="p">,</span> <span class="n">delayed_heavy_function</span>
+
+<span class="n">delayed_function</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">id</span><span class="p">],</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># Будет запущена через 300 секунд</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">delayed_heavy_function</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1">#Будет запущена сразу(как только появится возможность), в асинхронном режиме</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2021/09/03/python-and-gui-tkinter/" rel="bookmark"
+                           title="Permalink to Python and GUI Tkinter">Python and GUI Tkinter</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Fri 03 September 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/gui.html">gui</a><a href="/tag/programming.html">programming</a><a href="/tag/python.html">python</a><a href="/tag/tkinter.html">tkinter</a></span>
-</footer><!-- /.post-info --><h2>Полезные ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
 <li><a href="https://docs.python.org/3.8/library/tkinter.html">Tkinter</a></li>
 <li><a href="https://github.com/ParthJadhav/Tkinter-Designer">Tkinter Designer</a></li>
@@ -108,11 +165,10 @@
 </ul>
 <p><strong>Установка Tkinter</strong></p>
 <div class="highlight"><pre><span></span>sudo apt-get install python3-tk
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+</pre></div>
+                <a class="readmore" href="/2021/09/03/python-and-gui-tkinter/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -124,11 +180,11 @@
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -163,11 +219,11 @@
 <footer class="post-info">
         <span>Thu 05 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/cors.html">cors</a><a href="/tag/requests.html">requests</a></span>Translations:
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -191,11 +247,11 @@
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -224,11 +280,11 @@
 <footer class="post-info">
         <span>Sun 06 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/setup.html">setup</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/package.html">package</a></span>Translations:
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
         <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -352,30 +408,6 @@
 <span class="nd">@attrs</span>
 <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
                 <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2020/06/04/python/" rel="bookmark"
-                           title="Permalink to Тестирование REST APi српедствами python">Тестирование REST APi српедствами python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 04 June 2020</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/rest-api.html">rest api</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/test.html">test</a><a href="/tag/testirovanie.html">тестирование</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
-        <a href="/2021/08/05/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-
-</footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
-<ul>
-<li><a href="https://cyberguru.tech/программирование/pytest">https://cyberguru.tech/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/pytest</a></li>
-<li>[Автоматизация на Python. Тестируем API](https://blog.parviz.pw/posts/155/%D0 …</li></ul>
-                <a class="readmore" href="/2020/06/04/python/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

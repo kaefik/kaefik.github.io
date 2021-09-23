@@ -96,6 +96,38 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2020/10/04/vpn-wireguard/" rel="bookmark"
+                           title="Permalink to Настройка vpn WireGuard">Настройка vpn WireGuard</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sun 04 October 2020</span>
+<span>| tags: <a href="/tag/vpn.html">vpn</a><a href="/tag/linux.html">linux</a><a href="/tag/android.html">android</a><a href="/tag/wireguard.html">wireguard</a></span>
+</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
+<ul>
+<li><a href="https://www.wireguard.com">WireGuard official page</a> </li>
+<li><a href="https://linuxize.com/post/how-to-set-up-wireguard-vpn-on-ubuntu-18-04/">How to Set Up WireGuard VPN on Ubuntu 18.04</a></li>
+<li><a href="https://www.youtube.com/watch?v=myn6yE1wgK4">Setting Up WireGuard Client On Android</a></li>
+</ul>
+<h2>Настройка сервера</h2>
+<p>1.Установка</p>
+<div class="highlight"><pre><span></span>    sudo apt install wireguard
+</pre></div>
+
+
+<p>2.Генерация public и private ключей</p>
+<div class="highlight"><pre><span></span>    wg genkey <span class="p">|</span> sudo tee /etc/wireguard/privatekey <span class="p">|</span> wg pubkey <span class="p">|</span> sudo tee /etc/wireguard/publickey
+</pre></div>
+
+
+<p>3 …</p>
+                <a class="readmore" href="/2020/10/04/vpn-wireguard/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2020/09/29/unifi-wifi/" rel="bookmark"
                            title="Permalink to UniFi, вайфай и прочее безобразие">UniFi, вайфай и прочее безобразие</a></h1>
                 </header>
@@ -264,10 +296,10 @@
         <span>Thu 04 June 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/rest-api.html">rest api</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/test.html">test</a><a href="/tag/testirovanie.html">тестирование</a></span>Translations:
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -292,26 +324,6 @@
 </ul>
 <p>/usr/sbin/asterisk -rx 'sip reload'</p>
                 <a class="readmore" href="/2020/06/02/freepbx-asterisk/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2020/04/21/python-and-django-geo/" rel="bookmark"
-                           title="Permalink to Django Geo">Django Geo</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Tue 21 April 2020</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/django.html">Django</a><a href="/tag/python.html">python</a><a href="/tag/web.html">web</a><a href="/tag/geo.html">geo</a><a href="/tag/postgis.html">postgis</a><a href="/tag/gis.html">gis</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://docs.djangoproject.com/en/3.0/ref/contrib/gis/model-api/">GeoDjango Model API</a></li>
-<li><a href="https://django-floppyforms.readthedocs.io/en/latest/geodjango.html">GeoDjango widgets</a></li>
-<li><a href="https://www.youtube.com/watch?v=L3YoX9wrGDc">Geodjango Tutorial 1: Introduction to Django projects</a></li>
-</ul>
-                <a class="readmore" href="/2020/04/21/python-and-django-geo/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

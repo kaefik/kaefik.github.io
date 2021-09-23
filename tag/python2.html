@@ -96,6 +96,44 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2020/08/27/python-oop-attr/" rel="bookmark"
+                           title="Permalink to Attr - полезная практика ООП в Python">Attr - полезная практика ООП в Python</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Thu 27 August 2020</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
+</footer><!-- /.post-info -->                <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
+<h2>Установка библиотеки</h2>
+<div class="highlight"><pre><span></span>pip install attrs
+</pre></div>
+
+
+<h2>Использование</h2>
+<h3>без использования библиотек</h3>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="n">где</span> <span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span> <span class="o">//</span> <span class="kc">False</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
+
+<span class="nd">@attrs</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
+                <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2020/08/14/docker-python-project/" rel="bookmark"
                            title="Permalink to Docker для проектов на языке Python">Docker для проектов на языке Python</a></h1>
                 </header>
@@ -163,10 +201,10 @@
         <span>Thu 04 June 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/rest-api.html">rest api</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/test.html">test</a><a href="/tag/testirovanie.html">тестирование</a></span>Translations:
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/08/05/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -319,24 +357,6 @@ pip install uvicorn fastapi pydantic
 <td>Схема (schema)</td>
 <td>определение или описание …</td></tr></tbody></table>
                 <a class="readmore" href="/2020/01/17/python-fastapi/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2019/12/16/machine-learning/" rel="bookmark"
-                           title="Permalink to Машинное обучение, возможно и не машинное">Машинное обучение, возможно и не машинное</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Mon 16 December 2019</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/data.html">data</a><a href="/tag/datascine.html">datascine</a><a href="/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->                <p><strong>Данные</strong></p>
-<ul>
-<li><a href="https://habr.com/ru/company/edison/blog/480408/">52 датасета для тренировочных проектов</a></li>
-</ul>
-                <a class="readmore" href="/2019/12/16/machine-learning/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
