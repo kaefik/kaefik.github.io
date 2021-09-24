@@ -240,6 +240,105 @@
 <p>для проверки есть ли синтаксические ошибки можно использовать следующее:</p>
 <div class="highlight"><pre><span></span><span class="err">python -m celeryconfig</span>
 </pre></div>
+
+
+<h3>Использование Celery в приложении</h3>
+<div class="highlight"><pre><span></span><span class="err">proj/__init__.py</span>
+<span class="err">    /celery.py</span>
+<span class="err">    /tasks.py</span>
+</pre></div>
+
+
+<p>proj/celery.py</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;proj&#39;</span><span class="p">,</span>
+             <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;amqp://&#39;</span><span class="p">,</span>
+             <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;rpc://&#39;</span><span class="p">,</span>
+             <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;proj.tasks&#39;</span><span class="p">])</span>
+
+<span class="c1"># Optional configuration, see the application user guide.</span>
+<span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="n">result_expires</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+
+
+<p>proj/tasks.py</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.celery</span> <span class="kn">import</span> <span class="n">app</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">xsum</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Запуск worker</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj worker -l INFO</span>
+</pre></div>
+
+
+<p>запуск в фоновом режиме: смотрите <a href="https://docs.celeryproject.org/en/stable/userguide/daemonizing.html#daemonizing">Daemonization</a></p>
+<div class="highlight"><pre><span></span>$ mkdir -p /var/run/celery
+$ mkdir -p /var/log/celery
+$ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/run/celery/%n.pid <span class="se">\</span>
+                                        --logfile<span class="o">=</span>/var/log/celery/%n%I.log
+</pre></div>
+
+
+<h4>Вызов/запуск задач</h4>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;lopri&#39;</span><span class="p">,</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">4</span>
+</pre></div>
+
+
+<p>Если хотите получите результат:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="k">add</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="mi">4</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="n">id</span>
+<span class="n">d6b3aea2</span><span class="o">-</span><span class="n">fb9b</span><span class="o">-</span><span class="mi">4</span><span class="n">ebc</span><span class="o">-</span><span class="mi">8</span><span class="n">da4</span><span class="o">-</span><span class="mi">848818</span><span class="n">db9114</span>
+
+<span class="o">#</span>  <span class="err">статус</span> <span class="err">задачи</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="n">failed</span><span class="p">()</span>
+<span class="k">True</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="n">successful</span><span class="p">()</span>
+<span class="k">False</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="k">state</span>
+<span class="err">&#39;</span><span class="n">FAILURE</span>
+</pre></div>
+
+
+<p>Задача может переходить с следующие статусы:</p>
+<div class="highlight"><pre><span></span><span class="err">PENDING -&gt; STARTED -&gt; SUCCESS</span>
+</pre></div>
+
+
+<p>Если задача будет</p>
+<div class="highlight"><pre><span></span><span class="err">PENDING -&gt; STARTED -&gt; RETRY -&gt; STARTED -&gt; RETRY -&gt; STARTED -&gt; SUCCESS</span>
+</pre></div>
     </div><!-- /.entry-content -->
 
   </article>
