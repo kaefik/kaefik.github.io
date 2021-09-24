@@ -94,7 +94,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2021/09/23/python-celery/">Celery -</a></h1>
+                    <h1 class="entry-title"><a href="/2021/09/23/python-celery/">Celery - планировщик фоновых и возможно периодческих задач</a></h1>
 <footer class="post-info">
         <span>Thu 23 September 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
@@ -139,6 +139,101 @@
 <span class="n">delayed_function</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">id</span><span class="p">],</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># Будет запущена через 300 секунд</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">delayed_heavy_function</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1">#Будет запущена сразу(как только появится возможность), в асинхронном режиме</span>
+</pre></div>
+
+
+<h2>Первые шаги с Celery</h2>
+<p>источник: <a href="https://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html">https://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html</a></p>
+<h3>Выберем брокера сообщений</h3>
+<p>остановлюсь на RabbitMQ</p>
+<p>установка</p>
+<div class="highlight"><pre><span></span> sudo apt-get install rabbitmq-server
+</pre></div>
+
+
+<p>или запустить через docker</p>
+<div class="highlight"><pre><span></span><span class="err">docker run -d -p 5672:5672 rabbitmq</span>
+</pre></div>
+
+
+<h3>Установка Celery</h3>
+<div class="highlight"><pre><span></span>pip install celery
+</pre></div>
+
+
+<h3>Application</h3>
+<p>создадим файл tasks.py</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;pyamqp://guest@localhost//&#39;</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+
+
+<h3>Запуск Celery worker server</h3>
+<div class="highlight"><pre><span></span><span class="err">celery -A tasks worker --loglevel=INFO</span>
+</pre></div>
+
+
+<p>В продакшене надо будет запустить worker как демон.</p>
+<p>Вызов задачи</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; from tasks import add
+&gt;&gt;&gt; add.delay<span class="o">(</span><span class="m">4</span>, <span class="m">4</span><span class="o">)</span>
+</pre></div>
+
+
+<p>результатом работы будет <a href="https://docs.celeryproject.org/en/master/reference/celery.result.html#celery.result.AsyncResult">AsyncResult</a></p>
+<p>Сохранение результата работы задачи</p>
+<p>Для сохранения состояния задачи используется так называемые result backends to choose from: SQLAlchemy/Django ORM, MongoDB, Memcached, Redis, RPC (RabbitMQ/AMQP), and – или что-то определяемые вами.</p>
+<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;rpc://&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;pyamqp://&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">result</span> <span class="o">=</span> <span class="k">add</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">result</span><span class="p">.</span><span class="n">ready</span><span class="p">()</span>   <span class="o">#</span> <span class="err">возвращает</span> <span class="err">завершен</span> <span class="err">ли</span> <span class="err">процесс</span> <span class="err">или</span> <span class="err">нет</span>
+<span class="k">False</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">result</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">#</span> <span class="err">получаем</span> <span class="err">результат</span> <span class="err">задачи</span>
+<span class="mi">8</span>
+</pre></div>
+
+
+<p>Бэкенды используют ресурсы для сохранения и передачу результатов, поэтому нужно вызывать или get(), или forget() для каждого AsyncResult экземпляра который возвращается после вызова задачи.</p>
+<h3>Конфигурация</h3>
+<p>можно конфигурировать в самом приложении или в отдельном модуле.</p>
+<div class="highlight"><pre><span></span><span class="err">app.conf.update(</span>
+<span class="err">    task_serializer=&#39;json&#39;,</span>
+<span class="err">    accept_content=[&#39;json&#39;],  # Ignore other content</span>
+<span class="err">    result_serializer=&#39;json&#39;,</span>
+<span class="err">    timezone=&#39;Europe/Oslo&#39;,</span>
+<span class="err">    enable_utc=True,</span>
+<span class="err">)</span>
+</pre></div>
+
+
+<p>или</p>
+<div class="highlight"><pre><span></span><span class="err">app.config_from_object(&#39;celeryconfig&#39;)</span>
+</pre></div>
+
+
+<p>и определяем модуль celeryconfig.py:</p>
+<div class="highlight"><pre><span></span><span class="n">broker_url</span> <span class="o">=</span> <span class="s1">&#39;pyamqp://&#39;</span>
+<span class="n">result_backend</span> <span class="o">=</span> <span class="s1">&#39;rpc://&#39;</span>
+
+<span class="n">task_serializer</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
+<span class="n">result_serializer</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
+<span class="n">accept_content</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">]</span>
+<span class="n">timezone</span> <span class="o">=</span> <span class="s1">&#39;Europe/Oslo&#39;</span>
+<span class="n">enable_utc</span> <span class="o">=</span> <span class="k">True</span>
+</pre></div>
+
+
+<p>для проверки есть ли синтаксические ошибки можно использовать следующее:</p>
+<div class="highlight"><pre><span></span><span class="err">python -m celeryconfig</span>
 </pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -155,11 +250,11 @@
 <footer class="post-info">
         <span>Thu 05 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/cors.html">cors</a><a href="/tag/requests.html">requests</a></span>Translations:
-        <a href="/2020/06/04/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
