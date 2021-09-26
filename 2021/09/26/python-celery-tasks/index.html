@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="yandex-verification" content="f7918c520c4b54dd" />
-        <title>Общественная записная книжка - celery</title>
+        <title>Tasks - Задачи в Celery</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -68,7 +68,7 @@
                             <li><a href="/category/powershell.html">powershell</a></li>
                             <li><a href="/category/programming.html">programming</a></li>
                             <li><a href="/category/projects.html">projects</a></li>
-                            <li><a href="/category/python.html">python</a></li>
+                            <li class="active"><a href="/category/python.html">python</a></li>
                             <li><a href="/category/radio.html">radio</a></li>
                             <li><a href="/category/rest-api.html">rest-api</a></li>
                             <li><a href="/category/rust.html">rust</a></li>
@@ -91,14 +91,19 @@
                     </ul>
                 <div>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/2021/09/26/python-celery-tasks/" rel="bookmark"
+           title="Permalink to Tasks - Задачи в Celery">Tasks - Задачи в Celery</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/2021/09/26/python-celery-tasks/">Tasks - Задачи в Celery</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <span>Sun 26 September 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a><a href="/tag/tasks.html">tasks</a></span>
-</footer><!-- /.post-info --><p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/tasks.html">https://docs.celeryproject.org/en/stable/userguide/tasks.html</a></p>
+</footer><!-- /.post-info -->      <p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/tasks.html">https://docs.celeryproject.org/en/stable/userguide/tasks.html</a></p>
 <h2>Basics</h2>
 <p>Создание задачи используя декоратор task()</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
@@ -217,45 +222,11 @@
 <ul>
 <li>propagates</li>
 </ul>
-<p>Yes</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>Yes</p>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2021/09/23/python-celery/" rel="bookmark"
-                           title="Permalink to Celery - планировщик фоновых и возможно периодческих задач">Celery - планировщик фоновых и возможно периодческих задач</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 23 September 2021</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
-</footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
-<ul>
-<li>
-<p><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></p>
-</li>
-<li>
-<p><a href="https://docs.celeryproject.org/en/stable/userguide/index.html">User guide Celery</a></p>
-</li>
-</ul>
-<h2>Пример использования</h2>
-<p>источник: <a href="https://habr.com/ru/company/biggo/blog/102742/">https://habr.com/ru/company/biggo/blog/102742/</a></p>
-<p>Начнем c конфигурации worker'a. Это демон, который собственно получает задания из очереди и выполняет их. Рекомендуемая очередь — RabbitMQ</p>
-<p>Конфигурация хранится celeryconfig.py</p>
-<p>Запуск демона: celeryd -l INFO -B
-Включаем логгирование в …</p>
-                <a class="readmore" href="/2021/09/23/python-celery/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>

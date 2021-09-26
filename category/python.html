@@ -94,11 +94,146 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/2021/09/23/python-celery/">Celery - планировщик фоновых и возможно периодческих задач</a></h1>
+                    <h1 class="entry-title"><a href="/2021/09/26/python-celery-tasks/">Tasks - Задачи в Celery</a></h1>
+<footer class="post-info">
+        <span>Sun 26 September 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a><a href="/tag/tasks.html">tasks</a></span>
+</footer><!-- /.post-info --><p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/tasks.html">https://docs.celeryproject.org/en/stable/userguide/tasks.html</a></p>
+<h2>Basics</h2>
+<p>Создание задачи используя декоратор task()</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Важно, если используются различные декораторы в комбинации с декоратором task, то он должен быть применен последним, т. е. первая в списке.</p>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="nd">@decorator2</span>
+<span class="nd">@decorator1</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+
+
+<h3>Наследование Task</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">celery</span>
+
+<span class="k">class</span> <span class="nc">MyTask</span><span class="p">(</span><span class="n">celery</span><span class="o">.</span><span class="n">Task</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">on_failure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">task_id</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">einfo</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0!r}</span><span class="s1"> failed: </span><span class="si">{1!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span> <span class="n">exc</span><span class="p">))</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">MyTask</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">()</span>
+</pre></div>
+
+
+<h3>Логгирование</h3>
+<p>Воркеры автоматически логгируют, но можно вручную определить логгирование.</p>
+<p>Хорошей практикой создание основного логгера для всех своих задач в модуле:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.utils.log</span> <span class="kn">import</span> <span class="n">get_task_logger</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">get_task_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding </span><span class="si">{0}</span><span class="s1"> + </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+
+
+<h3>Повторение задачи</h3>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">send_twitter_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oauth</span><span class="p">,</span> <span class="n">tweet</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">twitter</span> <span class="o">=</span> <span class="n">Twitter</span><span class="p">(</span><span class="n">oauth</span><span class="p">)</span>
+        <span class="n">twitter</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">Twitter</span><span class="o">.</span><span class="n">FailWhaleError</span><span class="p">,</span> <span class="n">Twitter</span><span class="o">.</span><span class="n">LoginError</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">retry</span><span class="p">(</span><span class="n">exc</span><span class="o">=</span><span class="n">exc</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Повторение задачи используя задержку</h4>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default_retry_delay</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># retry in 30 minutes.</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">something_raising</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="c1"># overrides the default delay to retry after 1 minute</span>
+        <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">retry</span><span class="p">(</span><span class="n">exc</span><span class="o">=</span><span class="n">exc</span><span class="p">,</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Статусы задач</h3>
+<h4>Встроенные статусы</h4>
+<h5>PENDING</h5>
+<p>Task is waiting for execution or unknown. Any task id that’s not known is implied to be in the pending state.</p>
+<h5>STARTED</h5>
+<p>Task has been started. Not reported by default, to enable please see <a href="https://docs.celeryproject.org/en/stable/reference/celery.app.task.html#celery.app.task.Task.track_started"><code>app.Task.track_started</code></a>.</p>
+<ul>
+<li>meta-data</li>
+</ul>
+<p>pid and hostname of the worker process executing the task.</p>
+<h5>SUCCESS</h5>
+<p>Task has been successfully executed.</p>
+<ul>
+<li>meta-data</li>
+</ul>
+<p>result contains the return value of the task.</p>
+<ul>
+<li>propagates</li>
+</ul>
+<p>Yes</p>
+<ul>
+<li>ready</li>
+</ul>
+<p>Yes</p>
+<h5>FAILURE</h5>
+<p>Task execution resulted in failure.</p>
+<ul>
+<li>meta-data</li>
+</ul>
+<p>result contains the exception occurred, and traceback contains the backtrace of the stack at the point when the exception was raised.</p>
+<ul>
+<li>propagates</li>
+</ul>
+<p>Yes</p>
+<h5>RETRY</h5>
+<p>Task is being retried.</p>
+<ul>
+<li>meta-data</li>
+</ul>
+<p>result contains the exception that caused the retry, and traceback contains the backtrace of the stack at the point when the exceptions was raised.</p>
+<ul>
+<li>propagates</li>
+</ul>
+<p>No</p>
+<h5>REVOKED</h5>
+<p>Task has been revoked.</p>
+<ul>
+<li>propagates</li>
+</ul>
+<p>Yes</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/2021/09/23/python-celery/" rel="bookmark"
+                           title="Permalink to Celery - планировщик фоновых и возможно периодческих задач">Celery - планировщик фоновых и возможно периодческих задач</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>Thu 23 September 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
-</footer><!-- /.post-info --><h2>Общие ссылки</h2>
+</footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
 <li>
 <p><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></p>
@@ -112,338 +247,10 @@
 <p>Начнем c конфигурации worker'a. Это демон, который собственно получает задания из очереди и выполняет их. Рекомендуемая очередь — RabbitMQ</p>
 <p>Конфигурация хранится celeryconfig.py</p>
 <p>Запуск демона: celeryd -l INFO -B
-Включаем логгирование в консоль и опция -B запуск демона периодических заданий. Последний можно запустить отдельно коммандой celerybeat</p>
-<p>Теперь создадим тестовое задание. В конфиге мы импортируем tasks, поэтому и файл заданий у нас tasks.py:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">task</span>
-<span class="kn">from</span> <span class="nn">celery.decorators</span> <span class="kn">import</span> <span class="n">periodic_task</span>
-<span class="kn">from</span> <span class="nn">celery.task.schedules</span> <span class="kn">import</span> <span class="n">crontab</span>
-
-<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">60</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">mail_queue</span><span class="p">():</span>
-
-    <span class="nb">print</span> <span class="s2">&quot;Task is executed every minute&quot;</span>
-
-<span class="nd">@periodic_task</span><span class="p">(</span><span class="n">run_every</span><span class="o">=</span><span class="n">crontab</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">def</span> <span class="nf">transactions</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="s2">&quot;Task is executed every day on 0:10&quot;</span>
-
-
-<span class="nd">@task</span>
-<span class="k">def</span> <span class="nf">delayed_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
-    <span class="n">some_function</span><span class="p">()</span>
-
-<span class="nd">@task</span>
-<span class="k">def</span> <span class="nf">delayed_heavy_function</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
-    <span class="n">some_heavy_function</span><span class="p">()</span>
-</pre></div>
-
-
-<p>Итак, у нас 4 задания в tasks. Первые два выполняются по расписанию, т.к. они отмечены декоратором @periodic_task. А вот два последних будут вызваны непосредственно из кода программы. Вот таким образом:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">delayed_function</span><span class="p">,</span> <span class="n">delayed_heavy_function</span>
-
-<span class="n">delayed_function</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">id</span><span class="p">],</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># Будет запущена через 300 секунд</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">delayed_heavy_function</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1">#Будет запущена сразу(как только появится возможность), в асинхронном режиме</span>
-</pre></div>
-
-
-<h2>Первые шаги с Celery</h2>
-<p>источник: <a href="https://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html">https://docs.celeryproject.org/en/master/getting-started/first-steps-with-celery.html</a></p>
-<h3>Выберем брокера сообщений</h3>
-<p>остановлюсь на RabbitMQ</p>
-<p>установка</p>
-<div class="highlight"><pre><span></span> sudo apt-get install rabbitmq-server
-</pre></div>
-
-
-<p>или запустить через docker</p>
-<div class="highlight"><pre><span></span><span class="err">docker run -d -p 5672:5672 rabbitmq</span>
-</pre></div>
-
-
-<h3>Установка Celery</h3>
-<div class="highlight"><pre><span></span>pip install celery
-</pre></div>
-
-
-<h3>Application</h3>
-<p>создадим файл tasks.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;pyamqp://guest@localhost//&#39;</span><span class="p">)</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
-<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-</pre></div>
-
-
-<h3>Запуск Celery worker server</h3>
-<div class="highlight"><pre><span></span><span class="err">celery -A tasks worker --loglevel=INFO</span>
-</pre></div>
-
-
-<p>В продакшене надо будет запустить worker как демон.</p>
-<p>Вызов задачи</p>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; from tasks import add
-&gt;&gt;&gt; add.delay<span class="o">(</span><span class="m">4</span>, <span class="m">4</span><span class="o">)</span>
-</pre></div>
-
-
-<p>результатом работы будет <a href="https://docs.celeryproject.org/en/master/reference/celery.result.html#celery.result.AsyncResult">AsyncResult</a></p>
-<p>Сохранение результата работы задачи</p>
-<p>Для сохранения состояния задачи используется так называемые result backends to choose from: SQLAlchemy/Django ORM, MongoDB, Memcached, Redis, RPC (RabbitMQ/AMQP), and – или что-то определяемые вами.</p>
-<div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;rpc://&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;pyamqp://&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">result</span> <span class="o">=</span> <span class="k">add</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="k">result</span><span class="p">.</span><span class="n">ready</span><span class="p">()</span>   <span class="o">#</span> <span class="err">возвращает</span> <span class="err">завершен</span> <span class="err">ли</span> <span class="err">процесс</span> <span class="err">или</span> <span class="err">нет</span>
-<span class="k">False</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="k">result</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">#</span> <span class="err">получаем</span> <span class="err">результат</span> <span class="err">задачи</span>
-<span class="mi">8</span>
-</pre></div>
-
-
-<p>Бэкенды используют ресурсы для сохранения и передачу результатов, поэтому нужно вызывать или get(), или forget() для каждого AsyncResult экземпляра который возвращается после вызова задачи.</p>
-<h3>Конфигурация</h3>
-<p>можно конфигурировать в самом приложении или в отдельном модуле.</p>
-<div class="highlight"><pre><span></span><span class="err">app.conf.update(</span>
-<span class="err">    task_serializer=&#39;json&#39;,</span>
-<span class="err">    accept_content=[&#39;json&#39;],  # Ignore other content</span>
-<span class="err">    result_serializer=&#39;json&#39;,</span>
-<span class="err">    timezone=&#39;Europe/Oslo&#39;,</span>
-<span class="err">    enable_utc=True,</span>
-<span class="err">)</span>
-</pre></div>
-
-
-<p>или</p>
-<div class="highlight"><pre><span></span><span class="err">app.config_from_object(&#39;celeryconfig&#39;)</span>
-</pre></div>
-
-
-<p>и определяем модуль celeryconfig.py:</p>
-<div class="highlight"><pre><span></span><span class="n">broker_url</span> <span class="o">=</span> <span class="s1">&#39;pyamqp://&#39;</span>
-<span class="n">result_backend</span> <span class="o">=</span> <span class="s1">&#39;rpc://&#39;</span>
-
-<span class="n">task_serializer</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
-<span class="n">result_serializer</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
-<span class="n">accept_content</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">]</span>
-<span class="n">timezone</span> <span class="o">=</span> <span class="s1">&#39;Europe/Oslo&#39;</span>
-<span class="n">enable_utc</span> <span class="o">=</span> <span class="k">True</span>
-</pre></div>
-
-
-<p>для проверки есть ли синтаксические ошибки можно использовать следующее:</p>
-<div class="highlight"><pre><span></span><span class="err">python -m celeryconfig</span>
-</pre></div>
-
-
-<h3>Использование Celery в приложении</h3>
-<div class="highlight"><pre><span></span><span class="err">proj/__init__.py</span>
-<span class="err">    /celery.py</span>
-<span class="err">    /tasks.py</span>
-</pre></div>
-
-
-<p>proj/celery.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;proj&#39;</span><span class="p">,</span>
-             <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;amqp://&#39;</span><span class="p">,</span>
-             <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;rpc://&#39;</span><span class="p">,</span>
-             <span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;proj.tasks&#39;</span><span class="p">])</span>
-
-<span class="c1"># Optional configuration, see the application user guide.</span>
-<span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-    <span class="n">result_expires</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</pre></div>
-
-
-<p>proj/tasks.py</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.celery</span> <span class="kn">import</span> <span class="n">app</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
-<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
-<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
-<span class="k">def</span> <span class="nf">xsum</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Запуск worker</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj worker -l INFO</span>
-</pre></div>
-
-
-<p>запуск в фоновом режиме: смотрите <a href="https://docs.celeryproject.org/en/stable/userguide/daemonizing.html#daemonizing">Daemonization</a></p>
-<div class="highlight"><pre><span></span>$ mkdir -p /var/run/celery
-$ mkdir -p /var/log/celery
-$ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/run/celery/%n.pid <span class="se">\</span>
-                                        --logfile<span class="o">=</span>/var/log/celery/%n%I.log
-</pre></div>
-
-
-<h4>Вызов/запуск задач</h4>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;lopri&#39;</span><span class="p">,</span> <span class="n">countdown</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="mi">4</span>
-</pre></div>
-
-
-<p>Если хотите получите результат:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="k">add</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="mi">4</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="n">id</span>
-<span class="n">d6b3aea2</span><span class="o">-</span><span class="n">fb9b</span><span class="o">-</span><span class="mi">4</span><span class="n">ebc</span><span class="o">-</span><span class="mi">8</span><span class="n">da4</span><span class="o">-</span><span class="mi">848818</span><span class="n">db9114</span>
-
-<span class="o">#</span>  <span class="err">статус</span> <span class="err">задачи</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="n">failed</span><span class="p">()</span>
-<span class="k">True</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="n">successful</span><span class="p">()</span>
-<span class="k">False</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">res</span><span class="p">.</span><span class="k">state</span>
-<span class="err">&#39;</span><span class="n">FAILURE</span>
-</pre></div>
-
-
-<p>Задача может переходить с следующие статусы:</p>
-<div class="highlight"><pre><span></span><span class="err">PENDING -&gt; STARTED -&gt; SUCCESS</span>
-</pre></div>
-
-
-<p>Если задача будет</p>
-<div class="highlight"><pre><span></span><span class="err">PENDING -&gt; STARTED -&gt; RETRY -&gt; STARTED -&gt; RETRY -&gt; STARTED -&gt; SUCCESS</span>
-</pre></div>
-
-
-<h3>Примитивы</h3>
-<h4>Groups - Группы</h4>
-<p>группы вызывают параллельно список задач и возвращает специальный экземплятор который можно получать результат по порядку</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">group</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">group</span><span class="p">(</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
-</pre></div>
-
-
-<ul>
-<li>Partial groups</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="err">&gt;&gt;&gt; g = group(add.s(i) for i in range(10))</span>
-<span class="err">&gt;&gt;&gt; g(10).get()</span>
-<span class="err">[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]</span>
-</pre></div>
-
-
-<h4>Chains - цепочки</h4>
-<p>связываем цепочки вызово различные задачи которые выполняются последовательно используя результат предыдущей задачи</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">chain</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">mul</span>
-
-<span class="c1"># (4 + 4) * 8</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">chain</span><span class="p">(</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">mul</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">8</span><span class="p">))()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="mi">64</span>
-</pre></div>
-
-
-<h4>Chords - связка</h4>
-<p>chord - это группа с callback</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">chord</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">xsum</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">chord</span><span class="p">((</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="n">xsum</span><span class="o">.</span><span class="n">s</span><span class="p">())()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="mi">90</span>
-</pre></div>
-
-
-<h3>Маршрутизация</h3>
-<div class="highlight"><pre><span></span><span class="err">app.conf.update(</span>
-<span class="err">    task_routes = {</span>
-<span class="err">        &#39;proj.tasks.add&#39;: {&#39;queue&#39;: &#39;hipri&#39;},</span>
-<span class="err">    },</span>
-<span class="err">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;hipri&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>$ celery -A proj worker -Q hipri
-</pre></div>
-
-
-<h3>Удаленное управление</h3>
-<p>можно контролировать и мониторить worker'ов в рантайме.</p>
-<p>Можно посмотреть какие воркеры работают сейчас :</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj inspect active</span>
-</pre></div>
-
-
-<p>Получить помощь по команду мониторинга:</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj inspect --help</span>
-</pre></div>
-
-
-<p>Получить помощь по команде контроля:</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj control --help</span>
-</pre></div>
-
-
-<p>Можно насильно воркерам включить event messages (используется для мониторига и конроля воркеров):</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj control enable_events</span>
-</pre></div>
-
-
-<p>Когда события включены можно запустить событие dumper и посмотреть что делают воркеры:</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj events --dump</span>
-</pre></div>
-
-
-<p>Завершить мониториг:</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj control disable_events</span>
-</pre></div>
-
-
-<p>Статус удаленного управления и вывод списка воркеров которые онлайн в класетере:</p>
-<div class="highlight"><pre><span></span><span class="err">celery -A proj status</span>
-</pre></div>
-
-
-<h3>Временные зоны</h3>
-<div class="highlight"><pre><span></span><span class="err">app.conf.timezone = &#39;Europe/London&#39;</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+Включаем логгирование в …</p>
+                <a class="readmore" href="/2021/09/23/python-celery/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -480,10 +287,10 @@ $ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/ru
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -540,10 +347,10 @@ $ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/ru
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -572,10 +379,10 @@ $ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/ru
 <footer class="post-info">
         <span>Sun 06 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/setup.html">setup</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/package.html">package</a></span>Translations:
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -661,44 +468,6 @@ $ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/ru
 </ul>
 <h2>Фреймворки тестирования …</h2>
                 <a class="readmore" href="/2020/10/31/python-testing/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2020/08/27/python-oop-attr/" rel="bookmark"
-                           title="Permalink to Attr - полезная практика ООП в Python">Attr - полезная практика ООП в Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 27 August 2020</span>
-<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
-</footer><!-- /.post-info -->                <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
-<h2>Установка библиотеки</h2>
-<div class="highlight"><pre><span></span>pip install attrs
-</pre></div>
-
-
-<h2>Использование</h2>
-<h3>без использования библиотек</h3>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
-
-<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-
-<span class="n">где</span> <span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span> <span class="o">//</span> <span class="kc">False</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
-
-<span class="nd">@attrs</span>
-<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
-                <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

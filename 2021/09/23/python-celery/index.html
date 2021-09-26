@@ -215,13 +215,13 @@
 <p>Бэкенды используют ресурсы для сохранения и передачу результатов, поэтому нужно вызывать или get(), или forget() для каждого AsyncResult экземпляра который возвращается после вызова задачи.</p>
 <h3>Конфигурация</h3>
 <p>можно конфигурировать в самом приложении или в отдельном модуле.</p>
-<div class="highlight"><pre><span></span><span class="err">app.conf.update(</span>
-<span class="err">    task_serializer=&#39;json&#39;,</span>
-<span class="err">    accept_content=[&#39;json&#39;],  # Ignore other content</span>
-<span class="err">    result_serializer=&#39;json&#39;,</span>
-<span class="err">    timezone=&#39;Europe/Oslo&#39;,</span>
-<span class="err">    enable_utc=True,</span>
-<span class="err">)</span>
+<div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="n">task_serializer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">,</span>
+    <span class="n">accept_content</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">],</span>  <span class="c1"># Ignore other content</span>
+    <span class="n">result_serializer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">,</span>
+    <span class="n">timezone</span><span class="o">=</span><span class="s1">&#39;Europe/Oslo&#39;</span><span class="p">,</span>
+    <span class="n">enable_utc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 
 
@@ -238,12 +238,43 @@
 <span class="n">result_serializer</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
 <span class="n">accept_content</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">]</span>
 <span class="n">timezone</span> <span class="o">=</span> <span class="s1">&#39;Europe/Oslo&#39;</span>
-<span class="n">enable_utc</span> <span class="o">=</span> <span class="k">True</span>
+<span class="n">enable_utc</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 
 
 <p>для проверки есть ли синтаксические ошибки можно использовать следующее:</p>
 <div class="highlight"><pre><span></span><span class="err">python -m celeryconfig</span>
+</pre></div>
+
+
+<p>Также можно определить конфигурационный класс/объект:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+    <span class="n">enable_utc</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">timezone</span> <span class="o">=</span> <span class="s1">&#39;Europe/London&#39;</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_object</span><span class="p">(</span><span class="n">Config</span><span class="p">)</span>
+<span class="c1"># or using the fully qualified name of the object:</span>
+<span class="c1">#   app.config_from_object(&#39;module:Config&#39;)</span>
+</pre></div>
+
+
+<p>Конфигурация через переменные окружения, например <strong>CELERY_CONFIG_MODULE</strong> - модуль конфигурации</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
+
+<span class="c1">#: Set default configuration module name</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;CELERY_CONFIG_MODULE&#39;</span><span class="p">,</span> <span class="s1">&#39;celeryconfig&#39;</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">config_from_envvar</span><span class="p">(</span><span class="s1">&#39;CELERY_CONFIG_MODULE&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">CELERY_CONFIG_MODULE=&quot;celeryconfig.prod&quot; celery worker -l INFO</span>
 </pre></div>
 
 

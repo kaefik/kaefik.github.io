@@ -113,6 +113,32 @@
 
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/2021/09/26/python-celery-tasks/" rel="bookmark"
+                           title="Permalink to Tasks - Задачи в Celery">Tasks - Задачи в Celery</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Sun 26 September 2021</span>
+<span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a><a href="/tag/tasks.html">tasks</a></span>
+</footer><!-- /.post-info -->                <p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/tasks.html">https://docs.celeryproject.org/en/stable/userguide/tasks.html</a></p>
+<h2>Basics</h2>
+<p>Создание задачи используя декоратор task()</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Важно, если используются различные декораторы в комбинации с декоратором task, то он должен быть применен последним, т …</p>
+                <a class="readmore" href="/2021/09/26/python-celery-tasks/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/2021/09/23/python-celery/" rel="bookmark"
                            title="Permalink to Celery - планировщик фоновых и возможно периодческих задач">Celery - планировщик фоновых и возможно периодческих задач</a></h1>
                 </header>
@@ -175,10 +201,10 @@
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -294,10 +320,10 @@ CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span>
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -326,10 +352,10 @@ CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span>
 <footer class="post-info">
         <span>Sun 06 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/setup.html">setup</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/package.html">package</a></span>Translations:
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2018/07/05/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -342,27 +368,6 @@ CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span>
 <div class="highlight"><pre><span></span>python setup.py install 
 </pre></div>
                 <a class="readmore" href="/2021/06/06/python/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/2021/05/20/pattern-programming, programming, dev/" rel="bookmark"
-                           title="Permalink to Непрерывная интеграция (CI)">Непрерывная интеграция (CI)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 20 May 2021</span>
-<span>| tags: <a href="/tag/ci.html">ci</a><a href="/tag/programmirovanie.html">программирование</a></span>
-</footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
-<ul>
-<li><a href="https://martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a></li>
-<li><a href="https://habr.com/ru/post/476368/">Строим домашний CI/CD при помощи GitHub Actions и Python</a></li>
-<li><a href="https://docs.microsoft.com/ru-ru/azure/devops-project/azure-devops-project-python">Создание конвейера CI/CD для Python с помощью Azure DevOps Starter</a></li>
-<li><a href="https://habr.com/ru/post/324588/">Непрерывная интеграция с помощью Drone CI, Docker и Ansible</a></li>
-</ul>
-                <a class="readmore" href="/2021/05/20/pattern-programming, programming, dev/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
