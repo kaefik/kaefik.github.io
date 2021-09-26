@@ -100,7 +100,12 @@
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/web.html">web</a><a href="/tag/python.html">python</a><a href="/tag/celery.html">celery</a></span>
 </footer><!-- /.post-info --><h2>Общие ссылки</h2>
 <ul>
-<li><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></li>
+<li>
+<p><a href="https://docs.celeryproject.org/en/stable/getting-started/introduction.html">Introduction to Celery</a></p>
+</li>
+<li>
+<p><a href="https://docs.celeryproject.org/en/stable/userguide/index.html">User guide Celery</a></p>
+</li>
 </ul>
 <h2>Пример использования</h2>
 <p>источник: <a href="https://habr.com/ru/company/biggo/blog/102742/">https://habr.com/ru/company/biggo/blog/102742/</a></p>
@@ -333,6 +338,107 @@ $ celery multi start w1 -A proj -l INFO --pidfile<span class="o">=</span>/var/ru
 
 <p>Если задача будет</p>
 <div class="highlight"><pre><span></span><span class="err">PENDING -&gt; STARTED -&gt; RETRY -&gt; STARTED -&gt; RETRY -&gt; STARTED -&gt; SUCCESS</span>
+</pre></div>
+
+
+<h3>Примитивы</h3>
+<h4>Groups - Группы</h4>
+<p>группы вызывают параллельно список задач и возвращает специальный экземплятор который можно получать результат по порядку</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">group</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">group</span><span class="p">(</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>Partial groups</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">&gt;&gt;&gt; g = group(add.s(i) for i in range(10))</span>
+<span class="err">&gt;&gt;&gt; g(10).get()</span>
+<span class="err">[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]</span>
+</pre></div>
+
+
+<h4>Chains - цепочки</h4>
+<p>связываем цепочки вызово различные задачи которые выполняются последовательно используя результат предыдущей задачи</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">mul</span>
+
+<span class="c1"># (4 + 4) * 8</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">chain</span><span class="p">(</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">mul</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">8</span><span class="p">))()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="mi">64</span>
+</pre></div>
+
+
+<h4>Chords - связка</h4>
+<p>chord - это группа с callback</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">chord</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">xsum</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">chord</span><span class="p">((</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="n">xsum</span><span class="o">.</span><span class="n">s</span><span class="p">())()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="mi">90</span>
+</pre></div>
+
+
+<h3>Маршрутизация</h3>
+<div class="highlight"><pre><span></span><span class="err">app.conf.update(</span>
+<span class="err">    task_routes = {</span>
+<span class="err">        &#39;proj.tasks.add&#39;: {&#39;queue&#39;: &#39;hipri&#39;},</span>
+<span class="err">    },</span>
+<span class="err">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">proj.tasks</span> <span class="kn">import</span> <span class="n">add</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;hipri&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>$ celery -A proj worker -Q hipri
+</pre></div>
+
+
+<h3>Удаленное управление</h3>
+<p>можно контролировать и мониторить worker'ов в рантайме.</p>
+<p>Можно посмотреть какие воркеры работают сейчас :</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj inspect active</span>
+</pre></div>
+
+
+<p>Получить помощь по команду мониторинга:</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj inspect --help</span>
+</pre></div>
+
+
+<p>Получить помощь по команде контроля:</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj control --help</span>
+</pre></div>
+
+
+<p>Можно насильно воркерам включить event messages (используется для мониторига и конроля воркеров):</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj control enable_events</span>
+</pre></div>
+
+
+<p>Когда события включены можно запустить событие dumper и посмотреть что делают воркеры:</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj events --dump</span>
+</pre></div>
+
+
+<p>Завершить мониториг:</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj control disable_events</span>
+</pre></div>
+
+
+<p>Статус удаленного управления и вывод списка воркеров которые онлайн в класетере:</p>
+<div class="highlight"><pre><span></span><span class="err">celery -A proj status</span>
+</pre></div>
+
+
+<h3>Временные зоны</h3>
+<div class="highlight"><pre><span></span><span class="err">app.conf.timezone = &#39;Europe/London&#39;</span>
 </pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
