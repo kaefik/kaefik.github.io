@@ -217,7 +217,92 @@
 <ul>
 <li>propagates</li>
 </ul>
-<p>Yes</p>                </article>
+<p>Yes</p>
+<h3>Task classes</h3>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+
+
+<p>=&gt;</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_AddTask</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Task</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">add</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">tasks</span><span class="p">[</span><span class="n">_AddTask</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+</pre></div>
+
+
+<h4>Создание экземпляра</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+
+<span class="k">class</span> <span class="nc">NaiveAuthenticateServer</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;george&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span><span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">==</span> <span class="n">password</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+
+
+<p>сохраняем состояние между процессами.</p>
+<p>Также можно использовать кеш ресурсов, например, класс задачи кеширует соединение с БД:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+
+<span class="k">class</span> <span class="nc">DatabaseTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
+    <span class="n">_db</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">Database</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span>
+</pre></div>
+
+
+<p>можно добавлять для каждой задачи:</p>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="n">DatabaseTask</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">process_rows</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">process_rows</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="n">process_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Вызов задачи</h2>
+<p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/calling.html">https://docs.celeryproject.org/en/stable/userguide/calling.html</a></p>
+<h3>Quick Cheat Sheet</h3>
+<ul>
+<li>
+<p>T.delay(arg, kwarg=value)
+  Star arguments shortcut to .apply_async. (.delay(<em>args, </em>*kwargs) calls .apply_async(args, kwargs)).</p>
+</li>
+<li>
+<p>T.apply_async((arg,), {'kwarg': value})</p>
+</li>
+<li>
+<p>T.apply_async(countdown=10)
+  executes in 10 seconds from now.</p>
+</li>
+<li>
+<p>T.apply_async(eta=now + timedelta(seconds=10))
+  executes in 10 seconds from now, specified using eta</p>
+</li>
+<li>
+<p>T.apply_async(countdown=60, expires=120)
+  executes in one minute from now, but expires after 2 minutes.</p>
+</li>
+<li>
+<p>T.apply_async(expires=now + timedelta(days=2))
+  expires in 2 days, set using datetime.</p>
+</li>
+</ul>
+<h2>Проектирование потоков worker'ов</h2>
+<p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/canvas.html">https://docs.celeryproject.org/en/stable/userguide/canvas.html</a></p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -287,10 +372,10 @@
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
-        <a href="/2021/06/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -347,10 +432,10 @@
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2021/06/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -379,9 +464,9 @@
 <footer class="post-info">
         <span>Sun 06 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/setup.html">setup</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/package.html">package</a></span>Translations:
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/08/06/python/">ru</a>
         <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
