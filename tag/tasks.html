@@ -277,30 +277,44 @@
 <p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/calling.html">https://docs.celeryproject.org/en/stable/userguide/calling.html</a></p>
 <h3>Quick Cheat Sheet</h3>
 <ul>
-<li>
-<p>T.delay(arg, kwarg=value)
-  Star arguments shortcut to .apply_async. (.delay(<em>args, </em>*kwargs) calls .apply_async(args, kwargs)).</p>
-</li>
-<li>
-<p>T.apply_async((arg,), {'kwarg': value})</p>
-</li>
-<li>
-<p>T.apply_async(countdown=10)
-  executes in 10 seconds from now.</p>
-</li>
-<li>
-<p>T.apply_async(eta=now + timedelta(seconds=10))
-  executes in 10 seconds from now, specified using eta</p>
-</li>
-<li>
-<p>T.apply_async(countdown=60, expires=120)
-  executes in one minute from now, but expires after 2 minutes.</p>
-</li>
-<li>
-<p>T.apply_async(expires=now + timedelta(days=2))
-  expires in 2 days, set using datetime.</p>
-</li>
+<li>T.delay(arg, kwarg=value)
+  Star arguments shortcut to .apply_async. (.delay(<em>args, </em>*kwargs) calls .apply_async(args, kwargs)).</li>
+<li>T.apply_async((arg,), {'kwarg': value})</li>
+<li>T.apply_async(countdown=10)
+  executes in 10 seconds from now.</li>
+<li>T.apply_async(eta=now + timedelta(seconds=10))
+  executes in 10 seconds from now, specified using eta</li>
+<li>T.apply_async(countdown=60, expires=120)
+  executes in one minute from now, but expires after 2 minutes.</li>
+<li>T.apply_async(expires=now + timedelta(days=2))
+  expires in 2 days, set using datetime.</li>
 </ul>
+<h4>Linking (callbacks/errbacks)</h4>
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">task</span>
+<span class="k">def</span> <span class="nf">error_handler</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Task </span><span class="si">{0}</span><span class="s1"> raised exception: </span><span class="si">{1!r}</span><span class="se">\n</span><span class="si">{2!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+          <span class="n">request</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">traceback</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">link</span><span class="o">=</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">link_error</span><span class="o">=</span><span class="n">error_handler</span><span class="o">.</span><span class="n">s</span><span class="p">())</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">add</span><span class="o">.</span><span class="n">apply_async</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">link</span><span class="o">=</span><span class="p">[</span><span class="n">add</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">other_task</span><span class="o">.</span><span class="n">s</span><span class="p">()])</span>
+</pre></div>
+
+
 <h2>Проектирование потоков worker'ов</h2>
 <p>источник: <a href="https://docs.celeryproject.org/en/stable/userguide/canvas.html">https://docs.celeryproject.org/en/stable/userguide/canvas.html</a></p>                </article>
 <p class="paginator">
