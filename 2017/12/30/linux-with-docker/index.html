@@ -129,6 +129,10 @@
 sudo apt-get update
  sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo systemctl status docker
+
+
+<span class="c1"># добавление текущего пользователя в группу docker</span>
+ sudo usermod -aG docker <span class="nv">$USER</span>
 </pre></div>
 
 
