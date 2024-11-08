@@ -103,54 +103,54 @@
 <p>источник:  https://www.postgresql.org/download/linux/</p>
 <p>For Ubuntu 17.04</p>
 <p>Create the file <em>/etc/apt/sources.list.d/pgdg.list</em>, and add a line for the repository</p>
-<div class="highlight"><pre><span></span>deb http://apt.postgresql.org/pub/repos/apt/ zesty-pgdg main
+<div class="highlight"><pre><span></span>deb<span class="w"> </span>http://apt.postgresql.org/pub/repos/apt/<span class="w"> </span>zesty-pgdg<span class="w"> </span>main
 </pre></div>
 
 
 <p>Import the repository signing key, and update the package lists</p>
-<div class="highlight"><pre><span></span>wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc <span class="p">|</span> <span class="se">\</span>
-sudo apt-key add -
-sudo apt-get update
+<div class="highlight"><pre><span></span>wget<span class="w"> </span>--quiet<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>https://www.postgresql.org/media/keys/ACCC4CF8.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 </pre></div>
 
 
 <p>For more information about the apt repository, including answers to frequent questions, please see the apt page on the wiki.</p>
 <p>Included in distribution</p>
 <p>Ubuntu includes PostgreSQL by default. To install PostgreSQL on Ubuntu, use the apt-get (or other apt-driving) command:</p>
-<div class="highlight"><pre><span></span>apt-get install postgresql-9.6
+<div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql-9.6
 </pre></div>
 
 
 <h2>Добавим пользователя под которым будет работать СУБД</h2>
-<div class="highlight"><pre><span></span>sudo adduser postgres
-sudo passwd postgres  <span class="c1"># задать пароль</span>
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>adduser<span class="w"> </span>postgres
+sudo<span class="w"> </span>passwd<span class="w"> </span>postgres<span class="w">  </span><span class="c1"># задать пароль</span>
 </pre></div>
 
 
 <h2>Каталог данных</h2>
-<div class="highlight"><pre><span></span>sudo  mkdir /usr/local/pgsql
-sudo mkdir /usr/local/pgsql/data
-sudo chown postgres /usr/local/pgsql
-sudo chown postgres /usr/local/pgsql/data
+<div class="highlight"><pre><span></span>sudo<span class="w">  </span>mkdir<span class="w"> </span>/usr/local/pgsql
+sudo<span class="w"> </span>mkdir<span class="w"> </span>/usr/local/pgsql/data
+sudo<span class="w"> </span>chown<span class="w"> </span>postgres<span class="w"> </span>/usr/local/pgsql
+sudo<span class="w"> </span>chown<span class="w"> </span>postgres<span class="w"> </span>/usr/local/pgsql/data
 </pre></div>
 
 
 <h2>Создание кластера</h2>
 <p>(тема 3 -  17 минута)  https://youtu.be/qjCNbv_xIDU?t=17m00s
 https://postgrespro.ru/docs/postgresql/9.6/creating-cluster.html</p>
-<div class="highlight"><pre><span></span>su postgres
+<div class="highlight"><pre><span></span>su<span class="w"> </span>postgres
 </pre></div>
 
 
 <p>Переменные окружения:</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/lib/postgresql/9.6/bin:<span class="nv">$PATH</span>
-<span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span>/usr/lib/postgresql/9.6/share/man:<span class="nv">$MANPATH</span>
-<span class="nb">export</span> <span class="nv">PGDATA</span><span class="o">=</span>/usr/local/pgsql/data
+<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/usr/lib/postgresql/9.6/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MANPATH</span><span class="o">=</span>/usr/lib/postgresql/9.6/share/man:<span class="nv">$MANPATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PGDATA</span><span class="o">=</span>/usr/local/pgsql/data
 </pre></div>
 
 
 <p>Создание: </p>
-<div class="highlight"><pre><span></span>pg_ctl initdb -o <span class="s2">&quot;-k&quot;</span> -D  /usr/local/pgsql/data
+<div class="highlight"><pre><span></span>pg_ctl<span class="w"> </span>initdb<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;-k&quot;</span><span class="w"> </span>-D<span class="w">  </span>/usr/local/pgsql/data
 </pre></div>
 
 
@@ -158,9 +158,11 @@ https://postgrespro.ru/docs/postgresql/9.6/creating-cluster.html</p>
 Так как каталог данных содержит все данные базы, очень важно защитить его от неавторизованного доступа. Для этого initdb лишает прав доступа к нему всех пользователей, кроме пользователя PostgreSQL.
 Команда initdb также устанавливает для кластера баз данных локаль по умолчанию. Обычно она просто берёт параметры локали из текущего окружения и применяет их к инициализируемой базе данных. Однако можно выбрать и другую локаль для базы данных.
 Для локалей, отличных от C и POSIX, порядок сортировки символов зависит от системной библиотеки локализации, а он, в свою очередь, влияет на порядок ключей в индексах. Поэтому кластер нельзя перевести на несовместимую версию библиотеки ни путём восстановления снимка, ни через двоичную репликацию, ни перейдя на другую операционную систему или обновив её версию.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

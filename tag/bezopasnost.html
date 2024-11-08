@@ -115,31 +115,33 @@
 <ul>
 <li>Перезапустим <strong>airodump-ng</strong> и зафиксируем его на канале 5 (это канал нашей атакуемой станции), после чего выполним отключение клиента в соседнем окне терминала:</li>
 </ul>
-<div class="highlight"><pre><span></span>airodump-ng -c5 mon0
-aireplay mon0 -0 <span class="m">5</span> -a 4F:B1:A4:05:5C:21 -c 5B:23:15:00:C8:57
+<div class="highlight"><pre><span></span>airodump-ng<span class="w"> </span>-c5<span class="w"> </span>mon0
+aireplay<span class="w"> </span>mon0<span class="w"> </span>-0<span class="w"> </span><span class="m">5</span><span class="w"> </span>-a<span class="w"> </span>4F:B1:A4:05:5C:21<span class="w"> </span>-c<span class="w"> </span>5B:23:15:00:C8:57
 </pre></div>
 
 
 <p>Если сигнал достаточно сильный, число пакетов велико и клиент/точка доступа нас услышали — они отключатся друг от друга, затем передадут информацию о сети вновь при подключении и <strong>airodump-ng</strong> покажет их и строчку [ Decloak ].</p>
 <h2>Фильрация по MAC</h2>
 <p>В Linux изменить MAC своего адаптера можно следующим образом (работает как для проводных сетей, так и для беспроводных):</p>
-<div class="highlight"><pre><span></span>ifconfig wlan0 down
-ifconfig wlan0 hw ether <span class="m">00</span>:11:22:AA:AA:AA****
-ifconfig wlan0 up
+<div class="highlight"><pre><span></span>ifconfig<span class="w"> </span>wlan0<span class="w"> </span>down
+ifconfig<span class="w"> </span>wlan0<span class="w"> </span>hw<span class="w"> </span>ether<span class="w"> </span><span class="m">00</span>:11:22:AA:AA:AA****
+ifconfig<span class="w"> </span>wlan0<span class="w"> </span>up
 </pre></div>
 
 
 <p>Кроме того, в *nix есть <strong>macchanger</strong> — с его помощью можно выставить себе случайный MAC. Если поставить его в  init.d, то неприятель будет совершенно сбит с толку, так как при каждой загрузке наш MAC будет другим (работает для любых проводных и беспроводных адаптеров, как и <strong>ifconfig</strong>).</p>
 <div class="highlight"><pre><span></span><span class="c1"># Случайный MAC:</span>
-macchanger -r wlan0
+macchanger<span class="w"> </span>-r<span class="w"> </span>wlan0
 <span class="c1"># Определённый MAC:</span>
-macchanger -m <span class="m">11</span>:22:33:AA:BB:CC wlan0
+macchanger<span class="w"> </span>-m<span class="w"> </span><span class="m">11</span>:22:33:AA:BB:CC<span class="w"> </span>wlan0
 <span class="c1"># Показать MAC:</span>
-macchanger -s wlan0
+macchanger<span class="w"> </span>-s<span class="w"> </span>wlan0
 </pre></div>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

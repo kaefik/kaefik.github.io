@@ -136,7 +136,7 @@
 <li>записать на флешку</li>
 </ol>
 <p>в Linux так:</p>
-<div class="highlight"><pre><span></span>dd <span class="k">if</span><span class="o">=</span>ChromeOS.img <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M
+<div class="highlight"><pre><span></span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>ChromeOS.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M
 </pre></div>
 
 
@@ -202,9 +202,9 @@
 </footer><!-- /.post-info -->                <h2>Получение данных о компьютерах</h2>
 <div class="highlight"><pre><span></span><span class="k">function</span> <span class="nb">Get-SystemInfo</span> <span class="p">{</span>
 <span class="cm">&lt;#</span>
-<span class="sd">.SYNOPSIS</span><span class="cm"></span>
-<span class="sd">.DESCRIPTION</span><span class="cm"></span>
-<span class="sd">.EXAMPLE</span><span class="cm"></span>
+<span class="sd">.SYNOPSIS</span>
+<span class="sd">.DESCRIPTION</span>
+<span class="sd">.EXAMPLE</span>
 <span class="cm">&quot;comp1&quot;,&quot;comp2&quot;,&quot;comp3&quot; | ? { Test-Connection $_ -Count 1 -ea SilentlyContinue } | Get-SystemInfo</span>
 <span class="cm">#&gt;</span>
 <span class="p">[</span><span class="k">CmdletBinding</span><span class="p">(</span> <span class="n">SupportsShouldProcess</span> <span class="p">=</span> <span class="nv">$true</span> <span class="p">)]</span>
@@ -267,9 +267,9 @@
 <ol>
 <li>Настройка прав для портов USB (в моем случае это нужно было сделать) </li>
 </ol>
-<div class="highlight"><pre><span></span>sudo groupadd usbusers
-groups имя_пользователя <span class="c1"># вывод списка групп в которых состоит пользователь.</span>
-groups isaifutdinov
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>groupadd<span class="w"> </span>usbusers
+groups<span class="w"> </span>имя_пользователя<span class="w"> </span><span class="c1"># вывод списка групп в которых состоит пользователь.</span>
+groups<span class="w"> </span>isaifutdinov
 sudo …</pre></div>
                 <a class="readmore" href="/2017/03/15/sdr-dvb-t-realtek-rtl2832u-ubuntu-lsusb/">read more</a>
                 </div><!-- /.entry-content -->
@@ -352,11 +352,15 @@ sudo …</pre></div>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="/index13.html">&laquo;</a>
-    Page 14 / 16
-        <a href="/index15.html">&raquo;</a>
-</p>
+  <nav>
+    <ul>
+        <li><a href="/index.html">&Lang;</a></li>
+        <li><a href="/index13.html">&lang;</a></li>
+      <li>Page 14 / 16</li>
+        <li><a href="/index15.html">&rang;</a></li>
+        <li><a href="/index16.html">&Rang;</a></li>
+    </ul>
+  </nav>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

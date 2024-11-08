@@ -121,14 +121,14 @@
 </ol>
 <h2>Настройка проекта для запуска</h2>
 <h3>Библиотеки:</h3>
-<div class="highlight"><pre><span></span>  pip3 install python-dotenv    
-  pip3 install Telethon
-  pip3 install requests
+<div class="highlight"><pre><span></span><span class="w">  </span>pip3<span class="w"> </span>install<span class="w"> </span>python-dotenv<span class="w">    </span>
+<span class="w">  </span>pip3<span class="w"> </span>install<span class="w"> </span>Telethon
+<span class="w">  </span>pip3<span class="w"> </span>install<span class="w"> </span>requests
 </pre></div>
 
 
 <p>или просто выполняем </p>
-<div class="highlight"><pre><span></span>  pip install -r requirements.txt
+<div class="highlight"><pre><span></span><span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 
 
@@ -141,7 +141,7 @@
 <p>Для установки на убунту: </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>sudo -H pip3 install --upgrade youtube-dl
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>-H<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>youtube-dl
 </pre></div>
 
 
@@ -151,7 +151,7 @@
 <p>Для установки на убунту: </p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span>     apt install mp3splt
+<div class="highlight"><pre><span></span><span class="w">     </span>apt<span class="w"> </span>install<span class="w"> </span>mp3splt
 </pre></div>
 
 
@@ -159,14 +159,14 @@
 <ul>
 <li><strong>.env</strong> </li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="nv">TLG_APP_API_ID</span><span class="o">=</span><span class="m">123456</span> <span class="c1"># APP API ID get from https://my.telegram.org</span>
-  <span class="nv">TLG_APP_API_HASH</span><span class="o">=</span>fdgdfgdgdfgdfgd <span class="c1"># APP API HASH get from https://my.telegram.org</span>
-  <span class="nv">TLG_APP_NAME</span><span class="o">=</span>app  <span class="c1"># APP NAME get from https://my.telegram.org</span>
-  <span class="nv">I_BOT_TOKEN</span><span class="o">=</span><span class="m">12345</span>:fdgdfgdfgdfdfgdfg    <span class="c1"># TOKEN Bot drom BotFather</span>
-  <span class="nv">TLG_ADMIN_ID_CLIENT</span><span class="o">=</span><span class="m">12568999</span>  <span class="c1"># id administarator bot</span>
-  <span class="nv">TLG_PROXY_SERVER</span> <span class="o">=</span> server <span class="c1"># адрес MTProxy Telegram</span>
-  <span class="nv">TLG_PROXY_PORT</span> <span class="o">=</span> <span class="m">555</span> <span class="c1"># порт  MTProxy Telegram</span>
-  <span class="nv">TLG_PROXY_KEY</span><span class="o">=</span>sf23231231  <span class="c1"># secret key  MTProxy Telegram</span>
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="nv">TLG_APP_API_ID</span><span class="o">=</span><span class="m">123456</span><span class="w"> </span><span class="c1"># APP API ID get from https://my.telegram.org</span>
+<span class="w">  </span><span class="nv">TLG_APP_API_HASH</span><span class="o">=</span>fdgdfgdgdfgdfgd<span class="w"> </span><span class="c1"># APP API HASH get from https://my.telegram.org</span>
+<span class="w">  </span><span class="nv">TLG_APP_NAME</span><span class="o">=</span>app<span class="w">  </span><span class="c1"># APP NAME get from https://my.telegram.org</span>
+<span class="w">  </span><span class="nv">I_BOT_TOKEN</span><span class="o">=</span><span class="m">12345</span>:fdgdfgdfgdfdfgdfg<span class="w">    </span><span class="c1"># TOKEN Bot drom BotFather</span>
+<span class="w">  </span><span class="nv">TLG_ADMIN_ID_CLIENT</span><span class="o">=</span><span class="m">12568999</span><span class="w">  </span><span class="c1"># id administarator bot</span>
+<span class="w">  </span><span class="nv">TLG_PROXY_SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>server<span class="w"> </span><span class="c1"># адрес MTProxy Telegram</span>
+<span class="w">  </span><span class="nv">TLG_PROXY_PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">555</span><span class="w"> </span><span class="c1"># порт  MTProxy Telegram</span>
+<span class="w">  </span><span class="nv">TLG_PROXY_KEY</span><span class="o">=</span>sf23231231<span class="w">  </span><span class="c1"># secret key  MTProxy Telegram</span>
 </pre></div>
 
 
@@ -174,7 +174,7 @@
 <li><strong>db_user_allow.txt</strong> - текстовый файл в котором указываются id пользователей которые имеют доступ к боту (за исключением администратора бота)</li>
 </ul>
 <h3>Запуск проекта:</h3>
-<div class="highlight"><pre><span></span>python start_bot_async.py
+<div class="highlight"><pre><span></span>python<span class="w"> </span>start_bot_async.py
 </pre></div>
 
 
@@ -194,20 +194,20 @@
 
 
 <p>выполним команды</p>
-<div class="highlight"><pre><span></span><span class="err">systemctl daemon-reload</span>
-<span class="err">systemctl enable start-youtube-audio.service</span>
-<span class="err">systemctl start start-youtube-audio.service</span>
+<div class="highlight"><pre><span></span><span class="n">systemctl</span><span class="w"> </span><span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">systemctl</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">start</span><span class="o">-</span><span class="n">youtube</span><span class="o">-</span><span class="n">audio</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">start</span><span class="o">-</span><span class="n">youtube</span><span class="o">-</span><span class="n">audio</span><span class="o">.</span><span class="n">service</span>
 </pre></div>
 
 
 <h3>Команды которые используются ботом для основного функционала:</h3>
 <h4>1. How to download an MP3 track from a YouTube video</h4>
-<div class="highlight"><pre><span></span>youtube-dl --extract-audio --audio-format mp3 &lt;video URL&gt;
+<div class="highlight"><pre><span></span>youtube-dl<span class="w"> </span>--extract-audio<span class="w"> </span>--audio-format<span class="w"> </span>mp3<span class="w"> </span>&lt;video<span class="w"> </span>URL&gt;
 </pre></div>
 
 
 <h4>2. Разбить аудиофайл на части продолжительностью 60 минут:</h4>
-<div class="highlight"><pre><span></span>mp3splt -t <span class="m">59</span>.0 -d имя_папки_для_выходного_файла имя_входного_файла
+<div class="highlight"><pre><span></span>mp3splt<span class="w"> </span>-t<span class="w"> </span><span class="m">59</span>.0<span class="w"> </span>-d<span class="w"> </span>имя_папки_для_выходного_файла<span class="w"> </span>имя_входного_файла
 </pre></div>
 
 
@@ -221,9 +221,11 @@
 <p><a href="https://api.telegram.org/botТОКЕН/sendMessage?chat_id=ЧАТ_ID&amp;text=HelloBot">https://api.telegram.org/botТОКЕН/sendMessage?chat_id=ЧАТ_ID&amp;text=HelloBot</a> </p>
 </li>
 </ul>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

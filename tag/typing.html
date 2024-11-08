@@ -111,7 +111,7 @@
 <li></li>
 </ul>
 <p>чтобы не проверять типы в модулях в которых нет аннотации можно добавить напротив импорта модуля </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span> <span class="c1"># type: ignore</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">my_module</span><span class="w"> </span><span class="c1"># type: ignore</span>
 </pre></div>
 
 
@@ -126,29 +126,31 @@
 <h2>Конфигурация mypy</h2>
 <p>вдохновение было вот отсюда https://www.youtube.com/watch?v=kyVspqEcs-s</p>
 <div class="highlight"><pre><span></span><span class="k">[mypy]</span>
-<span class="na">disallow_any_unimported</span> <span class="o">=</span> <span class="s">True </span>
-<span class="na">disallow_untyped_calls</span> <span class="o">=</span> <span class="s">True  # запретить нетипизированные выводы</span>
-<span class="na">disallow_untyped_defs</span> <span class="o">=</span> <span class="s">True   # запретить нетипизированные функции</span>
-<span class="na">disallow_incomlete_defs</span> <span class="o">=</span> <span class="s">True # запретить неполностью типизированные функции</span>
-<span class="na">warn_unused_configs</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">plugins</span> <span class="o">=</span>   <span class="s"># плагины для mypy</span>
-<span class="s">    mypy_django_plugin.main</span>
-<span class="s">    mypy_drf_plugin.main</span>
-<span class="na">mypy_path</span> <span class="o">=</span> <span class="s">./stubs </span>
-<span class="na">disallow_any_decorated</span> <span class="o">=</span> <span class="s">True  # запрет чтобы декораторы были нетипизированы</span>
+<span class="na">disallow_any_unimported</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"> </span>
+<span class="na">disallow_untyped_calls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w">  </span><span class="c1"># запретить нетипизированные выводы</span>
+<span class="na">disallow_untyped_defs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w">   </span><span class="c1"># запретить нетипизированные функции</span>
+<span class="na">disallow_incomlete_defs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"> </span><span class="c1"># запретить неполностью типизированные функции</span>
+<span class="na">warn_unused_configs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="na">plugins</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="c1"># плагины для mypy</span>
+<span class="w">    </span><span class="na">mypy_django_plugin.main</span>
+<span class="w">    </span><span class="na">mypy_drf_plugin.main</span>
+<span class="na">mypy_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">./stubs</span><span class="w"> </span>
+<span class="na">disallow_any_decorated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w">  </span><span class="c1"># запрет чтобы декораторы были нетипизированы</span>
 
-<span class="na">warn_unreachable</span> <span class="o">=</span> <span class="s">True  № предупреждение что код не будет выполнен</span>
-<span class="na">strict_equality</span> <span class="o">=</span> <span class="s">True # проверка на строгое равенство</span>
-<span class="na">implicit_reexport</span> <span class="o">=</span> <span class="s">False</span>
-<span class="na">allow_redefinition</span> <span class="o">=</span> <span class="s">True  # позволяет переопределить переменную с произвольным типом в том                            # же блоке</span>
-<span class="na">warn_unused_ignore</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">warn_unreachable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True  № предупреждение что код не будет выполнен</span>
+<span class="na">strict_equality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"> </span><span class="c1"># проверка на строгое равенство</span>
+<span class="na">implicit_reexport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+<span class="na">allow_redefinition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w">  </span><span class="c1"># позволяет переопределить переменную с произвольным типом в том                            # же блоке</span>
+<span class="na">warn_unused_ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
 
 <span class="na">[my-project.test.*]  # игнорировать ошибки у конкретного модуля</span>
-<span class="na">ignore_erroros</span> <span class="o">=</span> <span class="s">True </span>
+<span class="na">ignore_erroros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"> </span>
 </pre></div>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

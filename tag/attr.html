@@ -101,7 +101,7 @@
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
 </footer><!-- /.post-info --><p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
 <h2>Установка библиотеки</h2>
-<div class="highlight"><pre><span></span>pip install attrs
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>attrs
 </pre></div>
 
 
@@ -119,93 +119,93 @@
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">attr</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="n">attrib</span>
 
 <span class="nd">@attrs</span>
-<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
-    <span class="n">age</span> <span class="o">=</span> <span class="n">attrib</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
 
-<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span>
+<span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span>
 
-<span class="err">где</span> <span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span> <span class="o">//</span> <span class="bp">True</span>
+<span class="n">где</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="kc">True</span>
 </pre></div>
 
 
 <h4>Атрибуты без инициализации</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">skills</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">этот</span><span class="w"> </span><span class="n">атрибут</span><span class="w"> </span><span class="n">инициализируем</span><span class="w"> </span><span class="n">позднее</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nv">@attrs</span>
+<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
+<span class="w">    </span><span class="n">skills</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="k">False</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">этот</span><span class="w"> </span><span class="n">атрибут</span><span class="w"> </span><span class="n">инициализируем</span><span class="w"> </span><span class="n">позднее</span>
 
-<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
+<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 
 
 <h4>Значения по умолчанию</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nv">@attrs</span>
+<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 
-<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">()</span><span class="w"></span>
-<span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
+<span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">()</span>
+<span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 
 
 <p>если мы хотим установить атрибут с пустой коллекцией в качестве значения по умолчанию? Обычно мы не хотим передавать [] в качестве аргумента.
 для этого нужно использовать "фабричный метод" из attr</p>
 <div class="highlight"><pre><span></span>@attrs
-class Person<span class="o">(</span>object<span class="o">)</span>:
-    <span class="nv">name</span> <span class="o">=</span> attrib<span class="o">(</span><span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="o">)</span>
-    <span class="nv">age</span> <span class="o">=</span> attrib<span class="o">(</span><span class="nv">default</span><span class="o">=</span><span class="m">32</span><span class="o">)</span>
-    <span class="nv">skills</span> <span class="o">=</span> attrib<span class="o">(</span><span class="nv">factory</span><span class="o">=</span>list<span class="o">)</span>
+class<span class="w"> </span>Person<span class="o">(</span>object<span class="o">)</span>:
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>attrib<span class="o">(</span><span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="o">)</span>
+<span class="w">    </span><span class="nv">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>attrib<span class="o">(</span><span class="nv">default</span><span class="o">=</span><span class="m">32</span><span class="o">)</span>
+<span class="w">    </span><span class="nv">skills</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>attrib<span class="o">(</span><span class="nv">factory</span><span class="o">=</span>list<span class="o">)</span>
 </pre></div>
 
 
 <h4>Проверка атрибутов</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nv">@attrs</span>
+<span class="k">class</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nv">@student_id</span><span class="p">.</span><span class="n">validator</span><span class="w"></span>
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">check_student_id</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">attribute</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="k">value</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span><span class="w"></span>
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;student_id must be 6 characters! got {len(str(value))}&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nv">@student_id</span><span class="p">.</span><span class="n">validator</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">check_student_id</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">attribute</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="err">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="k">value</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">6</span><span class="err">:</span>
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;student_id must be 6 characters! got {len(str(value))}&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Обратите внимание, что для этого нам нужно определить функцию. Она должна быть аннотирована как @<attribute_name>.validator</p>
 <h4>Подклассы</h4>
-<div class="highlight"><pre><span></span><span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="nv">@attrs</span>
+<span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_name</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="w"></span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_name</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">name</span>
 
-<span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="k">User</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="nf">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
+<span class="nv">@attrs</span>
+<span class="k">class</span><span class="w"> </span><span class="k">User</span><span class="p">(</span><span class="k">object</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="nf">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_user_id</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nf">user_id</span><span class="w"></span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_user_id</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nf">user_id</span>
 
-<span class="nv">@attrs</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">,</span><span class="w"> </span><span class="k">User</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span><span class="w"></span>
+<span class="nv">@attrs</span>
+<span class="k">class</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">,</span><span class="w"> </span><span class="k">User</span><span class="p">)</span><span class="err">:</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrib</span><span class="p">()</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_student_id</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">student_id</span><span class="w"></span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_student_id</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">student_id</span>
 
 
 
-<span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="nf">user_id</span><span class="o">=</span><span class="s1">&#39;ctao&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">student_id</span><span class="o">=</span><span class="mi">123456</span><span class="p">)</span><span class="w"></span>
+<span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="nf">user_id</span><span class="o">=</span><span class="s1">&#39;ctao&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">student_id</span><span class="o">=</span><span class="mi">123456</span><span class="p">)</span>
 </pre></div>
 
 
@@ -216,9 +216,11 @@ class Person<span class="o">(</span>object<span class="o">)</span>:
 
 
 <p>легко сериализовать экземпляры в словари, которые затем можно использовать в JSON </p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

@@ -110,7 +110,7 @@
 <li>https://towardsdatascience.com/learn-enough-git-to-be-useful-281561eef959 </li>
 </ul>
 <h2>Получить ветку с удаленного репозитория</h2>
-<div class="highlight"><pre><span></span>git checkout -b &lt;название ветки&gt; origin/&lt;название ветки&gt;
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;название<span class="w"> </span>ветки&gt;<span class="w"> </span>origin/&lt;название<span class="w"> </span>ветки&gt;
 </pre></div>
 
 
@@ -118,63 +118,63 @@
 <ul>
 <li>Создать новую ветку фич и перейти на неё: </li>
 </ul>
-<div class="highlight"><pre><span></span>git checkout -b my_feature_branch
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_feature_branch
 </pre></div>
 
 
 <ul>
 <li></li>
 </ul>
-<div class="highlight"><pre><span></span>  git status 
+<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>status<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Зафиксировать изменения: </li>
 </ul>
-<div class="highlight"><pre><span></span>git add –A
+<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>–A
 </pre></div>
 
 
 <ul>
 <li>Заккоментировать изменения: </li>
 </ul>
-<div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;my commit message&quot;</span> 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;my commit message&quot;</span><span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Переключиться на основную ветку (локально): </li>
 </ul>
-<div class="highlight"><pre><span></span>git checkout master 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Посмотреть все ветки которые есть в репозитории: </li>
 </ul>
-<div class="highlight"><pre><span></span>git branch –v 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>–v<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Слить текущую ветку с веткой my_feature_branch: </li>
 </ul>
-<div class="highlight"><pre><span></span>git merge my_feature_branch 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>my_feature_branch<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Отправить изменения основной ветки в GitHub: </li>
 </ul>
-<div class="highlight"><pre><span></span>git push origin master 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Удалить старую локальную ветку фичи: </li>
 </ul>
-<div class="highlight"><pre><span></span>git branch -d my_feature_branch  
+<div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>my_feature_branch<span class="w">  </span>
 </pre></div>
 
 
@@ -182,7 +182,7 @@
 <ul>
 <li>Отправляем ветку в удаленный репозиторий: </li>
 </ul>
-<div class="highlight"><pre><span></span>git push origin my_feature_branch 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>my_feature_branch<span class="w"> </span>
 </pre></div>
 
 
@@ -200,21 +200,21 @@
 <li>Можете удалить удаленную ветку фич. </li>
 <li>Переключимся на локальную основную ветку: </li>
 </ul>
-<div class="highlight"><pre><span></span>git checkout master 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Скачайте изменения из удаленного репозитория: </li>
 </ul>
-<div class="highlight"><pre><span></span>git pull origin master 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Удалите локальную ветку фич: </li>
 </ul>
-<div class="highlight"><pre><span></span>git branch -d my_feature_branch 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>my_feature_branch<span class="w"> </span>
 </pre></div>
 
 
@@ -224,14 +224,14 @@
 <li>Создать форк на гитхабе, нажмите сверху справа кнопку Fork </li>
 <li>Скачайте удаленный репозиторий </li>
 </ul>
-<div class="highlight"><pre><span></span>git clone https://github.com/your_username/first-contributions.git
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your_username/first-contributions.git
 </pre></div>
 
 
 <ul>
 <li>Посмотрим к какому удаленному репозиторию на гитхабе </li>
 </ul>
-<div class="highlight"><pre><span></span>git remote –v
+<div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>–v
 </pre></div>
 
 
@@ -241,7 +241,7 @@ origin https://github.com/discdiver/first-contributions.git (push) </p>
 <ul>
 <li>Нужно добавить оригинальный репозиторий в upstream repository: </li>
 </ul>
-<div class="highlight"><pre><span></span>git remote add upstream https://github.com/firstcontributions/first-contributions.git 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/firstcontributions/first-contributions.git<span class="w"> </span>
 </pre></div>
 
 
@@ -269,7 +269,7 @@ upstream https://github.com/firstcontributions/first-contributions.git (push) </
 <ul>
 <li>Если в исходном репозитории есть изменения, то можно объединить их с вашим локальным репозиторием: </li>
 </ul>
-<div class="highlight"><pre><span></span>git merge upstream/master  
+<div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>upstream/master<span class="w">  </span>
 </pre></div>
 
 
@@ -277,7 +277,7 @@ upstream https://github.com/firstcontributions/first-contributions.git (push) </
 <ul>
 <li>После решения всех возможных проблем связанных с изменениями, то мы можем отправить изменения из локального репозитория в форк удаленного репозитория: </li>
 </ul>
-<div class="highlight"><pre><span></span>git push origin master 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master<span class="w"> </span>
 </pre></div>
 
 

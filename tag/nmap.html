@@ -111,12 +111,12 @@
 <h2>Брутфорс DNS</h2>
 <p>Скрипт dns-brute пытается перечислить DNS имён хостов, делая запросы по распространённым поддоменам. Обнаружение поддоменов, связанных с доменом организации, во время оценки безопасности может раскрыть новые цели. Обнаруженные хосты могут быть виртуальными веб-хостами на одном веб-сервере или могут являться отдельными хостами на своих собственных IP адресах, разбросанными в мире по различным датацентрам.</p>
 <p>Скрипт dns-brute найдёт действительные DNS (A) записи, перебирая список распространённых поддоменов и находя те, которые успешно преобразовываются.</p>
-<div class="highlight"><pre><span></span>sudo nmap -p <span class="m">80</span> --script <span class="s2">&quot;dns-brute&quot;</span> ya.ru
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>nmap<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span><span class="w"> </span>--script<span class="w"> </span><span class="s2">&quot;dns-brute&quot;</span><span class="w"> </span>ya.ru
 </pre></div>
 
 
 <h2>Traceroute с геолокацией</h2>
-<div class="highlight"><pre><span></span>sudo<span class="sb">`</span> <span class="sb">`</span>nmap --<span class="sb">``</span>traceroute<span class="sb">`</span> <span class="sb">`</span>--script <span class="sb">``</span><span class="s2">&quot;traceroute-geolocation&quot;</span><span class="sb">`</span> <span class="sb">`</span>-p <span class="m">80</span> samy.pl
+<div class="highlight"><pre><span></span>sudo<span class="sb">`</span><span class="w"> </span><span class="sb">`</span>nmap<span class="w"> </span>--<span class="sb">``</span>traceroute<span class="sb">`</span><span class="w"> </span><span class="sb">`</span>--script<span class="w"> </span><span class="sb">``</span><span class="s2">&quot;traceroute-geolocation&quot;</span><span class="sb">`</span><span class="w"> </span><span class="sb">`</span>-p<span class="w"> </span><span class="m">80</span><span class="w"> </span>samy.pl
 </pre></div>
 
 
@@ -124,11 +124,13 @@
 <p>Скрипт smb-os-discovery пытается определить операционную систему, имя компьютера, домен, рабочую группу и текущее время по протоколу SMB (порты 445 или 139). Это выполняется запуском сессии с анонимным аккаунтом (или с реальным пользовательским аккаунтом, если дан; это не имеет особой разницы); в ответе начала сессии, сервер отправит всю эту информацию.</p>
 <p>Таким образом можно находить в больших сетях компьютеры с Windows XP. Находятся даже системы, которые не прикреплены к домену.</p>
 <p>Пример запуска:</p>
-<div class="highlight"><pre><span></span>sudo nmap -p <span class="m">445</span> --script <span class="s2">&quot;smb-os-discovery&quot;</span> <span class="m">192</span>.168.0.1/24
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>nmap<span class="w"> </span>-p<span class="w"> </span><span class="m">445</span><span class="w"> </span>--script<span class="w"> </span><span class="s2">&quot;smb-os-discovery&quot;</span><span class="w"> </span><span class="m">192</span>.168.0.1/24
 </pre></div>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

@@ -108,74 +108,74 @@
 <ul>
 <li>удаление коммитов начиная с выбранного</li>
 </ul>
-<div class="highlight"><pre><span></span>  git reflog
-  <span class="c1"># ты увидишь список всех действий во всех ветках</span>
-  <span class="c1"># у каждой есть индекс HEAD@{index}</span>
-  <span class="c1"># найди тот, после которого ты все поломал</span>
-  git reset HEAD@<span class="o">{</span>index<span class="o">}</span>
-  <span class="c1"># волшебная машина времени</span>
+<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>reflog
+<span class="w">  </span><span class="c1"># ты увидишь список всех действий во всех ветках</span>
+<span class="w">  </span><span class="c1"># у каждой есть индекс HEAD@{index}</span>
+<span class="w">  </span><span class="c1"># найди тот, после которого ты все поломал</span>
+<span class="w">  </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD@<span class="o">{</span>index<span class="o">}</span>
+<span class="w">  </span><span class="c1"># волшебная машина времени</span>
 </pre></div>
 
 
 <ul>
 <li>Сделал коммит, но забыл кое что</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># сделай что хотел</span>
-  git add . <span class="c1"># или добавляй файлы по одному</span>
-  git commit --amend
-  <span class="c1"># теперь измени или оставь старое сообщение коммита</span>
-  <span class="c1"># теперь твой последний коммит включает то новое изменение!</span>
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="c1"># сделай что хотел</span>
+<span class="w">  </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="c1"># или добавляй файлы по одному</span>
+<span class="w">  </span>git<span class="w"> </span>commit<span class="w"> </span>--amend
+<span class="w">  </span><span class="c1"># теперь измени или оставь старое сообщение коммита</span>
+<span class="w">  </span><span class="c1"># теперь твой последний коммит включает то новое изменение!</span>
 </pre></div>
 
 
 <ul>
 <li>Исправить сообщение в коммите</li>
 </ul>
-<div class="highlight"><pre><span></span>  git commit --amend
+<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>commit<span class="w"> </span>--amend
 </pre></div>
 
 
 <ul>
 <li>Случайно сделал коммит в мастер, а не в другую ветку</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># создай новую ветку на основе мастера</span>
-  git branch some-new-branch-name
-  <span class="c1"># удали последний коммит из мастера</span>
-  git reset HEAD~ --hard
-  git checkout some-new-branch-name
-  <span class="c1"># теперь тот коммит в новой ветке! :)</span>
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="c1"># создай новую ветку на основе мастера</span>
+<span class="w">  </span>git<span class="w"> </span>branch<span class="w"> </span>some-new-branch-name
+<span class="w">  </span><span class="c1"># удали последний коммит из мастера</span>
+<span class="w">  </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD~<span class="w"> </span>--hard
+<span class="w">  </span>git<span class="w"> </span>checkout<span class="w"> </span>some-new-branch-name
+<span class="w">  </span><span class="c1"># теперь тот коммит в новой ветке! :)</span>
 </pre></div>
 
 
 <ul>
 <li>Сделал коммит в другую ветку</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># отмени последний коммит, но оставь изменения</span>
-  git reset HEAD~ --soft
-  git stash
-  <span class="c1"># перейди в нужную ветку</span>
-  git checkout name-of-the-correct-branch
-  git stash pop
-  git add . <span class="c1"># или добавь файлы по одному</span>
-  git commit -m <span class="s2">&quot;your message here&quot;</span>
-  <span class="c1"># теперь изменения в нужной ветке</span>
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="c1"># отмени последний коммит, но оставь изменения</span>
+<span class="w">  </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD~<span class="w"> </span>--soft
+<span class="w">  </span>git<span class="w"> </span>stash
+<span class="w">  </span><span class="c1"># перейди в нужную ветку</span>
+<span class="w">  </span>git<span class="w"> </span>checkout<span class="w"> </span>name-of-the-correct-branch
+<span class="w">  </span>git<span class="w"> </span>stash<span class="w"> </span>pop
+<span class="w">  </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="c1"># или добавь файлы по одному</span>
+<span class="w">  </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;your message here&quot;</span>
+<span class="w">  </span><span class="c1"># теперь изменения в нужной ветке</span>
 </pre></div>
 
 
 <ul>
 <li>про diff</li>
 </ul>
-<div class="highlight"><pre><span></span>  git diff --staged
+<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>diff<span class="w"> </span>--staged
 </pre></div>
 
 
 <p>Git показывает изменения в diff только для тех файлов, которые еще не добавлены в staging area (еще не сделан git add). С флагом --staged будет показывать diff для добавленных файлов.</p>
 <h2>Удалить локально последний коммит</h2>
 <div class="highlight"><pre><span></span><span class="c1">#Удалить его локально</span>
-git reset HEAD~1 --hard
+git<span class="w"> </span>reset<span class="w"> </span>HEAD~1<span class="w"> </span>--hard
 
 <span class="c1">#Сделать force push на сервер</span>
-git push -f
+git<span class="w"> </span>push<span class="w"> </span>-f
 </pre></div>
 
 

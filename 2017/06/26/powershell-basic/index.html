@@ -163,43 +163,43 @@ InstalledDir: /usr/bin</p>
 <ul>
 <li>Install dependencies</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo dnf -y install python cmake clang llvm libicu-devel lldb-devel libunwind-devel lttng-ust-devel libuuid-devel zlib-devel libcurl-devel krb5-devel openssl-devel automake libtool
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span>cmake<span class="w"> </span>clang<span class="w"> </span>llvm<span class="w"> </span>libicu-devel<span class="w"> </span>lldb-devel<span class="w"> </span>libunwind-devel<span class="w"> </span>lttng-ust-devel<span class="w"> </span>libuuid-devel<span class="w"> </span>zlib-devel<span class="w"> </span>libcurl-devel<span class="w"> </span>krb5-devel<span class="w"> </span>openssl-devel<span class="w"> </span>automake<span class="w"> </span>libtool
 </pre></div>
 
 
 <ul>
 <li>Get Rover</li>
 </ul>
-<div class="highlight"><pre><span></span>git clone https://github.com/dotnet/core
-<span class="nb">cd</span> core
-git checkout bootstrap
-git rev-parse HEAD
-<span class="nb">cd</span> tools/dotnet-bootstrap
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dotnet/core
+<span class="nb">cd</span><span class="w"> </span>core
+git<span class="w"> </span>checkout<span class="w"> </span>bootstrap
+git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+<span class="nb">cd</span><span class="w"> </span>tools/dotnet-bootstrap
 </pre></div>
 
 
 <ul>
 <li>Get payload SDK  - Using Fedora 24 .NET Core 1.1 SDK:</li>
 </ul>
-<div class="highlight"><pre><span></span>curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID<span class="o">=</span><span class="m">835025</span>
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>-sSL<span class="w"> </span>-o<span class="w"> </span>dotnet.tar.gz<span class="w"> </span>https://go.microsoft.com/fwlink/?LinkID<span class="o">=</span><span class="m">835025</span>
 </pre></div>
 
 
 <ul>
 <li>Select your branches</li>
 </ul>
-<div class="highlight"><pre><span></span>mkdir -p fedora.25-x64-dotnet/src                
-<span class="nb">cd</span> fedora.25-x64-dotnet/src
-git clone https://github.com/dotnet/corefx
-d corefx
-git checkout release/1.1.0
-git rev-parse HEAD
-<span class="nb">cd</span> ..
-git clone https://github.com/dotnet/coreclr
-<span class="nb">cd</span> coreclr
-git checkout release/1.1.0
-git rev-parse HEAD
-<span class="nb">cd</span> ../..
+<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>fedora.25-x64-dotnet/src<span class="w">                </span>
+<span class="nb">cd</span><span class="w"> </span>fedora.25-x64-dotnet/src
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dotnet/corefx
+d<span class="w"> </span>corefx
+git<span class="w"> </span>checkout<span class="w"> </span>release/1.1.0
+git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+<span class="nb">cd</span><span class="w"> </span>..
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dotnet/coreclr
+<span class="nb">cd</span><span class="w"> </span>coreclr
+git<span class="w"> </span>checkout<span class="w"> </span>release/1.1.0
+git<span class="w"> </span>rev-parse<span class="w"> </span>HEAD
+<span class="nb">cd</span><span class="w"> </span>../..
 </pre></div>
 
 
@@ -213,7 +213,7 @@ git rev-parse HEAD
 <p>Bootstrap</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>./dotnet.bootstrap.py -payload dotnet.tar.gz
+<div class="highlight"><pre><span></span>./dotnet.bootstrap.py<span class="w"> </span>-payload<span class="w"> </span>dotnet.tar.gz
 </pre></div>
 
 
@@ -323,9 +323,9 @@ git rev-parse HEAD
 <li>Дополнительные параметры, которые нам упрощают жизнь:
                    Mandatory – Принимает два значения True обязательный для заполнения и False необязательный;
                - HelpMessage – Справка по переменной;           <br>
-               - ParameterSetName – Имя переменной к которой относятся данные параметры;<div class="highlight"><pre><span></span>       <span class="o">*</span> <span class="k">Position</span> <span class="err">–</span> <span class="err">Позиция</span> <span class="err">переменной</span> <span class="err">при</span> <span class="err">вызове</span> <span class="err">функции</span><span class="p">;</span>
+               - ParameterSetName – Имя переменной к которой относятся данные параметры;<div class="highlight"><pre><span></span>       <span class="k">*</span> Position – Позиция переменной при вызове функции;
 
-       <span class="o">###</span> <span class="err">Вывод</span> <span class="err">информации</span>
+       ### Вывод информации
 </pre></div>
 
 
@@ -338,12 +338,12 @@ git rev-parse HEAD
 <code>powershell
            $str = "Hello Habr!"
            $str | Out-File D:\out_test1.txt</code></p>
-<div class="highlight"><pre><span></span>   <span class="err">или</span> <span class="err">использовать</span> <span class="err">знак</span> <span class="ss">&quot;&gt;&quot;</span>
+<div class="highlight"><pre><span></span>   или использовать знак &quot;&gt;&quot;
 
-   <span class="o">```</span><span class="n">powershell</span>
-   <span class="err">$</span><span class="n">str</span> <span class="o">=</span> <span class="ss">&quot;Hello Habr!&quot;</span>
-   <span class="err">$</span><span class="n">str</span> <span class="o">&gt;</span> <span class="n">D</span><span class="p">:</span><span class="err">\</span><span class="n">out_test2</span><span class="p">.</span><span class="n">txt</span>
-   <span class="o">```</span>
+   ```powershell
+   $str = &quot;Hello Habr!&quot;
+   $str &gt; D:\out_test2.txt
+   ```
 </pre></div>
 
 
@@ -353,17 +353,17 @@ git rev-parse HEAD
 </li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nv">$p</span> <span class="p">=</span> <span class="nb">Get-Process</span>
-<span class="nv">$p</span> <span class="p">|</span> <span class="nb">SELECT </span><span class="n">Name</span><span class="p">,</span> <span class="n">Path</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="n">-Path</span> <span class="n">D</span><span class="err">:</span><span class="p">\</span><span class="n">out_test3</span><span class="p">.</span><span class="n">csv</span>
+<span class="nv">$p</span> <span class="p">|</span> <span class="nb">SELECT </span><span class="n">Name</span><span class="p">,</span> <span class="n">Path</span> <span class="p">|</span> <span class="nb">Export-Csv</span> <span class="n">-Path</span> <span class="n">D</span><span class="p">:\</span><span class="n">out_test3</span><span class="p">.</span><span class="n">csv</span>
 </pre></div>
 
 
 <ul>
 <li>
 <p>Запись в файл HTML, используя ConvertTo-Html*</p>
-<div class="highlight"><pre><span></span><span class="err">   ```powershell</span>
-<span class="err">   $h = Get-Process </span>
-<span class="err">   $h | ConvertTo-Html -Property Name, Path &gt; D:\out_test4.html &amp; D:\out_test4.html   #Откроем файле после формирования</span>
-<span class="err">   ```</span>
+<div class="highlight"><pre><span></span>   ```powershell
+   $h = Get-Process 
+   $h | ConvertTo-Html -Property Name, Path &gt; D:\out_test4.html &amp; D:\out_test4.html   #Откроем файле после формирования
+   ```
 </pre></div>
 
 

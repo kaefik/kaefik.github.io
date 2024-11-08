@@ -100,9 +100,9 @@
         <span>Thu 05 July 2018</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/pandas.html">pandas</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a></span>Translations:
         <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/06/python/">ru</a>
         <a href="/2021/06/07/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/06/python/">ru</a>
 
 </footer><!-- /.post-info --><h2>Общие ссылки</h2>
 <ul>
@@ -165,7 +165,7 @@ that make use of innovative user interfaces, such as multi-touch apps.</li>
 <li><a href="https://github.com/behave/behave">Behave is behavior-driven development, Python style.</a></li>
 </ul>
 <h2>QR Code</h2>
-<div class="highlight"><pre><span></span>sudo apt-get install libzbar-dev
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libzbar-dev
 </pre></div>
 
 
@@ -213,7 +213,7 @@ that make use of innovative user interfaces, such as multi-touch apps.</li>
 <p>Если нужно быстро и легко расшарить файлы из директории</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>python3 -m http.server
+<div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>http.server
 </pre></div>
 
 
@@ -307,7 +307,7 @@ that make use of innovative user interfaces, such as multi-touch apps.</li>
 <p>Scrapy Shell is a command line tool that provides you opportunity to test your parsing code without running thee entire crawler.
 Unlike the crawler which goes to all the links, Scrapy Shell save the DOM of an individual page for data extraction.</p>
 <p>Например:</p>
-<div class="highlight"><pre><span></span><span class="err">scrapy shell https://www.olx.com.pk/item/asus-eee-pc-atom-dual-core-4cpus-beautiful-laptops-fresh-stock-IDUVo6B.html#4001329891</span>
+<div class="highlight"><pre><span></span>scrapy shell https://www.olx.com.pk/item/asus-eee-pc-atom-dual-core-4cpus-beautiful-laptops-fresh-stock-IDUVo6B.html#4001329891
 </pre></div>
 
 
@@ -340,26 +340,26 @@ Unlike the crawler which goes to all the links, Scrapy Shell save the DOM of an 
 <h3>Use Xvfb to launch Headless Browser Firefox on Ubuntu Server without Desktop GUI</h3>
 <p>add var enviroment:
         export DISPLAY=:99 </p>
-<div class="highlight"><pre><span></span>yum install xorg-x11-server-Xvfb
+<div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>xorg-x11-server-Xvfb
 </pre></div>
 
 
 <ul>
 <li>Copy <code>Xvfb.service</code> file under <code>/etc/systemd/system/</code></li>
 </ul>
-<div class="highlight"><pre><span></span>chmod +x /etc/systemd/system/Xvfb.service
-systemctl <span class="nb">enable</span> Xvfb.service
-systemctl start Xvfb.service
+<div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/systemd/system/Xvfb.service
+systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>Xvfb.service
+systemctl<span class="w"> </span>start<span class="w"> </span>Xvfb.service
 </pre></div>
 
 
 <p>file <strong>Xvfb.service</strong></p>
 <div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
-<span class="nv">Description</span><span class="o">=</span>X Virtual Frame Buffer Service
+<span class="nv">Description</span><span class="o">=</span>X<span class="w"> </span>Virtual<span class="w"> </span>Frame<span class="w"> </span>Buffer<span class="w"> </span>Service
 <span class="nv">After</span><span class="o">=</span>network.target
 
 <span class="o">[</span>Service<span class="o">]</span>
-<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/Xvfb :99 -screen <span class="m">0</span> 1024x768x24
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/Xvfb<span class="w"> </span>:99<span class="w"> </span>-screen<span class="w"> </span><span class="m">0</span><span class="w"> </span>1024x768x24
 
 <span class="o">[</span>Install<span class="o">]</span>
 <span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
@@ -407,44 +407,44 @@ systemctl start Xvfb.service
 </ul>
 <p>Использовать virtualenv! Оно создаст изолированные окружения для ваших приложений и позволит устанавливать пакеты именно в эти окружения, а не глобально.</p>
 <p>Для установки воспользуемся pip:  </p>
-<div class="highlight"><pre><span></span>pip3 install virtualenv
+<div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>virtualenv
 </pre></div>
 
 
 <p>Две основные команды:</p>
-<div class="highlight"><pre><span></span>virtualenv myproject
-<span class="nb">source</span> myproject/bin/activate
+<div class="highlight"><pre><span></span>virtualenv<span class="w"> </span>myproject
+<span class="nb">source</span><span class="w"> </span>myproject/bin/activate
 </pre></div>
 
 
 <h3>Установка  Jupyter Notebook  в Fedora</h3>
-<div class="highlight"><pre><span></span>dnf groupinstall <span class="s1">&#39;Development Tools&#39;</span>
-dnf install gcc-c++
-dnf install rpm-build
-dnf install python-devel
-dnf install python3-devel
-dnf install python-pip
-dnf install python3-pip
-pip3 install jupyter
+<div class="highlight"><pre><span></span>dnf<span class="w"> </span>groupinstall<span class="w"> </span><span class="s1">&#39;Development Tools&#39;</span>
+dnf<span class="w"> </span>install<span class="w"> </span>gcc-c++
+dnf<span class="w"> </span>install<span class="w"> </span>rpm-build
+dnf<span class="w"> </span>install<span class="w"> </span>python-devel
+dnf<span class="w"> </span>install<span class="w"> </span>python3-devel
+dnf<span class="w"> </span>install<span class="w"> </span>python-pip
+dnf<span class="w"> </span>install<span class="w"> </span>python3-pip
+pip3<span class="w"> </span>install<span class="w"> </span>jupyter
 </pre></div>
 
 
 <h3>Установка pip3 в CentOS</h3>
-<div class="highlight"><pre><span></span>sudo yum install -y epel-release
-sudo yum install -y python34
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python34
 <span class="c1"># Install pip3</span>
-sudo yum install -y python34-setuptools  <span class="c1"># install easy_install-3.4</span>
-sudo easy_install-3.4 pip
-yum install python34-devel.i686 
-yum install gcc gcc-c++
-yum install python34-devel
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python34-setuptools<span class="w">  </span><span class="c1"># install easy_install-3.4</span>
+sudo<span class="w"> </span>easy_install-3.4<span class="w"> </span>pip
+yum<span class="w"> </span>install<span class="w"> </span>python34-devel.i686<span class="w"> </span>
+yum<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>gcc-c++
+yum<span class="w"> </span>install<span class="w"> </span>python34-devel
 
-easy_install-3.4 numpy
-easy_install-3.4 pandas     <span class="c1"># будет устанавливаться долго</span>
+easy_install-3.4<span class="w"> </span>numpy
+easy_install-3.4<span class="w"> </span>pandas<span class="w">     </span><span class="c1"># будет устанавливаться долго</span>
 
-easy_install-3.4 xlsxwriter
+easy_install-3.4<span class="w"> </span>xlsxwriter
 
-easy_install-3.4 requests
+easy_install-3.4<span class="w"> </span>requests
 </pre></div>
 
 
@@ -548,9 +548,11 @@ easy_install-3.4 requests
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

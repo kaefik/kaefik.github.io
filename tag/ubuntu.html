@@ -111,27 +111,27 @@
 <ol>
 <li>Создать Dockerfile </li>
 </ol>
-<div class="highlight"><pre><span></span>FROM centos:8
-RUN yum install firefox -y
-CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+<div class="highlight"><pre><span></span>FROM<span class="w"> </span>centos:8
+RUN<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>firefox<span class="w"> </span>-y
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
 </pre></div>
 
 
 <p>или вот такой:</p>
-<div class="highlight"><pre><span></span>FROM ubuntu:20.04
+<div class="highlight"><pre><span></span>FROM<span class="w"> </span>ubuntu:20.04
 <span class="c1"># нужно Configuring tzdata</span>
-ENV <span class="nv">TZ</span><span class="o">=</span>Europe/Moscow
+ENV<span class="w"> </span><span class="nv">TZ</span><span class="o">=</span>Europe/Moscow
 <span class="c1">#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone</span>
 <span class="c1"># установка приложения</span>
-RUN apt update <span class="o">&amp;&amp;</span> apt upgrade <span class="o">&amp;&amp;</span> apt install firefox -y
-CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>firefox<span class="w"> </span>-y
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
 </pre></div>
 
 
 <ol>
 <li>Создаем образ </li>
 </ol>
-<div class="highlight"><pre><span></span>docker build -t название_образа .
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>название_образа<span class="w"> </span>.
 </pre></div>
 
 
@@ -140,19 +140,19 @@ CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span>
 <li>Снимаем ограничения доступа к Xorg</li>
 </ol>
 <p>для того чтобы приложение могло под root получать доступ. действует до перезагрузки вашего  компьютера.</p>
-<div class="highlight"><pre><span></span>sudo xhost +SI:localuser:root 
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>xhost<span class="w"> </span>+SI:localuser:root<span class="w"> </span>
 </pre></div>
 
 
 <ol>
 <li>Запускаем докер контейнер</li>
 </ol>
-<div class="highlight"><pre><span></span>docker run --name имя_контейнера -it -e <span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span> --net<span class="o">=</span>host название_образа
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>имя_контейнера<span class="w"> </span>-it<span class="w"> </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span>--net<span class="o">=</span>host<span class="w"> </span>название_образа
 </pre></div>
 
 
 <p>если нет переменной окружения DISPLAY:</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span>:0
+<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:0
 </pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -174,8 +174,8 @@ CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span>
 <li><a href="https://losst.ru/nastrojka-ufw-ubuntu#5_%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_UFW">Настройка UFW</a></li>
 </ul>
 <h3>Политика по умолчанию</h3>
-<div class="highlight"><pre><span></span>ufw default deny incoming   <span class="c1"># Все входящие пакеты будем отклонять</span>
-ufw default allow outgoing  <span class="c1"># все исходящие разрешим</span>
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming<span class="w">   </span><span class="c1"># Все входящие пакеты будем отклонять</span>
+ufw<span class="w"> </span>default<span class="w"> </span>allow<span class="w"> </span>outgoing<span class="w">  </span><span class="c1"># все исходящие разрешим</span>
 </pre></div>
 
 
@@ -186,9 +186,9 @@ ufw allow порт/протокол</p>
 <ul>
 <li>чтобы открыть порт ufw для SSH</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw allow OpenSSH
-ufw allow <span class="m">22</span>
-ufw allow <span class="m">22 …</span></pre></div>
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22 …</span></pre></div>
                 <a class="readmore" href="/2021/03/01/firewall-ubuntu/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -212,15 +212,15 @@ ufw allow <span class="m">22 …</span></pre></div>
 <ul>
 <li>Установка библиотек:</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo apt install xbindkeys
-sudo apt install xautomation
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xbindkeys
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xautomation
 </pre></div>
 
 
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
+<div class="highlight"><pre><span></span>xev<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A2<span class="w"> </span>--line-buffered<span class="w"> </span><span class="s1">&#39;^ButtonPress&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-nE …</pre></div>
                 <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -245,14 +245,14 @@ sudo apt install xautomation
 <ol>
 <li>проверяем где установлен fish: </li>
 </ol>
-<div class="highlight"><pre><span></span>    which fish
+<div class="highlight"><pre><span></span><span class="w">    </span>which<span class="w"> </span>fish
 </pre></div>
 
 
 <ol>
 <li>переключение shell по умолчанию</li>
 </ol>
-<div class="highlight"><pre><span></span>   chsh -s путь_для_fish
+<div class="highlight"><pre><span></span><span class="w">   </span>chsh<span class="w"> </span>-s<span class="w"> </span>путь_для_fish
 </pre></div>
                 <a class="readmore" href="/2019/12/04/fishka-linux/">read more</a>
                 </div><!-- /.entry-content -->
@@ -306,17 +306,19 @@ sudo apt install xautomation
 <ol>
 <li>Настройка прав для портов USB (в моем случае это нужно было сделать) </li>
 </ol>
-<div class="highlight"><pre><span></span>sudo groupadd usbusers
-groups имя_пользователя <span class="c1"># вывод списка групп в которых состоит пользователь.</span>
-groups isaifutdinov
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>groupadd<span class="w"> </span>usbusers
+groups<span class="w"> </span>имя_пользователя<span class="w"> </span><span class="c1"># вывод списка групп в которых состоит пользователь.</span>
+groups<span class="w"> </span>isaifutdinov
 sudo …</pre></div>
                 <a class="readmore" href="/2017/03/15/sdr-dvb-t-realtek-rtl2832u-ubuntu-lsusb/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

@@ -105,8 +105,8 @@
         <span>Sat 14 January 2017</span>
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <p>После сборки нужно проверить конфигурацию ядра, я исправлял по одной опции, и заново запускал <strong>make hybris-boot</strong> и <strong>make hybris</strong> - recovery, если все собиралось без ошибок,  после этого снова проверял конфиг.</p>
-<div class="highlight"><pre><span></span>HABUILD_SDK $ <span class="nb">cd</span> <span class="nv">$ANDROID_ROOT</span> 
-hybris/mer-kernel-check/mer_verify_kernel_config ./out/target/product/<span class="nv">$DEVICE</span>/obj/KERNEL_OBJ/.config
+<div class="highlight"><pre><span></span>HABUILD_SDK<span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$ANDROID_ROOT</span><span class="w"> </span>
+hybris/mer-kernel-check/mer_verify_kernel_config<span class="w"> </span>./out/target/product/<span class="nv">$DEVICE</span>/obj/KERNEL_OBJ/.config
 </pre></div>
 
 
@@ -143,7 +143,7 @@ $ANDROID_ROOT/kernel/asus/msm8916/arch/arm64/configs/cyanogenmod_Z00L_defconfig 
 <div class="highlight"><pre><span></span><span class="c1">#include &lt;linux/screen_info.h&gt; </span>
 
 <span class="c1">#ifdef CONFIG_VT</span>
- struct screen_info screen_info<span class="p">;</span>
+<span class="w"> </span>struct<span class="w"> </span>screen_info<span class="w"> </span>screen_info<span class="p">;</span>
 <span class="c1">#endif   </span>
 </pre></div>
 
@@ -151,110 +151,110 @@ $ANDROID_ROOT/kernel/asus/msm8916/arch/arm64/configs/cyanogenmod_Z00L_defconfig 
 <hr>
 <h2>Вот здесь расположен <a href="https://yadi.sk/d/30uDZ5Yy39eE2e">последний конфиг для Z00L</a>.</h2>
 <p>проверка конфигурации ядра выдает следующие предупреждения, ошибки исправлены.</p>
-<div class="highlight"><pre><span></span>HABUILD_SDK <span class="o">[</span>Z00L<span class="o">]</span> ilnur@ubuntu:~/to/mer/android/droid$ hybris/mer-kernel-check/mer_verify_kernel_config ./out/target/product/<span class="nv">$DEVICE</span>/obj/KERNEL_OBJ/.config  
-WARNING: CONFIG_WATCHDOG_NOWAYOUT is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: If device uses watchdogs with dsme <span class="o">(</span>https://github.com/nemomobile/dsme<span class="o">)</span>, this option should be enabled or watchdog does not protect the device in <span class="k">case</span> dsme crashes.
+<div class="highlight"><pre><span></span>HABUILD_SDK<span class="w"> </span><span class="o">[</span>Z00L<span class="o">]</span><span class="w"> </span>ilnur@ubuntu:~/to/mer/android/droid$<span class="w"> </span>hybris/mer-kernel-check/mer_verify_kernel_config<span class="w"> </span>./out/target/product/<span class="nv">$DEVICE</span>/obj/KERNEL_OBJ/.config<span class="w">  </span>
+WARNING:<span class="w"> </span>CONFIG_WATCHDOG_NOWAYOUT<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>If<span class="w"> </span>device<span class="w"> </span>uses<span class="w"> </span>watchdogs<span class="w"> </span>with<span class="w"> </span>dsme<span class="w"> </span><span class="o">(</span>https://github.com/nemomobile/dsme<span class="o">)</span>,<span class="w"> </span>this<span class="w"> </span>option<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>enabled<span class="w"> </span>or<span class="w"> </span>watchdog<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>protect<span class="w"> </span>the<span class="w"> </span>device<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>dsme<span class="w"> </span>crashes.
 
-WARNING: CONFIG_CGROUP_DEVICE is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_CGROUP_DEVICE<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_BT_HCIUART_H4 is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: Bluez <span class="o">(</span>optional<span class="o">)</span>: Needed <span class="k">if</span> bluez used as bluetooth stack
+WARNING:<span class="w"> </span>CONFIG_BT_HCIUART_H4<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>Bluez<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>Needed<span class="w"> </span><span class="k">if</span><span class="w"> </span>bluez<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>bluetooth<span class="w"> </span>stack
 
-WARNING: CONFIG_BLK_CGROUP is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_BLK_CGROUP<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_CGROUP_MEM_RES_CTLR_KMEM is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_CGROUP_MEM_RES_CTLR_KMEM<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_NETPRIO_CGROUP is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_NETPRIO_CGROUP<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_FANOTIFY is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: optional, required <span class="k">for</span> systemd readahead.
+WARNING:<span class="w"> </span>CONFIG_FANOTIFY<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>optional,<span class="w"> </span>required<span class="w"> </span><span class="k">for</span><span class="w"> </span>systemd<span class="w"> </span>readahead.
 
-WARNING: CONFIG_LBDAF is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: ext4 filesystem requires this in order to support filesysetms with huge_file feature, which is enabled by default by mke2fs.ext4
+WARNING:<span class="w"> </span>CONFIG_LBDAF<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>ext4<span class="w"> </span>filesystem<span class="w"> </span>requires<span class="w"> </span>this<span class="w"> </span><span class="k">in</span><span class="w"> </span>order<span class="w"> </span>to<span class="w"> </span>support<span class="w"> </span>filesysetms<span class="w"> </span>with<span class="w"> </span>huge_file<span class="w"> </span>feature,<span class="w"> </span>which<span class="w"> </span>is<span class="w"> </span>enabled<span class="w"> </span>by<span class="w"> </span>default<span class="w"> </span>by<span class="w"> </span>mke2fs.ext4
 
-WARNING: CONFIG_CGROUP_PERF is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_CGROUP_PERF<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_CGROUP_MEM_RES_CTLR_SWAP is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_CGROUP_MEM_RES_CTLR_SWAP<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_CGROUP_MEM_RES_CTLR is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_CGROUP_MEM_RES_CTLR<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_AUDIT is invalid
-Value is: y
-Allowed values : n, !
-Comment says: systemd: Either disable here or in cmdline http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>77b6e19458f37cfde127ec6aa9494c0ac45ad890
+WARNING:<span class="w"> </span>CONFIG_AUDIT<span class="w"> </span>is<span class="w"> </span>invalid
+Value<span class="w"> </span>is:<span class="w"> </span>y
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>n,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd:<span class="w"> </span>Either<span class="w"> </span>disable<span class="w"> </span>here<span class="w"> </span>or<span class="w"> </span><span class="k">in</span><span class="w"> </span>cmdline<span class="w"> </span>http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>77b6e19458f37cfde127ec6aa9494c0ac45ad890
 
-WARNING: CONFIG_BT_HCIUART is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: Bluez <span class="o">(</span>optional<span class="o">)</span>: Needed <span class="k">if</span> bluez used as bluetooth stack
+WARNING:<span class="w"> </span>CONFIG_BT_HCIUART<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>Bluez<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>Needed<span class="w"> </span><span class="k">if</span><span class="w"> </span>bluez<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>bluetooth<span class="w"> </span>stack
 
-WARNING: CONFIG_FW_LOADER_USER_HELPER is invalid
-Value is: y
-Allowed values : n, !
-Comment says: it<span class="err">&#39;</span>s actually needed by some Lollipop based devices<span class="p">;</span> systemd<span class="o">(</span>optional<span class="o">)</span>: http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>713bc0cfa477ca1df8769041cb3dbc83c10eace2
+WARNING:<span class="w"> </span>CONFIG_FW_LOADER_USER_HELPER<span class="w"> </span>is<span class="w"> </span>invalid
+Value<span class="w"> </span>is:<span class="w"> </span>y
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>n,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>it<span class="err">&#39;</span>s<span class="w"> </span>actually<span class="w"> </span>needed<span class="w"> </span>by<span class="w"> </span>some<span class="w"> </span>Lollipop<span class="w"> </span>based<span class="w"> </span>devices<span class="p">;</span><span class="w"> </span>systemd<span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>713bc0cfa477ca1df8769041cb3dbc83c10eace2
 
-WARNING: CONFIG_AUTOFS4_FS is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, m, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>713bc0cfa477ca1df8769041cb3dbc83c10eace2
+WARNING:<span class="w"> </span>CONFIG_AUTOFS4_FS<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>m,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>713bc0cfa477ca1df8769041cb3dbc83c10eace2
 
-WARNING: CONFIG_NETFILTER_NETLINK_ACCT is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, m, !
-Comment says: connman <span class="o">(</span>optional<span class="o">)</span>: <span class="k">for</span> routing and statistic support in sessions, http://git.kernel.org/cgit/network/connman/connman.git/commit/README?id<span class="o">=</span>41f37125887cb9208da2441e350e1e3324c17ee6
+WARNING:<span class="w"> </span>CONFIG_NETFILTER_NETLINK_ACCT<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>m,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>connman<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span><span class="k">for</span><span class="w"> </span>routing<span class="w"> </span>and<span class="w"> </span>statistic<span class="w"> </span>support<span class="w"> </span><span class="k">in</span><span class="w"> </span>sessions,<span class="w"> </span>http://git.kernel.org/cgit/network/connman/connman.git/commit/README?id<span class="o">=</span>41f37125887cb9208da2441e350e1e3324c17ee6
 
-WARNING: CONFIG_NET_CLS_CGROUP is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd <span class="o">(</span>optional<span class="o">)</span>: http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
+WARNING:<span class="w"> </span>CONFIG_NET_CLS_CGROUP<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://0pointer.de/blog/projects/cgroups-vs-cgroups.html
 
-WARNING: CONFIG_SCHED_DEBUG is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: systemd-bootchart <span class="o">(</span>optional<span class="o">)</span>: http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>f1c24fea94e19cf2108abbeed1d36ded7102ab98
+WARNING:<span class="w"> </span>CONFIG_SCHED_DEBUG<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>systemd-bootchart<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span>http://cgit.freedesktop.org/systemd/systemd/commit/README?id<span class="o">=</span>f1c24fea94e19cf2108abbeed1d36ded7102ab98
 
-WARNING: CONFIG_RTC_DRV_CMOS is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
-Comment says: optional, but highly recommended
+WARNING:<span class="w"> </span>CONFIG_RTC_DRV_CMOS<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>optional,<span class="w"> </span>but<span class="w"> </span>highly<span class="w"> </span>recommended
 
-WARNING: CONFIG_NETFILTER_XT_MATCH_NFACCT is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, m, !
-Comment says: connman <span class="o">(</span>optional<span class="o">)</span>: <span class="k">for</span> routing and statistic support in sessions, http://git.kernel.org/cgit/network/connman/connman.git/commit/README?id<span class="o">=</span>41f37125887cb9208da2441e350e1e3324c17ee6
+WARNING:<span class="w"> </span>CONFIG_NETFILTER_XT_MATCH_NFACCT<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>m,<span class="w"> </span>!
+Comment<span class="w"> </span>says:<span class="w"> </span>connman<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>:<span class="w"> </span><span class="k">for</span><span class="w"> </span>routing<span class="w"> </span>and<span class="w"> </span>statistic<span class="w"> </span>support<span class="w"> </span><span class="k">in</span><span class="w"> </span>sessions,<span class="w"> </span>http://git.kernel.org/cgit/network/connman/connman.git/commit/README?id<span class="o">=</span>41f37125887cb9208da2441e350e1e3324c17ee6
 
-WARNING: CONFIG_CHECKPOINT_RESTORE is invalid
-It is <span class="nb">unset</span>
-Allowed values : y, !
+WARNING:<span class="w"> </span>CONFIG_CHECKPOINT_RESTORE<span class="w"> </span>is<span class="w"> </span>invalid
+It<span class="w"> </span>is<span class="w"> </span><span class="nb">unset</span>
+Allowed<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span>y,<span class="w"> </span>!
 </pre></div>
 
 
@@ -265,15 +265,15 @@ Allowed values : y, !
 
 
 <p><strong>Ошибка:</strong></p>
-<div class="highlight"><pre><span></span>../../../../../../kernel/asus/msm8916/drivers/base/firmware_class.c:1241:9: warning: passing argument <span class="m">2</span> of <span class="s1">&#39;fw_load_from_user_helper&#39;</span> from incompatible pointer <span class="nb">type</span>
-error, forbidden warning: firmware_class.c:1241
-make<span class="o">[</span><span class="m">4</span><span class="o">]</span>: *** <span class="o">[</span>drivers/base/firmware_class.o<span class="o">]</span> Error <span class="m">1</span>
-make<span class="o">[</span><span class="m">3</span><span class="o">]</span>: *** <span class="o">[</span>drivers/base<span class="o">]</span> Error <span class="m">2</span>
-make<span class="o">[</span><span class="m">2</span><span class="o">]</span>: *** <span class="o">[</span>drivers<span class="o">]</span> Error <span class="m">2</span>
-make<span class="o">[</span><span class="m">1</span><span class="o">]</span>: *** <span class="o">[</span>sub-make<span class="o">]</span> Error <span class="m">2</span>
-make<span class="o">[</span><span class="m">1</span><span class="o">]</span>: Leaving directory <span class="sb">`</span>/home/ilnur/to/mer/android/droid/kernel/asus/msm8916<span class="err">&#39;</span>
+<div class="highlight"><pre><span></span>../../../../../../kernel/asus/msm8916/drivers/base/firmware_class.c:1241:9:<span class="w"> </span>warning:<span class="w"> </span>passing<span class="w"> </span>argument<span class="w"> </span><span class="m">2</span><span class="w"> </span>of<span class="w"> </span><span class="s1">&#39;fw_load_from_user_helper&#39;</span><span class="w"> </span>from<span class="w"> </span>incompatible<span class="w"> </span>pointer<span class="w"> </span><span class="nb">type</span>
+error,<span class="w"> </span>forbidden<span class="w"> </span>warning:<span class="w"> </span>firmware_class.c:1241
+make<span class="o">[</span><span class="m">4</span><span class="o">]</span>:<span class="w"> </span>***<span class="w"> </span><span class="o">[</span>drivers/base/firmware_class.o<span class="o">]</span><span class="w"> </span>Error<span class="w"> </span><span class="m">1</span>
+make<span class="o">[</span><span class="m">3</span><span class="o">]</span>:<span class="w"> </span>***<span class="w"> </span><span class="o">[</span>drivers/base<span class="o">]</span><span class="w"> </span>Error<span class="w"> </span><span class="m">2</span>
+make<span class="o">[</span><span class="m">2</span><span class="o">]</span>:<span class="w"> </span>***<span class="w"> </span><span class="o">[</span>drivers<span class="o">]</span><span class="w"> </span>Error<span class="w"> </span><span class="m">2</span>
+make<span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>***<span class="w"> </span><span class="o">[</span>sub-make<span class="o">]</span><span class="w"> </span>Error<span class="w"> </span><span class="m">2</span>
+make<span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>Leaving<span class="w"> </span>directory<span class="w"> </span><span class="sb">`</span>/home/ilnur/to/mer/android/droid/kernel/asus/msm8916<span class="err">&#39;</span>
 
-make: *** <span class="o">[</span>TARGET_KERNEL_BINARIES<span class="o">]</span> Error <span class="m">2</span>
+make:<span class="w"> </span>***<span class="w"> </span><span class="o">[</span>TARGET_KERNEL_BINARIES<span class="o">]</span><span class="w"> </span>Error<span class="w"> </span><span class="m">2</span>
 </pre></div>
     </div><!-- /.entry-content -->
 

@@ -108,7 +108,7 @@
 <p><a href="https://decodeit.ru/qr">https://decodeit.ru/qr</a></p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>curl -H <span class="s1">&#39;Authorization: Basic Kzc5MjcyNDA5MDIyOjMwMjA5Ng==&#39;</span> -H <span class="s1">&#39;Device-Id: ТУТ_ANDROID_ID&#39;</span> -H <span class="s1">&#39;Device-OS: Adnroid 6.0.1&#39;</span> -H <span class="s1">&#39;Version: 2&#39;</span> -H <span class="s1">&#39;ClientVersion: 1.4.2&#39;</span> -H <span class="s1">&#39;Host: proverkacheka.nalog.ru:8888&#39;</span> -H <span class="s1">&#39;User-Agent: okhttp/3.0.1&#39;</span> --compressed <span class="s1">&#39;http://proverkacheka.nalog.ru:8888/v1/inns/*/kkts/*/fss/8710000100730663/tickets/2860?fiscalSign=4249261172&amp;sendToEmail=no&#39;</span>
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Basic Kzc5MjcyNDA5MDIyOjMwMjA5Ng==&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Device-Id: ТУТ_ANDROID_ID&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Device-OS: Adnroid 6.0.1&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Version: 2&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;ClientVersion: 1.4.2&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Host: proverkacheka.nalog.ru:8888&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;User-Agent: okhttp/3.0.1&#39;</span><span class="w"> </span>--compressed<span class="w"> </span><span class="s1">&#39;http://proverkacheka.nalog.ru:8888/v1/inns/*/kkts/*/fss/8710000100730663/tickets/2860?fiscalSign=4249261172&amp;sendToEmail=no&#39;</span>
 </pre></div>
 
 
@@ -147,9 +147,11 @@ ZZZZZZZZZZ - фискальный признак документа(ФПД)
   Ты кстати написал, что проверку нужно делать на сервере, уверен в обратном, запросы нужно проводить напрямую с устройства т.к. запросы с одного IP адреса рано или поздно заблокируют.
   Налоговое приложение, через 7 дней считает, что чек не получен <a href="https://prnt.sc/g0uu5d">https://prnt.sc/g0uu5d</a>.
   P.s. Basic Auth ещё можно так записать -<a href="http://login:pass@proverkacheka.nalog.ru:8888/">http://login:pass@proverkacheka.nalog.ru:8888/</a></p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

@@ -127,9 +127,9 @@
 <p><a href="https://docs.docker.com/registry/insecure/">Test an insecure registry</a></p>
 </li>
 <li>
-<div class="highlight"><pre><span></span><span class="err">     ```bash</span>
-<span class="err">     docker pull registry</span>
-<span class="err">     ```</span>
+<div class="highlight"><pre><span></span><span class="w">     </span><span class="err">``</span><span class="no">`bash</span>
+<span class="w">     </span><span class="n">docker</span><span class="w"> </span><span class="n">pull</span><span class="w"> </span><span class="n">registry</span>
+<span class="w">     </span><span class="err">```</span>
 </pre></div>
 
 
@@ -168,36 +168,36 @@
 <p>Используйте переменные окружения: RUN, EXPOSE, VOLUME. Это сделает ваш Dockerfile более гибким.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">python:3</span>
-<span class="k">ADD</span> py_log_zvonkov_pandas.py /
-<span class="k">ADD</span> mail-config.cfg /
-<span class="k">ADD</span> start-log-zvonkov.sh /
-<span class="k">ADD</span> go-send-mail /
-<span class="k">RUN</span> pip3 install pandas
-<span class="k">RUN</span> pip3 install xlsxwriter
-<span class="k">RUN</span> pip3 install requests
-<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;python3&quot;</span><span class="p">,</span> <span class="s2">&quot;./py_log_zvonkov_pandas.py&quot;</span><span class="p">,</span> <span class="s2">&quot;-cfgfile&quot;</span><span class="p">,</span> <span class="s2">&quot;cfg/list-num-tel.cfg&quot;</span><span class="p">]</span>
-<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;./start-log-zvonkov.sh&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3</span>
+<span class="k">ADD</span><span class="w"> </span>py_log_zvonkov_pandas.py<span class="w"> </span>/
+<span class="k">ADD</span><span class="w"> </span>mail-config.cfg<span class="w"> </span>/
+<span class="k">ADD</span><span class="w"> </span>start-log-zvonkov.sh<span class="w"> </span>/
+<span class="k">ADD</span><span class="w"> </span>go-send-mail<span class="w"> </span>/
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>pandas
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>xlsxwriter
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>requests
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;./py_log_zvonkov_pandas.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-cfgfile&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cfg/list-num-tel.cfg&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;./start-log-zvonkov.sh&quot;</span><span class="p">]</span>
 </pre></div>
 
 
 <p>Cоздание контейнера:</p>
-<div class="highlight"><pre><span></span><span class="err">docker build -t имя_контейнера .</span>
+<div class="highlight"><pre><span></span>docker build -t имя_контейнера .
 </pre></div>
 
 
 <p>Запуск контейнера:</p>
-<div class="highlight"><pre><span></span><span class="err">docker run -v /home/oilnur/prj/py-ui-micro/cfg/:/cfg logs2</span>
+<div class="highlight"><pre><span></span>docker run -v /home/oilnur/prj/py-ui-micro/cfg/:/cfg logs2
 </pre></div>
 
 
 <p>Удаление   контейнера</p>
-<div class="highlight"><pre><span></span>docker rm -f имя_контейнера
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>имя_контейнера
 </pre></div>
 
 
 <p>Удление образа</p>
-<div class="highlight"><pre><span></span>docker rmi -f имя_контейнера
+<div class="highlight"><pre><span></span>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span>имя_контейнера
 </pre></div>
     </div><!-- /.entry-content -->
 

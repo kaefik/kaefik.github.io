@@ -222,14 +222,14 @@ driver = webdriver.PhantomJS('C:\phantomjs-1.9.7-windows\phantomjs.exe')<a href=
 <p>Код вернет объект текущего открытого окна. С этим объектом вы можете принять, отклонить вопрос окна, прочитать его содержимое или даже ввести текст по приглашению окна. Интерфейс взаимодействия со всплывающими окнами работает одинаково хорошо как для предупреждений (alerts), так и для запросов к подтверждению (confirms) и приглашений к вводу (prompts). За дополнительной информацией обратитесь к документации API.```</p>
 <p>источник:   https://stackoverflow.com/questions/48245424/how-to-use-screenshot-in-headless-firefox-in-selenium-with-python</p>
 <p>The Release Notes of <strong>Selenium v3.6.0</strong> clearly mentions <strong>Add options to start Firefox and Chrome in headless modes</strong>. So we need to use the <strong><code>Options</code></strong> Class as follows to invoke the <strong><code>headless</code></strong> argument:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>  
-<span class="kn">from</span> <span class="nn">selenium.webdriver.firefox.options</span> 
-<span class="kn">import</span> <span class="nn">Options</span> 
-<span class="n">options</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span> 
-<span class="n">options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--headless&quot;</span><span class="p">)</span> 
-<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">firefox_options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">executable_path</span><span class="o">=</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Utility</span><span class="se">\\</span><span class="s2">BrowserDrivers</span><span class="se">\\</span><span class="s2">geckodriver.exe&quot;</span><span class="p">)</span>  
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Firefox Headless Browser Invoked&quot;</span><span class="p">)</span> 
-<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://google.com/&#39;</span><span class="p">)</span> 
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">webdriver</span><span class="w">  </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.firefox.options</span><span class="w"> </span>
+<span class="kn">import</span><span class="w"> </span><span class="n">Options</span><span class="w"> </span>
+<span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Options</span><span class="p">()</span><span class="w"> </span>
+<span class="n">options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--headless&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="n">driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">firefox_options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">executable_path</span><span class="o">=</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Utility</span><span class="se">\\</span><span class="s2">BrowserDrivers</span><span class="se">\\</span><span class="s2">geckodriver.exe&quot;</span><span class="p">)</span><span class="w">  </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Firefox Headless Browser Invoked&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://google.com/&#39;</span><span class="p">)</span><span class="w"> </span>
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 
@@ -276,10 +276,10 @@ driver = webdriver.PhantomJS('C:\phantomjs-1.9.7-windows\phantomjs.exe')<a href=
 <p>Решение — я рекомендую просто взять и вынести себе это в отдельный универсальный метод и использовать его каждый раз когда нужно что-либо загрузить через такую форму.</p>
 <p>Исключение — Safari Driver полностью не поддерживает загрузку файла, т.к. насколько я понял, он javascript-based. Появляющееся окно с выбором файла ставит его в тупиковое положение. Такие сценарии нужно либо избегать, либо добиваться результата другим способом — создавать собственный HTTP запрос или подкладывать данные напрямую на стороне сервера, если такая возможность имеется.</p>
 <p>Пример кода:</p>
-<div class="highlight"><pre><span></span><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">uploadFile</span><span class="p">(</span><span class="n">By</span> <span class="n">uploadInput</span><span class="p">,</span> <span class="n">By</span> <span class="n">uploadButton</span><span class="p">,</span> <span class="n">String</span> <span class="n">filePath</span><span class="p">)</span> <span class="p">{</span>
-       <span class="n">clearInput</span><span class="p">(</span><span class="n">uploadInput</span><span class="p">);</span>
-       <span class="n">findElement</span><span class="p">(</span><span class="n">uploadInput</span><span class="p">).</span><span class="na">sendKeys</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
-       <span class="n">findElement</span><span class="p">(</span><span class="n">uploadButton</span><span class="p">).</span><span class="na">click</span><span class="p">();</span> 
+<div class="highlight"><pre><span></span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">uploadFile</span><span class="p">(</span><span class="n">By</span><span class="w"> </span><span class="n">uploadInput</span><span class="p">,</span><span class="w"> </span><span class="n">By</span><span class="w"> </span><span class="n">uploadButton</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">clearInput</span><span class="p">(</span><span class="n">uploadInput</span><span class="p">);</span>
+<span class="w">       </span><span class="n">findElement</span><span class="p">(</span><span class="n">uploadInput</span><span class="p">).</span><span class="na">sendKeys</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+<span class="w">       </span><span class="n">findElement</span><span class="p">(</span><span class="n">uploadButton</span><span class="p">).</span><span class="na">click</span><span class="p">();</span><span class="w"> </span>
 </pre></div>
     </div><!-- /.entry-content -->
 

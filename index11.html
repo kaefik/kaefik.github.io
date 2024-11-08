@@ -161,10 +161,10 @@
 <span>| tags: <a href="/tag/db.html">db</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/sql.html">sql</a></span>
 </footer><!-- /.post-info -->                <h2>Представления</h2>
 <p>можно создать представление по данному запросу, фактически присвоить имя запросу, а затем обращаться к нему как к обычной таблице:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">myview</span> <span class="k">AS</span>
-  <span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">temp_lo</span><span class="p">,</span> <span class="n">temp_hi</span><span class="p">,</span> <span class="n">prcp</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="k">location</span>
-    <span class="k">FROM</span> <span class="n">weather</span><span class="p">,</span> <span class="n">cities</span>
-    <span class="k">WHERE</span> <span class="n">city</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">myview</span><span class="w"> </span><span class="k">AS</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="n">temp_lo</span><span class="p">,</span><span class="w"> </span><span class="n">temp_hi</span><span class="p">,</span><span class="w"> </span><span class="n">prcp</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="k">location</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">weather</span><span class="p">,</span><span class="w"> </span><span class="n">cities</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 </pre></div>
 
 
@@ -186,14 +186,14 @@
 </footer><!-- /.post-info -->                <h2><a href="http://postgresql.ru.net/manual/datatype.html">Типы данных</a></h2>
 <h3>Серийные типы</h3>
 <p>Типы данных serial и bigserial не являются полноценными типами, а просто являются удобной нотацией для создания колонок уникальных идентификаторов (свойство сходное с AUTO_INCREMENT поддерживается и некоторыми другими СУБД). В текущей реализации, конструкция:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="err">имя</span><span class="n">_таблицы</span> <span class="p">(</span>
-  <span class="err">имя</span><span class="n">_колонки</span> <span class="nb">SERIAL</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">имя</span><span class="n">_таблицы</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="err">имя</span><span class="n">_колонки</span><span class="w"> </span><span class="nb">SERIAL</span>
 <span class="p">);</span>
 </pre></div>
 
 
 <p>эквивалента конструкции:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">SEQUENCE</span> <span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя …</span></pre></div>
                 <a class="readmore" href="/2017/10/07/postgresql-type-data/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -275,7 +275,7 @@
         <span>Mon 02 October 2017</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
 </footer><!-- /.post-info -->                <h2>БД при создании initdbСоздание таблицы и индекс-</h2>
-<div class="highlight"><pre><span></span><span class="err">              create table t(n numeric);</span>
+<div class="highlight"><pre><span></span>              create table t(n numeric);
 </pre></div>
 
 
@@ -342,11 +342,15 @@
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="/index10.html">&laquo;</a>
-    Page 11 / 16
-        <a href="/index12.html">&raquo;</a>
-</p>
+  <nav>
+    <ul>
+        <li><a href="/index.html">&Lang;</a></li>
+        <li><a href="/index10.html">&lang;</a></li>
+      <li>Page 11 / 16</li>
+        <li><a href="/index12.html">&rang;</a></li>
+        <li><a href="/index16.html">&Rang;</a></li>
+    </ul>
+  </nav>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

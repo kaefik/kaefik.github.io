@@ -175,10 +175,10 @@
 </ul>
 <p>Пример:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;ADD_TODO&#39;</span><span class="p">,</span>
-<span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
-<span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Todo title text&#39;</span><span class="p">,</span>
-<span class="nx">date</span><span class="o">:</span> <span class="s1">&#39;15/11/2017&#39;</span><span class="p">,</span>
+<span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ADD_TODO&#39;</span><span class="p">,</span>
+<span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Todo title text&#39;</span><span class="p">,</span>
+<span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;15/11/2017&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -186,10 +186,10 @@
 
 <h3>Генераторы действий (Action Creators) — функции, которые создают действия.</h3>
 <p>В Redux генераторы действий (action creators) просто возвращают action:</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">addTodo</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="p">{</span>
-<span class="nx">type</span><span class="o">:</span> <span class="nx">ADD_TODO</span><span class="p">,</span>
-<span class="nx">payload</span><span class="o">:</span> <span class="nx">text</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">addTodo</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ADD_TODO</span><span class="p">,</span>
+<span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="nx">text</span>
 <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -197,13 +197,13 @@
 
 <hr>
 <p>Reducer - чистая функция, которая принимает предыдущее состояние и действие (state и action) и возвращает следующее состояние (новую версию предыдущего).</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">newState</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">newState</span>
 </pre></div>
 
 
 <h3>React &amp; Redux</h3>
 <p>установка: </p>
-<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">i</span> <span class="nx">redux</span> <span class="nx">react</span><span class="o">-</span><span class="nx">redux</span> <span class="o">--</span><span class="nx">save</span>
+<div class="highlight"><pre><span></span><span class="nx">npm</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="nx">redux</span><span class="w"> </span><span class="nx">react</span><span class="o">-</span><span class="nx">redux</span><span class="w"> </span><span class="o">--</span><span class="nx">save</span>
 </pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -231,16 +231,16 @@
 <li><a href="https://www.npmjs.com/package/classnames">classnames</a> - A simple JavaScript utility for conditionally joining classNames together.  ( yarn add classnames )</li>
 </ul>
 <h3>Create-React-App</h3>
-<div class="highlight"><pre><span></span>npm i -g create-react-app
+<div class="highlight"><pre><span></span>npm<span class="w"> </span>i<span class="w"> </span>-g<span class="w"> </span>create-react-app
 
 npm
-npm init react-app my-app
+npm<span class="w"> </span>init<span class="w"> </span>react-app<span class="w"> </span>my-app
 
 Yarn
-yarn create react-app my-app
+yarn<span class="w"> </span>create<span class="w"> </span>react-app<span class="w"> </span>my-app
 
-npm start   - запуск приложения
-npm run eject
+npm<span class="w"> </span>start<span class="w">   </span>-<span class="w"> </span>запуск<span class="w"> </span>приложения
+npm<span class="w"> </span>run<span class="w"> </span>eject
 </pre></div>
 
 
@@ -249,9 +249,11 @@ npm run eject
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

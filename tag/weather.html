@@ -111,21 +111,21 @@
 <p><a href="https://github.com/merbanan/rtl_433">https://github.com/merbanan/rtl_433</a> - Program to decode traffic from Devices that are broadcasting on 433.9 MHz like temperature sensors</p>
 <h3>Инструкция по сборке <a href="https://github.com/merbanan/rtl_433/blob/master/BUILDING.md">https://github.com/merbanan/rtl_433/blob/master/BUILDING.md</a></h3>
 <h2>Сборка для Ubuntu</h2>
-<div class="highlight"><pre><span></span>sudo apt-get install libtool libusb-1.0.0-dev librtlsdr-dev rtl-sdr build-essential autoconf cmake pkg-config 
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libtool<span class="w"> </span>libusb-1.0.0-dev<span class="w"> </span>librtlsdr-dev<span class="w"> </span>rtl-sdr<span class="w"> </span>build-essential<span class="w"> </span>autoconf<span class="w"> </span>cmake<span class="w"> </span>pkg-config<span class="w"> </span>
 </pre></div>
 
 
 <h3>Installation using cmake</h3>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> rtl_433/
-mkdir build <span class="p">&amp;</span> <span class="nb">cd</span> build
-cmake ../
+<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>rtl_433/
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>../
 make
-sudo make install
+sudo<span class="w"> </span>make<span class="w"> </span>install
 </pre></div>
 
 
 <h3>Запуск</h3>
-<div class="highlight"><pre><span></span>rtl_433 -q -E -R <span class="m">12</span> -F json -U
+<div class="highlight"><pre><span></span>rtl_433<span class="w"> </span>-q<span class="w"> </span>-E<span class="w"> </span>-R<span class="w"> </span><span class="m">12</span><span class="w"> </span>-F<span class="w"> </span>json<span class="w"> </span>-U
 </pre></div>
 
 
@@ -145,9 +145,11 @@ Reattached kernel driver</p>
 -F json : Выбираем представеление декодированных данных в формате json;
 -U : Значение в ключе time в json данных будет передаваться без учета локального часового пояса, в UTC;</p>
 <p>В моем случае использую недорогой донгл RTL_SDR(RTL2832U + R820T) на штатную антенну. В Ubuntu опредялется без проблем. </p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

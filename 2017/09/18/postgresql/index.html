@@ -210,33 +210,33 @@
 </ul>
 <h2>SQL бэкап</h2>
 <p>Идея этого подхода в создании текстового файла с командами SQL. Такой файл можно передать обратно на сервер и воссоздать базу данных в том же состоянии, в котором она была во время бэкапа. У PostgreSQL для этого есть специальная утилита — pg_dump. Пример использования pg_dump:</p>
-<div class="highlight"><pre><span></span><span class="n">pg_dump</span> <span class="n">dbname</span> <span class="o">&gt;</span> <span class="n">outfile</span>
+<div class="highlight"><pre><span></span><span class="n">pg_dump</span><span class="w"> </span><span class="n">dbname</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">outfile</span>
 </pre></div>
 
 
 <p>Для восстановления такого бэкапа достаточно выполнить:</p>
-<div class="highlight"><pre><span></span><span class="n">psql</span> <span class="n">dbname</span> <span class="o">&lt;</span> <span class="n">infile</span>
+<div class="highlight"><pre><span></span><span class="n">psql</span><span class="w"> </span><span class="n">dbname</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">infile</span>
 </pre></div>
 
 
 <p>При этом базу данных dbname потребуется создать перед восстановлением. Также потребуется создать пользователей, которые имеют доступ к данным, которые восстанавливаются (это можно и не делать, но тогда просто в выводе восстановления будут ошибки). Если нам требуется, чтобы восстановление прекратилось при возникновении ошибки, тогда потребуется восстанавливать бэкап таким способом:</p>
-<div class="highlight"><pre><span></span><span class="err">psql --set ON_ERROR_STOP=on dbname &lt; infile</span>
+<div class="highlight"><pre><span></span>psql --set ON_ERROR_STOP=on dbname &lt; infile
 </pre></div>
 
 
 <p>Также, можно делать бэкап и сразу восстанавливать его в другую базу:</p>
-<div class="highlight"><pre><span></span><span class="err">pg_dump -h host1 dbname | psql -h host2 dbname</span>
+<div class="highlight"><pre><span></span>pg_dump -h host1 dbname | psql -h host2 dbname
 </pre></div>
 
 
 <p>После восстановления бэкапа желательно запустить ANALYZE, чтобы оптимизатор запросов обновил статистику.</p>
 <p>А что, если нужно сделать бэкап не одной базы данных, а всех, да и еще получить в бэкапе информацию про роли и таблицы? В таком случае у PostgreSQL есть утилита pg_dumpall. pg_dumpall используется для создания бэкапа данных всего кластера PostgreSQL:</p>
-<div class="highlight"><pre><span></span><span class="err">pg_dumpall &gt; outfile</span>
+<div class="highlight"><pre><span></span>pg_dumpall &gt; outfile
 </pre></div>
 
 
 <p>Для восстановления такого бэкапа достаточно выполнить от суперпользователя:</p>
-<div class="highlight"><pre><span></span><span class="err">psql -f infile postgres</span>
+<div class="highlight"><pre><span></span>psql -f infile postgres
 </pre></div>
 
 
@@ -244,19 +244,19 @@
 <p>Некоторые операционные системы имеют ограничения на максимальный размер файла, что может вызывать проблемы при создании больших бэкапов через pg_dump. К счастью, pg_dump можете бэкапить в стандартный вывод. Так что можно использовать стандартные инструменты Unix, чтобы обойти эту проблему. Есть несколько возможных способов:</p>
 <h3>Использовать сжатие для бэкапа</h3>
 <p>Можно использовать программу сжатия данных, например GZIP:</p>
-<div class="highlight"><pre><span></span><span class="err">pg_dump dbname | gzip &gt; filename.gz</span>
+<div class="highlight"><pre><span></span>pg_dump dbname | gzip &gt; filename.gz
 </pre></div>
 
 
 <ul>
 <li>Восстановление:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">gunzip -c filename.gz | psql dbname</span>
+<div class="highlight"><pre><span></span>gunzip -c filename.gz | psql dbname
 </pre></div>
 
 
 <p>или</p>
-<div class="highlight"><pre><span></span><span class="err">cat filename.gz | gunzip | psql dbname</span>
+<div class="highlight"><pre><span></span>cat filename.gz | gunzip | psql dbname
 </pre></div>
 
 
@@ -266,18 +266,18 @@
 </ul>
 <p><code>pg_dump dbname | split -b 1m - filename</code></p>
 <h3>Восстановление:</h3>
-<div class="highlight"><pre><span></span><span class="err">cat filename* | psql dbname</span>
+<div class="highlight"><pre><span></span>cat filename* | psql dbname
 </pre></div>
 
 
 <p>Использовать пользовательский формат дампа pg_dump
 PostgreSQL построен на системе с библиотекой сжатия Zlib, поэтому пользовательский формат бэкапа будет в сжатом виде. Это похоже на метод с использованием GZIP, но он имеет дополнительное преимущество — таблицы могут быть восстановлены выборочно. Минус такого бэкапа — восстановить возможно только в такую же версию PostgreSQL (отличаться может только патч релиз, третья цифра после точки в версии):</p>
-<div class="highlight"><pre><span></span><span class="err">pg_dump -Fc dbname &gt; filename</span>
+<div class="highlight"><pre><span></span>pg_dump -Fc dbname &gt; filename
 </pre></div>
 
 
 <p>Через psql такой бэкап не восстановить, но для этого есть утилита pg_restore:</p>
-<div class="highlight"><pre><span></span><span class="err"> pg_restore -d dbname filename</span>
+<div class="highlight"><pre><span></span> pg_restore -d dbname filename
 </pre></div>
 
 

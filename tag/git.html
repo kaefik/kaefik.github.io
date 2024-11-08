@@ -109,23 +109,23 @@
 <ul>
 <li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
 </ul>
-<div class="highlight"><pre><span></span>git tag имя_тега коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>имя_тега<span class="w"> </span>коммит
 </pre></div>
 
 
 <ul>
 <li>создание аннотированного тега (с дополнительной информацией)</li>
 </ul>
-<div class="highlight"><pre><span></span>git tag -a имя_тега
-или 
-git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>имя_тега
+или<span class="w"> </span>
+git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Message&quot;</span>
 </pre></div>
 
 
 <ul>
 <li>удаление тегов</li>
 </ul>
-<div class="highlight"><pre><span></span>git tag -d имена_тегов
+<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>имена_тегов
 </pre></div>
 
 
@@ -133,21 +133,21 @@ git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 <ul>
 <li>получить ближайший тег</li>
 </ul>
-<div class="highlight"><pre><span></span>git describe коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>describe<span class="w"> </span>коммит
 </pre></div>
 
 
 <ul>
 <li>поместить архив проекта с указанного коммита(тега)</li>
 </ul>
-<div class="highlight"><pre><span></span>git archive -o путь_для_архива коммит_или_тег
+<div class="highlight"><pre><span></span>git<span class="w"> </span>archive<span class="w"> </span>-o<span class="w"> </span>путь_для_архива<span class="w"> </span>коммит_или_тег
 </pre></div>
 
 
 <ul>
 <li></li>
 </ul>
-<div class="highlight"><pre><span></span>git rebase --continue
+<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
 </pre></div>
 
 
@@ -155,21 +155,21 @@ git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 <ul>
 <li>Перенести все теги в удаленный репозиторий:</li>
 </ul>
-<div class="highlight"><pre><span></span>git push origin --tags
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
 </pre></div>
 
 
 <ul>
 <li>Отправить конкретный тег в удаленный репозиторий:</li>
 </ul>
-<div class="highlight"><pre><span></span>git push origin &lt;tag_name&gt;
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;tag_name&gt;
 </pre></div>
 
 
 <ul>
 <li>Отправить только аннотированные теги и не пушить легковесные</li>
 </ul>
-<div class="highlight"><pre><span></span>git push --follow-tags
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--follow-tags
 </pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -190,19 +190,19 @@ git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 <ul>
 <li>удаление коммитов начиная с выбранного</li>
 </ul>
-<div class="highlight"><pre><span></span>  git reflog
-  <span class="c1"># ты увидишь список всех действий во всех ветках</span>
-  <span class="c1"># у каждой есть индекс HEAD@{index}</span>
-  <span class="c1"># найди тот, после которого ты все поломал</span>
-  git reset HEAD@<span class="o">{</span>index<span class="o">}</span>
-  <span class="c1"># волшебная машина времени</span>
+<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>reflog
+<span class="w">  </span><span class="c1"># ты увидишь список всех действий во всех ветках</span>
+<span class="w">  </span><span class="c1"># у каждой есть индекс HEAD@{index}</span>
+<span class="w">  </span><span class="c1"># найди тот, после которого ты все поломал</span>
+<span class="w">  </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD@<span class="o">{</span>index<span class="o">}</span>
+<span class="w">  </span><span class="c1"># волшебная машина времени</span>
 </pre></div>
 
 
 <ul>
 <li>Сделал коммит, но забыл кое что</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># сделай …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="w">  </span><span class="c1"># сделай …</span></pre></div>
                 <a class="readmore" href="/2020/01/30/git-reset-error/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -223,7 +223,7 @@ git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 <li>https://towardsdatascience.com/learn-enough-git-to-be-useful-281561eef959 </li>
 </ul>
 <h2>Получить ветку с удаленного репозитория</h2>
-<div class="highlight"><pre><span></span>git checkout -b &lt;название ветки&gt; origin/&lt;название ветки&gt;
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;название<span class="w"> </span>ветки&gt;<span class="w"> </span>origin/&lt;название<span class="w"> </span>ветки&gt;
 </pre></div>
 
 
@@ -231,21 +231,21 @@ git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 <ul>
 <li>Создать новую ветку фич и перейти на неё: </li>
 </ul>
-<div class="highlight"><pre><span></span>git checkout -b my_feature_branch
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_feature_branch
 </pre></div>
 
 
 <ul>
 <li></li>
 </ul>
-<div class="highlight"><pre><span></span>  git status 
+<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>status<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>Зафиксировать изменения: </li>
 </ul>
-<div class="highlight"><pre><span></span>git add …</pre></div>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>add …</pre></div>
                 <a class="readmore" href="/2020/01/20/git-workflow/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -274,28 +274,30 @@ git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 <ul>
 <li>посмотреть все настройки</li>
 </ul>
-<div class="highlight"><pre><span></span>git config --list
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--list
 </pre></div>
 
 
 <ul>
 <li>проверить какой редактор открывается по умолчанию</li>
 </ul>
-<div class="highlight"><pre><span></span>git config --global -e
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>-e
 </pre></div>
 
 
 <ul>
 <li>установка редактора emacs в консольном режиме</li>
 </ul>
-<div class="highlight"><pre><span></span>git config --global core.editor <span class="s2">&quot;emacs …</span></pre></div>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">&quot;emacs …</span></pre></div>
                 <a class="readmore" href="/2018/04/07/git/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

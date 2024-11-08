@@ -118,36 +118,36 @@
 <ul>
 <li>посмотреть все настройки</li>
 </ul>
-<div class="highlight"><pre><span></span>git config --list
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--list
 </pre></div>
 
 
 <ul>
 <li>проверить какой редактор открывается по умолчанию</li>
 </ul>
-<div class="highlight"><pre><span></span>git config --global -e
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>-e
 </pre></div>
 
 
 <ul>
 <li>установка редактора emacs в консольном режиме</li>
 </ul>
-<div class="highlight"><pre><span></span>git config --global core.editor <span class="s2">&quot;emacs -nw&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">&quot;emacs -nw&quot;</span>
 </pre></div>
 
 
 <h2>Из локального репозитория на GitHub</h2>
 <p>Наш проект может размещатся в любом каталоге. Для него нужно инициализировать git. Это стандартная процедура:</p>
-<div class="highlight"><pre><span></span>git init
-git add .
-git commit -m <span class="s2">&quot;Init&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>init
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Init&quot;</span>
 </pre></div>
 
 
 <p>Теперь для проекта git работает и его можно использовать по своему усмотрению: добавлять версии, смотреть логи, делать ветки и т.п.</p>
 <p>Для связи с GitHub'ом следует указать удаленный репозиторий:</p>
-<div class="highlight"><pre><span></span>git remote add origin https://github.com/USER/demo.git
-git push -u origin master
+<div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/USER/demo.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>master
 </pre></div>
 
 
@@ -155,42 +155,42 @@ git push -u origin master
 <ul>
 <li>Однострочный вывод истории изменений</li>
 </ul>
-<div class="highlight"><pre><span></span>git log --pretty<span class="o">=</span>oneline
+<div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--pretty<span class="o">=</span>oneline
 </pre></div>
 
 
 <ul>
 <li>Интересный вывод историй изменений:</li>
 </ul>
-<div class="highlight"><pre><span></span>git log --pretty<span class="o">=</span>format:<span class="s2">&quot;%h %ad | %s%d [%an]&quot;</span> --graph --date<span class="o">=</span>short
+<div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--pretty<span class="o">=</span>format:<span class="s2">&quot;%h %ad | %s%d [%an]&quot;</span><span class="w"> </span>--graph<span class="w"> </span>--date<span class="o">=</span>short
 </pre></div>
 
 
 <h2>Внесение изменений в коммиты</h2>
-<div class="highlight"><pre><span></span>git add hello.html
-git commit --amend -m <span class="s2">&quot;Add an author/email comment&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>hello.html
+git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add an author/email comment&quot;</span>
 </pre></div>
 
 
 <h2>Создание веток</h2>
-<div class="highlight"><pre><span></span>git checkout -b &lt;имяветки&gt; является шорткатом для git branch &lt;имяветки&gt; за которым идет git checkout &lt;имяветки&gt;.
+<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;имяветки&gt;<span class="w"> </span>является<span class="w"> </span>шорткатом<span class="w"> </span>для<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>&lt;имяветки&gt;<span class="w"> </span>за<span class="w"> </span>которым<span class="w"> </span>идет<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>&lt;имяветки&gt;.
 </pre></div>
 
 
 <h2>Размещение ваших git репозиториев</h2>
 <h3>Запуск git сервера</h3>
 <div class="highlight"><pre><span></span><span class="c1"># (From the work directory)</span>
-git daemon --verbose --export-all --base-path<span class="o">=</span>.
+git<span class="w"> </span>daemon<span class="w"> </span>--verbose<span class="w"> </span>--export-all<span class="w"> </span>--base-path<span class="o">=</span>.
 <span class="c1"># (From the work directory)</span>
-git clone git://localhost/hello.git network_hello
-<span class="nb">cd</span> network_hello
+git<span class="w"> </span>clone<span class="w"> </span>git://localhost/hello.git<span class="w"> </span>network_hello
+<span class="nb">cd</span><span class="w"> </span>network_hello
 ls
 </pre></div>
 
 
 <p>Вы увидите копию проекта hello.</p>
 <h2>Откат изменений</h2>
-<div class="highlight"><pre><span></span>git reset <span class="o">{</span>--hard<span class="p">|</span>--soft<span class="o">}</span> HEAD <span class="o">{</span>имя_файла<span class="o">}</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span><span class="o">{</span>--hard<span class="p">|</span>--soft<span class="o">}</span><span class="w"> </span>HEAD<span class="w"> </span><span class="o">{</span>имя_файла<span class="o">}</span>
 </pre></div>
 
 
@@ -205,34 +205,34 @@ ls
 <p>жесткий ресет из коммита HEAD </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>git reset --hard
+<div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>--hard
 </pre></div>
 
 
 <ul>
 <li>жесткий ресет из указанного коммита</li>
 </ul>
-<div class="highlight"><pre><span></span>git reset --hard коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>коммит
 </pre></div>
 
 
 <ul>
 <li>мягкий ресет</li>
 </ul>
-<div class="highlight"><pre><span></span>git reset --soft коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>коммит
 </pre></div>
 
 
 <p>*мягкий ресет на предыдущий коммит</p>
-<div class="highlight"><pre><span></span>git reset --soft @~
+<div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>@~
 </pre></div>
 
 
 <ul>
 <li>чтобы откатить изменения т что есть в коммите и также удалить все остальные файлы и директории которые неотслеживаемые</li>
 </ul>
-<div class="highlight"><pre><span></span>git reset --hard
-git clean -dxf
+<div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>--hard
+git<span class="w"> </span>clean<span class="w"> </span>-dxf
 </pre></div>
 
 
@@ -241,15 +241,15 @@ git clean -dxf
 Здесь мы рассмотрим несколько сценариев появления ошибок в коммитах и их исправления.</p>
 <h3>Сценарий №1</h3>
 <p>Предположим, вы закоммитили много файлов и поняли, что сообщение коммита получилось не особенно понятным. После этого вы решили данное сообщение изменить. Для того чтобы это сделать, воспользуйтесь командой git commit --amend. Вот пример её применения:</p>
-<div class="highlight"><pre><span></span>git commit --amend -m <span class="s2">&quot;New commit message&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;New commit message&quot;</span>
 </pre></div>
 
 
 <h3>Сценарий №2</h3>
 <p>Предположим, вы хотели закоммитить шесть файлов, но, по ошибке, закоммитили лишь пять. Кажется, что исправить эту ошибку можно, просто создав новый коммит и добавив туда недостающий шестой файл.</p>
 <p>Такой подход вполне имеет право на жизнь. Но для того, чтобы поддерживать историю коммитов в хорошем состоянии, вероятно, было бы куда лучше иметь возможность добавить случайно пропущенный файл в тот же коммит. Сделать это можно, опять же, командой git commit --amend. Выглядит её использование так:</p>
-<div class="highlight"><pre><span></span>git add file6
-git commit --amend --no-edit
+<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>file6
+git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--no-edit
 </pre></div>
 
 
@@ -257,12 +257,12 @@ git commit --amend --no-edit
 <h3>Сценарий №3</h3>
 <p>К коммитам, которые делают в Git, привязаны имя автора и адрес его электронной почты. Обычно эти данные указывают, выполняя первоначальную настройку Git. В результате тот, кто использует Git, может, выполняя каждый коммит, не заботиться о сведениях об его авторе.</p>
 <p>При этом вполне возможна ситуация, когда, при работе с некоторыми проектами, будет нужно пользоваться сведениями об авторе, например — адресом электронной почты, отличающимися от основных. Для подобного проекта нужно указать адрес электронной почты, воспользовавшись такой командой:</p>
-<div class="highlight"><pre><span></span>git config user.email <span class="s2">&quot;your email id&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;your email id&quot;</span>
 </pre></div>
 
 
 <p>Предположим, вы забыли выполнить такую настройку и уже сделали первый коммит. Исправить положение может уже знакомая нам команда amend. С её помощью можно изменить сведения об авторе предыдущего коммита:</p>
-<div class="highlight"><pre><span></span>git commit --amend --author <span class="s2">&quot;Author Name &lt;Author Email&gt;&quot;</span>
+<div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--author<span class="w"> </span><span class="s2">&quot;Author Name &lt;Author Email&gt;&quot;</span>
 </pre></div>
 
 
@@ -270,19 +270,19 @@ git commit --amend --no-edit
 <ul>
 <li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
 </ul>
-<div class="highlight"><pre><span></span>git tag имя_тега коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>имя_тега<span class="w"> </span>коммит
 </pre></div>
 
 
 <ul>
 <li>создание аннотированного тега (с дополнительной информацией)</li>
 </ul>
-<div class="highlight"><pre><span></span>git tag -a имя_тега
+<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>имя_тега
 ​<span class="sb">```</span>​
 
-* удаление тегов
+*<span class="w"> </span>удаление<span class="w"> </span>тегов
 ​<span class="sb">```</span>bash
-git tag -d имена_тегов
+git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>имена_тегов
 </pre></div>
 
 
@@ -290,73 +290,73 @@ git tag -d имена_тегов
 <ul>
 <li>получить ближайший тег</li>
 </ul>
-<div class="highlight"><pre><span></span>git describe коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>describe<span class="w"> </span>коммит
 </pre></div>
 
 
 <ul>
 <li>поместить архив проекта с указанного коммита(тега)</li>
 </ul>
-<div class="highlight"><pre><span></span>git archive -o путь_для_архива коммит_или_тег
+<div class="highlight"><pre><span></span>git<span class="w"> </span>archive<span class="w"> </span>-o<span class="w"> </span>путь_для_архива<span class="w"> </span>коммит_или_тег
 </pre></div>
 
 
 <h2>Слияние и разрешение конфликтов</h2>
 <p>источник: <a href="https://www.youtube.com/watch?v=rJTQzEQcdk4&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=49">Слияние – Истинное слияние и разрешение конфликтов в git merge</a></p>
-<div class="highlight"><pre><span></span>git merge ветка
+<div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>ветка
 </pre></div>
 
 
 <ul>
 <li>узнать на каком коммите где ветки разделились</li>
 </ul>
-<div class="highlight"><pre><span></span>git merge-base ветка1 ветка2
+<div class="highlight"><pre><span></span>git<span class="w"> </span>merge-base<span class="w"> </span>ветка1<span class="w"> </span>ветка2
 </pre></div>
 
 
 <h2>Копирование коммитов: cherry-pick</h2>
 <p><a href="https://www.youtube.com/watch?v=BP53rBf1PUE&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=57">cherry-pick</a></p>
-<div class="highlight"><pre><span></span>git cherry-pick коммит
+<div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>коммит
 </pre></div>
 
 
 <h2>Перебазирование веток: rebase</h2>
 <p><a href="https://www.youtube.com/watch?v=Du7Ay5o-Png&amp;list=PLDyvV36pndZHkDRik6kKF6gSb0N0W995h&amp;index=59">источник</a></p>
-<div class="highlight"><pre><span></span>git rebase ветка
+<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>ветка
 </pre></div>
 
 
 <ul>
 <li>отмена rebase и возврать HEAD в предыдущее состояние</li>
 </ul>
-<div class="highlight"><pre><span></span>git rebase --abort
+<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>--abort
 </pre></div>
 
 
 <ul>
 <li>отмена rebase, но HEAD остается на том коммите когда  был превран rebase</li>
 </ul>
-<div class="highlight"><pre><span></span>git rebase --quit
+<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>--quit
 </pre></div>
 
 
 <ul>
 <li>пропустить конфликтный коммит</li>
 </ul>
-<div class="highlight"><pre><span></span>git rebase --skip
+<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>--skip
 </pre></div>
 
 
 <ul>
 <li>продолжить rebase</li>
 </ul>
-<div class="highlight"><pre><span></span>git rebase --continue
+<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
 </pre></div>
 
 
 <h2>Получить ветку из удаленного репозитория</h2>
-<div class="highlight"><pre><span></span><span class="err">git fetch origin</span>
-<span class="err">git checkout -b &lt;название ветки&gt; origin/&lt;название ветки&gt;</span>
+<div class="highlight"><pre><span></span>git fetch origin
+git checkout -b &lt;название ветки&gt; origin/&lt;название ветки&gt;
 </pre></div>
     </div><!-- /.entry-content -->
 

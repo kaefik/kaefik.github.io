@@ -109,14 +109,14 @@
 <ul>
 <li>To get information about a drive, use the -i option.</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo smartctl -i /dev/sda 
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>smartctl<span class="w"> </span>-i<span class="w"> </span>/dev/sda<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>
 <p>if SMART support is available but not enabled, it can be turned on with the following command:</p>
-<div class="highlight"><pre><span></span><span class="err">     ```bash</span>
+<div class="highlight"><pre><span></span>     ```bash
 </pre></div>
 
 
@@ -142,14 +142,14 @@
 <p>The test runs in the background, enabling you to perform other tasks while it runs. To check the results of the test, run the following command:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>sudo smartctl -l selftest /dev/sda 
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>smartctl<span class="w"> </span>-l<span class="w"> </span>selftest<span class="w"> </span>/dev/sda<span class="w"> </span>
 </pre></div>
 
 
 <ul>
 <li>To fore checking of all sectors use badblocks in a mode in which data is written. Beware that even in general it's safe to call it will put extra load on your disks which might cause them to fail. Always have a backup of your data.</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo badblocks -svvn -c <span class="m">262144</span> /dev/sda
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>badblocks<span class="w"> </span>-svvn<span class="w"> </span>-c<span class="w"> </span><span class="m">262144</span><span class="w"> </span>/dev/sda
 </pre></div>
     </div><!-- /.entry-content -->
 

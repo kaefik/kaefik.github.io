@@ -111,19 +111,19 @@
 <li>Venv </li>
 <li>Создание виртуального окружения </li>
 </ol>
-<div class="highlight"><pre><span></span>python3.7 -m venv my_directory_env 
+<div class="highlight"><pre><span></span>python3.7<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>my_directory_env<span class="w"> </span>
 </pre></div>
 
 
 <p>Активация виртуального окружения: </p>
-<div class="highlight"><pre><span></span><span class="nb">source</span> my_env/bin/activate
+<div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>my_env/bin/activate
 </pre></div>
 
 
 <ul>
 <li>Выйти из виртуального окружения: </li>
 </ul>
-<div class="highlight"><pre><span></span>Deactivate 
+<div class="highlight"><pre><span></span>Deactivate<span class="w"> </span>
 </pre></div>
 
 
@@ -139,7 +139,7 @@
 <p>Клонирование репозитория </p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span>git clone урл_репозитория 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>урл_репозитория<span class="w"> </span>
 </pre></div>
 
 
@@ -148,7 +148,7 @@
 </ol>
 <p>requirements_dev.txt - зависимости которые используются разработчики проекта. </p>
 <p>Установка зависимости: </p>
-<div class="highlight"><pre><span></span>pip install -r requirements_dev.txt
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements_dev.txt
 </pre></div>
 
 
@@ -193,7 +193,7 @@
 <p>Twine - сборник утилит для безопасной публикации python-пакетов на PyPI. Добавьте в файл <em>requirements_dev.</em><em>txt</em> строку: twine==1.13.0 </p>
 <p>И переустановите заново заисимости. </p>
 <p>Запустите следующую команду для создания вашего пакета: </p>
-<div class="highlight"><pre><span></span>python setup.py sdist bdist_wheel  
+<div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>sdist<span class="w"> </span>bdist_wheel<span class="w">  </span>
 </pre></div>
 
 
@@ -217,12 +217,12 @@
 <li>Установка пакета: pip install your-package </li>
 <li>Установка пакета из TestPyPI: </li>
 </ol>
-<div class="highlight"><pre><span></span>pip install --index-url https://test.pypi.org/simple/ my_package 
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--index-url<span class="w"> </span>https://test.pypi.org/simple/<span class="w"> </span>my_package<span class="w"> </span>
 </pre></div>
 
 
 <p>Установка пакета из TestPyPI, используя установку других пакетов из PyPI: </p>
-<div class="highlight"><pre><span></span>  pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple my_package 
+<div class="highlight"><pre><span></span><span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>--index-url<span class="w"> </span>https://test.pypi.org/simple/<span class="w"> </span>--extra-index-url<span class="w"> </span>https://pypi.org/simple<span class="w"> </span>my_package<span class="w"> </span>
 </pre></div>
 
 
@@ -231,7 +231,7 @@
 <li>Отправка в GitHub </li>
 </ol>
 <p>При отправке на GitHub проверьте что Вы не отправляете файлы виртуального окружения, артефакты и т д. Для того чтобы исключить файлы добавьте в файл .gitignore что нужно игнорировать при отправке на гитхаб. </p>
-<div class="highlight"><pre><span></span>git push origin my_branch 
+<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>my_branch<span class="w"> </span>
 </pre></div>
 
 
@@ -242,7 +242,7 @@
 <ol>
 <li>Удаление ветви: </li>
 </ol>
-<div class="highlight"><pre><span></span>git branch -d my_feature_branch
+<div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>my_feature_branch
 </pre></div>
     </div><!-- /.entry-content -->
 

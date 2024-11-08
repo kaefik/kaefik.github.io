@@ -104,8 +104,8 @@
 <li><a href="https://losst.ru/nastrojka-ufw-ubuntu#5_%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_UFW">Настройка UFW</a></li>
 </ul>
 <h3>Политика по умолчанию</h3>
-<div class="highlight"><pre><span></span>ufw default deny incoming   <span class="c1"># Все входящие пакеты будем отклонять</span>
-ufw default allow outgoing  <span class="c1"># все исходящие разрешим</span>
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming<span class="w">   </span><span class="c1"># Все входящие пакеты будем отклонять</span>
+ufw<span class="w"> </span>default<span class="w"> </span>allow<span class="w"> </span>outgoing<span class="w">  </span><span class="c1"># все исходящие разрешим</span>
 </pre></div>
 
 
@@ -116,39 +116,39 @@ ufw allow порт/протокол</p>
 <ul>
 <li>чтобы открыть порт ufw для SSH</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw allow OpenSSH
-ufw allow <span class="m">22</span>
-ufw allow <span class="m">22</span>/tcp
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp
 </pre></div>
 
 
 <ul>
 <li>чтобы посмотреть имена приложений</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw app list
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>app<span class="w"> </span>list
 </pre></div>
 
 
 <ul>
 <li>Можно также указать направление следования трафика с помощью слов out для исходящего и in для входящего.</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw allow направление порт
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span>направление<span class="w"> </span>порт
 </pre></div>
 
 
 <ul>
 <li>разрешим только исходящий трафик на порт 80, а входящий запретим:</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw allow out <span class="m">80</span>/tcp
-ufw deny in <span class="m">80</span>/tcp
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span>out<span class="w"> </span><span class="m">80</span>/tcp
+ufw<span class="w"> </span>deny<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">80</span>/tcp
 </pre></div>
 
 
 <ul>
 <li>открыть порт DNS 53</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw allow <span class="m">53</span>/tcp
-ufw allow <span class="m">53</span>/udp
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">53</span>/tcp
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">53</span>/udp
 </pre></div>
 
 
@@ -157,18 +157,18 @@ ufw allow <span class="m">53</span>/udp
 </ul>
 <p>ufw allow proto протокол from ip_источника to ip_назначения port порт_назначения</p>
 <p>В качестве ip_источника может использоваться также и адрес подсети. Например, разрешим доступ со всех IP-адресов для интерфейса eth0 по протоколу tcp к нашему IP-адресу и порту 3318:</p>
-<div class="highlight"><pre><span></span>ufw allow proto tcp from <span class="m">0</span>.0.0.0/24 to <span class="m">192</span>.168.1.5 port <span class="m">3318</span>
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span>proto<span class="w"> </span>tcp<span class="w"> </span>from<span class="w"> </span><span class="m">0</span>.0.0.0/24<span class="w"> </span>to<span class="w"> </span><span class="m">192</span>.168.1.5<span class="w"> </span>port<span class="w"> </span><span class="m">3318</span>
 </pre></div>
 
 
 <h3>Включение UFW</h3>
-<div class="highlight"><pre><span></span>ufw <span class="nb">enable</span>
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span><span class="nb">enable</span>
 </pre></div>
 
 
 <h3>Правила limit ufw</h3>
 <p>С помощью правил limit можно ограничить количество подключений к определённому порту с одного IP-адреса, это может быть полезно для защиты от атак перебора паролей. </p>
-<div class="highlight"><pre><span></span>ufw limit ssh/tcp
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>limit<span class="w"> </span>ssh/tcp
 </pre></div>
 
 
@@ -176,7 +176,7 @@ ufw allow <span class="m">53</span>/udp
 <ul>
 <li>Для блокировки или закрытия всех пакетов с 192.168.1.5, вводим:</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw deny from <span class="m">192</span>.168.1.5 to any
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>deny<span class="w"> </span>from<span class="w"> </span><span class="m">192</span>.168.1.5<span class="w"> </span>to<span class="w"> </span>any
 </pre></div>
 
 
@@ -184,41 +184,43 @@ ufw allow <span class="m">53</span>/udp
 <li>Блокировка определенных IP и номера порта через ufw</li>
 </ul>
 <p>ufw deny from {ip-address-here} to any port {port-number-here}</p>
-<div class="highlight"><pre><span></span>ufw deny from <span class="m">202</span>.54.1.5 to any port <span class="m">80</span>
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>deny<span class="w"> </span>from<span class="w"> </span><span class="m">202</span>.54.1.5<span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span>port<span class="w"> </span><span class="m">80</span>
 </pre></div>
 
 
 <h2>Запрет icmp пинга</h2>
-<div class="highlight"><pre><span></span>sudo cp /etc/ufw/before.rules /etc/ufw/before.rules_backup
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/ufw/before.rules<span class="w"> </span>/etc/ufw/before.rules_backup
 </pre></div>
 
 
 <p>Найти в файле <strong>/etc/ufw/before.rules</strong> строки</p>
 <div class="highlight"><pre><span></span><span class="c1"># ok icmp codes for INPUT</span>
--A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
--A ufw-before-input -p icmp --icmp-type source-quench -j ACCEPT
--A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
--A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
--A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>destination-unreachable<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>source-quench<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>time-exceeded<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>parameter-problem<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>echo-request<span class="w"> </span>-j<span class="w"> </span>ACCEPT
 </pre></div>
 
 
 <p>поменять ACCEPT на DROP, чтобы получилось следующее</p>
 <div class="highlight"><pre><span></span><span class="c1"># ok icmp codes for INPUT</span>
--A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
--A ufw-before-input -p icmp --icmp-type source-quench -j DROP
--A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
--A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
--A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>destination-unreachable<span class="w"> </span>-j<span class="w"> </span>DROP
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>source-quench<span class="w"> </span>-j<span class="w"> </span>DROP
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>time-exceeded<span class="w"> </span>-j<span class="w"> </span>DROP
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>parameter-problem<span class="w"> </span>-j<span class="w"> </span>DROP
+-A<span class="w"> </span>ufw-before-input<span class="w"> </span>-p<span class="w"> </span>icmp<span class="w"> </span>--icmp-type<span class="w"> </span>echo-request<span class="w"> </span>-j<span class="w"> </span>DROP
 </pre></div>
 
 
 <h3>Проверка правил</h3>
-<div class="highlight"><pre><span></span>ufw status numbered
+<div class="highlight"><pre><span></span>ufw<span class="w"> </span>status<span class="w"> </span>numbered
 </pre></div>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
+  <nav>
+    <ul>
+      <li>Page 1 / 1</li>
+    </ul>
+  </nav>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

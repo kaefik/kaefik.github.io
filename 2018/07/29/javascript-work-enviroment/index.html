@@ -117,22 +117,22 @@
 </ul>
 <p>Чтобы Pretier заработал автоматически нужно в настройки VS Code прописать:</p>
 <div class="highlight"><pre><span></span><span class="c1">// Set the default</span>
-<span class="s2">&quot;editor.formatOnSave&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="s2">&quot;editor.formatOnSave&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="c1">// Enable per-language</span>
-<span class="s2">&quot;[javascript]&quot;</span><span class="o">:</span> <span class="p">{</span>
-<span class="s2">&quot;editor.formatOnSave&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="s2">&quot;[javascript]&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="s2">&quot;editor.formatOnSave&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <h2>Install Yarn</h2>
-<div class="highlight"><pre><span></span>curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg <span class="p">|</span> sudo apt-key add -
+<div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span>https://dl.yarnpkg.com/debian/pubkey.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
 
-<span class="nb">echo</span> <span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/yarn.list
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/yarn.list
 
-sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install yarn
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>yarn
 
-yarn --version
+yarn<span class="w"> </span>--version
 </pre></div>
 
 

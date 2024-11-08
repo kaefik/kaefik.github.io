@@ -122,7 +122,7 @@
 </ul>
 <p><strong>Metadata kept in Windows cache</strong>, refused to mount. Failed to mount '/dev/sda5': Operation not permitted The NTFS partition is in an unsafe state. Please resume and shutdown  Windows fully (no hibernation or fast restarting), or mount the volume read-only with the 'ro' mount option.</p>
 <p>решение:</p>
-<div class="highlight"><pre><span></span>sudo ntfsfix /dev/sda1
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>ntfsfix<span class="w"> </span>/dev/sda1
 </pre></div>
 
 
@@ -142,7 +142,7 @@
 <p><strong>Уменьшение использования файла подкачки(перезагрузка):</strong> </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;vm.swappiness=10&quot;</span> <span class="p">|</span> sudo tee -a /etc/sysctl.conf
+<div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;vm.swappiness=10&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf
 </pre></div>
 
 
@@ -185,7 +185,7 @@ default-sample-rate = 44100 на default-sample-rate = 96000
 <ul>
 <li><strong>Если вы хотите только H.264</strong>, тогда</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo apt-get install h264enc 
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>h264enc<span class="w"> </span>
 </pre></div>
 
 

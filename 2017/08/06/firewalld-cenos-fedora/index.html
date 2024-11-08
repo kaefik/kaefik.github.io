@@ -109,12 +109,12 @@
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></li>
 </ul>
 <h2>Запущен ли firewall</h2>
-<div class="highlight"><pre><span></span><span class="err">sudo systemctl start firewalld.service</span>
+<div class="highlight"><pre><span></span>sudo systemctl start firewalld.service
 </pre></div>
 
 
 <p>​     или</p>
-<div class="highlight"><pre><span></span><span class="err">firewall-cmd --state</span>
+<div class="highlight"><pre><span></span>firewall-cmd --state
 </pre></div>
 
 
@@ -122,28 +122,28 @@
 <ul>
 <li>We can see which zone is currently selected as the default by typing:</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-default-zone
+<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--get-default-zone
 </pre></div>
 
 
 <ul>
 <li>Since we haven't given firewalld any commands to deviate from the default zone, and none of our interfaces are configured to bind to another zone, that zone will also be the only "active" zone (the zone that is controlling the traffic for our interfaces). We can verify that by typing:</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-active-zones
+<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--get-active-zones
 </pre></div>
 
 
 <ul>
 <li>How do we know what rules are associated with the public zone though? We can print out the default zone's configuration by typing:</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd --list-all
+<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--list-all
 </pre></div>
 
 
 <ul>
 <li>To get a list of the available zones, type:</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-zones
+<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--get-zones
 </pre></div>
 
 
@@ -152,7 +152,7 @@
 </ul>
 <p>You can transition an interface between zones during a session by using the --zone= parameter in combination with the --change-interface= parameter. As with all commands that modify the firewall, you will need to use sudo.</p>
 <p>For instance, we can transition our eth0 interface to the "home" zone by typing this:         </p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>home --change-interface<span class="o">=</span>eth0
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>home<span class="w"> </span>--change-interface<span class="o">=</span>eth0
 </pre></div>
 
 
@@ -165,7 +165,7 @@
 <ul>
 <li>Получение список всех сервисов</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd --get-services
+<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--get-services
 </pre></div>
 
 
@@ -180,7 +180,7 @@
 
 <p>Secure Shell (SSH) is a protocol for logging into and executing commands on remote machines. It provides secure encrypted communications. If you plan on accessing your machine remotely via SSH over a firewalled interface, enable this option. You need the openssh-server package installed for this option to be useful.</p>
 <div class="highlight"><pre><span></span><span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;port</span> <span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span> <span class="na">port=</span><span class="s">&quot;22&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;port</span><span class="w"> </span><span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span><span class="w"> </span><span class="na">port=</span><span class="s">&quot;22&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/service&gt;</span>
 </pre></div>
 
@@ -188,22 +188,22 @@
 <ul>
 <li>For instance, if we are running a web server serving conventional HTTP traffic, we can allow this traffic for interfaces in our "public" zone for this session by typing:           </li>
 </ul>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --add-service<span class="o">=</span>http
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-service<span class="o">=</span>http
 </pre></div>
 
 
 <p>You can leave out the --zone= if you wish to modify the default zone. We can verify the operation was successful by using the --list-all or --list-services operations:</p>
-<div class="highlight"><pre><span></span>firewall-cmd --zone<span class="o">=</span>public --list-services
+<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--list-services
 </pre></div>
 
 
 <p>We can make our "public" zone change permanent by typing:</p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --permanent --add-service<span class="o">=</span>http
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--permanent<span class="w"> </span>--add-service<span class="o">=</span>http
 </pre></div>
 
 
 <p>You can verify that this was successful by adding the --permanent flag to the --list-services operation. You need to use sudo for any --permanent operations:</p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --permanent --list-services
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--permanent<span class="w"> </span>--list-services
 </pre></div>
 
 
@@ -211,7 +211,7 @@
 <li>Открыть порт для приложения</li>
 </ul>
 <p>if our application runs on port 5000 and uses TCP, we could add this to the "public" zone for this session using the --add-port= parameter. Protocols can be either tcp or udp:             </p>
-<div class="highlight"><pre><span></span>sudo firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">5000</span>/tcp    
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-port<span class="o">=</span><span class="m">5000</span>/tcp<span class="w">    </span>
 </pre></div>
     </div><!-- /.entry-content -->
 

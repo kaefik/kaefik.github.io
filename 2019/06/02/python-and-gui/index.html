@@ -114,45 +114,45 @@
 <li><a href="https://habr.com/ru/post/550426/">Python &amp; EEL. Делаем просто на Python’е и красиво на JS</a></li>
 </ul>
 <p><strong>Установка Gooey</strong></p>
-<div class="highlight"><pre><span></span>pip install Gooey
+<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>Gooey
 </pre></div>
 
 
 <p><strong>Установка PySimpleGUI</strong></p>
-<div class="highlight"><pre><span></span> sudo apt install python3-tk
- pip3 install pysimplegui
+<div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-tk
+<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>pysimplegui
 </pre></div>
 
 
 <p><strong>Решение проблем при установке Gooey</strong></p>
 <p>при установке библиотеки gooey выдается ошибка компиляции wxPython, нужно выполнить след команды:</p>
-<div class="highlight"><pre><span></span>pip3 install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-18.04 wxPython  
+<div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-f<span class="w"> </span>https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-18.04<span class="w"> </span>wxPython<span class="w">  </span>
 
-pip3 install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04/ wxPython
+pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-f<span class="w"> </span>https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04/<span class="w"> </span>wxPython
 
-sudo apt-get install python3.6-dev
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3.6-dev
 </pre></div>
 
 
 <p>Если ругается на отсутствие GTK3:</p>
-<div class="highlight"><pre><span></span>sudo apt-get install libgtk-3-dev
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libgtk-3-dev
 </pre></div>
 
 
 <p>Для установки в Ubuntu 20.04 помогло установить wxPython установка следующие библиотеки:</p>
-<div class="highlight"><pre><span></span>sudo apt install python3-pip make gcc libgtk-3-dev libgstreamer-gl1.0-0 freeglut3 freeglut3-dev python3-gst-1.0 libglib2.0-dev ubuntu-restricted-extras libgstreamer-plugins-base1.0-dev
-sudo apt-get install libwxbase3.0-0v5
+<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip<span class="w"> </span>make<span class="w"> </span>gcc<span class="w"> </span>libgtk-3-dev<span class="w"> </span>libgstreamer-gl1.0-0<span class="w"> </span>freeglut3<span class="w"> </span>freeglut3-dev<span class="w"> </span>python3-gst-1.0<span class="w"> </span>libglib2.0-dev<span class="w"> </span>ubuntu-restricted-extras<span class="w"> </span>libgstreamer-plugins-base1.0-dev
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libwxbase3.0-0v5
 </pre></div>
 
 
 <h2>Pyinstaller and Gooey</h2>
-<div class="highlight"><pre><span></span><span class="err">Exception in thread Thread-1:</span>
-<span class="err">Traceback (most recent call last):</span>
-<span class="err">  File &quot;threading.py&quot;, line 917, in _bootstrap_inner</span>
-<span class="err">  File &quot;threading.py&quot;, line 865, in run</span>
-<span class="err">  File &quot;lib\site-packages\gooey\gui\processor.py&quot;, line 71, in _forward_stdout</span>
-<span class="err">  File &quot;lib\site-packages\gooey\gui\processor.py&quot;, line 84, in _extract_progress</span>
-<span class="c">UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0xf1 in position 16: invalid continuation byte</span>
+<div class="highlight"><pre><span></span><span class="nx">Exception</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">thread</span><span class="w"> </span><span class="nx">Thread</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+<span class="nx">Traceback</span><span class="w"> </span><span class="p">(</span><span class="nx">most</span><span class="w"> </span><span class="nx">recent</span><span class="w"> </span><span class="nx">call</span><span class="w"> </span><span class="nx">last</span><span class="p">):</span>
+<span class="w">  </span><span class="nx">File</span><span class="w"> </span><span class="s">&quot;threading.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="mi">917</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">_bootstrap_inner</span>
+<span class="w">  </span><span class="nx">File</span><span class="w"> </span><span class="s">&quot;threading.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="mi">865</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">run</span>
+<span class="w">  </span><span class="nx">File</span><span class="w"> </span><span class="s">&quot;lib\site-packages\gooey\gui\processor.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">_forward_stdout</span>
+<span class="w">  </span><span class="nx">File</span><span class="w"> </span><span class="s">&quot;lib\site-packages\gooey\gui\processor.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">_extract_progress</span>
+<span class="nx">UnicodeDecodeError</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span><span class="err">&#39;</span><span class="w"> </span><span class="nx">codec</span><span class="w"> </span><span class="nx">can</span><span class="err">&#39;</span><span class="nx">t</span><span class="w"> </span><span class="nx">decode</span><span class="w"> </span><span class="nx">byte</span><span class="w"> </span><span class="mh">0xf1</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="mi">16</span><span class="p">:</span><span class="w"> </span><span class="nx">invalid</span><span class="w"> </span><span class="nx">continuation</span><span class="w"> </span><span class="nx">byte</span>
 </pre></div>
 
 
@@ -162,12 +162,12 @@ sudo apt-get install libwxbase3.0-0v5
 <li>Forget about the modification of <code>processor.py</code></li>
 <li>Add near the top of your (main) script:</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">codecs</span>
 
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span> <span class="o">!=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">getwriter</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">encoding</span> <span class="o">!=</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">getwriter</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;UTF-8&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codecs</span><span class="o">.</span><span class="n">getwriter</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;strict&#39;</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">encoding</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;UTF-8&#39;</span><span class="p">:</span>
+<span class="w">    </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codecs</span><span class="o">.</span><span class="n">getwriter</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;strict&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -192,8 +192,8 @@ sudo apt-get install libwxbase3.0-0v5
 <li>Login to the admin page wherever the project is
      being hosted (locally this would be localhost:8000/admin)</li>
 </ul>
-<div class="highlight"><pre><span></span>python manage.py createsuperuser 
-python manage.py runserver
+<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser<span class="w"> </span>
+python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </pre></div>
 
 
@@ -201,7 +201,7 @@ python manage.py runserver
 <ul>
 <li>установка зависимости:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">pip install eel</span>
+<div class="highlight"><pre><span></span>pip install eel
 </pre></div>
 
 
@@ -234,10 +234,10 @@ python manage.py runserver
    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;text-p&quot;</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;click-elem&quot;</span><span class="p">&gt;</span>Click<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-       <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;click-elem&quot;</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;text-p&quot;</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">eel</span><span class="p">.</span><span class="nx">testfunc</span><span class="p">()();</span>
-       <span class="p">}</span>
-   <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">       </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;click-elem&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;text-p&quot;</span><span class="p">).</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eel</span><span class="p">.</span><span class="nx">testfunc</span><span class="p">()();</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">   </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
