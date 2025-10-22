@@ -106,19 +106,19 @@
         <span>Sun 06 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/setup.html">setup</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/package.html">package</a></span>Translations:
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
 <li><a href="https://klen.github.io/create-python-packages.html">Создание python-пакетов (aka setup scripts)</a></li>
 </ul>
-<div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>sdist
+<div class="highlight"><pre><span></span>python setup.py sdist
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>install<span class="w"> </span>
+<div class="highlight"><pre><span></span>python setup.py install 
 </pre></div>
                 <a class="readmore" href="/2021/06/06/python/">read more</a>
                 </div><!-- /.entry-content -->
@@ -165,23 +165,23 @@
 <ul>
 <li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>имя_тега<span class="w"> </span>коммит
+<div class="highlight"><pre><span></span>git tag имя_тега коммит
 </pre></div>
 
 
 <ul>
 <li>создание аннотированного тега (с дополнительной информацией)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>имя_тега
-или<span class="w"> </span>
-git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Message&quot;</span>
+<div class="highlight"><pre><span></span>git tag -a имя_тега
+или 
+git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 </pre></div>
 
 
 <ul>
 <li>удаление тегов</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>имена_тегов
+<div class="highlight"><pre><span></span>git tag -d имена_тегов
 </pre></div>
 
 
@@ -207,8 +207,8 @@ git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span clas
 <li><a href="https://losst.ru/nastrojka-ufw-ubuntu#5_%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_UFW">Настройка UFW</a></li>
 </ul>
 <h3>Политика по умолчанию</h3>
-<div class="highlight"><pre><span></span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming<span class="w">   </span><span class="c1"># Все входящие пакеты будем отклонять</span>
-ufw<span class="w"> </span>default<span class="w"> </span>allow<span class="w"> </span>outgoing<span class="w">  </span><span class="c1"># все исходящие разрешим</span>
+<div class="highlight"><pre><span></span>ufw default deny incoming   <span class="c1"># Все входящие пакеты будем отклонять</span>
+ufw default allow outgoing  <span class="c1"># все исходящие разрешим</span>
 </pre></div>
 
 
@@ -219,9 +219,9 @@ ufw allow порт/протокол</p>
 <ul>
 <li>чтобы открыть порт ufw для SSH</li>
 </ul>
-<div class="highlight"><pre><span></span>ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
-ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>
-ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22 …</span></pre></div>
+<div class="highlight"><pre><span></span>ufw allow OpenSSH
+ufw allow <span class="m">22</span>
+ufw allow <span class="m">22 …</span></pre></div>
                 <a class="readmore" href="/2021/03/01/firewall-ubuntu/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -266,15 +266,15 @@ ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22 …</
 <li><a href="https://proglib.io/p/chto-takoe-maven-i-gde-on-obitaet-2019-11-23">Что такое Maven, и где он обитает?</a></li>
 </ul>
 <h2>Установка Java в Ubuntu</h2>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-11-jdk<span class="w">  </span><span class="c1">#openjdk 11</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-8-jdk<span class="w">   </span><span class="c1">#openjdk 8</span>
+<div class="highlight"><pre><span></span>sudo apt install openjdk-11-jdk  <span class="c1">#openjdk 11</span>
+sudo apt install openjdk-8-jdk   <span class="c1">#openjdk 8</span>
 </pre></div>
 
 
 <ul>
 <li>Переключение между несколькими версиями Java</li>
 </ul>
-<div class="highlight"><pre><span></span>update-alternatives --config java
+<div class="highlight"><pre><span></span><span class="err">update-alternatives --config java</span>
 </pre></div>
 
 
@@ -368,7 +368,7 @@ your family tree with Gramps - бесплатная и мощная програ
 <li><a href="https://dunmaksim.blogspot.com/2015/09/emacs.html">EMACS: автоустановка пакетов и хоткеи в русской раскладке</a></li>
 </ul>
 <h2>Установка Emacs</h2>
-<div class="highlight"><pre><span></span>    sudo apt install emacs emacs-goodies-el
+<div class="highlight"><pre><span></span><span class="err">    sudo apt install emacs emacs-goodies-el</span>
 </pre></div>
 
 
@@ -381,15 +381,11 @@ your family tree with Gramps - бесплатная и мощная програ
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-        <li><a href="/index.html">&Lang;</a></li>
-        <li><a href="/index.html">&lang;</a></li>
-      <li>Page 2 / 16</li>
-        <li><a href="/index3.html">&rang;</a></li>
-        <li><a href="/index16.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+        <a href="/index.html">&laquo;</a>
+    Page 2 / 16
+        <a href="/index3.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

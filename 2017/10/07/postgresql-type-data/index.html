@@ -107,20 +107,20 @@
 </footer><!-- /.post-info -->      <h2><a href="http://postgresql.ru.net/manual/datatype.html">Типы данных</a></h2>
 <h3>Серийные типы</h3>
 <p>Типы данных serial и bigserial не являются полноценными типами, а просто являются удобной нотацией для создания колонок уникальных идентификаторов (свойство сходное с AUTO_INCREMENT поддерживается и некоторыми другими СУБД). В текущей реализации, конструкция:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">имя</span><span class="n">_таблицы</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="err">имя</span><span class="n">_колонки</span><span class="w"> </span><span class="nb">SERIAL</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="err">имя</span><span class="n">_таблицы</span> <span class="p">(</span>
+  <span class="err">имя</span><span class="n">_колонки</span> <span class="nb">SERIAL</span>
 <span class="p">);</span>
 </pre></div>
 
 
 <p>эквивалента конструкции:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя</span><span class="err">\</span><span class="n">_колонки</span><span class="err">\</span><span class="n">_seq</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">SEQUENCE</span> <span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя</span><span class="err">\</span><span class="n">_колонки</span><span class="err">\</span><span class="n">_seq</span><span class="p">;</span>
 
-<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">имя\</span><span class="n">_таблицы</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">colname</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;tablename_colname_seq&#39;</span><span class="p">)</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="err">имя\</span><span class="n">_таблицы</span> <span class="p">(</span>
+  <span class="n">colname</span> <span class="nb">integer</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;tablename_colname_seq&#39;</span><span class="p">)</span>
 <span class="p">);</span>
 
-<span class="k">ALTER</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="n">tablename_colname_seq</span><span class="w"> </span><span class="n">OWNED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">tablename</span><span class="p">.</span><span class="n">colname</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="n">SEQUENCE</span> <span class="n">tablename_colname_seq</span> <span class="n">OWNED</span> <span class="k">BY</span> <span class="n">tablename</span><span class="p">.</span><span class="n">colname</span><span class="p">;</span>
 </pre></div>
 
 
@@ -129,10 +129,10 @@
 <p>Чтобы вставить следующее значение последовательности в колонку с типом serial, укажите, что в колонку с типом serial вставляется значение по умолчанию для этой колонки. Это можно сделать либо не указывая колонку с списке колонок в операторе INSERT, либо используя ключевое слово DEFAULT.</p>
 <h2><a href="https://postgrespro.ru/docs/postgrespro/9.5/arrays">Массивы</a></h2>
 <p>позволяет определять столбцы таблицы как многомерные массивы переменной длины. Элементами массивов могут быть любые встроенные или определённые пользователями типы, перечисления или составные типы. Массивы доменов в данный момент не поддерживаются.</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">sal_emp</span><span class="w"> </span><span class="p">(</span>
-<span class="n">name</span><span class="w">            </span><span class="nb">text</span><span class="p">,</span>
-<span class="n">pay_by_quarter</span><span class="w">  </span><span class="nb">integer</span><span class="p">[],</span>
-<span class="n">schedule</span><span class="w">        </span><span class="nb">text</span><span class="p">[][]</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">sal_emp</span> <span class="p">(</span>
+<span class="n">name</span>            <span class="nb">text</span><span class="p">,</span>
+<span class="n">pay_by_quarter</span>  <span class="nb">integer</span><span class="p">[],</span>
+<span class="n">schedule</span>        <span class="nb">text</span><span class="p">[][]</span>
 <span class="p">);</span>
 </pre></div>
 
@@ -141,7 +141,7 @@
 <p>Чтобы записать значение массива в виде буквальной константы, заключите значения элементов в фигурные скобки и разделите их запятыми.</p>
 <h3>Обращение к массивам</h3>
 <p>Добавив данные в таблицу, мы можем перейти к выборкам. Сначала мы покажем, как получить один элемент массива. Этот запрос получает имена сотрудников, зарплата которых изменилась во втором квартале:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sal_emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">pay_by_quarter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">pay_by_quarter</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w">    </span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">name</span> <span class="k">FROM</span> <span class="n">sal_emp</span> <span class="k">WHERE</span> <span class="n">pay_by_quarter</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="n">pay_by_quarter</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>    
 </pre></div>
     </div><!-- /.entry-content -->
 

@@ -101,27 +101,27 @@
 <span>| tags: <a href="/tag/db.html">db</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/sql.html">sql</a></span>
 </footer><!-- /.post-info --><h2>Представления</h2>
 <p>можно создать представление по данному запросу, фактически присвоить имя запросу, а затем обращаться к нему как к обычной таблице:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">myview</span><span class="w"> </span><span class="k">AS</span>
-<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="n">temp_lo</span><span class="p">,</span><span class="w"> </span><span class="n">temp_hi</span><span class="p">,</span><span class="w"> </span><span class="n">prcp</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="k">location</span>
-<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">weather</span><span class="p">,</span><span class="w"> </span><span class="n">cities</span>
-<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">myview</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">city</span><span class="p">,</span> <span class="n">temp_lo</span><span class="p">,</span> <span class="n">temp_hi</span><span class="p">,</span> <span class="n">prcp</span><span class="p">,</span> <span class="nb">date</span><span class="p">,</span> <span class="k">location</span>
+    <span class="k">FROM</span> <span class="n">weather</span><span class="p">,</span> <span class="n">cities</span>
+    <span class="k">WHERE</span> <span class="n">city</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
 </pre></div>
 
 
 <p>Представления позволяют вам скрыть внутреннее устройство ваших таблиц, которые могут меняться по мере развития приложения, за надёжными интерфейсами.</p>
 <h2>Внешние ключи</h2>
 <p>Давайте рассмотрим следующую задачу: вы хотите добиться, чтобы никто не мог вставить в таблицу weather строки, для которых не находится соответствующая строка в таблице cities. Это называется обеспечением ссылочной целостности данных.</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="p">(</span>
-<span class="w"> </span><span class="n">city</span><span class="w">   </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
-<span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="n">point</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cities</span> <span class="p">(</span>
+ <span class="n">city</span>   <span class="nb">varchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+ <span class="k">location</span> <span class="n">point</span>
 <span class="p">);</span>
 
-<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">weather</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">city</span><span class="w">   </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">cities</span><span class="p">(</span><span class="n">city</span><span class="p">),</span>
-<span class="w">  </span><span class="n">temp_lo</span><span class="w">  </span><span class="nb">int</span><span class="p">,</span>
-<span class="w">  </span><span class="n">temp_hi</span><span class="w">  </span><span class="nb">int</span><span class="p">,</span>
-<span class="w">  </span><span class="n">prcp</span><span class="w">   </span><span class="nb">real</span><span class="p">,</span>
-<span class="w">  </span><span class="nb">date</span><span class="w">   </span><span class="nb">date</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">weather</span> <span class="p">(</span>
+  <span class="n">city</span>   <span class="nb">varchar</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="k">references</span> <span class="n">cities</span><span class="p">(</span><span class="n">city</span><span class="p">),</span>
+  <span class="n">temp_lo</span>  <span class="nb">int</span><span class="p">,</span>
+  <span class="n">temp_hi</span>  <span class="nb">int</span><span class="p">,</span>
+  <span class="n">prcp</span>   <span class="nb">real</span><span class="p">,</span>
+  <span class="nb">date</span>   <span class="nb">date</span>
 <span class="p">);</span>
 </pre></div>
 
@@ -132,8 +132,8 @@
 Другая важная характеристика транзакционных баз данных тесно связана с атомарностью изменений: когда одновременно выполняется множество транзакций, каждая из них не видит незавершённые изменения, произведённые другими. Например, если одна транзакция подсчитывает баланс по отделениям, будет неправильно, если она посчитает расход в отделении Алисы, но не учтёт приход в отделении Боба, или наоборот. Поэтому свойство транзакций "всё или ничего" должно определять не только, как изменения сохраняются в базе данных, но и как они видны в процессе работы. Изменения, производимые открытой транзакцией, невидимы для других транзакций, пока она не будет завершена, а затем они становятся видны все сразу.
 В PostgreSQL транзакция определяется набором SQL-команд, окружённым командами BEGIN и COMMIT. Таким образом, наша банковская транзакция должна была бы выглядеть так:</p>
 <div class="highlight"><pre><span></span><span class="k">BEGIN</span><span class="p">;</span>
-<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">accounts</span> <span class="k">SET</span> <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">-</span> <span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
+  <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
 <span class="c1">-- ...</span>
 <span class="k">COMMIT</span><span class="p">;</span>
 </pre></div>
@@ -145,15 +145,15 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
 Когда вы возвращаетесь к точке сохранения, она продолжает существовать, так что вы можете откатываться к ней несколько раз. С другой стороны, если вы уверены, что вам не придётся откатываться к определённой точке сохранения, её можно удалить, чтобы система высвободила ресурсы. Помните, что при удалении или откате к точке сохранения все точки сохранения, определённые после неё, автоматически уничтожаются.
 Всё это происходит в блоке транзакции, так что в других сеансах работы с базой данных этого не видно. Совершённые действия становятся видны для других сеансов все сразу, только когда вы фиксируете транзакцию, а отменённые действия не видны вообще никогда.</p>
 <div class="highlight"><pre><span></span><span class="k">BEGIN</span><span class="p">;</span>
-<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
-<span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">my_savepoint</span><span class="p">;</span>
-<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">accounts</span> <span class="k">SET</span> <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">-</span> <span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
+  <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+<span class="n">SAVEPOINT</span> <span class="n">my_savepoint</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">accounts</span> <span class="k">SET</span> <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">+</span> <span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
+  <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Bob&#39;</span><span class="p">;</span>
 <span class="c1">-- ошибочное действие... забыть его и использовать счёт Уолли</span>
-<span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">my_savepoint</span><span class="p">;</span>
-<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Wally&#39;</span><span class="p">;</span>
+<span class="k">ROLLBACK</span> <span class="k">TO</span> <span class="n">my_savepoint</span><span class="p">;</span>
+<span class="k">UPDATE</span> <span class="n">accounts</span> <span class="k">SET</span> <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">+</span> <span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
+  <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Wally&#39;</span><span class="p">;</span>
 <span class="k">COMMIT</span><span class="p">;</span>
 </pre></div>
 
@@ -161,8 +161,8 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
 <p>Этот пример, конечно, несколько надуман, но он показывает, как можно управлять выполнением команд в блоке транзакций, используя точки сохранения. Более того, ROLLBACK TO — это единственный способ вернуть контроль над блоком транзакций, оказавшимся в прерванном состоянии из-за ошибки системы, не считая возможности полностью отменить её и начать снова.</p>
 <h2>Оконная функция</h2>
 <p>Оконная функция выполняет вычисления для набора строк, некоторым образом связанных с текущей строкой. Можно сравнить её с агрегатной функцией, но, в отличие от обычной агрегатной функции, при использовании оконной функции несколько строк не группируются в одну, а продолжают существовать отдельно. Внутри же, оконная функция, как и агрегатная, может обращаться не только к текущей строке результата запроса.</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">depname</span><span class="p">,</span><span class="w"> </span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">depname</span><span class="p">)</span>
-<span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empsalary</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">depname</span><span class="p">,</span> <span class="n">empno</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span> <span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">depname</span><span class="p">)</span>
+ <span class="k">FROM</span> <span class="n">empsalary</span><span class="p">;</span>
 </pre></div>
 
 
@@ -173,30 +173,30 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
 <p>Оконные функции разрешается использовать в запросе только в списке SELECT и предложении ORDER BY. Во всех остальных предложениях, включая GROUP BY, HAVING и WHERE, они запрещены. Это объясняется тем, что логически они выполняются после обычных агрегатных функций, а значит агрегатную функцию можно вызвать из оконной, но не наоборот.</p>
 <h2>Наследование</h2>
 <p>- это концепция, взятая из объектно-ориентированных баз данных</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="p">(</span>
-<span class="w"> </span><span class="n">name</span><span class="w">    </span><span class="nb">text</span><span class="p">,</span>
-<span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="nb">real</span><span class="p">,</span>
-<span class="w"> </span><span class="n">altitude</span><span class="w">  </span><span class="nb">int</span><span class="w">   </span><span class="c1">-- (высота в футах)</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cities</span> <span class="p">(</span>
+ <span class="n">name</span>    <span class="nb">text</span><span class="p">,</span>
+ <span class="n">population</span> <span class="nb">real</span><span class="p">,</span>
+ <span class="n">altitude</span>  <span class="nb">int</span>   <span class="c1">-- (высота в футах)</span>
 <span class="p">);</span>
 
-<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">capitals</span><span class="w"> </span><span class="p">(</span>
-<span class="w"> </span><span class="k">state</span><span class="w">   </span><span class="nb">char</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="p">)</span><span class="w"> </span><span class="k">INHERITS</span><span class="w"> </span><span class="p">(</span><span class="n">cities</span><span class="p">);</span><span class="w">  </span><span class="c1">-- наследование столбцов из таблицы cities</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">capitals</span> <span class="p">(</span>
+ <span class="k">state</span>   <span class="nb">char</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span> <span class="k">INHERITS</span> <span class="p">(</span><span class="n">cities</span><span class="p">);</span>  <span class="c1">-- наследование столбцов из таблицы cities</span>
 </pre></div>
 
 
 <p>В PostgreSQL таблица может наследоваться от нуля или нескольких других таблиц.</p>
 <p>Например, следующий запрос выведет названия всех городов, включая столицы, находящихся выше 500 футов над уровнем моря:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">altitude</span>
-<span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span>
-<span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">altitude</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="n">altitude</span>
+ <span class="k">FROM</span> <span class="n">cities</span>
+ <span class="k">WHERE</span> <span class="n">altitude</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">;</span>
 </pre></div>
 
 
 <p>А следующий запрос находит все города, которые не являются столицами штатов, но также находятся выше 500 футов:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">altitude</span>
-<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">ONLY</span><span class="w"> </span><span class="n">cities</span>
-<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">altitude</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span> <span class="n">altitude</span>
+  <span class="k">FROM</span> <span class="k">ONLY</span> <span class="n">cities</span>
+  <span class="k">WHERE</span> <span class="n">altitude</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">;</span>
 </pre></div>
 
 
@@ -219,14 +219,14 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
 </footer><!-- /.post-info -->                <h2><a href="http://postgresql.ru.net/manual/datatype.html">Типы данных</a></h2>
 <h3>Серийные типы</h3>
 <p>Типы данных serial и bigserial не являются полноценными типами, а просто являются удобной нотацией для создания колонок уникальных идентификаторов (свойство сходное с AUTO_INCREMENT поддерживается и некоторыми другими СУБД). В текущей реализации, конструкция:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">имя</span><span class="n">_таблицы</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="err">имя</span><span class="n">_колонки</span><span class="w"> </span><span class="nb">SERIAL</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="err">имя</span><span class="n">_таблицы</span> <span class="p">(</span>
+  <span class="err">имя</span><span class="n">_колонки</span> <span class="nb">SERIAL</span>
 <span class="p">);</span>
 </pre></div>
 
 
 <p>эквивалента конструкции:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">SEQUENCE</span> <span class="err">имя\</span><span class="n">_таблицы</span><span class="err">\</span><span class="n">_имя …</span></pre></div>
                 <a class="readmore" href="/2017/10/07/postgresql-type-data/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -279,7 +279,7 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
         <span>Mon 02 October 2017</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
 </footer><!-- /.post-info -->                <h2>БД при создании initdbСоздание таблицы и индекс-</h2>
-<div class="highlight"><pre><span></span>              create table t(n numeric);
+<div class="highlight"><pre><span></span><span class="err">              create table t(n numeric);</span>
 </pre></div>
 
 
@@ -338,7 +338,7 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
 <p>источник:  https://www.postgresql.org/download/linux/</p>
 <p>For Ubuntu 17.04</p>
 <p>Create the file <em>/etc/apt/sources.list.d/pgdg.list</em>, and add a line for the repository</p>
-<div class="highlight"><pre><span></span>deb<span class="w"> </span>http://apt.postgresql.org/pub/repos/apt/<span class="w"> </span>zesty-pgdg<span class="w"> </span>main
+<div class="highlight"><pre><span></span>deb http://apt.postgresql.org/pub/repos/apt/ zesty-pgdg main
 </pre></div>
 
 
@@ -388,17 +388,15 @@ PostgreSQL на самом деле отрабатывает каждый SQL-о
 </ul>
 <h2>Установка PostGIS</h2>
 <p>The following will install postgresql 9.6, PostGIS 2.3, PGAdmin4, pgRouting 2.3 and additional supplied modules including the adminpack extension:</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql-9.6
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql-9.6-postgis-2 …</pre></div>
+<div class="highlight"><pre><span></span>sudo apt-get install postgresql-9.6
+sudo apt-get install postgresql-9.6-postgis-2 …</pre></div>
                 <a class="readmore" href="/2017/09/18/save-geo-data-to-db/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

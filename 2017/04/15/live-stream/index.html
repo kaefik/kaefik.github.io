@@ -109,17 +109,17 @@
 <p>На данный момент удалось запустить OBS Studio на Linux Mint 18.1.</p>
 <p>На  Fedora 25 при запуске выдает ошибку графических драйверов: пока нет поддержки Wayland см <a href="https://www.linux.org.ru/forum/general/13199751">https://www.linux.org.ru/forum/general/13199751</a></p>
 <h2>Linux Mint 18.1</h2>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:obsproject/obs-studio
-sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>obs-studio
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ffmpeg<span class="w"> </span>
+<div class="highlight"><pre><span></span>sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt-get update
+sudo apt install obs-studio
+sudo apt install ffmpeg 
 </pre></div>
 
 
 <p>Запуск OBS Studio прошел успешно.</p>
 <p>Если выдает ошибку графического драйвера системы. Проверьте версию Open CL, должно быть не ниже версии 3.0</p>
 <p>Команда проверки версии Open CL:</p>
-<div class="highlight"><pre><span></span>glxinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>OpenGL<span class="w"> </span>
+<div class="highlight"><pre><span></span>glxinfo <span class="p">|</span> grep OpenGL 
 </pre></div>
 
 

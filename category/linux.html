@@ -102,7 +102,7 @@
 </footer><!-- /.post-info --><p>оригинальная статья:</p>
 <p><a href="https://bogachev.biz/2018/04/07/%D0%9F%D0%BE%D0%B4%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D1%8B%D0%B9-socks-proxy-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B5-3Proxy/">https://bogachev.biz/2018/04/07/%D0%9F%D0%BE%D0%B4%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D0%BC-%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D1%8B%D0%B9-socks-proxy-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B0-%D0%B1%D0%B0%D0%B7%D0%B5-3Proxy/</a></p>
 <h2>Отключаем SElinux</h2>
-<div class="highlight"><pre><span></span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^SELINUX=.*/SELINUX=disabled/g&#39;</span><span class="w"> </span>/etc/selinux/config
+<div class="highlight"><pre><span></span>sed -i <span class="s1">&#39;s/^SELINUX=.*/SELINUX=disabled/g&#39;</span> /etc/selinux/config
 </pre></div>
 
 
@@ -110,17 +110,17 @@
 <ul>
 <li>Установим необходимые пакеты, которые понадобятся в процессе сборки.</li>
 </ul>
-<div class="highlight"><pre><span></span>dnf<span class="w"> </span>groupinstall<span class="w"> </span><span class="err">&#39;</span>Development<span class="w"> </span>Tools
-wget<span class="w"> </span>https://github.com/z3APA3A/3proxy/
-tar<span class="w"> </span>-xvzf<span class="w"> </span>3proxy.tgz
-<span class="nb">cd</span><span class="w"> </span>3proxy
-make<span class="w"> </span>-f<span class="w"> </span>Makefile.Linux
-mkdir<span class="w"> </span>/usr/local/3proxy
-mkdir<span class="w"> </span>/usr/local/3proxy/logs
-mkdir<span class="w"> </span>/usr/local/3proxy/stat
-copy<span class="w"> </span>3proxy/src<span class="w"> </span>/usr/local/3proxy
-copy<span class="w"> </span>3proxy.cfg.sample<span class="w"> </span>/usr/local/3proxy/3proxy.cfg
-chown<span class="w"> </span>-R<span class="w"> </span>nobody:nobody<span class="w"> </span>/usr/local/3proxy
+<div class="highlight"><pre><span></span>dnf groupinstall <span class="err">&#39;</span>Development Tools
+wget https://github.com/z3APA3A/3proxy/
+tar -xvzf 3proxy.tgz
+<span class="nb">cd</span> 3proxy
+make -f Makefile.Linux
+mkdir /usr/local/3proxy
+mkdir /usr/local/3proxy/logs
+mkdir /usr/local/3proxy/stat
+copy 3proxy/src /usr/local/3proxy
+copy 3proxy.cfg.sample /usr/local/3proxy/3proxy.cfg
+chown -R nobody:nobody /usr/local/3proxy
 </pre></div>
 
 
@@ -128,24 +128,24 @@ chown<span class="w"> </span>-R<span class="w"> </span>nobody:nobody<span class=
 <li>Конфигурационный файл /usr/local/3proxy/3proxy.cfg</li>
 </ul>
 <div class="highlight"><pre><span></span>daemon
-nserver<span class="w"> </span><span class="m">8</span>.8.8.8
-nserver<span class="w"> </span><span class="m">8</span>.8.4.4
-nscache<span class="w"> </span><span class="m">65536</span>
-timeouts<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">180</span><span class="w"> </span><span class="m">1800</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">60</span>
-users<span class="w"> </span>roman:CL:roman
-users<span class="w"> </span><span class="s2">&quot;test:CR:</span><span class="nv">$1$kf3$4</span><span class="s2">c2AOGcRWsc74kMNZyRzi0&quot;</span>
+nserver <span class="m">8</span>.8.8.8
+nserver <span class="m">8</span>.8.4.4
+nscache <span class="m">65536</span>
+timeouts <span class="m">1</span> <span class="m">5</span> <span class="m">30</span> <span class="m">60</span> <span class="m">180</span> <span class="m">1800</span> <span class="m">15</span> <span class="m">60</span>
+users roman:CL:roman
+users <span class="s2">&quot;test:CR:</span><span class="nv">$1$kf3$4</span><span class="s2">c2AOGcRWsc74kMNZyRzi0&quot;</span>
 <span class="c1">#include /usr/local/etc/3proxy/users.conf &lt;&lt;-- Можем подключить файл с логинами/паролям.</span>
-log<span class="w"> </span>/dev/null
-auth<span class="w"> </span>strong
-auth<span class="w"> </span>strong
+log /dev/null
+auth strong
+auth strong
 flush
-allow<span class="w"> </span>test,roman
-maxconn<span class="w"> </span><span class="m">64</span>
-socks<span class="w"> </span>-p51105<span class="w"> </span>-n<span class="w"> </span>-a<span class="w"> </span>-u2
-proxy<span class="w"> </span>-p12732<span class="w"> </span>-n<span class="w"> </span>-a
+allow test,roman
+maxconn <span class="m">64</span>
+socks -p51105 -n -a -u2
+proxy -p12732 -n -a
 dnspr
-setgid<span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="c1"># надо узнать корректные id nobody</span>
-setuid<span class="w"> </span><span class="m">99</span>
+setgid <span class="m">99</span> <span class="c1"># надо узнать корректные id nobody</span>
+setuid <span class="m">99</span>
 </pre></div>
 
 
@@ -154,9 +154,9 @@ setuid<span class="w"> </span><span class="m">99</span>
 </ul>
 <p>С помощью одной команды можно задать несколько пользователей, можно давать несколько команд users. USERDESC - описание пользователя.</p>
 <p>Описание пользователя состоит из трех полей разделенных двоеточием - имени, типа пароля и пароля. Например:</p>
-<div class="highlight"><pre><span></span>users<span class="w"> </span>admin:CL:mysecret<span class="w"> </span>test:CL:yourpassword<span class="w"> </span>test1:CL:password1
-users<span class="w"> </span><span class="s2">&quot;test:CR:b771</span><span class="nv">$b8745ed1295840eca15e55feb9e</span><span class="s2">&quot;</span>
-users<span class="w"> </span>test3:NT:BD7DFBF29A93F93C63CB84790DA00E63
+<div class="highlight"><pre><span></span>users admin:CL:mysecret test:CL:yourpassword test1:CL:password1
+users <span class="s2">&quot;test:CR:b771</span><span class="nv">$b8745ed1295840eca15e55feb9e</span><span class="s2">&quot;</span>
+users test3:NT:BD7DFBF29A93F93C63CB84790DA00E63
 </pre></div>
 
 
@@ -168,7 +168,7 @@ CR - пароль в формате crypt() (только MD5)
 NT - пароль в формате NT в шестнадцатеричной кодировке
 NT и crypt пароли могут быть использованы для импорта учетных записей из Windows/Samba и Unix соответственно (для Windows можно использовать утилиты семейства pwdump). Учетные записи удобно хранить в отдельном файле (в таком случае можно хранить их построчно в формате, типичном для файлов паролей).</p>
 <p>Создать пароль можем командой:</p>
-<div class="highlight"><pre><span></span>openssl<span class="w"> </span>passwd<span class="w"> </span>-1<span class="w"> </span>-salt<span class="w"> </span>xyz<span class="w"> </span>yourpass
+<div class="highlight"><pre><span></span>openssl passwd -1 -salt xyz yourpass
 </pre></div>
 
 
@@ -176,7 +176,7 @@ NT и crypt пароли могут быть использованы для и�
 <li>Сохраняем конфигурационный файл /etc/systemd/system/3proxy.service:</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
-<span class="nv">Description</span><span class="o">=</span>Start<span class="w"> </span>3proxy
+<span class="nv">Description</span><span class="o">=</span>Start 3proxy
 <span class="o">[</span>Service<span class="o">]</span>
 <span class="nv">ExecStart</span><span class="o">=</span><span class="s2">&quot;/usr/local/3proxy/3proxy /usr/local/3proxy/3proxy.cfg&quot;</span>
 <span class="nv">Restart</span><span class="o">=</span>always
@@ -189,14 +189,14 @@ NT и crypt пароли могут быть использованы для и�
 <ul>
 <li>Запуск сервиса:</li>
 </ul>
-<div class="highlight"><pre><span></span>service<span class="w"> </span>3proxy<span class="w"> </span>start
+<div class="highlight"><pre><span></span>service 3proxy start
 </pre></div>
 
 
 <ul>
 <li>Добавляем в автозапуск:</li>
 </ul>
-<div class="highlight"><pre><span></span>chkconfig<span class="w"> </span>3proxy<span class="w"> </span>on
+<div class="highlight"><pre><span></span>chkconfig 3proxy on
 </pre></div>
 
 
@@ -204,15 +204,15 @@ NT и crypt пароли могут быть использованы для и�
 <li>Настройка фаейрвола</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="c1"># Открываем порт для socks-прокси:</span>
-firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-port<span class="o">=</span><span class="m">51105</span>/tcp
+firewall-cmd --permanent --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">51105</span>/tcp
 
 <span class="c1"># Открываем порт для http-прокси:</span>
-firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-port<span class="o">=</span><span class="m">12732</span>/tcp
+firewall-cmd --permanent --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">12732</span>/tcp
 
 <span class="c1"># Блокируем ICMP трафик для того, чтоб наш сервер не отвечал на пинги:</span>
-firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-icmp-block<span class="o">=</span>echo-reply<span class="w"> </span>--permanent
-firewall-cmd<span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--add-icmp-block<span class="o">=</span>echo-request<span class="w"> </span>--permanent
-firewall-cmd<span class="w"> </span>--reload
+firewall-cmd --zone<span class="o">=</span>public --add-icmp-block<span class="o">=</span>echo-reply --permanent
+firewall-cmd --zone<span class="o">=</span>public --add-icmp-block<span class="o">=</span>echo-request --permanent
+firewall-cmd --reload
 </pre></div>
 
 
@@ -327,7 +327,7 @@ firewall-cmd<span class="w"> </span>--reload
 <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/pdf/Windows_Integration_Guide/Red_Hat_Enterprise_Linux-7-Windows_Integration_Guide-en-US.pdf">Red Hat Enterprise Linux 7 Windows Integration Guide</a></li>
 </ul>
 <h2>Установка</h2>
-<div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>samba<span class="w"> </span>samba-client<span class="w"> </span>samba-common
+<div class="highlight"><pre><span></span>yum install samba samba-client samba-common
 </pre></div>
 
 
@@ -389,12 +389,12 @@ firewall-cmd<span class="w"> </span>--reload
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></li>
 </ul>
 <h2>Запущен ли firewall</h2>
-<div class="highlight"><pre><span></span>sudo systemctl start firewalld.service
+<div class="highlight"><pre><span></span><span class="err">sudo systemctl start firewalld.service</span>
 </pre></div>
 
 
 <p>​     или</p>
-<div class="highlight"><pre><span></span>firewall-cmd --state
+<div class="highlight"><pre><span></span><span class="err">firewall-cmd --state</span>
 </pre></div>
 
 
@@ -402,7 +402,7 @@ firewall-cmd<span class="w"> </span>--reload
 <ul>
 <li>We can see which zone is currently selected as the default by typing:</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--get-default-zone
+<div class="highlight"><pre><span></span>firewall-cmd --get-default-zone
 </pre></div>
 
 
@@ -446,14 +446,14 @@ firewall-cmd<span class="w"> </span>--reload
 <ul>
 <li>To get information about a drive, use the -i option.</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>smartctl<span class="w"> </span>-i<span class="w"> </span>/dev/sda<span class="w"> </span>
+<div class="highlight"><pre><span></span>sudo smartctl -i /dev/sda 
 </pre></div>
 
 
 <ul>
 <li>
 <p>if SMART support is available but not enabled, it can be turned on with the following command:</p>
-<div class="highlight"><pre><span></span>     ```bash
+<div class="highlight"><pre><span></span><span class="err">     ```bash</span>
 </pre></div>
 
 
@@ -466,13 +466,10 @@ firewall-cmd<span class="w"> </span>--reload
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 2</li>
-        <li><a href="/category/linux2.html">&rang;</a></li>
-        <li><a href="/category/linux2.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 2
+        <a href="/category/linux2.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

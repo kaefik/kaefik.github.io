@@ -108,10 +108,10 @@
 </ul>
 <h2>Установка PostGIS</h2>
 <p>The following will install postgresql 9.6, PostGIS 2.3, PGAdmin4, pgRouting 2.3 and additional supplied modules including the adminpack extension:</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql-9.6
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgresql-9.6-postgis-2.3<span class="w"> </span>postgresql-contrib-9.6<span class="w"> </span>postgresql-9.6-postgis-scripts
+<div class="highlight"><pre><span></span>sudo apt-get install postgresql-9.6
+sudo apt-get install postgresql-9.6-postgis-2.3 postgresql-contrib-9.6 postgresql-9.6-postgis-scripts
 <span class="c1">#to get the commandline tools shp2pgsql, raster2pgsql you need to do this</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postgis
+sudo apt-get install postgis
 </pre></div>
 
 
@@ -127,27 +127,27 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <p>PostGIS добавляет поддержку для географических объектов в PostgreSQL. По сути PostGIS позволяет использовать PostgreSQL в качестве бэкэнда пространственной базы данных для геоинформационных систем (ГИС), так же, как ESRI SDE или пространственного расширения Oracle. PostGIS соответствует OpenGIS «Простые особенности. Спецификация для SQL» и был сертифицирован.</p>
 <h3>Установка и использование</h3>
 <p>Для начала инициализируем расширение в базе данных:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
 </pre></div>
 
 
 <p>При создании пространственной базы данных автоматически создаются таблица метаданных spatial_ref_sys и представления geometry_columns, geography_columns, raster_columns и raster_overviews. Они создаются в соответствии со спецификацией «Open Geospatial Consortium Simple Features for SQL specification», выпущенной OGC и описывающей стандартные типы объектов ГИС, функции для манипуляции ими и набор таблиц метаданных. Таблица spatial_ref_sys содержит числовые идентификаторы и текстовые описания систем координат, используемых в пространственной базе данных. Одним из полей этой таблицы является поле SRID — уникальный идентификатор, однозначно определяющий систему координат. SRID представляет из себя числовой код, которому соответствует некоторая система координат. Например, распространенный код EPSG 4326 соответствует географической системе координат WGS84. Более подробную информацию по таблицами метаданных можно найти в руководстве по PostGIS.</p>
 <p>Теперь, имея пространственную базу данных, можно создать несколько пространственных таблиц. Для начала создадим обычную таблицу базы данных, чтобы хранить данные о городе. Эта таблица будет содержать три поля: числовой идентификатор, название города и колонка геометрии, содержащую данные о местоположении городов:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="n">int4</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w"> </span><span class="n">the_geom</span><span class="w"> </span><span class="n">geometry</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span><span class="mi">4326</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cities</span> <span class="p">(</span> <span class="n">id</span> <span class="n">int4</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">the_geom</span> <span class="n">geometry</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span><span class="mi">4326</span><span class="p">)</span> <span class="p">);</span>
 </pre></div>
 
 
 <p>the_geom поле указывает PostGIS, какой тип геометрии имеет каждый из объектов (точки, линии, полигоны и т.п.), какая размерность (т.к. возможны и 3-4 измерения — POINTZ, POINTM, POINTZM) и какая система координат. Для данных по городам мы будем использовать систему координат EPSG:4326. Чтобы добавить данные геометрии в соответствующую колонку, используется функция PostGIS ST_GeomFromText, чтобы сконвертировать координаты и идентификатор референсной системы из текстового формата:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(-0.1257 51.508)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;London, England&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cities</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(-0.1257 51.508)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;London, England&#39;</span><span class="p">);</span>
 
-<span class="o">#</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(-81.233 42.983)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;London, Ontario&#39;</span><span class="p">);</span>
+<span class="o">#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cities</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(-81.233 42.983)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;London, Ontario&#39;</span><span class="p">);</span>
 
-<span class="o">#</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(27.91162491 -33.01529)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;East London,SA&#39;</span><span class="p">);</span>
+<span class="o">#</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cities</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">ST_GeomFromText</span><span class="p">(</span><span class="s1">&#39;POINT(27.91162491 -33.01529)&#39;</span><span class="p">,</span><span class="mi">4326</span><span class="p">),</span><span class="s1">&#39;East London,SA&#39;</span><span class="p">);</span>
 </pre></div>
 
 
 <p>Все самые обычные операторы SQL могут быть использованы для выбора данных из таблицы PostGIS:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">cities</span><span class="p">;</span>
 </pre></div>
 
 
@@ -158,7 +158,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 3 | East London,SA  | 0101000020E610000040AB064060E93B4059FAD005F58140C0
 (3 rows)</p>
 <p>Это возвращает нам бессмысленные значения координат в шестнадцатеричной системе. Если вы хотите увидеть вашу геометрию в текстовом формате WKT, используйте функцию ST_AsText(the_geom) или ST_AsEwkt(the_geom). Вы также можете использовать функции ST_X(the_geom), ST_Y(the_geom), чтобы получить числовые значения координат:</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">ST_AsText</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span><span class="w"> </span><span class="n">ST_AsEwkt</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span><span class="w"> </span><span class="n">ST_X</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span><span class="w"> </span><span class="n">ST_Y</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">ST_AsEwkt</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">ST_X</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">cities</span><span class="p">;</span>
 </pre></div>
 
 
@@ -169,7 +169,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 3 | POINT(27.91162491 -33.01529) | SRID=4326;POINT(27.91162491 -33.01529) | 27.91162491 | -33.01529
 (3 rows)</p>
 <p>Большинство таких функций начинаются с ST (пространственный тип) и описаны в документации PostGIS. Теперь ответим на практический вопрос: на каком расстоянии в метрах друг от другах находятся три города с названием Лондон, учитывая сферичность земли?</p>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">ST_Distance_Sphere</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">ST_Distance_Sphere</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p1</span><span class="p">,</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p2</span> <span class="k">WHERE</span> <span class="n">p1</span><span class="p">.</span><span class="n">id</span> <span class="o">&gt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </pre></div>
 
 
@@ -180,13 +180,13 @@ East London,SA  | London, England |   9789680.59961472
 East London,SA  | London, Ontario |   13892208.6782928
 (3 rows)</p>
 <p>Этот запрос возвращает расстояние в метрах между каждой парой городов. Обратите внимание как часть WHERE предотвращает нас от получения расстояния от города до самого себя (расстояние всегда будет равно нулю) и расстояния в обратном порядке (расстояние от Лондона, Англия до Лондона, Онтарио будет таким же как от Лондона, Онтарио до Лондона, Англия). Также можем рассчитать расстояния на сфере, используя различные функции и указывая называния сфероида, параметры главных полуосей и коэффициента обратного сжатия:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">ST_Distance_Spheroid</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="k">SELECT</span> <span class="n">p1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">ST_Distance_Spheroid</span><span class="p">(</span>
 
-<span class="o">#</span><span class="w">         </span><span class="n">p1</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SPHEROID[&quot;GRS_1980&quot;,6378137,298.257222]&#39;</span>
+<span class="o">#</span>         <span class="n">p1</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="n">p2</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;GRS_1980&quot;,6378137,298.257222]&#39;</span>
 
-<span class="o">#</span><span class="w">         </span><span class="p">)</span>
+<span class="o">#</span>         <span class="p">)</span>
 
-<span class="o">#</span><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<span class="o">#</span>        <span class="k">FROM</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p1</span><span class="p">,</span> <span class="n">cities</span> <span class="k">AS</span> <span class="n">p2</span> <span class="k">WHERE</span> <span class="n">p1</span><span class="p">.</span><span class="n">id</span> <span class="o">&gt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </pre></div>
 
 
@@ -198,11 +198,9 @@ East London,SA  | London, Ontario |     13884149.4143795
 (3 rows)</p>
 <h3>Заключение</h3>
 <p>В данной главе мы рассмотрели как начать работать с PostGIS. Более подробно о использовании расширения можно ознакомиться через официальную документацию.</p>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

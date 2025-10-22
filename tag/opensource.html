@@ -129,9 +129,9 @@
 
 
 <p>Настройки файла: </p>
-<div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.pypirc<span class="w"> </span>
-twine<span class="w"> </span>upload<span class="w"> </span>-r<span class="w"> </span>testpypi<span class="w"> </span>dist/
-twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w"> </span>
+<div class="highlight"><pre><span></span>chmod <span class="m">600</span> ~/.pypirc 
+twine upload -r testpypi dist/
+twine upload dist/ 
 </pre></div>
 
 
@@ -140,7 +140,7 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
 </ol>
 <p>Добавьте пакет pytest в requirements_dev.txt </p>
 <p>Запустите для того чтобы pytest нашел ваш пакет: </p>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<div class="highlight"><pre><span></span>pip install -e .
 </pre></div>
 
 
@@ -153,7 +153,7 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
 <span class="kn">import</span> <span class="nn">pytest</span> 
 <span class="kn">from</span> <span class="nn">notebookc</span> <span class="kn">import</span> <span class="n">notebookc</span>  
 <span class="k">def</span> <span class="nf">test_convert</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span> 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct my_name argument prints&quot;&quot;&quot;</span> 
+    <span class="sd">&quot;&quot;&quot;Correct my_name argument prints&quot;&quot;&quot;</span> 
     <span class="n">notebookc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;Jill&quot;</span><span class="p">)</span> 
     <span class="n">captured</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span> 
     <span class="k">assert</span> <span class="s2">&quot;Jall&quot;</span> <span class="ow">in</span> <span class="n">captured</span><span class="o">.</span><span class="n">out</span> 
@@ -168,14 +168,14 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
 <li>Создание .travis.yml </li>
 </ul>
 <p>Добавьте файл .travis.yml в папку проекта. </p>
-<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span><span class="w"> </span><span class="n">xenial</span><span class="w"> </span>
-<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span><span class="w"> </span>
-<span class="n">python</span><span class="o">:</span><span class="w"> </span><span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span><span class="w"> </span>
-<span class="n">install</span><span class="o">:</span><span class="w"> </span>
-<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span><span class="w"> </span>
-<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="o">.</span><span class="w"> </span>
-<span class="n">script</span><span class="o">:</span><span class="w"> </span>
-<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">pytest</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span> <span class="n">xenial</span> 
+<span class="n">language</span><span class="o">:</span> <span class="n">python</span> 
+<span class="n">python</span><span class="o">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span> 
+<span class="n">install</span><span class="o">:</span> 
+  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span> 
+  <span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
+<span class="n">script</span><span class="o">:</span> 
+  <span class="o">-</span> <span class="n">pytest</span> 
 </pre></div>
 
 
@@ -189,7 +189,7 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
 <p>Пакет pytest-cov – для создания отчетов покрытие теста. </p>
 <p>Добавить информацию пакета в файл <em>requirements_dev.txt</em>  </p>
 <p>Запустить: </p>
-<div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>my_project_name<span class="w">  </span>
+<div class="highlight"><pre><span></span>pytest --cov<span class="o">=</span>my_project_name  
 </pre></div>
 
 
@@ -197,16 +197,16 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
 <li>Добавление Coveralls </li>
 </ol>
 <p>Сервис https://coveralls.io/ </p>
-<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span><span class="w"> </span><span class="n">xenial</span>
-<span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">python</span>
-<span class="n">python</span><span class="o">:</span><span class="w"> </span><span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span>
+<div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">:</span> <span class="n">xenial</span>
+<span class="n">language</span><span class="o">:</span> <span class="n">python</span>
+<span class="n">python</span><span class="o">:</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">2</span>
 <span class="n">install</span><span class="o">:</span>
-<span class="w">  </span><span class="err">—</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span><span class="w"> </span>
-<span class="w">  </span><span class="err">—</span><span class="w"> </span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="o">.</span><span class="w"> </span>
-<span class="n">script</span><span class="o">:</span><span class="w"> </span>
-<span class="w">  </span><span class="err">—</span><span class="w"> </span><span class="n">pytest</span><span class="w"> </span><span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">my_package_name</span><span class="w"> </span>
-<span class="n">after_success</span><span class="o">:</span><span class="w"> </span>
-<span class="w">  </span><span class="err">—</span><span class="w"> </span><span class="n">coveralls</span><span class="w"> </span>
+  <span class="err">—</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements_dev</span><span class="o">.</span><span class="na">txt</span> 
+  <span class="err">—</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
+<span class="n">script</span><span class="o">:</span> 
+  <span class="err">—</span> <span class="n">pytest</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">my_package_name</span> 
+<span class="n">after_success</span><span class="o">:</span> 
+  <span class="err">—</span> <span class="n">coveralls</span> 
 </pre></div>
 
 
@@ -236,19 +236,19 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
 <li>Venv </li>
 <li>Создание виртуального окружения </li>
 </ol>
-<div class="highlight"><pre><span></span>python3.7<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>my_directory_env<span class="w"> </span>
+<div class="highlight"><pre><span></span>python3.7 -m venv my_directory_env 
 </pre></div>
 
 
 <p>Активация виртуального окружения: </p>
-<div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>my_env/bin/activate
+<div class="highlight"><pre><span></span><span class="nb">source</span> my_env/bin/activate
 </pre></div>
 
 
 <ul>
 <li>Выйти из виртуального окружения: </li>
 </ul>
-<div class="highlight"><pre><span></span>Deactivate<span class="w"> </span>
+<div class="highlight"><pre><span></span>Deactivate 
 </pre></div>
 
 
@@ -263,11 +263,9 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/<span class="w">
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

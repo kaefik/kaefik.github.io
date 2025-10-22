@@ -206,7 +206,7 @@
 <li></li>
 </ul>
 <p><strong>Установка Tkinter</strong></p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-tk
+<div class="highlight"><pre><span></span>sudo apt-get install python3-tk
 </pre></div>
                 <a class="readmore" href="/2021/09/03/python-and-gui-tkinter/">read more</a>
                 </div><!-- /.entry-content -->
@@ -222,10 +222,10 @@
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -235,13 +235,13 @@
 <p>https://github.com/brentvollebregt/auto-py-to-exe</p>
 <p>Установка через pip</p>
 <p>При помощи следующей команды можно установить текущую версию Auto PY to EXE.</p>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>auto-py-to-exe<span class="w">      </span>
+<div class="highlight"><pre><span></span>pip install auto-py-to-exe      
 </pre></div>
 
 
 <h2>Pyinstaller</h2>
-<div class="highlight"><pre><span></span>pip install pypiwin32
-pip install pyinstaller
+<div class="highlight"><pre><span></span><span class="err">pip install pypiwin32</span>
+<span class="err">pip install pyinstaller</span>
 </pre></div>
 
 
@@ -318,14 +318,14 @@ pip install pyinstaller
 <ol>
 <li>Создать Dockerfile </li>
 </ol>
-<div class="highlight"><pre><span></span>FROM<span class="w"> </span>centos:8
-RUN<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>firefox<span class="w"> </span>-y
-CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+<div class="highlight"><pre><span></span>FROM centos:8
+RUN yum install firefox -y
+CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
 </pre></div>
 
 
 <p>или вот такой:</p>
-<div class="highlight"><pre><span></span>FROM<span class="w"> </span>ubuntu:20.04
+<div class="highlight"><pre><span></span>FROM ubuntu:20.04
 <span class="c1"># нужно Configuring …</span></pre></div>
                 <a class="readmore" href="/2021/07/17/docker/">read more</a>
                 </div><!-- /.entry-content -->
@@ -341,10 +341,10 @@ CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/b
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -363,13 +363,10 @@ CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/b
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 16</li>
-        <li><a href="/index2.html">&rang;</a></li>
-        <li><a href="/index16.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 16
+        <a href="/index2.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

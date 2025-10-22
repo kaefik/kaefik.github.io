@@ -108,15 +108,15 @@
 <ul>
 <li>Установка библиотек:</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xbindkeys
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xautomation
+<div class="highlight"><pre><span></span>sudo apt install xbindkeys
+sudo apt install xautomation
 </pre></div>
 
 
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A2<span class="w"> </span>--line-buffered<span class="w"> </span><span class="s1">&#39;^ButtonPress&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-nE<span class="w"> </span><span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE <span class="s1">&#39;/button /s/^.*(button[[:space:]]+[[:digit:]]+).*$/\1/ p&#39;</span>
 </pre></div>
 
 
@@ -144,7 +144,7 @@ b:9
 <li>запускаем программу  xbindkeys</li>
 </ul>
 <p>Настроим чтобы после перезагрузки запускался, необходимо создать ярлык (текстовый файл с расширением .desktop) в автозагрузке (папке "~/.config/autostart/").</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>Desktop<span class="w"> </span>Entry<span class="o">]</span>
+<div class="highlight"><pre><span></span><span class="o">[</span>Desktop Entry<span class="o">]</span>
 <span class="nv">Type</span><span class="o">=</span>Application
 <span class="nv">Exec</span><span class="o">=</span>xbindkeys
 X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
@@ -152,13 +152,11 @@ X-GNOME-Autostart-enabled<span class="o">=</span><span class="nb">true</span>
 <span class="nv">Hidden</span><span class="o">=</span><span class="nb">false</span>
 <span class="nv">Name</span><span class="o">=</span><span class="s2">&quot;mouse button exchange&quot;</span>
 <span class="nv">Comment</span><span class="o">=</span><span class="s2">&quot;переназначение доп клавиш мыши&quot;</span>
-X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span><span class="w">    </span>
+X-GNOME-Autostart-Delay<span class="o">=</span><span class="m">0</span>    
 </pre></div>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

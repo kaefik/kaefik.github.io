@@ -134,14 +134,14 @@
 </ul>
 <h2>Getting Started</h2>
 <p>The first things to do are to update the APT package manager and then get some of the basic compiling tools we will require.</p>
-<div class="highlight"><pre><span></span><span class="nx">sudo</span><span class="w"> </span><span class="nx">apt</span><span class="o">-</span><span class="nx">get</span><span class="w"> </span><span class="nx">update</span>
-<span class="nx">sudo</span><span class="w"> </span><span class="nx">apt</span><span class="o">-</span><span class="nx">get</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">build</span><span class="o">-</span><span class="nx">essential</span><span class="w"> </span><span class="nx">git</span><span class="w"> </span><span class="nx">make</span><span class="w"> </span><span class="nx">cmake</span>
+<div class="highlight"><pre><span></span><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span>
+<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">build</span><span class="o">-</span><span class="nx">essential</span> <span class="nx">git</span> <span class="nx">make</span> <span class="nx">cmake</span>
 </pre></div>
 
 
 <p>I will make a folder in my home directory for the experimentation.</p>
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>~/digital_speech
-<span class="nb">cd</span><span class="w"> </span>~/digital_speech
+<div class="highlight"><pre><span></span>mkdir ~/digital_speech
+<span class="nb">cd</span> ~/digital_speech
 </pre></div>
 
 
@@ -149,48 +149,48 @@
 <h3>Building itpp</h3>
 <p>IT++ is a C++ library of mathematical, signal processing and communication classes and functions. Its main use is in simulation of communication systems and for performing research in the area of communications. It does a lot of the heavy lifting for dsd.</p>
 <p>Download and extract it into a folder inside the folder you made above and then change into the newly extracted folder.</p>
-<div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>itpp-latest.tar.bz2<span class="w"> </span>http://sourceforge.net/projects/itpp/files/latest/download?source<span class="o">=</span>files
-tar<span class="w"> </span>xjf<span class="w"> </span>itpp-latest.tar.bz2
-<span class="nb">cd</span><span class="w"> </span>itpp-4.3.1/
+<div class="highlight"><pre><span></span>wget -O itpp-latest.tar.bz2 http://sourceforge.net/projects/itpp/files/latest/download?source<span class="o">=</span>files
+tar xjf itpp-latest.tar.bz2
+<span class="nb">cd</span> itpp-4.3.1/
 </pre></div>
 
 
 <p>You should hopefully get the latest version of the IT++ library (called itpp) extracted and be inside the extracted folder. ON my computer the path is ‘~/digital_speech/itpp-4.3.1’</p>
 <p>Now make a build directory and change into it</p>
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 </pre></div>
 
 
 <p>Finally we run the cmake command to write our make-script and check our make environment. You should get no errors. The ‘..’ at the end is important, since this refers to the parent directory.</p>
-<div class="highlight"><pre><span></span>cmake<span class="w"> </span>..
+<div class="highlight"><pre><span></span>cmake ..
 </pre></div>
 
 
 <p>Once you have got the above command to finish without errors, you are ready to start the build process. The -j flag tells make to use all the cores it can. It took just over a minute on my work’s PC.</p>
-<div class="highlight"><pre><span></span>make<span class="w"> </span>-j
+<div class="highlight"><pre><span></span>make -j
 </pre></div>
 
 
 <p>Finally, you need to install the libraries</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span>sudo make install
 </pre></div>
 
 
 <p>PS.  Последняя версия itpp-4.3.1.tar.bz2 не компилируется на Ubuntu 18.04 LTS, как вы уже писали. Но он обычно компилируется на Ubuntu 16.04 LTS с GCC 5.4.</p>
 <p>источник: <a href="https://ubuntugeeks.com/questions/281515/make-issue-the-last-argument-must-be-8-bit-immediate">https://ubuntugeeks.com/questions/281515/make-issue-the-last-argument-must-be-8-bit-immediate</a>
 Я только что обнаружил, что у разработчиков есть специальные специальные фиксации для исправления ошибки . Поэтому мы можем установить исходную версию с помощью:</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>autoconf<span class="w"> </span>automake<span class="w"> </span>libtool<span class="w"> </span>build-essential<span class="w"> </span>cmake<span class="w"> </span>git<span class="w"> </span><span class="se">\</span>
-libblas-dev<span class="w"> </span>liblapack-dev<span class="w"> </span>libfftw3-dev
-<span class="nb">cd</span><span class="w"> </span>~/Downloads
-git<span class="w"> </span>clone<span class="w"> </span>https://git.code.sf.net/p/itpp/git<span class="w"> </span>itpp-git
-<span class="nb">cd</span><span class="w"> </span>itpp-git
+<div class="highlight"><pre><span></span>sudo apt-get install autoconf automake libtool build-essential cmake git <span class="se">\</span>
+libblas-dev liblapack-dev libfftw3-dev
+<span class="nb">cd</span> ~/Downloads
+git clone https://git.code.sf.net/p/itpp/git itpp-git
+<span class="nb">cd</span> itpp-git
 ./autogen.sh
 ./configure
-mkdir<span class="w"> </span>build
-<span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>..
+mkdir build
+<span class="nb">cd</span> build
+cmake ..
 make
-sudo<span class="w"> </span>make<span class="w"> </span>install
+sudo make install
 </pre></div>
 
 
@@ -199,23 +199,23 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <p>mbelib is a written description of how certain voice encoding/decoding algorithms could be implemented. It comes with the following patent notice:</p>
 <p>This source code is provided for educational purposes only. It is a written description of how certain voice encoding/decoding algorithms could be implemented. Executable objects compiled or derived from this package may be covered by one or more patents. Readers are strongly advised to check for any patent restrictions or licensing requirements before compiling or using this source code.</p>
 <p>We go back to the experimentation directory.</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/digital_speech/
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/digital_speech/
 </pre></div>
 
 
 <p>We can this time use Git to download the source code for us.</p>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/szechyjs/mbelib.git
-<span class="nb">cd</span><span class="w"> </span>mbelib/
+<div class="highlight"><pre><span></span>git clone https://github.com/szechyjs/mbelib.git
+<span class="nb">cd</span> mbelib/
 </pre></div>
 
 
 <p>Again, we create a build directory and change into it</p>
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 </pre></div>
 
 
 <p>We again run the configure script on the parent directory (..).</p>
-<div class="highlight"><pre><span></span>cmake<span class="w"> </span>..
+<div class="highlight"><pre><span></span>cmake ..
 </pre></div>
 
 
@@ -225,7 +225,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 
 
 <p>On the work PC this took 19 seconds. We install these libraries into the system with the following</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span>sudo make install
 </pre></div>
 
 
@@ -233,28 +233,28 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <h3>Building DSD</h3>
 <p>DSD is able to decode several digital voice formats from discriminator tap audio and synthesize the decoded speech. Speech synthesis requires mbelib, which is a separate package. DSD is the program we will interact with to decode our digital speech.</p>
 <p>Before we can compile the DSD binaries, we need to get a few other libraries in addition to the two we have just built and installed. If you get errors about portaudio19-dev needing libjack-dev, then a sly way around this is to install libjack-jackd2-dev too (just paste it on the end of the following line). It’s not needed, but for odd reasons, portaudio sometimes wants jackd development files.</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libsndfile1-dev<span class="w"> </span>fftw3-dev<span class="w"> </span>liblapack-dev<span class="w"> </span>portaudio19-dev
+<div class="highlight"><pre><span></span>sudo apt-get install libsndfile1-dev fftw3-dev liblapack-dev portaudio19-dev
 </pre></div>
 
 
 <p>Once downloaded and installed we go back to the experimentation directory</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/digital_speech/
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ~/digital_speech/
 </pre></div>
 
 
 <p>We can again use Git to download the source code for us.</p>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/szechyjs/dsd.git
-<span class="nb">cd</span><span class="w"> </span>dsd/
+<div class="highlight"><pre><span></span>git clone https://github.com/szechyjs/dsd.git
+<span class="nb">cd</span> dsd/
 </pre></div>
 
 
 <p>Again, we create a build directory and change into it</p>
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<div class="highlight"><pre><span></span>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
 </pre></div>
 
 
 <p>We again run the configure script on the parent directory (..).</p>
-<div class="highlight"><pre><span></span>cmake<span class="w"> </span>..
+<div class="highlight"><pre><span></span>cmake ..
 </pre></div>
 
 
@@ -264,17 +264,15 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 
 
 <p>On the work PC this took 31 seconds. At this point the build is done. You can install them with</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>make<span class="w"> </span>install
+<div class="highlight"><pre><span></span>sudo make install
 </pre></div>
 
 
 <h3>Using dsd</h3>
 <p>The ‘official’ operation is described on the dsd wiki operation page.</p>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

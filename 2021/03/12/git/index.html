@@ -114,23 +114,23 @@
 <ul>
 <li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>имя_тега<span class="w"> </span>коммит
+<div class="highlight"><pre><span></span>git tag имя_тега коммит
 </pre></div>
 
 
 <ul>
 <li>создание аннотированного тега (с дополнительной информацией)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>имя_тега
-или<span class="w"> </span>
-git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Message&quot;</span>
+<div class="highlight"><pre><span></span>git tag -a имя_тега
+или 
+git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 </pre></div>
 
 
 <ul>
 <li>удаление тегов</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>имена_тегов
+<div class="highlight"><pre><span></span>git tag -d имена_тегов
 </pre></div>
 
 
@@ -138,21 +138,21 @@ git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span clas
 <ul>
 <li>получить ближайший тег</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>describe<span class="w"> </span>коммит
+<div class="highlight"><pre><span></span>git describe коммит
 </pre></div>
 
 
 <ul>
 <li>поместить архив проекта с указанного коммита(тега)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>archive<span class="w"> </span>-o<span class="w"> </span>путь_для_архива<span class="w"> </span>коммит_или_тег
+<div class="highlight"><pre><span></span>git archive -o путь_для_архива коммит_или_тег
 </pre></div>
 
 
 <ul>
 <li></li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+<div class="highlight"><pre><span></span>git rebase --continue
 </pre></div>
 
 
@@ -160,21 +160,21 @@ git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span clas
 <ul>
 <li>Перенести все теги в удаленный репозиторий:</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--tags
+<div class="highlight"><pre><span></span>git push origin --tags
 </pre></div>
 
 
 <ul>
 <li>Отправить конкретный тег в удаленный репозиторий:</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;tag_name&gt;
+<div class="highlight"><pre><span></span>git push origin &lt;tag_name&gt;
 </pre></div>
 
 
 <ul>
 <li>Отправить только аннотированные теги и не пушить легковесные</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--follow-tags
+<div class="highlight"><pre><span></span>git push --follow-tags
 </pre></div>
     </div><!-- /.entry-content -->
 

@@ -185,7 +185,7 @@
 <li></li>
 </ul>
 <p><strong>Установка Tkinter</strong></p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-tk
+<div class="highlight"><pre><span></span>sudo apt-get install python3-tk
 </pre></div>
                 <a class="readmore" href="/2021/09/03/python-and-gui-tkinter/">read more</a>
                 </div><!-- /.entry-content -->
@@ -201,10 +201,10 @@
 <footer class="post-info">
         <span>Fri 06 August 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/exe.html">exe</a><a href="/tag/python.html">python</a><a href="/tag/windows.html">windows</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -214,13 +214,13 @@
 <p>https://github.com/brentvollebregt/auto-py-to-exe</p>
 <p>Установка через pip</p>
 <p>При помощи следующей команды можно установить текущую версию Auto PY to EXE.</p>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>auto-py-to-exe<span class="w">      </span>
+<div class="highlight"><pre><span></span>pip install auto-py-to-exe      
 </pre></div>
 
 
 <h2>Pyinstaller</h2>
-<div class="highlight"><pre><span></span>pip install pypiwin32
-pip install pyinstaller
+<div class="highlight"><pre><span></span><span class="err">pip install pypiwin32</span>
+<span class="err">pip install pyinstaller</span>
 </pre></div>
 
 
@@ -261,10 +261,10 @@ pip install pyinstaller
 <footer class="post-info">
         <span>Mon 07 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/debug.html">debug</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2020/06/04/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Полезные ссылки</h2>
 <ul>
@@ -294,19 +294,19 @@ pip install pyinstaller
         <span>Sun 06 June 2021</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/setup.html">setup</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/package.html">package</a></span>Translations:
         <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
         <a href="/2020/06/04/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
 <li><a href="https://klen.github.io/create-python-packages.html">Создание python-пакетов (aka setup scripts)</a></li>
 </ul>
-<div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>sdist
+<div class="highlight"><pre><span></span>python setup.py sdist
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>install<span class="w"> </span>
+<div class="highlight"><pre><span></span>python setup.py install 
 </pre></div>
                 <a class="readmore" href="/2021/06/06/python/">read more</a>
                 </div><!-- /.entry-content -->
@@ -353,23 +353,23 @@ pip install pyinstaller
 <ul>
 <li>создание обычного тега (теги обычно используются при маркировки релизов)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>имя_тега<span class="w"> </span>коммит
+<div class="highlight"><pre><span></span>git tag имя_тега коммит
 </pre></div>
 
 
 <ul>
 <li>создание аннотированного тега (с дополнительной информацией)</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>имя_тега
-или<span class="w"> </span>
-git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span class="w"> </span>-a<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Message&quot;</span>
+<div class="highlight"><pre><span></span>git tag -a имя_тега
+или 
+git tag &lt;tag_name&gt; -a -m <span class="s2">&quot;Message&quot;</span>
 </pre></div>
 
 
 <ul>
 <li>удаление тегов</li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>имена_тегов
+<div class="highlight"><pre><span></span>git tag -d имена_тегов
 </pre></div>
 
 
@@ -380,13 +380,10 @@ git<span class="w"> </span>tag<span class="w"> </span>&lt;tag_name&gt;<span clas
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 6</li>
-        <li><a href="/tag/programmirovanie2.html">&rang;</a></li>
-        <li><a href="/tag/programmirovanie6.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 6
+        <a href="/tag/programmirovanie2.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

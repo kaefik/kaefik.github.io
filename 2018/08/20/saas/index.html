@@ -154,7 +154,7 @@
 <p><strong>Компиляция SCSS в CSS</strong>
 требования:  nodej.s  и менеджер пакетов npm (или yarn).</p>
 <p>пакет node-sass:</p>
-<div class="highlight"><pre><span></span><span class="n">node</span><span class="o">-</span><span class="n">sass</span><span class="w"> </span><span class="o">&lt;</span><span class="k">input</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="k">output</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span>
+<div class="highlight"><pre><span></span><span class="n">node</span><span class="o">-</span><span class="n">sass</span><span class="w"> </span><span class="o">&lt;</span><span class="k">input</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="k">output</span><span class="o">&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">options</span><span class="o">]</span><span class="w"></span>
 </pre></div>
 
 
@@ -182,9 +182,9 @@
 <p>создать index.html? папки со стилями, файл main.scss</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>touch<span class="w"> </span>index.html
-mkdir<span class="w"> </span>-p<span class="w"> </span>sass/<span class="o">{</span>abstracts,<span class="w"> </span>base,<span class="w"> </span>components,<span class="w"> </span>layout<span class="o">}</span><span class="w"> </span>css
-<span class="nb">cd</span><span class="w"> </span>sass<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>touch<span class="w"> </span>main.scss
+<div class="highlight"><pre><span></span>touch index.html
+mkdir -p sass/<span class="o">{</span>abstracts, base, components, layout<span class="o">}</span> css
+<span class="nb">cd</span> sass <span class="o">&amp;&amp;</span> touch main.scss
 </pre></div>
 
 
@@ -192,13 +192,13 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>sass/<span class="o">{</s
 <li>добавить в package.json:{</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="p">....</span>
-<span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="s2">&quot;watch&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;node-sass sass/main.scss css/style.css -w&quot;</span><span class="p">,</span>
-<span class="s2">&quot;build&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;node-sass sass/main.scss css/style.css --output-style compressed&quot;</span>
+<span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="s2">&quot;watch&quot;</span><span class="o">:</span> <span class="s2">&quot;node-sass sass/main.scss css/style.css -w&quot;</span><span class="p">,</span>
+<span class="s2">&quot;build&quot;</span><span class="o">:</span>  <span class="s2">&quot;node-sass sass/main.scss css/style.css --output-style compressed&quot;</span>
 <span class="p">},</span>
 <span class="p">...</span>
 <span class="p">}</span>
-<span class="w">              </span><span class="sb">```</span>
+              <span class="sb">```</span>
 
 
 
@@ -222,11 +222,11 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>sass/<span class="o">{</s
 <span class="sb">```</span><span class="nx">javascript</span>
 <span class="p">{</span>
 <span class="p">....</span>
-<span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="s2">&quot;start&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;npm-run-all --parallel liveserver watch&quot;</span><span class="w"> </span><span class="p">,</span>
-<span class="s2">&quot;liveserver&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;live-server&quot;</span><span class="p">,</span>
-<span class="s2">&quot;watch&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;node-sass sass/main.scss css/style.css -w&quot;</span><span class="p">,</span>
-<span class="s2">&quot;build&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;node-sass sass/main.scss css/style.css --output-style compressed&quot;</span>
+<span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;npm-run-all --parallel liveserver watch&quot;</span> <span class="p">,</span>
+<span class="s2">&quot;liveserver&quot;</span><span class="o">:</span> <span class="s2">&quot;live-server&quot;</span><span class="p">,</span>
+<span class="s2">&quot;watch&quot;</span><span class="o">:</span> <span class="s2">&quot;node-sass sass/main.scss css/style.css -w&quot;</span><span class="p">,</span>
+<span class="s2">&quot;build&quot;</span><span class="o">:</span>  <span class="s2">&quot;node-sass sass/main.scss css/style.css --output-style compressed&quot;</span>
 <span class="p">},</span>
 <span class="p">...</span>
 <span class="p">}</span><span class="o">*</span>
@@ -240,21 +240,21 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>sass/<span class="o">{</s
 <p>инструмент (речь идёт о postcss-плагине), который парсит CSS-код и добавляет префиксы производителей браузеров к CSS-правилам, используя данные с <a href="https://caniuse.com/">Can I Use</a>.</p>
 <p>Завершающие действия</p>
 <p>Добавьте в проект две зависимости — postcss-cli и autoprefixer:</p>
-<div class="highlight"><pre><span></span>npm install autoprefixer postcss-cli — save-dev
+<div class="highlight"><pre><span></span><span class="err">npm install autoprefixer postcss-cli — save-dev</span>
 </pre></div>
 
 
 <p>Добавьте в package.json следующий код и модифицируйте скрипт build:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="p">....</span>
-<span class="s2">&quot;scripts&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="s2">&quot;start&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;npm-run-all --parallel liveserver watch&quot;</span><span class="w"> </span><span class="p">,</span>
-<span class="s2">&quot;liveserver&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;live-server&quot;</span><span class="p">,</span>
-<span class="s2">&quot;watch&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;node-sass sass/main.scss css/style.css -w&quot;</span><span class="p">,</span>
-<span class="s2">&quot;compile&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;node-sass sass/main.scss css/style.css&quot;</span><span class="p">,</span>
-<span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;postcss css/style.css --use autoprefixer -o**** css/style.css&quot;</span><span class="p">,</span>
-<span class="s2">&quot;compress&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;node-sass css/style.css css/style.css --output-style compressed &quot;</span><span class="p">,</span>
-<span class="s2">&quot;build&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;npm-run-all compile prefix compress&quot;</span>
+<span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="s2">&quot;npm-run-all --parallel liveserver watch&quot;</span> <span class="p">,</span>
+<span class="s2">&quot;liveserver&quot;</span><span class="o">:</span> <span class="s2">&quot;live-server&quot;</span><span class="p">,</span>
+<span class="s2">&quot;watch&quot;</span><span class="o">:</span> <span class="s2">&quot;node-sass sass/main.scss css/style.css -w&quot;</span><span class="p">,</span>
+<span class="s2">&quot;compile&quot;</span><span class="o">:</span> <span class="s2">&quot;node-sass sass/main.scss css/style.css&quot;</span><span class="p">,</span>
+<span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;postcss css/style.css --use autoprefixer -o**** css/style.css&quot;</span><span class="p">,</span>
+<span class="s2">&quot;compress&quot;</span><span class="o">:</span> <span class="s2">&quot;node-sass css/style.css css/style.css --output-style compressed &quot;</span><span class="p">,</span>
+<span class="s2">&quot;build&quot;</span><span class="o">:</span>  <span class="s2">&quot;npm-run-all compile prefix compress&quot;</span>
 <span class="p">},</span>
 <span class="p">...</span>
 <span class="p">}</span>

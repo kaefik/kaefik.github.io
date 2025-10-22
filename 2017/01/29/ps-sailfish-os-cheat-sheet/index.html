@@ -110,139 +110,139 @@
 <ul>
 <li>Connect to the device over usb (add "192.168.2.14    device" to /etc/hosts)</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>ifconfig<span class="w"> </span>usb0<span class="w"> </span>up<span class="w"> </span>device
+<div class="highlight"><pre><span></span> sudo ifconfig usb0 up device
 </pre></div>
 
 
 <ul>
 <li>Log into the device. Define password in "Settings -&gt; System settings -&gt; Developer mode -&gt; Set password".</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>ssh<span class="w"> </span>nemo@device
+<div class="highlight"><pre><span></span> ssh nemo@device
 </pre></div>
 
 
 <ul>
 <li>Change user to root</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>su<span class="w">       </span><span class="c1"># if on SDK, or</span>
-<span class="w"> </span>devel-su<span class="w"> </span><span class="c1"># if on device</span>
+<div class="highlight"><pre><span></span> su       <span class="c1"># if on SDK, or</span>
+ devel-su <span class="c1"># if on device</span>
 </pre></div>
 
 
 <ul>
 <li>Remove changed IP from known_hosts</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>ssh-keygen<span class="w"> </span>-R<span class="w"> </span>device
+<div class="highlight"><pre><span></span> ssh-keygen -R device
 </pre></div>
 
 
 <ul>
 <li>Chroot to development environment</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>/srv/mer/sdks/sdk/mer-sdk-chroot
+<div class="highlight"><pre><span></span> /srv/mer/sdks/sdk/mer-sdk-chroot
 </pre></div>
 
 
 <ul>
 <li>Update development environment</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>sb2<span class="w"> </span>-t<span class="w"> </span>&lt;target&gt;<span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>ref
-<span class="w"> </span>sb2<span class="w"> </span>-t<span class="w"> </span>&lt;target&gt;<span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>update
+<div class="highlight"><pre><span></span> sb2 -t &lt;target&gt; -m sdk-install -R zypper ref
+ sb2 -t &lt;target&gt; -m sdk-install -R zypper update
 </pre></div>
 
 
 <ul>
 <li>Build project</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mb2<span class="w"> </span>-t<span class="w"> </span>&lt;target&gt;<span class="w"> </span>build<span class="w"> </span><span class="c1"># finds the spec under rpm</span>
-<span class="w"> </span>mb2<span class="w"> </span>-t<span class="w"> </span>&lt;target&gt;<span class="w"> </span>-s<span class="w"> </span>rpm/&lt;package&gt;.spec<span class="w"> </span>build<span class="w"> </span><span class="c1"># specify spec yourself    </span>
+<div class="highlight"><pre><span></span> mb2 -t &lt;target&gt; build <span class="c1"># finds the spec under rpm</span>
+ mb2 -t &lt;target&gt; -s rpm/&lt;package&gt;.spec build <span class="c1"># specify spec yourself    </span>
 </pre></div>
 
 
 <ul>
 <li>Copy packages to the device</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>scp<span class="w"> </span>/RPMS/&lt;package&gt;.rpm<span class="w"> </span>nemo@device:
+<div class="highlight"><pre><span></span> scp /RPMS/&lt;package&gt;.rpm nemo@device:
 </pre></div>
 
 
 <ul>
 <li>Listen to system logs</li>
 </ul>
-<div class="highlight"><pre><span></span> journalctl -fa
+<div class="highlight"><pre><span></span><span class="err"> journalctl -fa</span>
 </pre></div>
 
 
 <ul>
 <li>Search log for keyword 'account' ignoring the case</li>
 </ul>
-<div class="highlight"><pre><span></span> devel-su journalctl | grep -i account
+<div class="highlight"><pre><span></span><span class="err"> devel-su journalctl | grep -i account</span>
 </pre></div>
 
 
 <ul>
 <li>Open file (apk, media file, vcard, call number, etc.) with appropriate app.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>xdg-open<span class="w"> </span>file<span class="w"> </span><span class="c1"># e.g. xdg-open image.jpg</span>
+<div class="highlight"><pre><span></span> xdg-open file <span class="c1"># e.g. xdg-open image.jpg</span>
 </pre></div>
 
 
 <ul>
 <li>List shared library dependencies</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>ldd<span class="w"> </span>/usr/lib/qt5/qml/modulepath/libmodule.so
+<div class="highlight"><pre><span></span> ldd /usr/lib/qt5/qml/modulepath/libmodule.so
 </pre></div>
 
 
 <ul>
 <li>List exported symbols</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>binutils<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>nm<span class="w"> </span>-D<span class="w"> </span>/usr/lib/library.so.0
+<div class="highlight"><pre><span></span> zypper in binutils <span class="o">&amp;&amp;</span> nm -D /usr/lib/library.so.0
 </pre></div>
 
 
 <ul>
 <li>Set DConf value</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>dconf<span class="w"> </span>write<span class="w"> </span>/desktop/meego/background/portrait/picture_filename<span class="w"> </span><span class="se">\&#39;</span>/pathto/wallpaper.jpg<span class="se">\&#39;</span>
+<div class="highlight"><pre><span></span> dconf write /desktop/meego/background/portrait/picture_filename <span class="se">\&#39;</span>/pathto/wallpaper.jpg<span class="se">\&#39;</span>
 </pre></div>
 
 
 <ul>
 <li>Print DConf value</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>dconf<span class="w"> </span><span class="nb">read</span><span class="w"> </span>/desktop/meego/background/portrait/picture_filename
+<div class="highlight"><pre><span></span> dconf <span class="nb">read</span> /desktop/meego/background/portrait/picture_filename
 </pre></div>
 
 
 <ul>
 <li>List incoming hardware input events</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>evdev_trace<span class="w"> </span>-t
+<div class="highlight"><pre><span></span> evdev_trace -t
 </pre></div>
 
 
 <ul>
 <li>Find folders that take more than 100MB of space</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>du<span class="w"> </span>--all<span class="w"> </span>--one-file-system<span class="w"> </span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if($1 &gt; 102400) print int($1/1024) &quot;MB&quot; &quot; &quot; $2 }&#39;</span><span class="w"> </span><span class="c1"># root partition</span>
-<span class="w"> </span>du<span class="w"> </span>--all<span class="w"> </span>--one-file-system<span class="w"> </span>/home<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if($1 &gt; 102400) print int($1/1024) &quot;MB&quot; &quot; &quot; $2 }&#39;</span><span class="w"> </span><span class="c1"># home partition</span>
+<div class="highlight"><pre><span></span> du --all --one-file-system / <span class="p">|</span> awk <span class="s1">&#39;{if($1 &gt; 102400) print int($1/1024) &quot;MB&quot; &quot; &quot; $2 }&#39;</span> <span class="c1"># root partition</span>
+ du --all --one-file-system /home <span class="p">|</span> awk <span class="s1">&#39;{if($1 &gt; 102400) print int($1/1024) &quot;MB&quot; &quot; &quot; $2 }&#39;</span> <span class="c1"># home partition</span>
 </pre></div>
 
 
 <ul>
 <li>List RPM packages that take the most space in the system</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>rpm<span class="w"> </span>-qa<span class="w"> </span>--queryformat<span class="w"> </span><span class="s1">&#39;%{size} %{name}\n&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span><span class="w"> </span>more
+<div class="highlight"><pre><span></span> rpm -qa --queryformat <span class="s1">&#39;%{size} %{name}\n&#39;</span> <span class="p">|</span> sort -rn <span class="p">|</span> more
 </pre></div>
 
 
 <ul>
 <li>Execute QML document.</li>
 </ul>
-<div class="highlight"><pre><span></span> pkcon install qt5-qtdeclarative-qmlscene # install qmlscene
- ln -s /usr/lib/qt5/bin/qmlscene /usr/bin/qmlscene # add symbolic link to path
- qmlscene app.qml # run
+<div class="highlight"><pre><span></span><span class="err"> pkcon install qt5-qtdeclarative-qmlscene # install qmlscene</span>
+<span class="err"> ln -s /usr/lib/qt5/bin/qmlscene /usr/bin/qmlscene # add symbolic link to path</span>
+<span class="err"> qmlscene app.qml # run</span>
 </pre></div>
 
 
@@ -250,72 +250,72 @@
 <ul>
 <li>Saving logs is always good</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>journalctl<span class="w"> </span>-a<span class="w"> </span>&gt;<span class="w"> </span>~/saved.journal
+<div class="highlight"><pre><span></span> devel-su journalctl -a &gt; ~/saved.journal
 </pre></div>
 
 
 <ul>
 <li>Add -f to contiously listen to the log output:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>journalctl<span class="w"> </span>-fa
+<div class="highlight"><pre><span></span> devel-su journalctl -fa
 </pre></div>
 
 
 <ul>
 <li>The systemd journal is persistent over reboots in devel branch - otherwise edit /etc/systemd/journald.conf and set</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span><span class="nv">Storage</span><span class="o">=</span>persistent
+<div class="highlight"><pre><span></span> <span class="nv">Storage</span><span class="o">=</span>persistent
 </pre></div>
 
 
 <ul>
 <li>Preventing journald from throttling logging from a verbose process - edit /etc/systemd/journald.conf and set</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span><span class="nv">RateLimitBurst</span><span class="o">=</span><span class="m">9999</span>
-<span class="w"> </span><span class="nv">RateLimitInterval</span><span class="o">=</span>5s
+<div class="highlight"><pre><span></span> <span class="nv">RateLimitBurst</span><span class="o">=</span><span class="m">9999</span>
+ <span class="nv">RateLimitInterval</span><span class="o">=</span>5s
 </pre></div>
 
 
 <ul>
 <li>Various processes can be made more verbose by setting certain environment variables:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span><span class="nv">QT_LOGGING_RULES</span><span class="o">=</span><span class="s2">&quot;*.debug=true&quot;</span><span class="w">   </span><span class="c1"># any application or service using Qt Categorized Logging</span>
-<span class="w"> </span><span class="nv">MSYNCD_LOGGING_LEVEL</span><span class="o">=</span><span class="m">8</span><span class="w">   </span><span class="c1"># any Buteo sync plugin</span>
-<span class="w"> </span><span class="nv">SSO_LOGGING_LEVEL</span><span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="nv">SSOUI_LOGGING_LEVEL</span><span class="o">=</span><span class="m">3</span><span class="w">  </span><span class="c1"># Accounts&amp;SSO services</span>
-<span class="w"> </span><span class="nv">CONTACTSD_DEBUG</span><span class="o">=</span><span class="m">1</span><span class="w">  </span><span class="c1"># contactsd instant messaging roster synchronisation daemon</span>
-<span class="w"> </span><span class="nv">QTCONTACTS_SQLITE_TWCSA_TRACE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">QTCONTACTS_SQLITE_TRACE</span><span class="o">=</span><span class="m">1</span><span class="w">  </span><span class="c1"># qtcontacts-sqlite backend debug output</span>
-<span class="w"> </span><span class="nv">KCALDEBUG</span><span class="o">=</span><span class="m">1</span><span class="w">  </span><span class="c1"># calendar application and plugins, mkcal and KCal debug output</span>
-<span class="w"> </span><span class="nv">LIPSTICK_COMPOSITOR_DEBUG</span><span class="o">=</span><span class="m">1</span><span class="w">  </span><span class="c1"># homescreen debug output</span>
+<div class="highlight"><pre><span></span> <span class="nv">QT_LOGGING_RULES</span><span class="o">=</span><span class="s2">&quot;*.debug=true&quot;</span>   <span class="c1"># any application or service using Qt Categorized Logging</span>
+ <span class="nv">MSYNCD_LOGGING_LEVEL</span><span class="o">=</span><span class="m">8</span>   <span class="c1"># any Buteo sync plugin</span>
+ <span class="nv">SSO_LOGGING_LEVEL</span><span class="o">=</span><span class="m">3</span> <span class="nv">SSOUI_LOGGING_LEVEL</span><span class="o">=</span><span class="m">3</span>  <span class="c1"># Accounts&amp;SSO services</span>
+ <span class="nv">CONTACTSD_DEBUG</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># contactsd instant messaging roster synchronisation daemon</span>
+ <span class="nv">QTCONTACTS_SQLITE_TWCSA_TRACE</span><span class="o">=</span><span class="m">1</span> <span class="nv">QTCONTACTS_SQLITE_TRACE</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># qtcontacts-sqlite backend debug output</span>
+ <span class="nv">KCALDEBUG</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># calendar application and plugins, mkcal and KCal debug output</span>
+ <span class="nv">LIPSTICK_COMPOSITOR_DEBUG</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># homescreen debug output</span>
 </pre></div>
 
 
 <ul>
 <li>Various processes can be made more verbose by editing certain configuration files and rebooting:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>/home/nemo/.config/QtProject/Messageserver.conf<span class="w">  </span><span class="c1"># email, QtMessagingFramework configuration file</span>
-<span class="w"> </span>/home/nemo/.config/eas-sailfish.conf<span class="w">  </span><span class="c1"># Exchange ActiveSync plugin configuration file</span>
+<div class="highlight"><pre><span></span> /home/nemo/.config/QtProject/Messageserver.conf  <span class="c1"># email, QtMessagingFramework configuration file</span>
+ /home/nemo/.config/eas-sailfish.conf  <span class="c1"># Exchange ActiveSync plugin configuration file</span>
 </pre></div>
 
 
 <ul>
 <li>For example, to make the Exchange ActiveSync plugin fully verbose, first ensure that journald won't throttle logging output (see the notes on editing /etc/systemd/journald.conf above) and then ensure that the /home/nemo/.config/eas-sailfish.conf file contains the following:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span><span class="o">[</span>logging<span class="o">]</span>
-<span class="w"> </span>Sailfish.eas.debug<span class="o">=</span>dwc
-<span class="w"> </span>Sailfish.eas.warning<span class="o">=</span>dwc
-<span class="w"> </span>Sailfish.eas.error<span class="o">=</span>dwc
-<span class="w"> </span>Sailfish.easwbxml<span class="o">=</span>dwc
-<span class="w"> </span>Sailfish.easnetwork<span class="o">=</span>dwc
-<span class="w"> </span>Sailfish.easverbose<span class="o">=</span>dwc
+<div class="highlight"><pre><span></span> <span class="o">[</span>logging<span class="o">]</span>
+ Sailfish.eas.debug<span class="o">=</span>dwc
+ Sailfish.eas.warning<span class="o">=</span>dwc
+ Sailfish.eas.error<span class="o">=</span>dwc
+ Sailfish.easwbxml<span class="o">=</span>dwc
+ Sailfish.easnetwork<span class="o">=</span>dwc
+ Sailfish.easverbose<span class="o">=</span>dwc
 </pre></div>
 
 
 <ul>
 <li>Some processes can be made more verbose by installing specific "tracing" packages which configure the service to be more verbose when installed (via <code>devel-su pkcon install &lt;pkgname&gt;</code>).  Some examples include:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>connman-tracing
-<span class="w"> </span>bluez5-tracing
-<span class="w"> </span>connectionagent-qt5-tracing
+<div class="highlight"><pre><span></span> connman-tracing
+ bluez5-tracing
+ connectionagent-qt5-tracing
 </pre></div>
 
 
@@ -323,18 +323,18 @@
 <p>Lipstick debugs can be enabled by adding LIPSTICK_COMPOSITOR_DEBUG=1 to /var/lib/environment/compositor/*.conf.</p>
 <p>Now restart lipstick and you have a small box at the bottom of the screen for debugging the top most window. "Dump" button outputs data of the top most window to thejournal. "Expose" button shows current windows.</p>
 <p>In case screen is locked or/and touch is not responding but you have an access tothe device. Top most window can be dumped like:</p>
-<div class="highlight"><pre><span></span>dbus-send<span class="w"> </span>--type<span class="o">=</span>method_call<span class="w"> </span>--print-reply<span class="w"> </span>--dest<span class="o">=</span>org.nemomobile.compositor.debug<span class="w"> </span>/debug<span class="w"> </span>org.nemomobile.compositor.debug.dump
+<div class="highlight"><pre><span></span>dbus-send --type<span class="o">=</span>method_call --print-reply --dest<span class="o">=</span>org.nemomobile.compositor.debug /debug org.nemomobile.compositor.debug.dump
 </pre></div>
 
 
 <h3>Power Diagnostics</h3>
 <p>Go to your device command line. Download <a href="https://git.merproject.org/mer-core/statefs-providers/blob/master/tools/power-diagnostics.sh">Power issues reporting script</a> on your device</p>
-<div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>power-diagnostics.sh<span class="w"> </span>https://git.merproject.org/mer-core/statefs-providers/blob/master/tools/power-diagnostics.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>power-diagnostics.sh
+<div class="highlight"><pre><span></span>curl -o power-diagnostics.sh https://git.merproject.org/mer-core/statefs-providers/blob/master/tools/power-diagnostics.sh <span class="o">&amp;&amp;</span> chmod a+x power-diagnostics.sh
 </pre></div>
 
 
 <p>and run it</p>
-<div class="highlight"><pre><span></span>devel-su<span class="w"> </span>./power-diagnostics.sh<span class="w"> </span>&gt;<span class="w"> </span>/home/nemo/power-state-report.txt
+<div class="highlight"><pre><span></span>devel-su ./power-diagnostics.sh &gt; /home/nemo/power-state-report.txt
 </pre></div>
 
 
@@ -343,14 +343,14 @@
 <ul>
 <li>On the target device go to the command line. Download there <a href="https://git.merproject.org/mer-core/the-vault/blob/master/tools/the-vault-storage-report.sh">Backup status reporting script</a> and make it executable.</li>
 </ul>
-<div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>the-vault-storage-report.sh<span class="w"> </span>https://git.merproject.org/mer-core/the-vault/blob/master/tools/the-vault-storage-report.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>the-vault-storage-report.sh
+<div class="highlight"><pre><span></span>curl -o the-vault-storage-report.sh https://git.merproject.org/mer-core/the-vault/blob/master/tools/the-vault-storage-report.sh <span class="o">&amp;&amp;</span> chmod a+x the-vault-storage-report.sh
 </pre></div>
 
 
 <ul>
 <li>Execute the command in privileged mode.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>-p<span class="w"> </span>./the-vault-storage-report.sh<span class="w"> </span>&gt;<span class="w"> </span>/home/nemo/backup-status-report.txt
+<div class="highlight"><pre><span></span> devel-su -p ./the-vault-storage-report.sh &gt; /home/nemo/backup-status-report.txt
 </pre></div>
 
 
@@ -361,43 +361,43 @@
 <ul>
 <li>Restart user session</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>user@100000
+<div class="highlight"><pre><span></span> systemctl restart user@100000
 </pre></div>
 
 
 <ul>
 <li>Restart networking. Warning! Disconnects your SSH connection.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>connman.service
+<div class="highlight"><pre><span></span> systemctl restart connman.service
 </pre></div>
 
 
 <ul>
 <li>Restart home screen</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>lipstick
+<div class="highlight"><pre><span></span> systemctl --user restart lipstick
 </pre></div>
 
 
 <ul>
 <li>Restart keyboard</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>maliit-server
+<div class="highlight"><pre><span></span> systemctl --user restart maliit-server
 </pre></div>
 
 
 <ul>
 <li>Restart Phone application</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>voicecall-ui-prestart
+<div class="highlight"><pre><span></span> systemctl --user restart voicecall-ui-prestart
 </pre></div>
 
 
 <ul>
 <li>Restart Phone middleware</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ofono
-<span class="w"> </span>systemctl-user<span class="w"> </span>restart<span class="w"> </span>voicecall-manager
+<div class="highlight"><pre><span></span> systemctl restart ofono
+ systemctl-user restart voicecall-manager
 </pre></div>
 
 
@@ -412,63 +412,63 @@
 <ul>
 <li>Show SW version</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>version
+<div class="highlight"><pre><span></span> version
 </pre></div>
 
 
 <ul>
 <li>Update software</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>version<span class="w"> </span>--dup
+<div class="highlight"><pre><span></span> version --dup
 </pre></div>
 
 
 <h2>Pkcon commands</h2>
-<div class="highlight"><pre><span></span><span class="w"> </span>pkcon<span class="w"> </span>refresh<span class="w">   </span><span class="c1"># Update repositories</span>
+<div class="highlight"><pre><span></span> pkcon refresh   <span class="c1"># Update repositories</span>
 
-<span class="w"> </span>pkcon<span class="w"> </span>search<span class="w"> </span>name<span class="w"> </span><span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
-<span class="w"> </span>pkcon<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
-<span class="w"> </span>pkcon<span class="w"> </span>get-details<span class="w"> </span><span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
-<span class="w"> </span>pkcon<span class="w"> </span>remove<span class="w"> </span><span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
-<span class="w"> </span>pkcon<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon search name <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon install <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon get-details <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon remove <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
+ pkcon update <span class="o">[</span>PACKAGE_NAME<span class="o">]</span>
 
-<span class="w"> </span>pkcon<span class="w"> </span>install-local<span class="w"> </span><span class="o">[</span>FILE_NAME<span class="o">]</span>
+ pkcon install-local <span class="o">[</span>FILE_NAME<span class="o">]</span>
 
-<span class="w"> </span>pkcon<span class="w"> </span>repo-list
-<span class="w"> </span>pkcon<span class="w"> </span>repo-enable<span class="w"> </span><span class="o">[</span>REPO_ID<span class="o">]</span>
-<span class="w"> </span>pkcon<span class="w"> </span>repo-disable<span class="w"> </span><span class="o">[</span>REPO_ID<span class="o">]</span>
+ pkcon repo-list
+ pkcon repo-enable <span class="o">[</span>REPO_ID<span class="o">]</span>
+ pkcon repo-disable <span class="o">[</span>REPO_ID<span class="o">]</span>
 
-<span class="w"> </span>pkcon<span class="w">       </span><span class="c1"># Lists the full command syntax and options.</span>
+ pkcon       <span class="c1"># Lists the full command syntax and options.</span>
 </pre></div>
 
 
 <h3>Zypper commands for SDK (pkcon is preferred on device)</h3>
-<div class="highlight"><pre><span></span><span class="w"> </span>zypper<span class="w"> </span>lr<span class="w"> </span><span class="c1"># list repositories</span>
-<span class="w"> </span>zypper<span class="w"> </span>ref<span class="w"> </span><span class="c1"># update repositories</span>
-<span class="w"> </span>zypper<span class="w"> </span>update<span class="w"> </span><span class="c1"># update packages</span>
-<span class="w"> </span>zypper<span class="w"> </span>se<span class="w"> </span>packagename<span class="w"> </span><span class="c1"># search packages</span>
-<span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>packagename<span class="w"> </span><span class="c1"># install packages</span>
-<span class="w"> </span>zypper<span class="w"> </span>info<span class="w"> </span>packagename<span class="w"> </span><span class="c1"># check package information</span>
-<span class="w"> </span>zypper<span class="w"> </span>info<span class="w"> </span>-t<span class="w"> </span>pattern<span class="w"> </span>patternname<span class="w"> </span><span class="c1"># check pattern information</span>
-<span class="w"> </span>zypper<span class="w"> </span>verify<span class="w"> </span><span class="c1"># check dependencies</span>
+<div class="highlight"><pre><span></span> zypper lr <span class="c1"># list repositories</span>
+ zypper ref <span class="c1"># update repositories</span>
+ zypper update <span class="c1"># update packages</span>
+ zypper se packagename <span class="c1"># search packages</span>
+ zypper in packagename <span class="c1"># install packages</span>
+ zypper info packagename <span class="c1"># check package information</span>
+ zypper info -t pattern patternname <span class="c1"># check pattern information</span>
+ zypper verify <span class="c1"># check dependencies</span>
 </pre></div>
 
 
 <h3>RPM commands</h3>
-<div class="highlight"><pre><span></span><span class="w"> </span>rpm<span class="w"> </span>-e<span class="w"> </span>&lt;package&gt;<span class="w"> </span><span class="c1"># remove package</span>
-<span class="w"> </span>rpm<span class="w"> </span>-ql<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span><span class="c1"># list files in package</span>
-<span class="w"> </span>rpm<span class="w"> </span>-qlP<span class="w"> </span>&lt;file&gt;<span class="w"> </span><span class="c1"># list files in package</span>
-<span class="w"> </span>rpm<span class="w"> </span>-qf<span class="w"> </span>&lt;file&gt;<span class="w"> </span><span class="c1"># find out what package file belongs to</span>
-<span class="w"> </span>rpm<span class="w"> </span>-qpR<span class="w"> </span>&lt;rpm-file&gt;<span class="w"> </span><span class="c1"># find out package dependencies</span>
-<span class="w"> </span>rpm<span class="w"> </span>-qR<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span><span class="c1"># find out package dependencies</span>
-<span class="w"> </span>rpm<span class="w"> </span>-q<span class="w"> </span>--whatrequires<span class="w"> </span>&lt;package&gt;<span class="w"> </span><span class="c1"># find out reverse dependencies</span>
-<span class="w"> </span>rpm<span class="w"> </span>-qa<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>rpm<span class="w"> </span>-qR<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-b5<span class="w"> </span>&lt;package&gt;<span class="w"> </span><span class="c1"># query all packages, check whether they depend on package</span>
-<span class="w"> </span>rpm<span class="w"> </span>-U<span class="w"> </span>--oldpackage<span class="w"> </span>--replacepkgs<span class="w">  </span>--replacefiles<span class="w"> </span>&lt;package&gt;<span class="w"> </span><span class="c1"># reinstall rpm package</span>
+<div class="highlight"><pre><span></span> rpm -e &lt;package&gt; <span class="c1"># remove package</span>
+ rpm -ql &lt;package-name&gt; <span class="c1"># list files in package</span>
+ rpm -qlP &lt;file&gt; <span class="c1"># list files in package</span>
+ rpm -qf &lt;file&gt; <span class="c1"># find out what package file belongs to</span>
+ rpm -qpR &lt;rpm-file&gt; <span class="c1"># find out package dependencies</span>
+ rpm -qR &lt;package-name&gt; <span class="c1"># find out package dependencies</span>
+ rpm -q --whatrequires &lt;package&gt; <span class="c1"># find out reverse dependencies</span>
+ rpm -qa <span class="p">|</span> xargs rpm -qR <span class="p">|</span> grep -b5 &lt;package&gt; <span class="c1"># query all packages, check whether they depend on package</span>
+ rpm -U --oldpackage --replacepkgs  --replacefiles &lt;package&gt; <span class="c1"># reinstall rpm package</span>
 </pre></div>
 
 
 <p>Clear corrupted rpm database (as root):</p>
-<div class="highlight"><pre><span></span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/rpm/__db*<span class="w"> </span><span class="p">;</span><span class="w"> </span>rpm<span class="w"> </span>--rebuilddb
+<div class="highlight"><pre><span></span> rm -rf /var/lib/rpm/__db* <span class="p">;</span> rpm --rebuilddb
 </pre></div>
 
 
@@ -477,28 +477,28 @@
 <ul>
 <li>Install commhistory-tool if not already installed.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>pkcon<span class="w"> </span>install<span class="w">  </span>libcommhistory-qt5-tools
+<div class="highlight"><pre><span></span> pkcon install  libcommhistory-qt5-tools
 </pre></div>
 
 
 <ul>
 <li>Clear call logs, run as nemo</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>commhistory-tool<span class="w"> </span>deleteall<span class="w"> </span>-calls
+<div class="highlight"><pre><span></span> commhistory-tool deleteall -calls
 </pre></div>
 
 
 <ul>
 <li>Add call logs data, run as nemo</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>commhistory-tool<span class="w"> </span>import-json<span class="w"> </span>calllogs.json
+<div class="highlight"><pre><span></span> commhistory-tool import-json calllogs.json
 </pre></div>
 
 
 <ul>
 <li>Restart Phone application to see changes in effect.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>pkill<span class="w"> </span>voicecall-ui
+<div class="highlight"><pre><span></span> pkill voicecall-ui
 </pre></div>
 
 
@@ -506,21 +506,21 @@
 <ul>
 <li>Remove all message conversations, run as nemo</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>commhistory-tool<span class="w"> </span>deleteall<span class="w"> </span>-groups
+<div class="highlight"><pre><span></span> commhistory-tool deleteall -groups
 </pre></div>
 
 
 <ul>
 <li>Import message data, run as nemo</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>commhistory-tool<span class="w"> </span>import-json<span class="w"> </span>messages.json
+<div class="highlight"><pre><span></span> commhistory-tool import-json messages.json
 </pre></div>
 
 
 <ul>
 <li>Restart Messages application to see changes in effect.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>pkill<span class="w"> </span>jolla-messages
+<div class="highlight"><pre><span></span> pkill jolla-messages
 </pre></div>
 
 
@@ -528,21 +528,21 @@
 <ul>
 <li>Install vcardconverter if not already installed.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>pkcon<span class="w"> </span>install<span class="w"> </span>nemo-qml-plugin-contacts-qt5-tools
+<div class="highlight"><pre><span></span> pkcon install nemo-qml-plugin-contacts-qt5-tools
 </pre></div>
 
 
 <ul>
 <li>Import contacts from vCard</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>-p<span class="w"> </span>vcardconverter<span class="w"> </span>contacts.vcf
+<div class="highlight"><pre><span></span> devel-su -p vcardconverter contacts.vcf
 </pre></div>
 
 
 <ul>
 <li>Export local contacts to vCard</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>-p<span class="w"> </span>vcardconverter<span class="w"> </span>--export<span class="w"> </span>contacts.vcf
+<div class="highlight"><pre><span></span> devel-su -p vcardconverter --export contacts.vcf
 </pre></div>
 
 
@@ -550,28 +550,28 @@
 <ul>
 <li>Install icalconverter if not already installed</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>pkcon<span class="w"> </span>install<span class="w"> </span>nemo-qml-plugin-calendar-qt5-tools
+<div class="highlight"><pre><span></span> pkcon install nemo-qml-plugin-calendar-qt5-tools
 </pre></div>
 
 
 <ul>
 <li>Import events from iCal</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>-p<span class="w"> </span>icalconverter<span class="w"> </span>import<span class="w"> </span>calendar.ics
+<div class="highlight"><pre><span></span> devel-su -p icalconverter import calendar.ics
 </pre></div>
 
 
 <ul>
 <li>Import events using Calendar import page</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>dbus-send<span class="w"> </span>--print-reply<span class="w"> </span>--type<span class="o">=</span>method_call<span class="w"> </span>--dest<span class="o">=</span>com.jolla.calendar.ui<span class="w"> </span>/com/jolla/calendar/ui<span class="w"> </span>com.jolla.calendar.ui.importFile<span class="w"> </span>string:/home/nemo/calendar.ics
+<div class="highlight"><pre><span></span> dbus-send --print-reply --type<span class="o">=</span>method_call --dest<span class="o">=</span>com.jolla.calendar.ui /com/jolla/calendar/ui com.jolla.calendar.ui.importFile string:/home/nemo/calendar.ics
 </pre></div>
 
 
 <ul>
 <li>Export local calendar events to iCal</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>devel-su<span class="w"> </span>-p<span class="w"> </span>icalconverter<span class="w"> </span><span class="nb">export</span><span class="w"> </span>calendar.ics
+<div class="highlight"><pre><span></span> devel-su -p icalconverter <span class="nb">export</span> calendar.ics
 </pre></div>
 
 
@@ -579,16 +579,16 @@
 <ul>
 <li>Set the home page.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>dconf<span class="w"> </span>write<span class="w"> </span>/apps/sailfish-browser/settings/home_page<span class="w"> </span><span class="s2">&quot;&#39;http://jolla.com&#39;&quot;</span>
+<div class="highlight"><pre><span></span> dconf write /apps/sailfish-browser/settings/home_page <span class="s2">&quot;&#39;http://jolla.com&#39;&quot;</span>
 </pre></div>
 
 
 <h3>Media</h3>
 <p>Transfer content to the device</p>
-<div class="highlight"><pre><span></span><span class="w"> </span>scp<span class="w"> </span>*.jpg<span class="w"> </span>nemo@device:Pictures
-<span class="w"> </span>scp<span class="w"> </span>*.mp4<span class="w"> </span>nemo@device:Videos
-<span class="w"> </span>scp<span class="w"> </span>*.pdf<span class="w"> </span>nemo@device:Documents
-<span class="w"> </span>scp<span class="w"> </span>*.ogg<span class="w"> </span>nemo@device:Music
+<div class="highlight"><pre><span></span> scp *.jpg nemo@device:Pictures
+ scp *.mp4 nemo@device:Videos
+ scp *.pdf nemo@device:Documents
+ scp *.ogg nemo@device:Music
 </pre></div>
 
 
@@ -596,7 +596,7 @@
 <ul>
 <li>Reset order of apps in Homescreen launcher.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>rm<span class="w"> </span>/home/nemo/.config/lipstick/applications.menu
+<div class="highlight"><pre><span></span> rm /home/nemo/.config/lipstick/applications.menu
 </pre></div>
 
 
@@ -604,7 +604,7 @@
 <ul>
 <li>Remove weather locations</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>rm<span class="w"> </span>/home/nemo/.local/share/sailfish-weather/weather.json
+<div class="highlight"><pre><span></span> rm /home/nemo/.local/share/sailfish-weather/weather.json
 </pre></div>
 
 
@@ -612,28 +612,28 @@
 <ul>
 <li>Install mcetool</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>mce-tools
+<div class="highlight"><pre><span></span> zypper in mce-tools
 </pre></div>
 
 
 <ul>
 <li>Disable late suspend</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-searly
+<div class="highlight"><pre><span></span> mcetool -searly
 </pre></div>
 
 
 <ul>
 <li>Disable early suspend</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-sdisabled
+<div class="highlight"><pre><span></span> mcetool -sdisabled
 </pre></div>
 
 
 <ul>
 <li>Restore normal suspend policy</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-senabled
+<div class="highlight"><pre><span></span> mcetool -senabled
 </pre></div>
 
 
@@ -641,51 +641,51 @@
 <ul>
 <li>Install mcetool</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>zypper<span class="w"> </span><span class="k">in</span><span class="w"> </span>mce-tools
+<div class="highlight"><pre><span></span> zypper in mce-tools
 </pre></div>
 
 
 <ul>
 <li>Set brightness setting to maximum value</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-b5
+<div class="highlight"><pre><span></span> mcetool -b5
 </pre></div>
 
 
 <ul>
 <li>Disable screen dimming when home screen or applications are open</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-Don
+<div class="highlight"><pre><span></span> mcetool -Don
 </pre></div>
 
 
 <ul>
 <li>Disable screen dimming when the lock screen is open</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-tdisabled
+<div class="highlight"><pre><span></span> mcetool -tdisabled
 </pre></div>
 
 
 <ul>
 <li>Go back to normal behavior</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-Doff<span class="w"> </span>-tenabled
+<div class="highlight"><pre><span></span> mcetool -Doff -tenabled
 </pre></div>
 
 
 <ul>
 <li>For problem with unusually dark display, try disabling als-based display brightness filtering</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>mcetool<span class="w"> </span>-gdisabled
+<div class="highlight"><pre><span></span> mcetool -gdisabled
 </pre></div>
 
 
 <ul>
 <li>Reset all mce values to their defaults</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>mce.service
-<span class="w"> </span>rm<span class="w"> </span>/var/lib/mce/builtin-gconf.values
-<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mce.service
+<div class="highlight"><pre><span></span> systemctl stop mce.service
+ rm /var/lib/mce/builtin-gconf.values
+ systemctl start mce.service
 </pre></div>
 
 
@@ -694,19 +694,19 @@
 <ul>
 <li>Show timer alarm in 3 seconds (ticker=3).</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>timedclient-qt5<span class="w"> </span>-b<span class="s1">&#39;TITLE=button0&#39;</span><span class="w"> </span>-e<span class="s1">&#39;APPLICATION=nemoalarms;TITLE=Timer;type=countdown;timeOfDay=1;triggerTime=1395217218;ticker=3&#39;</span>
+<div class="highlight"><pre><span></span> timedclient-qt5 -b<span class="s1">&#39;TITLE=button0&#39;</span> -e<span class="s1">&#39;APPLICATION=nemoalarms;TITLE=Timer;type=countdown;timeOfDay=1;triggerTime=1395217218;ticker=3&#39;</span>
 </pre></div>
 
 
 <ul>
 <li>Show clock alarm in 3 seconds (ticker=3).</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span>timedclient-qt5<span class="w"> </span>-b<span class="s1">&#39;TITLE=button0&#39;</span><span class="w"> </span>-e<span class="s1">&#39;APPLICATION=nemoalarms;TITLE=Clock;type=event;timeOfDay=772;ticker=3&#39;</span>
+<div class="highlight"><pre><span></span> timedclient-qt5 -b<span class="s1">&#39;TITLE=button0&#39;</span> -e<span class="s1">&#39;APPLICATION=nemoalarms;TITLE=Clock;type=event;timeOfDay=772;ticker=3&#39;</span>
 </pre></div>
 
 
 <h3>Connection Dialog</h3>
-<div class="highlight"><pre><span></span><span class="w"> </span>dbus-send<span class="w"> </span>--print-reply<span class="w"> </span>--type<span class="o">=</span>method_call<span class="w"> </span>--dest<span class="o">=</span>com.jolla.lipstick.ConnectionSelector<span class="w"> </span>/<span class="w">  </span>com.jolla.lipstick.ConnectionSelectorIf.openConnection<span class="w"> </span>string:
+<div class="highlight"><pre><span></span> dbus-send --print-reply --type<span class="o">=</span>method_call --dest<span class="o">=</span>com.jolla.lipstick.ConnectionSelector /  com.jolla.lipstick.ConnectionSelectorIf.openConnection string:
 </pre></div>
 
 
@@ -716,24 +716,24 @@
 <ul>
 <li>Make app unresponsive by stopping it's execution.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-SIGSTOP<span class="w"> </span><span class="sb">`</span>pgrep<span class="w"> </span>appname<span class="sb">`</span><span class="w"> </span><span class="c1"># e.g. jolla-messages</span>
+<div class="highlight"><pre><span></span> <span class="nb">kill</span> -SIGSTOP <span class="sb">`</span>pgrep appname<span class="sb">`</span> <span class="c1"># e.g. jolla-messages</span>
 </pre></div>
 
 
 <ul>
 <li>Continue execution by calling</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-SIGCONT<span class="w"> </span><span class="sb">`</span>pgrep<span class="w"> </span>appname<span class="sb">`</span><span class="w"> </span><span class="c1"># e.g. jolla-messages</span>
+<div class="highlight"><pre><span></span> <span class="nb">kill</span> -SIGCONT <span class="sb">`</span>pgrep appname<span class="sb">`</span> <span class="c1"># e.g. jolla-messages</span>
 </pre></div>
 
 
 <h3>Side Loading Dialog</h3>
-<div class="highlight"><pre><span></span>xdg-open<span class="w"> </span>package.rpm
+<div class="highlight"><pre><span></span>xdg-open package.rpm
 </pre></div>
 
 
 <h3>Call Request Dialog</h3>
-<div class="highlight"><pre><span></span><span class="w"> </span>xdg-open<span class="w"> </span><span class="s2">&quot;tel://0123456789&quot;</span>
+<div class="highlight"><pre><span></span> xdg-open <span class="s2">&quot;tel://0123456789&quot;</span>
 </pre></div>
 
 
@@ -744,13 +744,13 @@
 <div class="highlight"><pre><span></span><span class="s2">&quot;timeout = 1</span>
 <span class="s2">sink-list = sink.primary</span>
 <span class="s2">mode-list = lineout&quot;</span>
-systemctl<span class="w"> </span>--user<span class="w"> </span>restart<span class="w"> </span>pulseaudio.service
+systemctl --user restart pulseaudio.service
 </pre></div>
 
 
 <p>Now play a song over 1 minute with normal headset in Media Player to see a warning dialog.
 Reset too-loud volume warning.</p>
-<div class="highlight"><pre><span></span><span class="w"> </span>/usr/bin/dconf<span class="w"> </span>write<span class="w"> </span>/desktop/nemo/audiowarning<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span> /usr/bin/dconf write /desktop/nemo/audiowarning <span class="nb">true</span>
 </pre></div>
 
 

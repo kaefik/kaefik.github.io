@@ -105,52 +105,52 @@
         <span>Sat 14 January 2017</span>
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <h3>Настройте git - система контроля версии</h3>
-<div class="highlight"><pre><span></span>MER_SDK<span class="w"> </span>$
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
-git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;you@example.com&quot;</span>
+<div class="highlight"><pre><span></span>MER_SDK $
+git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
+git config --global user.email <span class="s2">&quot;you@example.com&quot;</span>
 </pre></div>
 
 
 <h3>Нужно установить команду <strong>repo</strong> чтобы можно было получить (синхронизировать) исходники Android</h3>
-<div class="highlight"><pre><span></span>MER_SDK<span class="w"> </span>$
-mkdir<span class="w"> </span>~/bin<span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span><span class="w"> </span>
-curl<span class="w"> </span>https://storage.googleapis.com/git-repo-downloads/repo<span class="w"> </span>&gt;<span class="w"> </span>~/bin/repo<span class="w"> </span>
-chmod<span class="w"> </span>a+x<span class="w"> </span>~/bin/repo
+<div class="highlight"><pre><span></span>MER_SDK $
+mkdir ~/bin <span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span> 
+curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo 
+chmod a+x ~/bin/repo
 </pre></div>
 
 
 <h3>Инициализируем репозиторий на ветку cm-13.0</h3>
-<div class="highlight"><pre><span></span>HABUILD_SDK<span class="w"> </span>$
-hadk<span class="w"> </span>
-sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$ANDROID_ROOT</span><span class="w"> </span>
-sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span><span class="nv">$ANDROID_ROOT</span><span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$ANDROID_ROOT</span>
+<div class="highlight"><pre><span></span>HABUILD_SDK $
+hadk 
+sudo mkdir -p <span class="nv">$ANDROID_ROOT</span> 
+sudo chown -R <span class="nv">$USER</span> <span class="nv">$ANDROID_ROOT</span> 
+<span class="nb">cd</span> <span class="nv">$ANDROID_ROOT</span>
 <span class="c1"># делаю синхронизацию с CM-13.0</span>
-repo<span class="w"> </span>init<span class="w"> </span>-u<span class="w"> </span>git://github.com/mer-hybris/android.git<span class="w"> </span>-b<span class="w"> </span>hybris-13.0
+repo init -u git://github.com/mer-hybris/android.git -b hybris-13.0
 </pre></div>
 
 
 <h3>Создадим файл манифеста для сборки андроида, на основе которого будем собирать</h3>
-<div class="highlight"><pre><span></span>HABUILD_SDK<span class="w"> </span>$
+<div class="highlight"><pre><span></span>HABUILD_SDK $
 hadk
-mkdir<span class="w"> </span><span class="nv">$ANDROID_ROOT</span>/.repo/local_manifests
+mkdir <span class="nv">$ANDROID_ROOT</span>/.repo/local_manifests
 </pre></div>
 
 
 <p>Содержимое файла $ANDROID_ROOT/.repo/local_manifests/Z00L.xml :</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;manifest&gt;</span><span class="w"> </span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;device/asus/Z00L&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CyanogenMod/android_device_asus_Z00L&quot;</span><span class="w"> </span><span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;device/asus/msm8916-common&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CyanogenMod/android_device_asus_msm8916-common&quot;</span><span class="w"> </span><span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;kernel/asus/msm8916&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CyanogenMod/android_kernel_asus_msm8916&quot;</span><span class="w"> </span><span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span>
-<span class="nt">&lt;/manifest&gt;</span><span class="w"> </span>
+<span class="nt">&lt;manifest&gt;</span> 
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;device/asus/Z00L&quot;</span> <span class="na">name=</span><span class="s">&quot;CyanogenMod/android_device_asus_Z00L&quot;</span> <span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;device/asus/msm8916-common&quot;</span> <span class="na">name=</span><span class="s">&quot;CyanogenMod/android_device_asus_msm8916-common&quot;</span> <span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;kernel/asus/msm8916&quot;</span> <span class="na">name=</span><span class="s">&quot;CyanogenMod/android_kernel_asus_msm8916&quot;</span> <span class="na">revision=</span><span class="s">&quot;cm-13.0&quot;</span> <span class="nt">/&gt;</span> 
+<span class="nt">&lt;/manifest&gt;</span> 
 </pre></div>
 
 
 <h3>Инициализируем дерево исходников андроида (занимает некоторое время)</h3>
-<div class="highlight"><pre><span></span>HABUILD_SDK<span class="w"> </span>$<span class="w">    </span>
+<div class="highlight"><pre><span></span>HABUILD_SDK $    
 hadk
-repo<span class="w"> </span>sync<span class="w"> </span>--fetch-submodules<span class="w"> </span>
+repo sync --fetch-submodules 
 </pre></div>
 
 
@@ -160,7 +160,7 @@ repo<span class="w"> </span>sync<span class="w"> </span>--fetch-submodules<span 
 <ul>
 <li>Копирование структуры папок без файлов:</li>
 </ul>
-<div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span><span class="p">|</span><span class="w"> </span>cpio<span class="w"> </span>-pvdm<span class="w"> </span>~/2
+<div class="highlight"><pre><span></span>find . -type d <span class="p">|</span> cpio -pvdm ~/2
 </pre></div>
     </div><!-- /.entry-content -->
 

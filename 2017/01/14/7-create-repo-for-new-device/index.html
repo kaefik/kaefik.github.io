@@ -106,17 +106,17 @@
 <span>| tags: <a href="/tag/asus.html">asus</a><a href="/tag/porting.html">porting</a><a href="/tag/sailfish.html">sailfish</a><a href="/tag/z00l.html">z00l</a></span>
 </footer><!-- /.post-info -->      <p><strong>Замечание:</strong>
 перед тем как использовать команды нужно заменить слово kaefik на ваш ник в github</p>
-<div class="highlight"><pre><span></span>MER_SDK<span class="w"> </span>$<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$ANDROID_ROOT</span><span class="w"> </span>
-mkdir<span class="w"> </span>rpm<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>rpm<span class="w"> </span>
-git<span class="w"> </span>init<span class="w"> </span>
-git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/mer-hybris/droid-hal-device<span class="w"> </span>dhd<span class="w"> </span>
+<div class="highlight"><pre><span></span>MER_SDK $ 
+<span class="nb">cd</span> <span class="nv">$ANDROID_ROOT</span> 
+mkdir rpm 
+<span class="nb">cd</span> rpm 
+git init 
+git submodule add https://github.com/mer-hybris/droid-hal-device dhd 
 <span class="c1"># Rename &#39;Z00L&#39; and other values as appropriate </span>
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>cat<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39; &gt;droid-hal-Z00L.spec </span>
+<div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt;&#39;EOF&#39; &gt;droid-hal-Z00L.spec </span>
 <span class="s"># These and other macros are documented in dhd/droid-hal-device.inc </span>
 <span class="s">%define device Z00L </span>
 <span class="s">%define vendor asus </span>
@@ -124,28 +124,28 @@ git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> 
 <span class="s">%define device_pretty Zenfone 2 </span>
 <span class="s">%define installable_zip 1 </span>
 <span class="s">%include rpm/dhd/droid-hal-device.inc </span>
-<span class="s">EOF</span><span class="w"> </span>
+<span class="s">EOF</span> 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;[dhd] Initial content&quot;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span>git add . 
+git commit -m <span class="s2">&quot;[dhd] Initial content&quot;</span> 
 <span class="c1"># Create this repository under your GitHub home </span>
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>kaefik<span class="w"> </span>https://github.com/kaefik/droid-hal-Z00L<span class="w"> </span>
-git<span class="w"> </span>push<span class="w"> </span>kaefik<span class="w"> </span>master<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>-<span class="w"> </span>
+git remote add kaefik https://github.com/kaefik/droid-hal-Z00L 
+git push kaefik master 
+<span class="nb">cd</span> - 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>hybris/droid-configs<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>hybris/droid-configs<span class="w"> </span>
-git<span class="w"> </span>init<span class="w"> </span>
-git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/mer-hybris/droid-hal-configs<span class="w"> </span>droid-configs-device<span class="w"> </span>
-mkdir<span class="w"> </span>rpm<span class="w"> </span>
+<div class="highlight"><pre><span></span>mkdir hybris/droid-configs 
+<span class="nb">cd</span> hybris/droid-configs 
+git init 
+git submodule add https://github.com/mer-hybris/droid-hal-configs droid-configs-device 
+mkdir rpm 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>cat<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39; &gt;rpm/droid-config-Z00L.spec </span>
+<div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt;&#39;EOF&#39; &gt;rpm/droid-config-Z00L.spec </span>
 <span class="s"># These and other macros are documented in </span>
 <span class="s"># ../droid-configs-device/droid-configs.inc </span>
 <span class="s">%define device Z00L </span>
@@ -158,16 +158,16 @@ mkdir<span class="w"> </span>rpm<span class="w"> </span>
 <span class="s"># We assume most devices will </span>
 <span class="s">%define have_modem 1 </span>
 <span class="s">%include droid-configs-device/droid-configs.inc </span>
-<span class="s">EOF</span><span class="w"> </span>
+<span class="s">EOF</span> 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;[dcd] Initial content&quot;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span>git add . 
+git commit -m <span class="s2">&quot;[dcd] Initial content&quot;</span> 
 <span class="c1"># Create this repository under your GitHub home </span>
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>kaefik<span class="w"> </span>https://github.com/kaefik/droid-config-Z00L<span class="w"> </span>
-git<span class="w"> </span>push<span class="w"> </span>kaefik<span class="w"> </span>master<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>-<span class="w"> </span>
+git remote add kaefik https://github.com/kaefik/droid-config-Z00L 
+git push kaefik master 
+<span class="nb">cd</span> - 
 </pre></div>
 
 
@@ -182,38 +182,38 @@ git<span class="w"> </span>push<span class="w"> </span>kaefik<span class="w"> </
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>hybris/droid-configs<span class="w"> </span>
-<span class="nv">COMPOSITOR_CFGS</span><span class="o">=</span>sparse/var/lib/environment/compositor<span class="w"> </span>
-mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$COMPOSITOR_CFGS</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> hybris/droid-configs 
+<span class="nv">COMPOSITOR_CFGS</span><span class="o">=</span>sparse/var/lib/environment/compositor 
+mkdir -p <span class="nv">$COMPOSITOR_CFGS</span> 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt;$COMPOSITOR_CFGS/droid-hal-device.conf </span>
+<div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt;EOF &gt;$COMPOSITOR_CFGS/droid-hal-device.conf </span>
 <span class="s"># Config for $VENDOR/$DEVICE </span>
 <span class="s">EGL_PLATFORM=hwcomposer </span>
 <span class="s">QT_QPA_PLATFORM=hwcomposer </span>
 <span class="s"># Determine which node is your touchscreen by checking /dev/input/event* </span>
 <span class="s">LIPSTICK_OPTIONS=-plugin evdevtouch:/dev/input/event0 -plugin evdevkeyboard:keymap=/usr/share/qt5/keymaps/droid.qmap </span>
-<span class="s">EOF</span><span class="w"> </span>
+<span class="s">EOF</span> 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;[dcd] Patterns and compositor config&quot;</span><span class="w"> </span>
-git<span class="w"> </span>push<span class="w"> </span>kaefik<span class="w"> </span>master<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>-<span class="w"> </span>
+<div class="highlight"><pre><span></span>git add . 
+git commit -m <span class="s2">&quot;[dcd] Patterns and compositor config&quot;</span> 
+git push kaefik master 
+<span class="nb">cd</span> - 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>hybris/droid-hal-version-Z00L<span class="w"> </span>
-<span class="nb">cd</span><span class="w"> </span>hybris/droid-hal-version-Z00L<span class="w"> </span>
-git<span class="w"> </span>init<span class="w"> </span>
-git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/mer-hybris/droid-hal-version<span class="w"> </span>
+<div class="highlight"><pre><span></span>mkdir hybris/droid-hal-version-Z00L 
+<span class="nb">cd</span> hybris/droid-hal-version-Z00L 
+git init 
+git submodule add https://github.com/mer-hybris/droid-hal-version 
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>mkdir<span class="w"> </span>rpm<span class="w"> </span>
-cat<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39; &gt;rpm/droid-hal-version-Z00L.spec </span>
+<div class="highlight"><pre><span></span>mkdir rpm 
+cat <span class="s">&lt;&lt;&#39;EOF&#39; &gt;rpm/droid-hal-version-Z00L.spec </span>
 <span class="s"># rpm_device is the name of the ported device </span>
 <span class="s">%define rpm_device Z00L </span>
 <span class="s"># rpm_vendor is used in the rpm space </span>
@@ -229,19 +229,19 @@ cat<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39; &gt;rpm/droid-h
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span>
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;[dvd] Initial content&quot;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span>git add . 
+git commit -m <span class="s2">&quot;[dvd] Initial content&quot;</span> 
 <span class="c1"># Create this repository under your GitHub home </span>
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>kaefik<span class="w"> </span><span class="se">\ </span>
-https://github.com/kaefik/droid-hal-version-Z00L<span class="w"> </span>
-git<span class="w"> </span>push<span class="w"> </span>kaefik<span class="w"> </span>master<span class="w"> </span>
+git remote add kaefik <span class="se">\ </span>
+https://github.com/kaefik/droid-hal-version-Z00L 
+git push kaefik master 
 </pre></div>
 
 
 <h3>Нужно добавить эти строчки  в файл манифеста $ANDROID_ROOT/repo/local_manifests/Z00L.xml:</h3>
-<div class="highlight"><pre><span></span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;rpm/&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;kaefik/droid-hal-Z00L&quot;</span><span class="w"> </span><span class="na">revision=</span><span class="s">&quot;master&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;hybris/droid-configs&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;kaefik/droid-config-Z00L&quot;</span><span class="w"> </span><span class="na">revision=</span><span class="s">&quot;master&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;hybris/droid-hal-version-Z00L&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;kaefik/droid-hal-version-Z00L&quot;</span><span class="w"> </span><span class="na">revision=</span><span class="s">&quot;master&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;rpm/&quot;</span> <span class="na">name=</span><span class="s">&quot;kaefik/droid-hal-Z00L&quot;</span> <span class="na">revision=</span><span class="s">&quot;master&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;hybris/droid-configs&quot;</span> <span class="na">name=</span><span class="s">&quot;kaefik/droid-config-Z00L&quot;</span> <span class="na">revision=</span><span class="s">&quot;master&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">path=</span><span class="s">&quot;hybris/droid-hal-version-Z00L&quot;</span> <span class="na">name=</span><span class="s">&quot;kaefik/droid-hal-version-Z00L&quot;</span> <span class="na">revision=</span><span class="s">&quot;master&quot;</span> <span class="nt">/&gt;</span>
 </pre></div>
     </div><!-- /.entry-content -->
 

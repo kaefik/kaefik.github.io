@@ -129,9 +129,9 @@
 <p><a href="https://github.com/kaefik/py-flask-empty-prg">"Рыба" (основа)  структуры web- приложения используя фреймворк Flask</a></p>
 <h3>Flask-Script</h3>
 <p>Добавляет поддержку обслуживающих проект скриптов: запуск dev-сервера, миграции баз данных, cron-задачи и тому подобное. Следуя рекомендациям, я создаю для каждого проекта файл manage.py, где добавляются все необходимые для обслуживания команды. По-умолчанию доступна команда runserver. Запуск команд осуществляется следующим образом:</p>
-<div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span><span class="nb">command</span><span class="w"> </span>&lt;action&gt;
-python<span class="w"> </span>manage.py<span class="w"> </span>runserver
-python<span class="w"> </span>manage.py<span class="w"> </span>db<span class="w"> </span>migate
+<div class="highlight"><pre><span></span>python manage.py <span class="nb">command</span> &lt;action&gt;
+python manage.py runserver
+python manage.py db migate
 </pre></div>
 
 
@@ -184,11 +184,9 @@ python<span class="w"> </span>manage.py<span class="w"> </span>db<span class="w"
   <span class="n">filename</span> <span class="o">=</span> <span class="n">secure_filename</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
   <span class="n">file</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_DIR&#39;</span><span class="p">],</span><span class="n">filename</span><span class="p">))</span>
 </pre></div>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

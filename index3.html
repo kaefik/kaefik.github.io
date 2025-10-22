@@ -117,7 +117,7 @@
 <li></li>
 </ul>
 <p>чтобы не проверять типы в модулях в которых нет аннотации можно добавить напротив импорта модуля </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">my_module</span><span class="w"> </span><span class="c1"># type …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_module</span> <span class="c1"># type …</span></pre></div>
                 <a class="readmore" href="/2020/11/10/python-typing/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -167,12 +167,12 @@
 </ul>
 <h2>Настройка сервера</h2>
 <p>1.Установка</p>
-<div class="highlight"><pre><span></span><span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>wireguard
+<div class="highlight"><pre><span></span>    sudo apt install wireguard
 </pre></div>
 
 
 <p>2.Генерация public и private ключей</p>
-<div class="highlight"><pre><span></span><span class="w">    </span>wg<span class="w"> </span>genkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/wireguard/privatekey<span class="w"> </span><span class="p">|</span><span class="w"> </span>wg<span class="w"> </span>pubkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/wireguard/publickey
+<div class="highlight"><pre><span></span>    wg genkey <span class="p">|</span> sudo tee /etc/wireguard/privatekey <span class="p">|</span> wg pubkey <span class="p">|</span> sudo tee /etc/wireguard/publickey
 </pre></div>
 
 
@@ -195,7 +195,7 @@
 <p>Прошивки для UniFi: https://www.ui.com/download/unifi/unifi-ap/uap</p>
 <p>Видео как подключаться напрямую к точке чтобы видеть что происходит при загрузке вайфай точки: <a href="https://www.youtube.com/watch?v=pFsMsVWeuZE">How to connect a UBNT to your console via USB-UART.</a></p>
 <p>Вот как прошивать через режим  tftp <a href="https://help.ui.com/hc/en-us/articles/204910124-UniFi-TFTP-Recovery-for-Bricked-Access-Points">тут</a>:</p>
-<div class="highlight"><pre><span></span>connect<span class="w"> </span><span class="m">192</span>.168.1.20 …</pre></div>
+<div class="highlight"><pre><span></span>connect <span class="m">192</span>.168.1.20 …</pre></div>
                 <a class="readmore" href="/2020/09/29/unifi-wifi/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -237,7 +237,7 @@
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
 </footer><!-- /.post-info -->                <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
 <h2>Установка библиотеки</h2>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>attrs
+<div class="highlight"><pre><span></span>pip install attrs
 </pre></div>
 
 
@@ -255,10 +255,10 @@
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">attr</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="n">attrib</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
 
 <span class="nd">@attrs</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
                 <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -340,15 +340,11 @@
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-        <li><a href="/index.html">&Lang;</a></li>
-        <li><a href="/index2.html">&lang;</a></li>
-      <li>Page 3 / 16</li>
-        <li><a href="/index4.html">&rang;</a></li>
-        <li><a href="/index16.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+        <a href="/index2.html">&laquo;</a>
+    Page 3 / 16
+        <a href="/index4.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

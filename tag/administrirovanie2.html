@@ -164,20 +164,20 @@
 <li><a href="https://docs.docker.com/engine/install/ubuntu/">установка докер в убунту</a></li>
 </ul>
 <h2>Установка Docker в Ubuntu</h2>
-<div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>lsb-release
+<div class="highlight"><pre><span></span> sudo apt-get update
+ sudo apt-get install <span class="se">\</span>
+    apt-transport-https <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg <span class="se">\</span>
+    lsb-release
 
 
-<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 
-<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
+ <span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
                 <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -254,7 +254,7 @@
         <span>Mon 02 October 2017</span>
 <span>| tags: <a href="/tag/administrirovanie.html">администрирование</a><a href="/tag/bazy-dannykh.html">базы данных</a><a href="/tag/postgresql.html">PostgreSQL</a><a href="/tag/db.html">db</a></span>
 </footer><!-- /.post-info -->                <h2>БД при создании initdbСоздание таблицы и индекс-</h2>
-<div class="highlight"><pre><span></span>              create table t(n numeric);
+<div class="highlight"><pre><span></span><span class="err">              create table t(n numeric);</span>
 </pre></div>
 
 
@@ -334,13 +334,10 @@
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-        <li><a href="/tag/administrirovanie.html">&Lang;</a></li>
-        <li><a href="/tag/administrirovanie.html">&lang;</a></li>
-      <li>Page 2 / 2</li>
-    </ul>
-  </nav>
+<p class="paginator">
+        <a href="/tag/administrirovanie.html">&laquo;</a>
+    Page 2 / 2
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

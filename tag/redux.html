@@ -175,10 +175,10 @@
 </ul>
 <p>Пример:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ADD_TODO&#39;</span><span class="p">,</span>
-<span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Todo title text&#39;</span><span class="p">,</span>
-<span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;15/11/2017&#39;</span><span class="p">,</span>
+<span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;ADD_TODO&#39;</span><span class="p">,</span>
+<span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+<span class="nx">text</span><span class="o">:</span> <span class="s1">&#39;Todo title text&#39;</span><span class="p">,</span>
+<span class="nx">date</span><span class="o">:</span> <span class="s1">&#39;15/11/2017&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -186,10 +186,10 @@
 
 <h3>Генераторы действий (Action Creators) — функции, которые создают действия.</h3>
 <p>В Redux генераторы действий (action creators) просто возвращают action:</p>
-<div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">addTodo</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ADD_TODO</span><span class="p">,</span>
-<span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="nx">text</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">addTodo</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="p">{</span>
+<span class="nx">type</span><span class="o">:</span> <span class="nx">ADD_TODO</span><span class="p">,</span>
+<span class="nx">payload</span><span class="o">:</span> <span class="nx">text</span>
 <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -197,19 +197,17 @@
 
 <hr>
 <p>Reducer - чистая функция, которая принимает предыдущее состояние и действие (state и action) и возвращает следующее состояние (новую версию предыдущего).</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">newState</span>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">newState</span>
 </pre></div>
 
 
 <h3>React &amp; Redux</h3>
 <p>установка: </p>
-<div class="highlight"><pre><span></span><span class="nx">npm</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="nx">redux</span><span class="w"> </span><span class="nx">react</span><span class="o">-</span><span class="nx">redux</span><span class="w"> </span><span class="o">--</span><span class="nx">save</span>
+<div class="highlight"><pre><span></span><span class="nx">npm</span> <span class="nx">i</span> <span class="nx">redux</span> <span class="nx">react</span><span class="o">-</span><span class="nx">redux</span> <span class="o">--</span><span class="nx">save</span>
 </pre></div>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

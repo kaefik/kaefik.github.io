@@ -122,27 +122,27 @@
 </ul>
 <p>From sshd’s perspective that should be enough to make it listen on both ports. If you have configured a firewall on your server, make sure the firewall is not blocking the new port.</p>
 <p>Now we can restart sshd with the following command:                   </p>
-<div class="highlight"><pre><span></span> /etc/init.d/sshd restart
+<div class="highlight"><pre><span></span><span class="err"> /etc/init.d/sshd restart</span>
 </pre></div>
 
 
 <p>After this you will see that the restart was successful. With the command “lsof -i -P -n” you can check all listening ports. You should see that sshd is not listening on the new port 1234 but still on 22.</p>
 <p>his is SELinux in action. SSH is not supposed to listen on port 1234 as far as the SELinux rules are concerned. So we need to modify the SELinux configuration to allow sshd to listen on our new port 1234. To do this, we first need to check what ports sshd is allowed to listen on by executing the following command:</p>
-<div class="highlight"><pre><span></span>semanage<span class="w"> </span>port<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ssh
-ssh_port_t<span class="w">           </span>tcp<span class="w">    </span><span class="m">22</span>
+<div class="highlight"><pre><span></span>semanage port -l <span class="p">|</span> grep ssh
+ssh_port_t           tcp    <span class="m">22</span>
 </pre></div>
 
 
 <p>To allow sshd to listen on our new port 1234 we have to add a rule to <a href="https://ru.wikipedia.org/wiki/SELinux">SELinux</a>. This is done by executing the following command:</p>
-<div class="highlight"><pre><span></span>semanage<span class="w"> </span>port<span class="w"> </span>-a<span class="w"> </span>-t<span class="w"> </span>ssh_port_t<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span><span class="m">1234</span>
+<div class="highlight"><pre><span></span>semanage port -a -t ssh_port_t -p tcp <span class="m">1234</span>
 </pre></div>
 
 
 <p>Please be patient while this command is running. It can take some time to finish.</p>
 <p>PS. для установки semanage выполните :   </p>
-<div class="highlight"><pre><span></span>dnf<span class="w"> </span>provides<span class="w"> </span><span class="s1">&#39;*/semanage&#39;</span><span class="w">  </span><span class="c1"># проверить в какие пакеты входит semanage</span>
-sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>policycoreutils-python<span class="w"> </span><span class="c1"># для centos</span>
-dnf<span class="w"> </span>install<span class="w"> </span>policycoreutils-python-utils-2.7-1.fc27.x86_64<span class="w">  </span><span class="c1"># для fedora</span>
+<div class="highlight"><pre><span></span>dnf provides <span class="s1">&#39;*/semanage&#39;</span>  <span class="c1"># проверить в какие пакеты входит semanage</span>
+sudo yum install policycoreutils-python <span class="c1"># для centos</span>
+dnf install policycoreutils-python-utils-2.7-1.fc27.x86_64  <span class="c1"># для fedora</span>
 </pre></div>
     </div><!-- /.entry-content -->
 

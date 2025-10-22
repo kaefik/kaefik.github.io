@@ -184,9 +184,9 @@
 
 <span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
- <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{name}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
  <span class="k">yield</span>
- <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;/</span><span class="si">{name}</span><span class="s2">&gt;&quot;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">tag</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">):</span>
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is Title.&quot;</span><span class="p">)</span>
@@ -357,11 +357,9 @@
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

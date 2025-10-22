@@ -120,20 +120,20 @@
 <p>Распаковка rootfs через adbMER_SDK $</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>adb<span class="w"> </span>push<span class="w"> </span>sfe-Z00L-2.0.5.6-my1.tar.bz2<span class="w"> </span>/sdcard/
-adb<span class="w"> </span>shell
+<div class="highlight"><pre><span></span>adb push sfe-Z00L-2.0.5.6-my1.tar.bz2 /sdcard/
+adb shell
 su
-mkdir<span class="w"> </span>-p<span class="w"> </span>/data/.stowaways/sailfishos
-tar<span class="w"> </span>--numeric-owner<span class="w"> </span>-xjvf<span class="w"> </span>/storage/9CB2-B41E/sfe-Z00L-2.0.5.6-my1.tar.bz2
--C<span class="w"> </span>/data/.stowaways/sailfishos
+mkdir -p /data/.stowaways/sailfishos
+tar --numeric-owner -xjvf /storage/9CB2-B41E/sfe-Z00L-2.0.5.6-my1.tar.bz2
+-C /data/.stowaways/sailfishos
 </pre></div>
 
 
 <ul>
 <li>Прошивка boot image через adb</li>
 </ul>
-<div class="highlight"><pre><span></span>MER_SDK<span class="w"> </span><span class="nv">$adb</span><span class="w"> </span>push<span class="w"> </span>hybris-boot.img<span class="w"> </span>/sdcard/adb<span class="w"> </span>shellsudd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/storage/9CB2-B41E/hybris-boot.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/block/
-<span class="w">                   </span>mmcblk0p37
+<div class="highlight"><pre><span></span>MER_SDK <span class="nv">$adb</span> push hybris-boot.img /sdcard/adb shellsudd <span class="k">if</span><span class="o">=</span>/storage/9CB2-B41E/hybris-boot.img <span class="nv">of</span><span class="o">=</span>/dev/block/
+                   mmcblk0p37
 </pre></div>
 
 
@@ -143,8 +143,8 @@ tar<span class="w"> </span>--numeric-owner<span class="w"> </span>-xjvf<span cla
 <p>Итак,есть устройство...и естественно оно не загружается...ну так бывает при портировании. Как добраться до логов?
 <strong>Шаг 1</strong> : Правим настройки журнала systemd
 Заходим в рековери, кастомное</p>
-<div class="highlight"><pre><span></span>adb<span class="w"> </span>shell
-vi<span class="w"> </span>/data/.stowaways/sailfishos/etc/systemd/journald.conf
+<div class="highlight"><pre><span></span>adb shell
+vi /data/.stowaways/sailfishos/etc/systemd/journald.conf
 </pre></div>
 
 
@@ -152,17 +152,17 @@ vi<span class="w"> </span>/data/.stowaways/sailfishos/etc/systemd/journald.conf
 <strong>Шаг 2:</strong> Перезагружаемся...ждём...
 <strong>Шаг 3:</strong> Перезагружаемся в рековери заново
 <strong>Шаг 4:</strong> Чрутуемся в sailfish</p>
-<div class="highlight"><pre><span></span>adb<span class="w"> </span>shell
+<div class="highlight"><pre><span></span>adb shell
 su
-mount<span class="w"> </span>-o<span class="w"> </span><span class="nb">bind</span><span class="w"> </span>/dev<span class="w"> </span>/data/.stowaways/sailfishos/dev
-mount<span class="w"> </span>-o<span class="w"> </span><span class="nb">bind</span><span class="w"> </span>/proc<span class="w"> </span>/data/.stowaways/sailfishos/proc
-mount<span class="w"> </span>-o<span class="w"> </span><span class="nb">bind</span><span class="w"> </span>/sys<span class="w"> </span>/data/.stowaways/sailfishos/sys
-chroot<span class="w"> </span>/data/.stowaways/sailfishos/<span class="w"> </span>/bin/su<span class="w"> </span>-
+mount -o <span class="nb">bind</span> /dev /data/.stowaways/sailfishos/dev
+mount -o <span class="nb">bind</span> /proc /data/.stowaways/sailfishos/proc
+mount -o <span class="nb">bind</span> /sys /data/.stowaways/sailfishos/sys
+chroot /data/.stowaways/sailfishos/ /bin/su -
 </pre></div>
 
 
 <p><strong>Шаг 5</strong> : смотрим наш журнал:</p>
-<div class="highlight"><pre><span></span>journalctl -b
+<div class="highlight"><pre><span></span><span class="err">journalctl -b</span>
 </pre></div>
 
 
@@ -193,15 +193,15 @@ chroot<span class="w"> </span>/data/.stowaways/sailfishos/<span class="w"> </spa
 <p><strong>Решение:</strong> </p>
 <ul>
 <li>
-<div class="highlight"><pre><span></span>          device/asus/msm8916-common/BoardConfigCommon.mk
+<div class="highlight"><pre><span></span><span class="err">          device/asus/msm8916-common/BoardConfigCommon.mk</span>
 </pre></div>
 
 
 </li>
 </ul>
 <p>в строке которая ниже добавлен параметр:</p>
-<div class="highlight"><pre><span></span><span class="nv">selinux</span><span class="o">=</span><span class="mi">0</span>
-<span class="nv">BOARD_KERNEL_CMDLINE</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nv">console</span><span class="o">=</span><span class="nv">ttyHSL0</span><span class="p">,</span><span class="mi">115200</span><span class="p">,</span><span class="nv">n8</span><span class="w"> </span><span class="ow">and</span><span class="nv">roidboot</span><span class="o">.</span><span class="nv">console</span><span class="o">=</span><span class="nv">ttyHSL0</span><span class="w"> </span><span class="ow">and</span><span class="nv">roidboot</span><span class="o">.</span><span class="nv">hardware</span><span class="o">=</span><span class="nv">qcom</span><span class="w"> </span><span class="nv">ehci</span><span class="o">-</span><span class="nv">hcd</span><span class="o">.</span><span class="nv">park</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="ow">and</span><span class="nv">roidboot</span><span class="o">.</span><span class="nv">bootdevice</span><span class="o">=</span><span class="mi">7824900</span><span class="o">.</span><span class="nv">sdhci</span><span class="w"> </span><span class="nv">lpm_levels</span><span class="o">.</span><span class="nv">sleep_disabled</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="nv">selinux</span><span class="o">=</span><span class="mi">0</span>
+<div class="highlight"><pre><span></span><span class="err">selinux=0</span>
+<span class="err">BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 selinux=0</span>
 </pre></div>
 
 

@@ -121,20 +121,20 @@
 <p>The hybris-boot repository contains such an initrd with convenient USB networking, DHCP and telnet server, plus the ability to boot into a Sailfish OS system. </p>
 <p>The init system in the hybris-boot initrd will attempt to write information via the USB device serial number and model. </p>
 <p>So <strong>dmesg</strong> on the host could produce:</p>
-<div class="highlight"><pre><span></span>[1094634.238136] usb 2-2: Manufacturer: Mer Boat Loader
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1094634</span><span class="p">.</span><span class="mi">238136</span><span class="p">]</span> <span class="n">usb</span> <span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span> <span class="n">Manufacturer</span><span class="p">:</span> <span class="n">Mer</span> <span class="n">Boat</span> <span class="n">Loader</span>
 
-[1094634.238143] usb 2-2: SerialNumber: Mer Debug setting up (DONE_SWITCH=no)
+<span class="p">[</span><span class="mi">1094634</span><span class="p">.</span><span class="mi">238143</span><span class="p">]</span> <span class="n">usb</span> <span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span> <span class="n">SerialNumber</span><span class="p">:</span> <span class="n">Mer</span> <span class="n">Debug</span> <span class="n">setting</span> <span class="n">up</span> <span class="p">(</span><span class="n">DONE_SWITCH</span><span class="o">=</span><span class="k">no</span><span class="p">)</span>
 </pre></div>
 
 
 <p>However dmesg doesn’t report all changes in the USB subsystem and the init script will attempt to update the iSerial field with information so also do:</p>
-<div class="highlight"><pre><span></span>lsusb<span class="w"> </span>-v<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>iSerial
+<div class="highlight"><pre><span></span>lsusb -v <span class="p">|</span> grep iSerial
 </pre></div>
 
 
 <p>iSerial 3 Mer Debug telnet on port 23 on rndis0 192.168.2.15 - also running udhcpd</p>
 <p>However, if it says something like:</p>
-<div class="highlight"><pre><span></span>[1094634.238143] usb 2-2: SerialNumber: Mer Debug setting up (DONE_SWITCH=yes)
+<div class="highlight"><pre><span></span><span class="err">[1094634.238143] usb 2-2: SerialNumber: Mer Debug setting up (DONE_SWITCH=yes)</span>
 </pre></div>
 
 
@@ -171,11 +171,11 @@
 <p>/var/lib/environment/usb-moded/alwaysdevmode.conf</p>
 <p>То есть если через рековери то будет  /data/.stowaways/sailfishos/var/lib/environment/usb-moded/alwaysdevmode.conf</p>
 <p>​              С содержимым:</p>
-<div class="highlight"><pre><span></span>USB_MODED_ARGS=-r
--------------------------
+<div class="highlight"><pre><span></span><span class="n">USB_MODED_ARGS</span><span class="o">=-</span><span class="n">r</span>
+<span class="c1">-------------------------</span>
 
-И ещё для коллекции в #geekfaq. Настройки ssu, такие как название модели, хранятся здесь:
-/usr/share/ssu/board-mappings.d/ 
+<span class="err">И</span> <span class="err">ещё</span> <span class="err">для</span> <span class="err">коллекции</span> <span class="err">в</span> <span class="o">#</span><span class="n">geekfaq</span><span class="p">.</span> <span class="err">Настройки</span> <span class="n">ssu</span><span class="p">,</span> <span class="err">такие</span> <span class="err">как</span> <span class="err">название</span> <span class="err">модели</span><span class="p">,</span> <span class="err">хранятся</span> <span class="err">здесь</span><span class="p">:</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">ssu</span><span class="o">/</span><span class="n">board</span><span class="o">-</span><span class="n">mappings</span><span class="p">.</span><span class="n">d</span><span class="o">/</span> 
 </pre></div>
     </div><!-- /.entry-content -->
 

@@ -111,27 +111,27 @@
 <ol>
 <li>Создать Dockerfile </li>
 </ol>
-<div class="highlight"><pre><span></span>FROM<span class="w"> </span>centos:8
-RUN<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>firefox<span class="w"> </span>-y
-CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+<div class="highlight"><pre><span></span>FROM centos:8
+RUN yum install firefox -y
+CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
 </pre></div>
 
 
 <p>или вот такой:</p>
-<div class="highlight"><pre><span></span>FROM<span class="w"> </span>ubuntu:20.04
+<div class="highlight"><pre><span></span>FROM ubuntu:20.04
 <span class="c1"># нужно Configuring tzdata</span>
-ENV<span class="w"> </span><span class="nv">TZ</span><span class="o">=</span>Europe/Moscow
+ENV <span class="nv">TZ</span><span class="o">=</span>Europe/Moscow
 <span class="c1">#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; echo $TZ &gt; /etc/timezone</span>
 <span class="c1"># установка приложения</span>
-RUN<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>firefox<span class="w"> </span>-y
-CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
+RUN apt update <span class="o">&amp;&amp;</span> apt upgrade <span class="o">&amp;&amp;</span> apt install firefox -y
+CMD <span class="o">[</span><span class="s2">&quot;/usr/bin/firefox&quot;</span><span class="o">]</span>
 </pre></div>
 
 
 <ol>
 <li>Создаем образ </li>
 </ol>
-<div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>название_образа<span class="w"> </span>.
+<div class="highlight"><pre><span></span>docker build -t название_образа .
 </pre></div>
 
 
@@ -140,19 +140,19 @@ CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/b
 <li>Снимаем ограничения доступа к Xorg</li>
 </ol>
 <p>для того чтобы приложение могло под root получать доступ. действует до перезагрузки вашего  компьютера.</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>xhost<span class="w"> </span>+SI:localuser:root<span class="w"> </span>
+<div class="highlight"><pre><span></span>sudo xhost +SI:localuser:root 
 </pre></div>
 
 
 <ol>
 <li>Запускаем докер контейнер</li>
 </ol>
-<div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>имя_контейнера<span class="w"> </span>-it<span class="w"> </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span>--net<span class="o">=</span>host<span class="w"> </span>название_образа
+<div class="highlight"><pre><span></span>docker run --name имя_контейнера -it -e <span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span> --net<span class="o">=</span>host название_образа
 </pre></div>
 
 
 <p>если нет переменной окружения DISPLAY:</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>:0
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DISPLAY</span><span class="o">=</span>:0
 </pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -244,29 +244,27 @@ CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;/usr/b
 <li><a href="https://docs.docker.com/engine/install/ubuntu/">установка докер в убунту</a></li>
 </ul>
 <h2>Установка Docker в Ubuntu</h2>
-<div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>lsb-release
+<div class="highlight"><pre><span></span> sudo apt-get update
+ sudo apt-get install <span class="se">\</span>
+    apt-transport-https <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg <span class="se">\</span>
+    lsb-release
 
 
-<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 
-<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
+ <span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
                 <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

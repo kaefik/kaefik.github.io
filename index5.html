@@ -135,7 +135,7 @@
 <li>https://towardsdatascience.com/learn-enough-git-to-be-useful-281561eef959 </li>
 </ul>
 <h2>Получить ветку с удаленного репозитория</h2>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;название<span class="w"> </span>ветки&gt;<span class="w"> </span>origin/&lt;название<span class="w"> </span>ветки&gt;
+<div class="highlight"><pre><span></span>git checkout -b &lt;название ветки&gt; origin/&lt;название ветки&gt;
 </pre></div>
 
 
@@ -143,21 +143,21 @@
 <ul>
 <li>Создать новую ветку фич и перейти на неё: </li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_feature_branch
+<div class="highlight"><pre><span></span>git checkout -b my_feature_branch
 </pre></div>
 
 
 <ul>
 <li></li>
 </ul>
-<div class="highlight"><pre><span></span><span class="w">  </span>git<span class="w"> </span>status<span class="w"> </span>
+<div class="highlight"><pre><span></span>  git status 
 </pre></div>
 
 
 <ul>
 <li>Зафиксировать изменения: </li>
 </ul>
-<div class="highlight"><pre><span></span>git<span class="w"> </span>add …</pre></div>
+<div class="highlight"><pre><span></span>git add …</pre></div>
                 <a class="readmore" href="/2020/01/20/git-workflow/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -209,8 +209,8 @@
 <li>https://pythonru.com/biblioteki/znakomstvo-s-fastapi</li>
 </ul>
 <h1>Установка FastAPI</h1>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>wheel<span class="w"> </span>-U
-pip<span class="w"> </span>install<span class="w"> </span>uvicorn<span class="w"> </span>fastapi<span class="w"> </span>pydantic<span class="w"> </span>
+<div class="highlight"><pre><span></span>pip install wheel -U
+pip install uvicorn fastapi pydantic 
 </pre></div>
 
 
@@ -250,15 +250,15 @@ pip<span class="w"> </span>install<span class="w"> </span>uvicorn<span class="w"
 <ul>
 <li>Установка библиотек:</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xbindkeys
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>xautomation
+<div class="highlight"><pre><span></span>sudo apt install xbindkeys
+sudo apt install xautomation
 </pre></div>
 
 
 <ul>
 <li>Какой номер имеет каждая физическая кнопка мыши определяется командой:</li>
 </ul>
-<div class="highlight"><pre><span></span>xev<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A2<span class="w"> </span>--line-buffered<span class="w"> </span><span class="s1">&#39;^ButtonPress&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-nE …</pre></div>
+<div class="highlight"><pre><span></span>xev <span class="p">|</span> grep -A2 --line-buffered <span class="s1">&#39;^ButtonPress&#39;</span> <span class="p">|</span> sed -nE …</pre></div>
                 <a class="readmore" href="/2019/12/20/config-mouse-keys/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -301,14 +301,14 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <ol>
 <li>проверяем где установлен fish: </li>
 </ol>
-<div class="highlight"><pre><span></span><span class="w">    </span>which<span class="w"> </span>fish
+<div class="highlight"><pre><span></span>    which fish
 </pre></div>
 
 
 <ol>
 <li>переключение shell по умолчанию</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="w">   </span>chsh<span class="w"> </span>-s<span class="w"> </span>путь_для_fish
+<div class="highlight"><pre><span></span>   chsh -s путь_для_fish
 </pre></div>
                 <a class="readmore" href="/2019/12/04/fishka-linux/">read more</a>
                 </div><!-- /.entry-content -->
@@ -327,14 +327,14 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </footer><!-- /.post-info -->                <p>Источник: https://habr.com/ru/post/472674/  </p>
 <h2>Переменные окружения bash</h2>
 <p>Например, чтобы запустить flask-приложение, вначале нужно указать в переменной окружения FLASK_APP имя нашего приложения: </p>
-<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
-flask<span class="w"> </span>run
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
+flask run
 </pre></div>
 
 
 <p>С помощью переменных окружения можно получать различные параметры приложение и секретные ключи: </p>
-<div class="highlight"><pre><span></span>import<span class="w"> </span>os
-app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>os.environ.get …</pre></div>
+<div class="highlight"><pre><span></span>import os
+app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get …</pre></div>
                 <a class="readmore" href="/2019/11/21/environment-variables-python/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -378,19 +378,19 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <li>Venv </li>
 <li>Создание виртуального окружения </li>
 </ol>
-<div class="highlight"><pre><span></span>python3.7<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>my_directory_env<span class="w"> </span>
+<div class="highlight"><pre><span></span>python3.7 -m venv my_directory_env 
 </pre></div>
 
 
 <p>Активация виртуального окружения: </p>
-<div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>my_env/bin/activate
+<div class="highlight"><pre><span></span><span class="nb">source</span> my_env/bin/activate
 </pre></div>
 
 
 <ul>
 <li>Выйти из виртуального окружения: </li>
 </ul>
-<div class="highlight"><pre><span></span>Deactivate<span class="w"> </span>
+<div class="highlight"><pre><span></span>Deactivate 
 </pre></div>
 
 
@@ -405,15 +405,11 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-        <li><a href="/index.html">&Lang;</a></li>
-        <li><a href="/index4.html">&lang;</a></li>
-      <li>Page 5 / 16</li>
-        <li><a href="/index6.html">&rang;</a></li>
-        <li><a href="/index16.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+        <a href="/index4.html">&laquo;</a>
+    Page 5 / 16
+        <a href="/index6.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

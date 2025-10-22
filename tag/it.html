@@ -115,22 +115,22 @@
 <li><a href="http://lecturesnet.readthedocs.io/net/low-level/ipc/socket/intro.html">Общая информация о сокетах</a></li>
 </ul>
 <h2>Компиляция Lua</h2>
-<div class="highlight"><pre><span></span>curl<span class="w"> </span>-R<span class="w"> </span>-O<span class="w"> </span>http://www.lua.org/ftp/lua-5.3.4.tar.gz
-tar<span class="w"> </span>zxf<span class="w"> </span>lua-5.3.4.tar.gz
-<span class="nb">cd</span><span class="w"> </span>lua-5.3.4
-make<span class="w"> </span>linux<span class="w"> </span><span class="nb">test</span>
+<div class="highlight"><pre><span></span>curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz
+tar zxf lua-5.3.4.tar.gz
+<span class="nb">cd</span> lua-5.3.4
+make linux <span class="nb">test</span>
 </pre></div>
 
 
 <ul>
 <li>если возникает ошибка: lua.c:82:10: фатальная ошибка: readline/readline.h: No such file or directory, то нужно установить:</li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>readline-devel
+<div class="highlight"><pre><span></span>sudo dnf install readline-devel
 </pre></div>
 
 
 <h2>Установка Lua</h2>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>make<span class="w"> </span>linux<span class="w"> </span>install
+<div class="highlight"><pre><span></span>sudo make linux install
 </pre></div>
 
 
@@ -166,23 +166,21 @@ make<span class="w"> </span>linux<span class="w"> </span><span class="nb">test</
 <li><a href="https://ilovelua.wordpress.com/%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%BF%D0%BE-%D1%81%D0%B5%D1%82%D0%B8-%D1%81-luasocket/">Передача данных по сети с LuaSocket</a></li>
 </ul>
 <h2>Install LuaRocks</h2>
-<div class="highlight"><pre><span></span>wget<span class="w"> </span>https://luarocks.org/releases/luarocks-2.4.1.tar.gz
-tar<span class="w"> </span>zxpf<span class="w"> </span>luarocks-2.4.1.tar.gz
-<span class="nb">cd</span><span class="w"> </span>luarocks-2.4.1
+<div class="highlight"><pre><span></span>wget https://luarocks.org/releases/luarocks-2.4.1.tar.gz
+tar zxpf luarocks-2.4.1.tar.gz
+<span class="nb">cd</span> luarocks-2.4.1
 ./configure
-make<span class="w"> </span>build
-sudo<span class="w"> </span>make<span class="w"> </span>install
-sudo<span class="w"> </span>luarocks<span class="w"> </span>install<span class="w"> </span>luasocket<span class="w">   </span>-<span class="w"> </span>в<span class="w"> </span>fedora<span class="w"> </span>почему-то<span class="w"> </span>под<span class="w"> </span>sudo<span class="w"> </span>не<span class="w"> </span>ставится,<span class="w"> </span>а<span class="w"> </span>вот<span class="w"> </span>под<span class="w"> </span>root<span class="w"> </span>без<span class="w"> </span>проблем
+make build
+sudo make install
+sudo luarocks install luasocket   - в fedora почему-то под sudo не ставится, а вот под root без проблем
 lua
 
-Lua<span class="w"> </span><span class="m">5</span>.3.3<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">1994</span>-2016<span class="w"> </span>Lua.org,<span class="w"> </span>PUC-Rio
-&gt;<span class="w"> </span>require<span class="w"> </span><span class="s2">&quot;socket&quot;</span>
+Lua <span class="m">5</span>.3.3 Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">1994</span>-2016 Lua.org, PUC-Rio
+&gt; require <span class="s2">&quot;socket&quot;</span>
 </pre></div>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

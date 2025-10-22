@@ -102,9 +102,9 @@
 </footer><!-- /.post-info --><h2>Получение данных о компьютерах</h2>
 <div class="highlight"><pre><span></span><span class="k">function</span> <span class="nb">Get-SystemInfo</span> <span class="p">{</span>
 <span class="cm">&lt;#</span>
-<span class="sd">.SYNOPSIS</span>
-<span class="sd">.DESCRIPTION</span>
-<span class="sd">.EXAMPLE</span>
+<span class="sd">.SYNOPSIS</span><span class="cm"></span>
+<span class="sd">.DESCRIPTION</span><span class="cm"></span>
+<span class="sd">.EXAMPLE</span><span class="cm"></span>
 <span class="cm">&quot;comp1&quot;,&quot;comp2&quot;,&quot;comp3&quot; | ? { Test-Connection $_ -Count 1 -ea SilentlyContinue } | Get-SystemInfo</span>
 <span class="cm">#&gt;</span>
 <span class="p">[</span><span class="k">CmdletBinding</span><span class="p">(</span> <span class="n">SupportsShouldProcess</span> <span class="p">=</span> <span class="nv">$true</span> <span class="p">)]</span>
@@ -172,7 +172,7 @@
 <span class="nb">New-Variable</span> <span class="n">-Name</span> <span class="n">regValue</span> <span class="n">-Value</span> <span class="s1">&#39;DigitalProductId&#39;</span> <span class="n">-Option</span> <span class="n">Constant</span>
 <span class="c">######################################</span>
 <span class="nv">$parameters_switch</span> <span class="p">=</span> <span class="p">@{}</span>
-<span class="nv">$current_function</span> <span class="p">=</span> <span class="nb">get-item</span> <span class="p">(</span><span class="nb">Join-Path</span> <span class="k">function</span><span class="p">:</span> <span class="nv">$MyInvocation</span><span class="p">.</span><span class="n">MyCommand</span><span class="p">);</span>
+<span class="nv">$current_function</span> <span class="p">=</span> <span class="nb">get-item</span> <span class="p">(</span><span class="nb">Join-Path</span> <span class="k">function</span><span class="err">:</span> <span class="nv">$MyInvocation</span><span class="p">.</span><span class="n">MyCommand</span><span class="p">);</span>
 <span class="nv">$current_function</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="n">values</span> <span class="p">|</span>
 <span class="c">#where { @($_.attributes | % {$_.position}) -eq [int]::MinValue} |       # only custom parameters; только втроенные параметры функций.</span>
 <span class="nb">where </span><span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">SwitchParameter</span> <span class="p">}</span> <span class="p">|</span>                                          <span class="c"># only switchers; только переключатели</span>
@@ -254,11 +254,9 @@
 
 
 <h2></h2>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

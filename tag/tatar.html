@@ -124,17 +124,17 @@
 </ul>
 <h3>Добавить пользователя в sudoers</h3>
 <p>Чтобы открыть /etc/sudoers, введите:</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>visudo
+<div class="highlight"><pre><span></span>sudo visudo
 </pre></div>
 
 
 <h3>Настройка сетевого интерфейса</h3>
-<div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>network.service
-systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>network.service
+<div class="highlight"><pre><span></span>systemctl restart network.service
+systemctl <span class="nb">enable</span> network.service
 </pre></div>
 
 
-<div class="highlight"><pre><span></span>vi<span class="w"> </span>/etc/sysconfig/network-scripts/ifcfg-em1
+<div class="highlight"><pre><span></span>vi /etc/sysconfig/network-scripts/ifcfg-em1
 </pre></div>
 
 
@@ -150,12 +150,12 @@ BROADCAST=192.168.1.255
 NETWORK=192.168.1.0
 GATEWAY=192.168.1.1</p>
 <p>Перезапуск сетевой службы:</p>
-<div class="highlight"><pre><span></span>systemctl<span class="w"> </span>restart<span class="w"> </span>network.service
+<div class="highlight"><pre><span></span>systemctl restart network.service
 </pre></div>
 
 
 <h2>Конфигурация DNS</h2>
-<div class="highlight"><pre><span></span>vi<span class="w"> </span>/etc/resolv.conf
+<div class="highlight"><pre><span></span>vi /etc/resolv.conf
 </pre></div>
 
 
@@ -169,7 +169,7 @@ nameserver 8.8.8.8</p>
 <p>Все что нам надо сделать, это избавиться от опции [NOTFOUND=return], приведя строчку к виду:</p>
 <p>hosts: files mdns4_minimal dns</p>
 <p>Перезапускаем avahi-daemon и наслаждаемся совместной работой avahi и ретрекера (или других сервисов в зоне .local) вашего провайдера.</p>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>service<span class="w"> </span>avahi-daemon<span class="w"> </span>restart
+<div class="highlight"><pre><span></span>sudo service avahi-daemon restart
 </pre></div>
 
 
@@ -188,7 +188,7 @@ nameserver 8.8.8.8</p>
 <ul>
 <li>Solution: </li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>kernel-devel<span class="w"> </span>dkms<span class="w"> </span>kernel-headers
+<div class="highlight"><pre><span></span>sudo dnf install kernel-devel dkms kernel-headers
 </pre></div>
 
 
@@ -197,7 +197,7 @@ nameserver 8.8.8.8</p>
 <ul>
 <li><a href="https://github.com/robbyrussell/oh-my-zsh">https://github.com/robbyrussell/oh-my-zsh</a></li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>zsh
+<div class="highlight"><pre><span></span>sudo dnf install zsh
 </pre></div>
 
 
@@ -226,16 +226,16 @@ unalias alias_command_name</p>
 <h2><a href="http://qwinff.github.io/">Конвертация видео и аудио</a></h2>
 <h2>Upgrading Fedora 26 Workstation to Fedora 27</h2>
 <div class="highlight"><pre><span></span><span class="c1"># Update software and back up your system</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>--refresh
+sudo dnf upgrade --refresh
 
 <span class="c1"># Install the DNF plugin</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>dnf-plugin-system-upgrade
+sudo dnf install dnf-plugin-system-upgrade
 
 <span class="c1"># Start the update with DNF</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>system-upgrade<span class="w"> </span>download<span class="w"> </span>--releasever<span class="o">=</span><span class="m">27</span>
+sudo dnf system-upgrade download --releasever<span class="o">=</span><span class="m">27</span>
 
 <span class="c1"># Reboot and upgrade</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>system-upgrade<span class="w"> </span>reboot<span class="w"> </span>
+sudo dnf system-upgrade reboot 
 </pre></div>
 
 
@@ -263,7 +263,7 @@ sudo<span class="w"> </span>dnf<span class="w"> </span>system-upgrade<span class
 <span class="nt">&lt;configItem&gt;</span>
 <span class="nt">&lt;name&gt;</span>cta-alt<span class="nt">&lt;/name&gt;</span>
 <span class="nt">&lt;shortDescription&gt;</span>cta<span class="nt">&lt;/shortDescription&gt;</span>
-<span class="nt">&lt;description&gt;</span>Common<span class="w"> </span>Turkic<span class="w"> </span>Alphabet<span class="w"> </span>(Turkish<span class="w"> </span>Alt-Q)<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;description&gt;</span>Common Turkic Alphabet (Turkish Alt-Q)<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;languageList&gt;</span>
 <span class="nt">&lt;iso639Id&gt;</span>cta<span class="nt">&lt;/iso639Id&gt;</span>
 <span class="nt">&lt;/languageList&gt;</span>
@@ -273,10 +273,10 @@ sudo<span class="w"> </span>dnf<span class="w"> </span>system-upgrade<span class
 
 
 <p>In <em>/usr/share/X11/xkb/rules/base.lst</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span><span class="n">layout</span>
-<span class="o">...</span>
-<span class="n">gb</span><span class="w">              </span><span class="n">United</span><span class="w"> </span><span class="n">Kingdom</span>
-<span class="n">gb</span><span class="o">-</span><span class="n">mine</span><span class="w">         </span><span class="n">United</span><span class="w"> </span><span class="n">Kingdom</span><span class="w"> </span><span class="p">(</span><span class="n">My</span><span class="w"> </span><span class="n">variant</span><span class="p">)</span><span class="o">*</span>
+<div class="highlight"><pre><span></span><span class="err">! layout</span>
+<span class="err">...</span>
+<span class="err">gb              United Kingdom</span>
+<span class="err">gb-mine         United Kingdom (My variant)*</span>
 </pre></div>
 
 
@@ -302,7 +302,7 @@ xkb_symbols "cta_alt" {
 <span class="nt">&lt;configItem&gt;</span>
 <span class="nt">&lt;name&gt;</span>cta_alt<span class="nt">&lt;/name&gt;</span>
 <span class="nt">&lt;shortDescription&gt;</span>cta<span class="nt">&lt;/shortDescription&gt;</span>
-<span class="nt">&lt;description&gt;</span>Common<span class="w"> </span>Turkic<span class="w"> </span>Alphabet<span class="w"> </span>(Turkish<span class="w"> </span>Alt-Q)<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;description&gt;</span>Common Turkic Alphabet (Turkish Alt-Q)<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;languageList&gt;</span>
 <span class="nt">&lt;iso639Id&gt;</span>cta<span class="nt">&lt;/iso639Id&gt;</span>
 <span class="nt">&lt;/languageList&gt;</span>
@@ -321,16 +321,14 @@ xkb_symbols "cta_alt" {
 </ul>
 <p>После этих настроек можно будет найти данную раскладку по названию: Common Turkic Alphabet в разделе Other (Другие)</p>
 <p><strong>Создание загрузочного USB Windows</strong> - https://github.com/slacka/WoeUSB</p>
-<div class="highlight"><pre><span></span>woeusb<span class="w"> </span>--device<span class="w"> </span>WIndows_8.1_1.4_x32.iso<span class="w"> </span>/dev/sdd
+<div class="highlight"><pre><span></span>woeusb --device WIndows_8.1_1.4_x32.iso /dev/sdd
 </pre></div>
 
 
 <p>*</p>                </article>
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->

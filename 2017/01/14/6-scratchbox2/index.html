@@ -109,22 +109,22 @@
 <h3>вот что я рекомендую сделать</h3>
 <p>скрипт со следующим содержимым, здесь я указываю явно Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2</p>
 <p>если изменится версия, то рекомендую смотреть ссылки на sb2 в файле <a href="http:**//**releases.sailfishos.org**/**sdk**/**latest**/**targets**/**targets.json">http:<strong>//</strong>releases.sailfishos.org<strong>/</strong>sdk<strong>/</strong>latest<strong>/</strong>targets<strong>/</strong>targets.json</a></p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>
 <span class="nv">SFE_SB2_TARGET</span><span class="o">=</span><span class="nv">$MER_ROOT</span>/targets/<span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span>
 <span class="c1"># TARBALL_URL=http://releases.sailfishos.org/sdk/latest/targets/targets.json</span>
 <span class="c1"># TARBALL_URL=http://releases.sailfishos.org/sdk/targets-1611/Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2</span>
 <span class="c1"># TARBALL=$(curl $TARBALL_URL)</span>
-curl<span class="w"> </span>-O<span class="w"> </span>http://releases.sailfishos.org/sdk/targets-1611/Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2
-sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-sudo<span class="w"> </span>tar<span class="w"> </span>--numeric-owner<span class="w"> </span>-pxjf<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span>Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2<span class="k">)</span><span class="w"> </span>-C<span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-grep<span class="w"> </span>:<span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="w"> </span>/etc/passwd<span class="w"> </span>&gt;&gt;<span class="w"> </span>etc/passwd
-grep<span class="w"> </span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span>:<span class="w"> </span>/etc/group<span class="w"> </span>&gt;&gt;<span class="w"> </span>etc/group
-sb2-init<span class="w"> </span>-d<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;--sysroot=/&quot;</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;--sysroot=/&quot;</span><span class="w"> </span>-c<span class="w"> </span>/usr/bin/qemu-arm-dynamic<span class="w"> </span>-m<span class="w"> </span>sdk-build<span class="w">  </span>-n<span class="w"> </span>-N<span class="w"> </span>-t<span class="w"> </span>/<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>/opt/cross/bin/<span class="nv">$PORT_ARCH</span>-meego-linux-gnueabi-gcc
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>rpm<span class="w"> </span>--rebuilddb
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>ar<span class="w"> </span>-G<span class="w"> </span>http://repo.merproject.org/releases/mer-tools/rolling/builds/<span class="nv">$PORT_ARCH</span>/packages/<span class="w"> </span>mer-tools-rolling
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>ref<span class="w"> </span>--force
+curl -O http://releases.sailfishos.org/sdk/targets-1611/Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2
+sudo mkdir -p <span class="nv">$SFE_SB2_TARGET</span>
+sudo tar --numeric-owner -pxjf <span class="k">$(</span>basename Jolla-2.0.5.6-Sailfish_SDK_Target-armv7hl.tar.bz2<span class="k">)</span> -C <span class="nv">$SFE_SB2_TARGET</span>
+sudo chown -R <span class="nv">$USER</span> <span class="nv">$SFE_SB2_TARGET</span>
+<span class="nb">cd</span> <span class="nv">$SFE_SB2_TARGET</span>
+grep :<span class="k">$(</span>id -u<span class="k">)</span>: /etc/passwd &gt;&gt; etc/passwd
+grep :<span class="k">$(</span>id -g<span class="k">)</span>: /etc/group &gt;&gt; etc/group
+sb2-init -d -L <span class="s2">&quot;--sysroot=/&quot;</span> -C <span class="s2">&quot;--sysroot=/&quot;</span> -c /usr/bin/qemu-arm-dynamic -m sdk-build  -n -N -t / <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> /opt/cross/bin/<span class="nv">$PORT_ARCH</span>-meego-linux-gnueabi-gcc
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R rpm --rebuilddb
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ar -G http://repo.merproject.org/releases/mer-tools/rolling/builds/<span class="nv">$PORT_ARCH</span>/packages/ mer-tools-rolling
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ref --force
 <span class="c1"># install repo</span>
 <span class="c1"># hadk</span>
 <span class="c1"># sb2 -t $VENDOR-$DEVICE-$PORT_ARCH -m sdk-install -R zypper ar http://repo.merproject.org/obs/nemo:/devel:/hw:/common/sailfish_latest_armv7hl/ sfl</span>
@@ -134,42 +134,42 @@ sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</s
 
 
 <h3>из официальной документации()</h3>
-<div class="highlight"><pre><span></span>MERSDK<span class="w"> </span>$
+<div class="highlight"><pre><span></span>MERSDK $
 hadk
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+<span class="nb">cd</span> <span class="nv">$HOME</span>
 <span class="nv">SFE_SB2_TARGET</span><span class="o">=</span><span class="nv">$MER_ROOT</span>/targets/<span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span>
 <span class="nv">TARBALL_URL</span><span class="o">=</span>http://releases.sailfishos.org/sdk/latest/targets/targets.json
-<span class="nv">TARBALL</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="nv">$TARBALL_URL</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PORT_ARCH</span><span class="s2">.tar.bz2&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="se">\&quot;</span><span class="w"> </span>-f4<span class="k">)</span>
-curl<span class="w"> </span>-O<span class="w"> </span><span class="nv">$TARBALL</span>
-sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-sudo<span class="w"> </span>tar<span class="w"> </span>--numeric-owner<span class="w"> </span>-pxjf<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$TARBALL</span><span class="k">)</span><span class="w"> </span>-C<span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$SFE_SB2_TARGET</span>
-grep<span class="w"> </span>:<span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="w"> </span>/etc/passwd<span class="w"> </span>&gt;&gt;<span class="w"> </span>etc/passwd
-grep<span class="w"> </span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span>:<span class="w"> </span>/etc/group<span class="w"> </span>&gt;&gt;<span class="w"> </span>etc/group
+<span class="nv">TARBALL</span><span class="o">=</span><span class="k">$(</span>curl <span class="nv">$TARBALL_URL</span> <span class="p">|</span> grep <span class="s2">&quot;</span><span class="nv">$PORT_ARCH</span><span class="s2">.tar.bz2&quot;</span> <span class="p">|</span> cut -d<span class="se">\&quot;</span> -f4<span class="k">)</span>
+curl -O <span class="nv">$TARBALL</span>
+sudo mkdir -p <span class="nv">$SFE_SB2_TARGET</span>
+sudo tar --numeric-owner -pxjf <span class="k">$(</span>basename <span class="nv">$TARBALL</span><span class="k">)</span> -C <span class="nv">$SFE_SB2_TARGET</span>
+sudo chown -R <span class="nv">$USER</span> <span class="nv">$SFE_SB2_TARGET</span>
+<span class="nb">cd</span> <span class="nv">$SFE_SB2_TARGET</span>
+grep :<span class="k">$(</span>id -u<span class="k">)</span>: /etc/passwd &gt;&gt; etc/passwd
+grep :<span class="k">$(</span>id -g<span class="k">)</span>: /etc/group &gt;&gt; etc/group
 <span class="c1"># Сообщение: collect2: cannot find &#39;ld&#39; - можно пропустить это не важно</span>
 
-sb2-init<span class="w"> </span>-d<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;--sysroot=/&quot;</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;--sysroot=/&quot;</span><span class="w"> </span>-c<span class="w"> </span>/usr/bin/qemu-arm-dynamic<span class="w"> </span>-m<span class="w"> </span>sdk-build<span class="w">  </span>-n<span class="w"> </span>-N<span class="w"> </span>-t<span class="w"> </span>/<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>/opt/cross/bin/<span class="nv">$PORT_ARCH</span>-meego-linux-gnueabi-gcc
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>rpm<span class="w"> </span>--rebuilddb
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>ar<span class="w"> </span>-G<span class="w"> </span>http://repo.merproject.org/releases/mer-tools/rolling/builds/<span class="nv">$PORT_ARCH</span>/packages/<span class="w"> </span>mer-tools-rolling
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>ref<span class="w"> </span>--force
+sb2-init -d -L <span class="s2">&quot;--sysroot=/&quot;</span> -C <span class="s2">&quot;--sysroot=/&quot;</span> -c /usr/bin/qemu-arm-dynamic -m sdk-build  -n -N -t / <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> /opt/cross/bin/<span class="nv">$PORT_ARCH</span>-meego-linux-gnueabi-gcc
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R rpm --rebuilddb
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ar -G http://repo.merproject.org/releases/mer-tools/rolling/builds/<span class="nv">$PORT_ARCH</span>/packages/ mer-tools-rolling
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ref --force
 </pre></div>
 
 
 <p>В последних релизах появилась новая зависимость и для неё необходимо добавить свой репозиторий</p>
-<div class="highlight"><pre><span></span>MERSDK<span class="w"> </span>$
+<div class="highlight"><pre><span></span>MERSDK $
 hadk
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>ar<span class="w"> </span>http://repo.merproject.org/obs/nemo:/devel:/hw:/common/sailfish_latest_armv7hl/<span class="w"> </span>sfl
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>-m<span class="w"> </span>sdk-install<span class="w"> </span>-R<span class="w"> </span>zypper<span class="w"> </span>up
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper ar http://repo.merproject.org/obs/nemo:/devel:/hw:/common/sailfish_latest_armv7hl/ sfl
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> -m sdk-install -R zypper up
 </pre></div>
 
 
 <p>​             Более подробно об этой ошибке  <a href="http://neochapay.ru/blogs/zapiski-utkonosa-programmista/hadk-oshibka-nothing-provides-kf5bluezqt.html">тут</a></p>
 <h3>Проверка установленного SCRATCHBOX2, простой программой Hello,World!</h3>
-<div class="highlight"><pre><span></span>MERSDK<span class="w"> </span>$
-<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+<div class="highlight"><pre><span></span>MERSDK $
+<span class="nb">cd</span> <span class="nv">$HOME</span>
 
-сat<span class="w"> </span>&gt;<span class="w"> </span>main.c<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+сat &gt; main.c <span class="s">&lt;&lt; EOF</span>
 <span class="s">#include &lt;stdlib.h&gt;</span>
 <span class="s">#include &lt;stdio.h&gt;</span>
 <span class="s">int main(void) {</span>
@@ -177,12 +177,12 @@ sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</s
 <span class="s">return EXIT_SUCCESS;</span>
 <span class="s">}</span>
 <span class="s">EOF</span>
-sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>gcc<span class="w"> </span>main.c<span class="w"> </span>-o<span class="w"> </span><span class="nb">test</span>
+sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> gcc main.c -o <span class="nb">test</span>
 </pre></div>
 
 
 <h4>Запуск скомпилированной программы:</h4>
-<div class="highlight"><pre><span></span>sb2<span class="w"> </span>-t<span class="w"> </span><span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span><span class="w"> </span>./test
+<div class="highlight"><pre><span></span>sb2 -t <span class="nv">$VENDOR</span>-<span class="nv">$DEVICE</span>-<span class="nv">$PORT_ARCH</span> ./test
 </pre></div>
 
 

@@ -205,20 +205,20 @@
 <li><a href="https://docs.docker.com/engine/install/ubuntu/">установка докер в убунту</a></li>
 </ul>
 <h2>Установка Docker в Ubuntu</h2>
-<div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>lsb-release
+<div class="highlight"><pre><span></span> sudo apt-get update
+ sudo apt-get install <span class="se">\</span>
+    apt-transport-https <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg <span class="se">\</span>
+    lsb-release
 
 
-<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 
-<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
+ <span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
                 <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -342,15 +342,11 @@
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-        <li><a href="/index.html">&Lang;</a></li>
-        <li><a href="/index9.html">&lang;</a></li>
-      <li>Page 10 / 16</li>
-        <li><a href="/index11.html">&rang;</a></li>
-        <li><a href="/index16.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+        <a href="/index9.html">&laquo;</a>
+    Page 10 / 16
+        <a href="/index11.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

@@ -112,11 +112,11 @@
 </ul>
 <p>Запуск ядра который описывается <a href="https://tproger.ru/translations/lets-write-a-kernel-1/">Руководство по созданию ядра для x86-системы. Часть 1. Просто ядро</a> можно сделать следующим образом:
 в файле <strong>/boot/grub2/grub.cfg</strong> добавляем секцию:</p>
-<div class="highlight"><pre><span></span>menuentry &#39;Kernel OS&#39; {
-set root=&#39;hd0,msdos1&#39;
-multiboot /boot/kernel-701
-boot
-}
+<div class="highlight"><pre><span></span><span class="err">menuentry &#39;Kernel OS&#39; {</span>
+<span class="err">set root=&#39;hd0,msdos1&#39;</span>
+<span class="err">multiboot /boot/kernel-701</span>
+<span class="err">boot</span>
+<span class="err">}</span>
 </pre></div>
     </div><!-- /.entry-content -->
 

@@ -128,35 +128,35 @@
 <span class="c1"># Для этого используется ключевое слово &#39;FROM&#39;.</span>
 <span class="c1"># Здесь нам нужно импортировать образ python (с DockerHub).</span>
 <span class="c1"># В результате мы, в качестве имени образа, указываем &#39;python&#39;, а в качестве версии - &#39;latest&#39;.</span>
-FROM<span class="w"> </span>python:latest
+FROM python:latest
 <span class="c1"># Для того чтобы запустить в контейнере код, написанный на Python, нам нужно импортировать файлы &#39;server.py&#39; и &#39;index.html&#39;.</span>
 <span class="c1"># Для того чтобы это сделать, мы используем ключевое слово &#39;ADD&#39;.</span>
 <span class="c1"># Первый параметр, &#39;server.py&#39;, представляет собой имя файла, хранящегося на компьютере.</span>
 <span class="c1"># Второй параметр, &#39;/server/&#39;, это путь, по которому нужно разместить указанный файл в образе.</span>
 <span class="c1"># Здесь мы помещаем файл в папку образа &#39;/server/&#39;.</span>
-ADD<span class="w"> </span>server.py<span class="w"> </span>/server/
-ADD<span class="w"> </span>index.html<span class="w"> </span>/server/
+ADD server.py /server/
+ADD index.html /server/
 <span class="c1"># Здесь мы воспользуемся командой &#39;WORKDIR&#39;, возможно, новой для вас.</span>
 <span class="c1"># Она позволяет изменить рабочую директорию образа.</span>
 <span class="c1"># В качестве такой директории, в которой будут выполняться все команды, мы устанавливаем &#39;/server/&#39;.</span>
-WORKDIR<span class="w"> </span>/server/
+WORKDIR /server/
 </pre></div>
 
 
 <p><strong>Вот содержимое Dockerfile для клиента:</strong> </p>
 <div class="highlight"><pre><span></span><span class="c1"># То же самое, что и в серверном Dockerfile.</span>
-FROM<span class="w"> </span>python:latest
+FROM python:latest
 <span class="c1"># Импортируем &#39;client.py&#39; в папку &#39;/client/&#39;.</span>
-ADD<span class="w"> </span>client.py<span class="w"> </span>/client/
+ADD client.py /client/
 <span class="c1"># Устанавливаем в качестве рабочей директории &#39;/client/&#39;.</span>
-WORKDIR<span class="w"> </span>/client/
+WORKDIR /client/
 </pre></div>
 
 
 <p><strong>Файл docker-compose.yml:</strong> </p>
 <div class="highlight"><pre><span></span><span class="c1"># Файл docker-compose должен начинаться с тега версии.</span>
 <span class="c1"># Мы используем &quot;3&quot; так как это - самая свежая версия на момент написания этого кода.</span>
-version:<span class="w"> </span><span class="s2">&quot;3&quot;</span>
+version: <span class="s2">&quot;3&quot;</span>
 <span class="c1"># Следует учитывать, что docker-composes работает с сервисами.</span>
 <span class="c1"># 1 сервис = 1 контейнер.</span>
 <span class="c1"># Сервисом может быть клиент, сервер, сервер баз данных...</span>
@@ -174,10 +174,10 @@ server:
 <span class="c1"># который позволит запустить сервис.</span>
 <span class="c1"># Здесь &#39;server/&#39; соответствует пути к папке сервера,</span>
 <span class="c1"># которая содержит соответствующий Dockerfile.</span>
-build:<span class="w"> </span>server/
+build: server/
 <span class="c1"># Команда, которую нужно запустить после создания образа.</span>
 <span class="c1"># Следующая команда означает запуск &quot;python ./server.py&quot;.</span>
-command:<span class="w"> </span>python<span class="w"> </span>./server.py
+command: python ./server.py
 <span class="c1"># Вспомните о том, что в качестве порта в &#39;server/server.py&#39; указан порт 1234.</span>
 <span class="c1"># Если мы хотим обратиться к серверу с нашего компьютера (находясь за пределами контейнера),</span>
 <span class="c1"># мы должны организовать перенаправление этого порта на порт компьютера.</span>
@@ -187,59 +187,59 @@ command:<span class="w"> </span>python<span class="w"> </span>./server.py
 <span class="c1"># 1234 контейнера (так как именно на этот порт сервер</span>
 <span class="c1"># ожидает поступления запросов).</span>
 ports:
--<span class="w"> </span><span class="m">1234</span>:1234
+- <span class="m">1234</span>:1234
 <span class="c1"># Второй сервис (контейнер): клиент.</span>
 <span class="c1"># Этот сервис назван &#39;client&#39;.</span>
 client:
 <span class="c1"># Здесь &#39;client/ соответствует пути к папке, которая содержит</span>
 <span class="c1"># файл Dockerfile для клиентской части системы.</span>
-build:<span class="w"> </span>client/
+build: client/
 <span class="c1"># Команда, которую нужно запустить после создания образа.</span>
 <span class="c1"># Следующая команда означает запуск &quot;python ./client.py&quot;.</span>
-command:<span class="w"> </span>python<span class="w"> </span>./client.py
+command: python ./client.py
 <span class="c1"># Ключевое слово &#39;network_mode&#39; используется для описания типа сети.</span>
 <span class="c1"># Тут мы указываем то, что контейнер может обращаться к &#39;localhost&#39; компьютера.</span>
-network_mode:<span class="w"> </span>host
+network_mode: host
 <span class="c1"># Ключевое слово &#39;depends_on&#39; позволяет указывать, должен ли сервис,</span>
 <span class="c1"># прежде чем запуститься, ждать, когда будут готовы к работе другие сервисы.</span>
 <span class="c1"># Нам нужно, чтобы сервис &#39;client&#39; дождался бы готовности к работе сервиса &#39;server&#39;.</span>
 depends_on:
--<span class="w"> </span>server
+- server
 </pre></div>
 
 
 <p>Сборка проекта</p>
-<div class="highlight"><pre><span></span>docker-compose build
+<div class="highlight"><pre><span></span><span class="err">docker-compose build</span>
 </pre></div>
 
 
 <p>Запуск проекта</p>
-<div class="highlight"><pre><span></span>docker-compose up
+<div class="highlight"><pre><span></span><span class="err">docker-compose up</span>
 </pre></div>
 
 
 <p>Команда позволяет останавливать и удалять контейнеры и другие ресурсы:</p>
-<div class="highlight"><pre><span></span>docker-compose down
+<div class="highlight"><pre><span></span><span class="err">docker-compose down</span>
 </pre></div>
 
 
 <p>Команда выводит журналы сервисов:</p>
-<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="p">[</span><span class="n">service</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">service</span> <span class="n">name</span><span class="p">]</span>
 </pre></div>
 
 
 <p>Вывести список контейнеров:</p>
-<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="p">[</span><span class="n">service</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">service</span> <span class="n">name</span><span class="p">]</span>
 </pre></div>
 
 
 <p>Команда позволяет выполнить команду в выполняющемся контейнере:</p>
-<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="p">[</span><span class="n">service</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span> <span class="p">[</span><span class="n">service</span> <span class="n">name</span><span class="p">]</span>
 </pre></div>
 
 
 <p>Команда позволяет вывести список образов:</p>
-<div class="highlight"><pre><span></span>docker-compose images
+<div class="highlight"><pre><span></span><span class="err">docker-compose images</span>
 </pre></div>
     </div><!-- /.entry-content -->
 

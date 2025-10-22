@@ -130,20 +130,20 @@
 <li><a href="https://docs.docker.com/engine/install/ubuntu/">установка докер в убунту</a></li>
 </ul>
 <h2>Установка Docker в Ubuntu</h2>
-<div class="highlight"><pre><span></span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>lsb-release
+<div class="highlight"><pre><span></span> sudo apt-get update
+ sudo apt-get install <span class="se">\</span>
+    apt-transport-https <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg <span class="se">\</span>
+    lsb-release
 
 
-<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/docker-archive-keyring.gpg
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 
-<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
+ <span class="nb">echo</span> <span class="se">\</span>
+  <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr …</span></pre></div>
                 <a class="readmore" href="/2017/12/30/linux-with-docker/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -232,7 +232,7 @@
 <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/pdf/Windows_Integration_Guide/Red_Hat_Enterprise_Linux-7-Windows_Integration_Guide-en-US.pdf">Red Hat Enterprise Linux 7 Windows Integration Guide</a></li>
 </ul>
 <h2>Установка</h2>
-<div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>samba<span class="w"> </span>samba-client<span class="w"> </span>samba-common
+<div class="highlight"><pre><span></span>yum install samba samba-client samba-common
 </pre></div>
 
 
@@ -294,12 +294,12 @@
 <li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></li>
 </ul>
 <h2>Запущен ли firewall</h2>
-<div class="highlight"><pre><span></span>sudo systemctl start firewalld.service
+<div class="highlight"><pre><span></span><span class="err">sudo systemctl start firewalld.service</span>
 </pre></div>
 
 
 <p>​     или</p>
-<div class="highlight"><pre><span></span>firewall-cmd --state
+<div class="highlight"><pre><span></span><span class="err">firewall-cmd --state</span>
 </pre></div>
 
 
@@ -307,7 +307,7 @@
 <ul>
 <li>We can see which zone is currently selected as the default by typing:</li>
 </ul>
-<div class="highlight"><pre><span></span>firewall-cmd<span class="w"> </span>--get-default-zone
+<div class="highlight"><pre><span></span>firewall-cmd --get-default-zone
 </pre></div>
 
 
@@ -317,11 +317,9 @@
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-      <li>Page 1 / 1</li>
-    </ul>
-  </nav>
+<p class="paginator">
+    Page 1 / 1
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

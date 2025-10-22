@@ -107,7 +107,7 @@
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/attr.html">attr</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/oop.html">oop</a></span>
 </footer><!-- /.post-info -->                <p><strong>источник:</strong> https://nuancesprog.ru/p/8572/</p>
 <h2>Установка библиотеки</h2>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>attrs
+<div class="highlight"><pre><span></span>pip install attrs
 </pre></div>
 
 
@@ -125,10 +125,10 @@
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">attr</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="n">attrib</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">attrib</span>
 
 <span class="nd">@attrs</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object …</span></pre></div>
                 <a class="readmore" href="/2020/08/27/python-oop-attr/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -143,10 +143,10 @@
 <footer class="post-info">
         <span>Thu 04 June 2020</span>
 <span>| tags: <a href="/tag/programmirovanie.html">программирование</a><a href="/tag/rest-api.html">rest api</a><a href="/tag/python.html">python</a><a href="/tag/ssylki.html">ссылки</a><a href="/tag/test.html">test</a><a href="/tag/testirovanie.html">тестирование</a></span>Translations:
-        <a href="/2018/07/05/python/">ru</a>
-        <a href="/2021/08/06/python/">ru</a>
-        <a href="/2021/06/07/python/">ru</a>
         <a href="/2021/06/06/python/">ru</a>
+        <a href="/2018/07/05/python/">ru</a>
+        <a href="/2021/06/07/python/">ru</a>
+        <a href="/2021/08/06/python/">ru</a>
 
 </footer><!-- /.post-info -->                <h2>Общие ссылки</h2>
 <ul>
@@ -193,26 +193,26 @@
 <li><a href="https://doc.qt.io/qt-5/qmainwindow.html">QMainWindow</a></li>
 <li><a href="https://doc.qt.io/qt-5/widget-classes.html">Widget Classes</a></li>
 </ul>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pyqt5
+<div class="highlight"><pre><span></span>sudo apt-get install python3-pyqt5
 или
-pip<span class="w"> </span>install<span class="w"> </span>PyQt5
+pip install PyQt5
 
-pip3<span class="w"> </span>install<span class="w"> </span>pyqt5-tools
+pip3 install pyqt5-tools
 </pre></div>
 
 
 <ul>
 <li>Запуск Qt Designer</li>
 </ul>
-<div class="highlight"><pre><span></span>pyqt5-tools<span class="w"> </span>designer
+<div class="highlight"><pre><span></span>pyqt5-tools designer
 </pre></div>
 
 
 <h2>Установить QT Creator in Ubuntu</h2>
-<div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qtcreator
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qt5-default
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qt5-doc<span class="w"> </span>qt5-doc-html<span class="w"> </span>qtbase5-doc-html<span class="w"> </span>qtbase5-examples …</pre></div>
+<div class="highlight"><pre><span></span>sudo apt install qtcreator
+sudo apt install build-essential
+sudo apt install qt5-default
+sudo apt install qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples …</pre></div>
                 <a class="readmore" href="/2020/02/15/python-qt5/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -256,8 +256,8 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <li>https://pythonru.com/biblioteki/znakomstvo-s-fastapi</li>
 </ul>
 <h1>Установка FastAPI</h1>
-<div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>wheel<span class="w"> </span>-U
-pip<span class="w"> </span>install<span class="w"> </span>uvicorn<span class="w"> </span>fastapi<span class="w"> </span>pydantic<span class="w"> </span>
+<div class="highlight"><pre><span></span>pip install wheel -U
+pip install uvicorn fastapi pydantic 
 </pre></div>
 
 
@@ -291,14 +291,14 @@ pip<span class="w"> </span>install<span class="w"> </span>uvicorn<span class="w"
 </footer><!-- /.post-info -->                <p>Источник: https://habr.com/ru/post/472674/  </p>
 <h2>Переменные окружения bash</h2>
 <p>Например, чтобы запустить flask-приложение, вначале нужно указать в переменной окружения FLASK_APP имя нашего приложения: </p>
-<div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
-flask<span class="w"> </span>run
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">FLASK_APP</span><span class="o">=</span>hello.py
+flask run
 </pre></div>
 
 
 <p>С помощью переменных окружения можно получать различные параметры приложение и секретные ключи: </p>
-<div class="highlight"><pre><span></span>import<span class="w"> </span>os
-app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>os.environ.get …</pre></div>
+<div class="highlight"><pre><span></span>import os
+app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span class="o">]</span> <span class="o">=</span> os.environ.get …</pre></div>
                 <a class="readmore" href="/2019/11/21/environment-variables-python/">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -342,19 +342,19 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
 <li>Venv </li>
 <li>Создание виртуального окружения </li>
 </ol>
-<div class="highlight"><pre><span></span>python3.7<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>my_directory_env<span class="w"> </span>
+<div class="highlight"><pre><span></span>python3.7 -m venv my_directory_env 
 </pre></div>
 
 
 <p>Активация виртуального окружения: </p>
-<div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>my_env/bin/activate
+<div class="highlight"><pre><span></span><span class="nb">source</span> my_env/bin/activate
 </pre></div>
 
 
 <ul>
 <li>Выйти из виртуального окружения: </li>
 </ul>
-<div class="highlight"><pre><span></span>Deactivate<span class="w"> </span>
+<div class="highlight"><pre><span></span>Deactivate 
 </pre></div>
 
 
@@ -389,15 +389,11 @@ app.config<span class="o">[</span><span class="s1">&#39;API_KEY&#39;</span><span
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
-  <nav>
-    <ul>
-        <li><a href="/category/python.html">&Lang;</a></li>
-        <li><a href="/category/python.html">&lang;</a></li>
-      <li>Page 2 / 3</li>
-        <li><a href="/category/python3.html">&rang;</a></li>
-        <li><a href="/category/python3.html">&Rang;</a></li>
-    </ul>
-  </nav>
+<p class="paginator">
+        <a href="/category/python.html">&laquo;</a>
+    Page 2 / 3
+        <a href="/category/python3.html">&raquo;</a>
+</p>
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">

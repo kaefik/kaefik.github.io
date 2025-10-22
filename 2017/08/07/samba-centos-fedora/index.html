@@ -111,7 +111,7 @@
 <li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/pdf/Windows_Integration_Guide/Red_Hat_Enterprise_Linux-7-Windows_Integration_Guide-en-US.pdf">Red Hat Enterprise Linux 7 Windows Integration Guide</a></li>
 </ul>
 <h2>Установка</h2>
-<div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>samba<span class="w"> </span>samba-client<span class="w"> </span>samba-common
+<div class="highlight"><pre><span></span>yum install samba samba-client samba-common
 </pre></div>
 
 
@@ -155,14 +155,14 @@
 <ul>
 <li>Права на папку</li>
 </ul>
-<div class="highlight"><pre><span></span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">0755</span><span class="w"> </span>/media/backupchown<span class="w"> </span>-R<span class="w"> </span>nobody:nobody<span class="w"> </span>/media/backup
+<div class="highlight"><pre><span></span>chmod -R <span class="m">0755</span> /media/backupchown -R nobody:nobody /media/backup
 </pre></div>
 
 
 <ul>
 <li>Дать доступ для samba для этой папки в SELinux (если этого не сделать, то в папку можно будет зайти, а для записи прав не будет)                  </li>
 </ul>
-<div class="highlight"><pre><span></span>chcon<span class="w"> </span>-t<span class="w"> </span>samba_share_t<span class="w"> </span>/media/backup
+<div class="highlight"><pre><span></span>chcon -t samba_share_t /media/backup
 </pre></div>
 
 
@@ -171,11 +171,11 @@
 <p>​                     client max protocol = SMB2 (or SMB3)</p>
 <h2>Настройка шары для группы пользователей</h2>
 <div class="highlight"><pre><span></span><span class="o">[</span>secured<span class="o">]</span>
-<span class="nv">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/samba/secured
-valid<span class="w"> </span><span class="nv">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>@smbgrp<span class="w">        </span><span class="c1"># smbgrp - группа пользователей на компьютере</span>
-guest<span class="w"> </span><span class="nv">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>no
-<span class="nv">writable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>yes
-<span class="nv">browsable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>yes
+<span class="nv">path</span> <span class="o">=</span> /samba/secured
+valid <span class="nv">users</span> <span class="o">=</span> @smbgrp        <span class="c1"># smbgrp - группа пользователей на компьютере</span>
+guest <span class="nv">ok</span> <span class="o">=</span> no
+<span class="nv">writable</span> <span class="o">=</span> yes
+<span class="nv">browsable</span> <span class="o">=</span> yes
 </pre></div>
 
 
@@ -183,8 +183,8 @@ guest<span class="w"> </span><span class="nv">ok</span><span class="w"> </span><
 <ul>
 <li><strong><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System-Level_Authentication_Guide/SSSD.html">CONFIGURING SSSD</a></strong> </li>
 </ul>
-<div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>bind-utils<span class="w">   </span><span class="c1"># для установки утилиты dig</span>
-yum<span class="w"> </span>install<span class="w"> </span>sssd<span class="w"> </span>samba*<span class="w"> </span>realm<span class="w"> </span>krb5-user<span class="w"> </span>samba<span class="w"> </span>sssd<span class="w"> </span>ntp<span class="w"> </span>krb5-workstation
+<div class="highlight"><pre><span></span>yum install bind-utils   <span class="c1"># для установки утилиты dig</span>
+yum install sssd samba* realm krb5-user samba sssd ntp krb5-workstation
 </pre></div>
 
 
